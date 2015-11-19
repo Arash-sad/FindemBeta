@@ -22,21 +22,22 @@ class LoginViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    // MARK: - Facebook Login
     @IBAction func facebookLoginButtonPressed(sender: UIButton) {
         PFFacebookUtils.logInInBackgroundWithReadPermissions(["public_profile", "user_about_me", "user_birthday"], block: {
             user, error in
             if user == nil {
-                println("Uh oh. The user cancelled the Facebook Login.")
+                print("Uh oh. The user cancelled the Facebook Login.")
                 //TODO: Add an alert and then navigate back to StartUpViewController
-                let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("StartUpVC") as? UIViewController
+                let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("StartUpVC")
                 
-                self.presentViewController(vc!, animated: true, completion: nil)
+                self.presentViewController(vc, animated: true, completion: nil)
                 return
             }
             else if user!.isNew {
-                println("User signed up and logged in through Facebook!")
+                print("User signed up and logged in through Facebook!")
                 
-                var fbRequest = FBSDKGraphRequest(graphPath: "me", parameters: ["fields":"first_name,picture"])
+                let fbRequest = FBSDKGraphRequest(graphPath: "me", parameters: ["fields":"first_name,picture.type(large)"])
                 fbRequest.startWithCompletionHandler({ (FBSDKGraphRequestConnection, result, error) -> Void in
                     
                     if (error == nil && result != nil) {
@@ -50,7 +51,7 @@ class LoginViewController: UIViewController {
                         NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue(), completionHandler: {
                             response, data, error in
                             
-                            let imageFile = PFFile(name: "avatar.jpg", data: data)
+                            let imageFile = PFFile(name: "avatar.jpg", data: data!)
                             user!.setObject(imageFile, forKey: "picture")
                             user!.saveInBackgroundWithBlock(nil)
                         })
@@ -58,12 +59,12 @@ class LoginViewController: UIViewController {
                     })
             }
             else {
-                println("User logged in through Facebook!")
+                print("User logged in through Facebook!")
             }
             
-            let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("TrainerHomeNavController") as? UIViewController
+            let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("TrainerHomeNavController")
             
-            self.presentViewController(vc!, animated: true, completion: nil)
+            self.presentViewController(vc, animated: true, completion: nil)
         })
     }
 

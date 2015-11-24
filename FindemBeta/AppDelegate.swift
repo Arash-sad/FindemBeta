@@ -12,6 +12,8 @@ import Bolts
 import FBSDKCoreKit
 import ParseFacebookUtilsV4
 
+var pageToGo = ""
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 

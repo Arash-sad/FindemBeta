@@ -23,7 +23,7 @@ class StartUpViewController: UIViewController {
     }
 
     @IBAction func profileButtonPressed(sender: UIButton) {
-        
+        pageToGo = "Trainer"
         if currentUser() != nil {
             performSegueWithIdentifier("TrainerHomeSegue", sender: nil)
         }
@@ -33,5 +33,13 @@ class StartUpViewController: UIViewController {
     }
 
     @IBAction func FindemButtonPressed(sender: UIButton) {
+        pageToGo = "Findem"
+        if currentUser() != nil {
+            let containerViewController = FinderContainerViewController()
+            self.presentViewController(containerViewController, animated: true, completion: nil)
+        }
+        else {
+            performSegueWithIdentifier("LoginSegue", sender: nil)
+        }
     }
 }

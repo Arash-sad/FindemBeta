@@ -62,9 +62,17 @@ class LoginViewController: UIViewController {
                 print("User logged in through Facebook!")
             }
             
-            let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("TrainerHomeNavController")
+            // Check which pageToGo
+            if pageToGo == "Trainer" {
+                let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("TrainerHomeNavController")
+                
+                self.presentViewController(vc, animated: true, completion: nil)
+            }
+            else if pageToGo == "Findem" {
+                let vc = FinderContainerViewController()
+                self.presentViewController(vc, animated: true, completion: nil)
+            }
             
-            self.presentViewController(vc, animated: true, completion: nil)
         })
     }
 

@@ -19,6 +19,8 @@ class TrainerProfileGeneralViewController: UIViewController, UITextFieldDelegate
     var gName:String?
     var gPhoto:UIImage?
     
+    var photoUploadTask: UIBackgroundTaskIdentifier?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -59,8 +61,18 @@ class TrainerProfileGeneralViewController: UIViewController, UITextFieldDelegate
             user!.setObject(self.nameTextField.text!, forKey: "firstName")
             if let image = self.imageView.image {
                 //Convert UIImage to PFFile named profilePic.jpg
-                let imageData = UIImageJPEGRepresentation(image, 1.0)
+                let imageData = UIImageJPEGRepresentation(image, 0.8)
                 let imageFile = PFFile(name: "profilePic.jpg", data: imageData!)
+                
+                // Requesting a Long Running Background Task
+                // To finish up tasks that started before the app got suspended
+                photoUploadTask = UIApplication.sharedApplication().beginBackgroundTaskWithExpirationHandler { () -> Void in
+                    UIApplication.sharedApplication().endBackgroundTask(self.photoUploadTask!)
+                }
+                imageFile.saveInBackgroundWithBlock { (success: Bool, error: NSError?) -> Void in
+                    
+                    UIApplication.sharedApplication().endBackgroundTask(self.photoUploadTask!)
+                }
                 
                 user!.setObject(imageFile, forKey: "picture")
                 print("@@@image: \(image)")

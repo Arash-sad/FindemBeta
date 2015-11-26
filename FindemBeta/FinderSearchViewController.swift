@@ -70,9 +70,9 @@ class FinderSearchViewController: UIViewController, FinderSlideOutMenuViewContro
             }
         }
         
-        let pageVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("pageView")
-//        pageVC?.nameArray = self.nameArray
-        self.presentViewController(pageVC, animated: true, completion: nil)
+        let pageVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("pageView") as? FinderPageViewController
+        pageVC?.nameArray.append("test")
+        self.presentViewController(pageVC!, animated: true, completion: nil)
     }
 
 }

@@ -13,12 +13,13 @@ class FinderPageViewController: UIViewController, UIPageViewControllerDataSource
     var pageController: UIPageViewController?
     var pageContent = NSArray()
     //TEMP
-//    var nameArray:[String] = []
+    var nameArray:[String] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         createResultPages()
-        
+        print("@#$%^")
+        print(nameArray)
         pageController = UIPageViewController(
             transitionStyle: .Scroll,
             navigationOrientation: .Horizontal,

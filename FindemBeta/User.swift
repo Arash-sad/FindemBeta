@@ -12,7 +12,6 @@ import Parse
 struct User {
     let id: String
     let name: String
-//    let photo: PFFile
     private let pfUser: PFUser
     
     //Nested Function-Use callback: (UIImage) because make the call asynchronously
@@ -29,7 +28,6 @@ struct User {
 
 private func pfUserToUser(user: PFUser) -> User {
     return User(id: user.objectId!, name: user.objectForKey("firstName") as! String, pfUser: user)
-//    photo: user.objectForKey("picture") as! PFFile
 }
 
 func currentUser() -> User? {

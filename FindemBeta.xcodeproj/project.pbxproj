@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5B41E92A1C06D23700FA1474 /* Trainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B41E9291C06D23700FA1474 /* Trainer.swift */; };
+		5B41E92E1C0BF22800FA1474 /* LoadView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B41E92D1C0BF22800FA1474 /* LoadView.xib */; };
 		5B4FE88D1BC4AB5B0057278F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4FE88C1BC4AB5B0057278F /* AppDelegate.swift */; };
 		5B4FE8921BC4AB5B0057278F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B4FE8901BC4AB5B0057278F /* Main.storyboard */; };
 		5B4FE8941BC4AB5B0057278F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5B4FE8931BC4AB5B0057278F /* Images.xcassets */; };
@@ -35,10 +37,10 @@
 		5BE6E5411BFBDE23001BA5F7 /* TrainerDescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE6E5401BFBDE23001BA5F7 /* TrainerDescriptionViewController.swift */; };
 		5BE6E5431BFBED03001BA5F7 /* FifthTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE6E5421BFBED03001BA5F7 /* FifthTableViewCell.swift */; };
 		5BE868D91BE95F3D00A9B256 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE868D81BE95F3D00A9B256 /* User.swift */; };
+		5BE879E01C068AA900D783D0 /* FinderSearchResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE879DF1C068AA900D783D0 /* FinderSearchResultViewController.swift */; };
+		5BE879E21C068C0F00D783D0 /* SearchResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE879E11C068C0F00D783D0 /* SearchResultTableViewCell.swift */; };
 		5BE9625E1BF48F3E00E9C2FD /* TrainerQualificationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE9625D1BF48F3E00E9C2FD /* TrainerQualificationsViewController.swift */; };
 		5BE962601BF492EC00E9C2FD /* QualificationsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE9625F1BF492EC00E9C2FD /* QualificationsTableViewCell.swift */; };
-		5BE9F2471C04250800BDAE1F /* FinderPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE9F2461C04250800BDAE1F /* FinderPageViewController.swift */; };
-		5BE9F2491C04255E00BDAE1F /* FinderResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE9F2481C04255E00BDAE1F /* FinderResultViewController.swift */; };
 		5BE9FFB41C02B7BA009A2E28 /* FinderSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE9FFB31C02B7BA009A2E28 /* FinderSearchViewController.swift */; };
 		5BE9FFB61C02B919009A2E28 /* FinderSlideOutMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE9FFB51C02B919009A2E28 /* FinderSlideOutMenuViewController.swift */; };
 		5BE9FFB81C02BF40009A2E28 /* FinderContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE9FFB71C02BF40009A2E28 /* FinderContainerViewController.swift */; };
@@ -64,6 +66,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5B41E9291C06D23700FA1474 /* Trainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Trainer.swift; sourceTree = "<group>"; };
+		5B41E92D1C0BF22800FA1474 /* LoadView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoadView.xib; sourceTree = "<group>"; };
 		5B4FE8871BC4AB5B0057278F /* FindemBeta.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FindemBeta.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B4FE88B1BC4AB5B0057278F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5B4FE88C1BC4AB5B0057278F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -96,10 +100,10 @@
 		5BE6E5401BFBDE23001BA5F7 /* TrainerDescriptionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainerDescriptionViewController.swift; sourceTree = "<group>"; };
 		5BE6E5421BFBED03001BA5F7 /* FifthTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FifthTableViewCell.swift; sourceTree = "<group>"; };
 		5BE868D81BE95F3D00A9B256 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		5BE879DF1C068AA900D783D0 /* FinderSearchResultViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FinderSearchResultViewController.swift; sourceTree = "<group>"; };
+		5BE879E11C068C0F00D783D0 /* SearchResultTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultTableViewCell.swift; sourceTree = "<group>"; };
 		5BE9625D1BF48F3E00E9C2FD /* TrainerQualificationsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainerQualificationsViewController.swift; sourceTree = "<group>"; };
 		5BE9625F1BF492EC00E9C2FD /* QualificationsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QualificationsTableViewCell.swift; sourceTree = "<group>"; };
-		5BE9F2461C04250800BDAE1F /* FinderPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FinderPageViewController.swift; sourceTree = "<group>"; };
-		5BE9F2481C04255E00BDAE1F /* FinderResultViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FinderResultViewController.swift; sourceTree = "<group>"; };
 		5BE9FFB31C02B7BA009A2E28 /* FinderSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FinderSearchViewController.swift; sourceTree = "<group>"; };
 		5BE9FFB51C02B919009A2E28 /* FinderSlideOutMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FinderSlideOutMenuViewController.swift; sourceTree = "<group>"; };
 		5BE9FFB71C02BF40009A2E28 /* FinderContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FinderContainerViewController.swift; sourceTree = "<group>"; };
@@ -173,6 +177,7 @@
 				5BE7FC301BF2C59500E1A6B8 /* ViewControllers */,
 				5BE7FC311BF2C5A600E1A6B8 /* Views */,
 				5B4FE8901BC4AB5B0057278F /* Main.storyboard */,
+				5B41E92D1C0BF22800FA1474 /* LoadView.xib */,
 				5B4FE8931BC4AB5B0057278F /* Images.xcassets */,
 				5B4FE8951BC4AB5B0057278F /* LaunchScreen.xib */,
 				5B4FE8C61BC4AF960057278F /* Frameworks */,
@@ -232,6 +237,7 @@
 			isa = PBXGroup;
 			children = (
 				5BE868D81BE95F3D00A9B256 /* User.swift */,
+				5B41E9291C06D23700FA1474 /* Trainer.swift */,
 			);
 			name = Data;
 			sourceTree = "<group>";
@@ -258,6 +264,7 @@
 				5BE0A0D81BFD37E100F5A3D4 /* SixthTableViewCell.swift */,
 				5BEBB6821BF1943100B60CF2 /* TrainingTableViewCell.swift */,
 				5BE9625F1BF492EC00E9C2FD /* QualificationsTableViewCell.swift */,
+				5BE879E11C068C0F00D783D0 /* SearchResultTableViewCell.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -283,8 +290,7 @@
 				5BE9FFB31C02B7BA009A2E28 /* FinderSearchViewController.swift */,
 				5BE9FFB51C02B919009A2E28 /* FinderSlideOutMenuViewController.swift */,
 				5BE9FFB71C02BF40009A2E28 /* FinderContainerViewController.swift */,
-				5BE9F2461C04250800BDAE1F /* FinderPageViewController.swift */,
-				5BE9F2481C04255E00BDAE1F /* FinderResultViewController.swift */,
+				5BE879DF1C068AA900D783D0 /* FinderSearchResultViewController.swift */,
 			);
 			name = Finder;
 			sourceTree = "<group>";
@@ -370,6 +376,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5B41E92E1C0BF22800FA1474 /* LoadView.xib in Resources */,
 				5B4FE8921BC4AB5B0057278F /* Main.storyboard in Resources */,
 				5B4FE8971BC4AB5B0057278F /* LaunchScreen.xib in Resources */,
 				5B4FE8941BC4AB5B0057278F /* Images.xcassets in Resources */,
@@ -395,12 +402,14 @@
 				5BE0A0D71BFD367B00F5A3D4 /* TrainerOtherViewController.swift in Sources */,
 				5BF98D031BF04F1D008DA586 /* ThirdTableViewCell.swift in Sources */,
 				5BE6E5431BFBED03001BA5F7 /* FifthTableViewCell.swift in Sources */,
+				5B41E92A1C06D23700FA1474 /* Trainer.swift in Sources */,
+				5BE879E01C068AA900D783D0 /* FinderSearchResultViewController.swift in Sources */,
+				5BE879E21C068C0F00D783D0 /* SearchResultTableViewCell.swift in Sources */,
 				5BE6E5411BFBDE23001BA5F7 /* TrainerDescriptionViewController.swift in Sources */,
 				5BE9FFB41C02B7BA009A2E28 /* FinderSearchViewController.swift in Sources */,
 				5BE0A0D91BFD37E100F5A3D4 /* SixthTableViewCell.swift in Sources */,
 				5BACC66C1BE6C2F800EB4972 /* LoginViewController.swift in Sources */,
 				5BF98D071BF05FF0008DA586 /* TrainerProfileViewController.swift in Sources */,
-				5BE9F2491C04255E00BDAE1F /* FinderResultViewController.swift in Sources */,
 				5BEE24C01BF99EC500BBC10E /* FourthTableViewCell.swift in Sources */,
 				5BEBB6831BF1943100B60CF2 /* TrainingTableViewCell.swift in Sources */,
 				5BE9625E1BF48F3E00E9C2FD /* TrainerQualificationsViewController.swift in Sources */,
@@ -412,7 +421,6 @@
 				5BE9FFB81C02BF40009A2E28 /* FinderContainerViewController.swift in Sources */,
 				5BEE24C21BF9A7ED00BBC10E /* TrainerRegionViewController.swift in Sources */,
 				5BE962601BF492EC00E9C2FD /* QualificationsTableViewCell.swift in Sources */,
-				5BE9F2471C04250800BDAE1F /* FinderPageViewController.swift in Sources */,
 				5BF98D011BF04F04008DA586 /* SecondTableViewCell.swift in Sources */,
 				5BACC6731BE7149500EB4972 /* TrainerHomeViewController.swift in Sources */,
 			);

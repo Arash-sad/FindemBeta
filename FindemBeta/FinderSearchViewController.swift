@@ -44,35 +44,8 @@ class FinderSearchViewController: UIViewController, FinderSlideOutMenuViewContro
     }
 
     @IBAction func searchButtonPressed(sender: UIButton) {
-        let query = PFUser.query()
-        query!.whereKey("firstName", equalTo:"Arash")
-        query!.whereKey("trainingTypes", containsAllObjectsInArray:["Strength Training","Weight loss","Functional training"])
-        query!.findObjectsInBackgroundWithBlock {
-            (objects: [PFObject]?, error: NSError?) -> () in
-            
-            if error == nil {
-                // The find succeeded.
-                print("Successfully retrieved \(objects!.count) users.")
-                // Do something with the found objects
-                if let objects = objects {
-                    for object in objects {
-                        //TEMP
-//                        if let name = object.objectForKey("firstName") as? String {
-//                            print(name)
-//                            self.nameArray.append(name)
-//                        }
-                        print(object)
-                    }
-                }
-            } else {
-                // Log details of the failure
-                print("Error: \(error!) \(error!.userInfo)")
-            }
-        }
-        
-        let pageVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("pageView") as? FinderPageViewController
-        pageVC?.nameArray.append("test")
-        self.presentViewController(pageVC!, animated: true, completion: nil)
+        performSegueWithIdentifier("showSearchResult", sender: nil)
     }
 
 }
+

@@ -13,6 +13,7 @@ import FBSDKCoreKit
 import ParseFacebookUtilsV4
 
 var pageToGo = ""
+let trainingArray = ["Core Strength","Weight Loss","Functional Training","Small Group Training","Pre and Post Baby","Rehab"]
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {

@@ -15,7 +15,12 @@ import Parse
 
 class FinderSearchViewController: UIViewController, FinderSlideOutMenuViewControllerDelegate {
 
+    @IBOutlet weak var collectionView: UICollectionView!
+    
     var delegate: FinderSearchViewControllerDelegate?
+    
+    var ImageArray = [UIImage(named: "baby"),UIImage(named: "core"),UIImage(named: "functional"),UIImage(named: "rehab"),UIImage(named: "smallGroup"),UIImage(named: "weightLoss")]
+    let trainingTypesArray = ["Pre and Post Baby","Core Strength","Functional Training","Rehab","Small Group Training","Weight Loss"]
     
     //TEMP
 //    var nameArray: [String] = []
@@ -42,10 +47,38 @@ class FinderSearchViewController: UIViewController, FinderSlideOutMenuViewContro
             d.toggleRightPanel?()
         }
     }
-
-    @IBAction func searchButtonPressed(sender: UIButton) {
-        performSegueWithIdentifier("showSearchResult", sender: nil)
-    }
+    
+// Search Button
+//    @IBAction func searchButtonPressed(sender: UIButton) {
+//        performSegueWithIdentifier("showSearchResult", sender: nil)
+//    }
 
 }
 
+extension FinderSearchViewController: UICollectionViewDelegate,UICollectionViewDataSource {
+    
+    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return ImageArray.count
+    }
+    
+    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("searchCell", forIndexPath: indexPath) as! SearchCollectionViewCell
+        cell.imageView.image = self.ImageArray[indexPath.row]
+        
+        return cell
+    }
+    
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        performSegueWithIdentifier("showSearchResult", sender: nil)
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "showSearchResult"{
+            let indexPaths = self.collectionView.indexPathsForSelectedItems()
+            let indexPath = indexPaths![0] as NSIndexPath
+            let resultVC = segue.destinationViewController as! FinderSearchResultViewController
+            resultVC.trainingType = self.trainingTypesArray[indexPath.row]
+            
+        }
+    }
+}

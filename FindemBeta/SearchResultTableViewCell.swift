@@ -10,7 +10,6 @@ import UIKit
 
 class SearchResultTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var trainerImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     
     override func awakeFromNib() {

@@ -14,6 +14,8 @@ class FinderSearchResultViewController: UIViewController {
     //TEMP:
     var trainerArray:[PFUser] = []
     
+    var trainingType = ""
+    
     @IBOutlet weak var tableView: UITableView!
 
     override func viewDidAppear(animated: Bool) {
@@ -26,7 +28,7 @@ class FinderSearchResultViewController: UIViewController {
         
         let query = PFUser.query()
 //        query!.whereKey("firstName", equalTo:"Arash")
-        query!.whereKey("trainingTypes", containsAllObjectsInArray:["Strength Training","Weight loss","Functional training"])
+        query!.whereKey("trainingTypes", equalTo:trainingType)
         query!.findObjectsInBackgroundWithBlock {
             (objects: [PFObject]?, error: NSError?) -> () in
             
@@ -91,7 +93,7 @@ extension FinderSearchResultViewController: UITableViewDataSource {
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("searchResultCell") as! SearchResultTableViewCell
         
-        cell.nameLabel.text = self.trainerArray[indexPath.row].objectForKey("favorite") as? String
+        cell.nameLabel.text = self.trainerArray[indexPath.row].objectForKey("firstName") as? String
         
         return cell
     }

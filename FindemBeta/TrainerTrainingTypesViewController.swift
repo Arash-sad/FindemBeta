@@ -15,9 +15,9 @@ class TrainerTrainingTypesViewController: UIViewController, UITableViewDelegate,
     @IBOutlet weak var saveBarButtonItem: UIBarButtonItem!
     
     //TODO: TEMP 
-    //make trainingArray global ?
-    let trainingArray = ["Strength Training","Weight loss","Functional training","Postural correction","Group Training"]
-    let trainingDictionary = [0:"Strength Training",1:"Weight loss",2:"Functional training",3:"Postural correction",4:"Group Training"]
+    // trainingArray is global -> AppDelegate 
+//    let trainingArray = ["Core Strength","Weight Loss","Functional Training","Small Group Training","Pre and Post Baby","Rehab"]
+    let trainingDictionary = [0:"Core Strength",1:"Weight Loss",2:"Functional Training",3:"Small Group Training",4:"Pre and Post Baby",5:"Rehab"]
     var tempDict:[Int:String] = [:]
     var tempArray:[String]?
     
@@ -73,7 +73,7 @@ class TrainerTrainingTypesViewController: UIViewController, UITableViewDelegate,
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return 6
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {

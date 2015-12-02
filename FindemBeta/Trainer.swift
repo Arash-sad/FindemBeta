@@ -24,7 +24,7 @@ class Trainer : PFObject, PFSubclassing {
     @NSManaged var favorite: String?
     
     static func parseClassName() -> String {
-        return "Post"
+        return "Trainer"
     }
     
     // 4

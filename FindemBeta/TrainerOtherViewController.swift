@@ -52,11 +52,8 @@ class TrainerOtherViewController: UIViewController, UITextViewDelegate {
             
             //Save Years Experience, Achievements, and Favorite to Parse
             let user = PFUser.currentUser()
-            user!.removeObjectForKey("yearsExperience")
             user!.setObject(self.years!, forKey: "yearsExperience")
-            user!.removeObjectForKey("achievements")
             user!.setObject(self.achievements!, forKey: "achievements")
-            user!.removeObjectForKey("favorite")
             user!.setObject(self.favorite!, forKey: "favorite")
             user!.saveInBackgroundWithBlock(nil)
         }

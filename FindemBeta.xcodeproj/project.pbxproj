@@ -32,6 +32,7 @@
 		5BACC66C1BE6C2F800EB4972 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BACC66B1BE6C2F800EB4972 /* LoginViewController.swift */; };
 		5BACC6711BE6EB2F00EB4972 /* ParseFacebookUtilsV4.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BACC6701BE6EB2F00EB4972 /* ParseFacebookUtilsV4.framework */; };
 		5BACC6731BE7149500EB4972 /* TrainerHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BACC6721BE7149500EB4972 /* TrainerHomeViewController.swift */; };
+		5BDD9DB11C0FC364006CF0BF /* FinderRefineSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BDD9DB01C0FC364006CF0BF /* FinderRefineSearchViewController.swift */; };
 		5BE0A0D71BFD367B00F5A3D4 /* TrainerOtherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE0A0D61BFD367B00F5A3D4 /* TrainerOtherViewController.swift */; };
 		5BE0A0D91BFD37E100F5A3D4 /* SixthTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE0A0D81BFD37E100F5A3D4 /* SixthTableViewCell.swift */; };
 		5BE6E5411BFBDE23001BA5F7 /* TrainerDescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE6E5401BFBDE23001BA5F7 /* TrainerDescriptionViewController.swift */; };
@@ -96,6 +97,7 @@
 		5BACC66B1BE6C2F800EB4972 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		5BACC6701BE6EB2F00EB4972 /* ParseFacebookUtilsV4.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseFacebookUtilsV4.framework; sourceTree = "<group>"; };
 		5BACC6721BE7149500EB4972 /* TrainerHomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainerHomeViewController.swift; sourceTree = "<group>"; };
+		5BDD9DB01C0FC364006CF0BF /* FinderRefineSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FinderRefineSearchViewController.swift; sourceTree = "<group>"; };
 		5BE0A0D61BFD367B00F5A3D4 /* TrainerOtherViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainerOtherViewController.swift; sourceTree = "<group>"; };
 		5BE0A0D81BFD37E100F5A3D4 /* SixthTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SixthTableViewCell.swift; sourceTree = "<group>"; };
 		5BE6E5401BFBDE23001BA5F7 /* TrainerDescriptionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainerDescriptionViewController.swift; sourceTree = "<group>"; };
@@ -294,6 +296,7 @@
 				5BE9FFB51C02B919009A2E28 /* FinderSlideOutMenuViewController.swift */,
 				5BE9FFB71C02BF40009A2E28 /* FinderContainerViewController.swift */,
 				5BE879DF1C068AA900D783D0 /* FinderSearchResultViewController.swift */,
+				5BDD9DB01C0FC364006CF0BF /* FinderRefineSearchViewController.swift */,
 			);
 			name = Finder;
 			sourceTree = "<group>";
@@ -415,6 +418,7 @@
 				5BACC66C1BE6C2F800EB4972 /* LoginViewController.swift in Sources */,
 				5BF98D071BF05FF0008DA586 /* TrainerProfileViewController.swift in Sources */,
 				5BEE24C01BF99EC500BBC10E /* FourthTableViewCell.swift in Sources */,
+				5BDD9DB11C0FC364006CF0BF /* FinderRefineSearchViewController.swift in Sources */,
 				5BEBB6831BF1943100B60CF2 /* TrainingTableViewCell.swift in Sources */,
 				5BE9625E1BF48F3E00E9C2FD /* TrainerQualificationsViewController.swift in Sources */,
 				5BACC66A1BE6C28E00EB4972 /* StartUpViewController.swift in Sources */,

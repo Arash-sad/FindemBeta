@@ -37,13 +37,16 @@ class LoginViewController: UIViewController {
             else if user!.isNew {
                 print("User signed up and logged in through Facebook!")
                 
-                let fbRequest = FBSDKGraphRequest(graphPath: "me", parameters: ["fields":"first_name,picture.type(large)"])
+                let fbRequest = FBSDKGraphRequest(graphPath: "me", parameters: ["fields":"first_name,gender,picture.type(large)"])
                 fbRequest.startWithCompletionHandler({ (FBSDKGraphRequestConnection, result, error) -> Void in
                     
                     if (error == nil && result != nil) {
                         let facebookData = result as! NSDictionary //FACEBOOK DATA IN DICTIONARY
                         let firstName = (facebookData.objectForKey("first_name") as! String)
                         user!.setObject(firstName, forKey: "firstName")
+                        
+                        let gender = (facebookData.objectForKey("gender") as! String)
+                        user!.setObject(gender, forKey: "gender")
                         
                         let pictureURL = ((facebookData["picture"] as! NSDictionary)["data"] as! NSDictionary) ["url"] as! String
                         let url = NSURL(string: pictureURL)

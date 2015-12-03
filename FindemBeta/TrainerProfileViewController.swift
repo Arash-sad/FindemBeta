@@ -17,18 +17,19 @@ class TrainerProfileViewController: UIViewController, UITableViewDelegate, UITab
     
     var editButtonEnabled = false
     //TODO: TEMP
-    var name:String?
-    var photo:UIImage?
-    var trainingArray:[String] = []
+    var name: String?
+    var photo: UIImage?
+    var gender: String = "male"
+    var trainingArray: [String] = []
     var qualificationsArray:[String] = []
     var coords: PFGeoPoint?
     var latitude: CLLocationDegrees?
     var longitude: CLLocationDegrees?
     var distance: Double = 10.0
-    var descriptionString:String = ""
-    var yearsExperience:String = ""
-    var achievements:String = ""
-    var favorite:String = ""
+    var descriptionString: String = ""
+    var yearsExperience: String = ""
+    var achievements: String = ""
+    var favorite: String = ""
     
     let firstCellIdentifier = "firstProfileCell"
     let secondCellIdentifier = "secondProfileCell"
@@ -52,6 +53,11 @@ class TrainerProfileViewController: UIViewController, UITableViewDelegate, UITab
             image in
             self.photo = image
         })
+        
+        //Fetch Gender
+        if let gender = PFUser.currentUser()!.objectForKey("gender") {
+            self.gender = gender as! String
+        }
         
         //Fetch TrainingTypes from Parse
         if let trainingArrayParse = PFUser.currentUser()!.objectForKey("trainingTypes") {
@@ -130,6 +136,7 @@ class TrainerProfileViewController: UIViewController, UITableViewDelegate, UITab
             //TODO: TEMP
             generalVC!.gName = self.name
             generalVC!.gPhoto = self.photo
+            generalVC!.gGender = self.gender
         }
         else if segue.identifier == "showTypesOfTraining" {
             let navVC = segue.destinationViewController as? UINavigationController

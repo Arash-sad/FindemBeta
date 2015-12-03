@@ -61,7 +61,6 @@ class TrainerTrainingTypesViewController: UIViewController, UITableViewDelegate,
             
             //MARK: Save TrainingTypes to Parse
             let user = PFUser.currentUser()
-            user!.removeObjectForKey("trainingTypes")
             user!.setObject(self.tempArray!, forKey: "trainingTypes")
             user!.saveInBackgroundWithBlock(nil)
         }

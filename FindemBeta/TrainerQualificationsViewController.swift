@@ -58,7 +58,6 @@ class TrainerQualificationsViewController: UIViewController, UITableViewDelegate
             
             //MARK: Save Qualifications to Parse
             let user = PFUser.currentUser()
-            user!.removeObjectForKey("qualifications")
             user!.setObject(self.tempArray!, forKey: "qualifications")
             user!.saveInBackgroundWithBlock(nil)
             

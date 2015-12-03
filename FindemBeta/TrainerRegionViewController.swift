@@ -91,9 +91,7 @@ class TrainerRegionViewController: UIViewController {
             //MARK: Save Latitude, Longitude and Distance to Parse
             let point = PFGeoPoint(latitude: self.latitudeR!, longitude: self.longitudeR!)
             let user = PFUser.currentUser()
-            user!.removeObjectForKey("location")
             user!.setObject(point, forKey: "location")
-            user!.removeObjectForKey("distance")
             user!.setObject(self.distance!, forKey: "distance")
             user!.saveInBackgroundWithBlock(nil)
         }

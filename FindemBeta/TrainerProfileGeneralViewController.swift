@@ -14,10 +14,12 @@ class TrainerProfileGeneralViewController: UIViewController, UITextFieldDelegate
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var nameTextField: UITextField!    
     @IBOutlet weak var saveBarButtonItem: UIBarButtonItem!
+    @IBOutlet weak var segmentedControl: UISegmentedControl!
     
     //TODO: TEMP
-    var gName:String?
-    var gPhoto:UIImage?
+    var gName: String?
+    var gPhoto: UIImage?
+    var gGender: String?
     
     var photoUploadTask: UIBackgroundTaskIdentifier?
     
@@ -34,8 +36,14 @@ class TrainerProfileGeneralViewController: UIViewController, UITextFieldDelegate
         //TODO: TEMP
         self.nameTextField.text = gName
         self.imageView.image = gPhoto
-        print(gName)
-        print(gPhoto)
+        print("TEST")
+        print(gGender)
+        if gGender == "male" {
+            segmentedControl.selectedSegmentIndex = 0
+        }
+        else {
+            segmentedControl.selectedSegmentIndex = 1
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -47,6 +55,16 @@ class TrainerProfileGeneralViewController: UIViewController, UITextFieldDelegate
         dismissViewControllerAnimated(true, completion: nil)
     }
     
+    @IBAction func segmentedControlValueChanged(sender: UISegmentedControl) {
+        if(segmentedControl.selectedSegmentIndex == 0)
+        {
+            self.gGender = "male";
+        }
+        else if(segmentedControl.selectedSegmentIndex == 1)
+        {
+            self.gGender = "female";
+        }
+    }
     // MARK: - Navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if saveBarButtonItem === sender {
@@ -59,6 +77,7 @@ class TrainerProfileGeneralViewController: UIViewController, UITextFieldDelegate
             //MARK: Save Name and Photo to Parse
             let user = PFUser.currentUser()
             user!.setObject(self.nameTextField.text!, forKey: "firstName")
+            user!.setObject(self.gGender!, forKey: "gender")
             if let image = self.imageView.image {
                 //Convert UIImage to PFFile named profilePic.jpg
                 let imageData = UIImageJPEGRepresentation(image, 0.8)

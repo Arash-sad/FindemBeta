@@ -47,7 +47,6 @@ class TrainerDescriptionViewController: UIViewController, UITextViewDelegate {
             //MARK: Save Description to Parse
             
             let user = PFUser.currentUser()
-            user!.removeObjectForKey("description")
             user!.setObject(self.descriptionString!, forKey: "description")
             user!.saveInBackgroundWithBlock(nil)
         }

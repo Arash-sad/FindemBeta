@@ -13,8 +13,9 @@ class FinderSearchResultViewController: UIViewController {
     
     //TEMP:
     var trainerArray:[PFUser] = []
-    
+    var refinedtrainerArray:[PFUser] = []
     var trainingType = ""
+    var refinedGender = "any"
     
     @IBOutlet weak var tableView: UITableView!
 
@@ -27,7 +28,6 @@ class FinderSearchResultViewController: UIViewController {
         view.addSubview(loadView!)
         
         let query = PFUser.query()
-//        query!.whereKey("firstName", equalTo:"Arash")
         query!.whereKey("trainingTypes", equalTo:trainingType)
         query!.findObjectsInBackgroundWithBlock {
             (objects: [PFObject]?, error: NSError?) -> () in
@@ -38,7 +38,8 @@ class FinderSearchResultViewController: UIViewController {
                 // Do something with the found objects
                 
                 self.trainerArray = objects as? [PFUser] ?? []
-                print(self.trainerArray)
+                self.refinedtrainerArray = self.trainerArray
+                print("***********")
                 
 
 //                if let objects = objects {
@@ -70,6 +71,18 @@ class FinderSearchResultViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "showRefineSearch" {
+            let navigationController = segue.destinationViewController as? UINavigationController
+            let refineSearchVC = navigationController!.topViewController as? FinderRefineSearchViewController
+            
+            //protocol
+            if let vc = refineSearchVC {
+                vc.delegate = self
+            }
+        }
+    }
 
 
     @IBAction func refineSearchBarButtonItemPressed(sender: UIBarButtonItem) {
@@ -82,15 +95,37 @@ class FinderSearchResultViewController: UIViewController {
 extension FinderSearchResultViewController: UITableViewDataSource {
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return self.trainerArray.count
+        return self.refinedtrainerArray.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("searchResultCell") as! SearchResultTableViewCell
         
-        cell.nameLabel.text = self.trainerArray[indexPath.row].objectForKey("firstName") as? String
+        cell.nameLabel.text = self.refinedtrainerArray[indexPath.row].objectForKey("firstName") as? String
         
         return cell
+    }
+}
+
+// MARK: FinderRefineSearchViewControllerDelegate
+extension FinderSearchResultViewController: FinderRefineSearchViewControllerDelegate {
+    func refineSerch(gender: String) {
+        self.refinedGender = gender
+        print(self.refinedGender)
+        
+        //TEMP: Refine Search Result
+        if refinedGender != "any" {
+            self.refinedtrainerArray = []
+            for trainer in self.trainerArray {
+                if trainer.objectForKey("gender") as? String == self.refinedGender {
+                    self.refinedtrainerArray.append(trainer)
+                }
+            }
+        }
+        else {
+            self.refinedtrainerArray = self.trainerArray
+        }
+        self.tableView.reloadData()
     }
 }
 

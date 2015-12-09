@@ -19,15 +19,15 @@ class TrainerProfileViewController: UIViewController, UITableViewDelegate, UITab
     //TODO: TEMP
     var name: String?
     var photo: UIImage?
-    var gender: String = "male"
+    var gender: String?
     var trainingArray: [String] = []
     var qualificationsArray:[String] = []
-    var coords: PFGeoPoint?
+//    var coords: PFGeoPoint?
     var latitude: CLLocationDegrees?
     var longitude: CLLocationDegrees?
     var distance: Double = 10.0
     var descriptionString: String = ""
-    var yearsExperience: String = ""
+    var yearsExperience: Int = 0
     var achievements: String = ""
     var favorite: String = ""
     
@@ -47,63 +47,22 @@ class TrainerProfileViewController: UIViewController, UITableViewDelegate, UITab
         tableView.allowsSelection = false
         
         //TODO: TEMP
-        //Fetch name and photo from Parse
-        self.name = currentUser()?.name
-        currentUser()?.getPhoto({
+        //Fetch Details from Parse
+        self.name = currentTrainer()?.name
+        currentTrainer()?.getPhoto({
             image in
             self.photo = image
         })
-        
-        //Fetch Gender
-        if let gender = PFUser.currentUser()!.objectForKey("gender") {
-            self.gender = gender as! String
-        }
-        
-        //Fetch TrainingTypes from Parse
-        if let trainingArrayParse = PFUser.currentUser()!.objectForKey("trainingTypes") {
-            trainingArray = trainingArrayParse as! [String]
-        }
-        
-        //Fetch Qualifications from Parse
-        if let qualificationsArrayParse = PFUser.currentUser()!.objectForKey("qualifications") {
-            qualificationsArray = qualificationsArrayParse as! [String]
-        }
-        
-        //Fetch Location from Parse
-        if let coordsParse = PFUser.currentUser()!.objectForKey("location") {
-            self.coords = coordsParse as? PFGeoPoint
-            self.latitude = coords?.latitude
-            self.longitude = coords?.longitude
-        }
-        else {
-            //TODO: What location to set when user has not set it
-            self.latitude = 51.50007773
-            self.longitude = -0.1246402
-        }
-        
-        //Fetch Distance from Parse
-        if let distanceParse = PFUser.currentUser()!.objectForKey("distance") {
-            self.distance = distanceParse as! Double
-        }
-        
-        //Fetch Description from Parse
-        if let descriptionParse = PFUser.currentUser()!.objectForKey("description") {
-            self.descriptionString = descriptionParse as! String
-        }
-        
-        //Fetch Years Experience from Parse
-        if let yearsParse = PFUser.currentUser()!.objectForKey("yearsExperience") {
-            self.yearsExperience = yearsParse as! String
-        }
-        
-        //Fetch Achievements from Parse
-        if let achievementsParse = PFUser.currentUser()!.objectForKey("achievements") {
-            self.achievements = achievementsParse as! String
-        }
-        //Fetch Favorite from Parse
-        if let favoriteParse = PFUser.currentUser()!.objectForKey("favorite") {
-            self.favorite = favoriteParse as! String
-        }
+        self.gender = currentTrainer()?.gender
+        self.trainingArray = (currentTrainer()?.trainingTypes)!
+        self.qualificationsArray = (currentTrainer()?.qualifications)!
+        self.latitude = (currentTrainer()?.latitude)!
+        self.longitude = (currentTrainer()?.longitude)!
+        self.distance = (currentTrainer()?.distance)!
+        self.descriptionString = (currentTrainer()?.description)!
+        self.yearsExperience = (currentTrainer()?.yearsExperience)!
+        self.achievements = (currentTrainer()?.achievements)!
+        self.favorite = (currentTrainer()?.favorite)!
         
     }
 
@@ -269,7 +228,7 @@ class TrainerProfileViewController: UIViewController, UITableViewDelegate, UITab
         }
         else {
             let cell = tableView.dequeueReusableCellWithIdentifier(self.sixthCellIdentifier, forIndexPath: indexPath) as! SixthTableViewCell
-            cell.yearsLabel.text = self.yearsExperience
+            cell.yearsLabel.text = String(self.yearsExperience)
             cell.achievementsTextView.text = self.achievements
             cell.favoriteLabel.text = self.favorite
             if editButtonEnabled {

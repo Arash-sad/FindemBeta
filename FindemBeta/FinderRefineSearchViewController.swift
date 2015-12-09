@@ -8,8 +8,18 @@
 
 import UIKit
 
+protocol FinderRefineSearchViewControllerDelegate {
+    func refineSerch(gender: String)
+}
+
 class FinderRefineSearchViewController: UIViewController {
 
+    @IBOutlet weak var genderSegmentedControl: UISegmentedControl!
+    
+    var refineGender = "any"
+    
+    var delegate: FinderRefineSearchViewControllerDelegate?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -26,6 +36,13 @@ class FinderRefineSearchViewController: UIViewController {
     }
 
     @IBAction func searchBarButtonItemPressed(sender: UIBarButtonItem) {
+        
+        //protocol
+        if let delegate = self.delegate {
+            delegate.refineSerch(refineGender)
+        }
+        
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
     /*
     // MARK: - Navigation
@@ -36,5 +53,19 @@ class FinderRefineSearchViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    @IBAction func genderSegmentedControlValueChanged(sender: UISegmentedControl) {
+        if(genderSegmentedControl.selectedSegmentIndex == 0)
+        {
+            self.refineGender = "any";
+        }
+        else if(genderSegmentedControl.selectedSegmentIndex == 1)
+        {
+            self.refineGender = "male";
+        }
+        else if(genderSegmentedControl.selectedSegmentIndex == 2)
+        {
+            self.refineGender = "female";
+        }
+    }
 
 }

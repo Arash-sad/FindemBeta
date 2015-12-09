@@ -17,7 +17,7 @@ class TrainerOtherViewController: UIViewController, UITextViewDelegate {
     @IBOutlet weak var favoriteTextField: UITextField!
     @IBOutlet weak var charactersLabel: UILabel!
     
-    var years:String?
+    var years:Int?
     var achievements:String?
     var favorite:String?
     var charCount = 0
@@ -27,7 +27,7 @@ class TrainerOtherViewController: UIViewController, UITextViewDelegate {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        yearsTextField.text = self.years
+        yearsTextField.text = String(self.years!)
         achievementsTextView.delegate = self
         achievementsTextView.text = self.achievements
         favoriteTextField.text = self.favorite
@@ -42,11 +42,23 @@ class TrainerOtherViewController: UIViewController, UITextViewDelegate {
         dismissViewControllerAnimated(true, completion: nil)
     }
 
+    @IBAction func saveBarButtonItem(sender: UIBarButtonItem) {
+        
+        if yearsTextField.text!.isEmpty {
+            yearsExperienceAlert("Missing Details", message: "Please enter the Years Experience value")
+        }
+        else if Int(self.yearsTextField.text!) == nil {
+            yearsExperienceAlert("Wrong Value", message: "Please enter the correct Years Experience value")
+        }
+        else {
+            self.performSegueWithIdentifier("unwindSegueFromOther", sender: saveBarButtonItem)
+        }
+    }
  
     // MARK: - Navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if saveBarButtonItem === sender {
-            self.years = yearsTextField.text
+            self.years = Int(yearsTextField.text!)!
             self.achievements = achievementsTextView.text
             self.favorite = favoriteTextField.text
             
@@ -89,5 +101,11 @@ class TrainerOtherViewController: UIViewController, UITextViewDelegate {
             <= maxLength
     }
     
+    //MARK: - Alert
+    func yearsExperienceAlert(messageTitle: String, message: String) {
+        let alert = UIAlertController(title: messageTitle, message: message, preferredStyle: UIAlertControllerStyle.Alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
+        self.presentViewController(alert, animated: true, completion: nil)
+    }
 
 }

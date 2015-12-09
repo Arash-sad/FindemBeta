@@ -219,6 +219,19 @@
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" id="p4J-gp-Ijd">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="II3-3o-ZEo">
+                                            <rect key="frame" x="8" y="14" width="202" height="29"/>
+                                            <segments>
+                                                <segment title="Any"/>
+                                                <segment title="Male"/>
+                                                <segment title="Female"/>
+                                            </segments>
+                                            <connections>
+                                                <action selector="genderSegmentedControlValueChanged:" destination="fVl-iZ-fy0" eventType="valueChanged" id="119-eC-mZy"/>
+                                            </connections>
+                                        </segmentedControl>
+                                    </subviews>
                                 </view>
                                 <blurEffect style="extraLight"/>
                             </visualEffectView>
@@ -237,6 +250,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="genderSegmentedControl" destination="II3-3o-ZEo" id="d4U-kO-U34"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VqS-iX-p6W" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -576,7 +592,7 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="yrP-ys-RSc">
                             <connections>
-                                <segue destination="aCQ-Kp-3Uq" kind="unwind" unwindAction="unwindFromOther:" id="Vab-Wq-qJ8"/>
+                                <action selector="saveBarButtonItem:" destination="zco-X1-nvB" id="B7W-FF-7IX"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -586,6 +602,7 @@
                         <outlet property="favoriteTextField" destination="CMN-iZ-0i1" id="9AA-dW-Adz"/>
                         <outlet property="saveBarButtonItem" destination="yrP-ys-RSc" id="l31-3k-EGK"/>
                         <outlet property="yearsTextField" destination="3Pz-Ro-SYG" id="PLY-LS-Qbx"/>
+                        <segue destination="aCQ-Kp-3Uq" kind="unwind" identifier="unwindSegueFromOther" unwindAction="unwindFromOther:" id="2g4-fQ-tET"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vru-cv-dkX" userLabel="First Responder" sceneMemberID="firstResponder"/>

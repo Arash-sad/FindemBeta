@@ -11,7 +11,6 @@ import Parse
 
 class FinderSearchResultViewController: UIViewController {
     
-    //TEMP:
     var trainerArray:[PFUser] = []
     var refinedtrainerArray:[PFUser] = []
     var trainingType = ""
@@ -77,7 +76,6 @@ class FinderSearchResultViewController: UIViewController {
             let navigationController = segue.destinationViewController as? UINavigationController
             let refineSearchVC = navigationController!.topViewController as? FinderRefineSearchViewController
             
-            //protocol
             if let vc = refineSearchVC {
                 vc.delegate = self
             }
@@ -107,7 +105,7 @@ extension FinderSearchResultViewController: UITableViewDataSource {
     }
 }
 
-// MARK: FinderRefineSearchViewControllerDelegate
+// MARK: - FinderRefineSearchViewControllerDelegate
 extension FinderSearchResultViewController: FinderRefineSearchViewControllerDelegate {
     func refineSerch(gender: String) {
         self.refinedGender = gender
@@ -129,6 +127,7 @@ extension FinderSearchResultViewController: FinderRefineSearchViewControllerDele
     }
 }
 
+//MARK: - Load from Nib file
 extension UIView {
     class func loadFromNibNamed(nibNamed: String, bundle : NSBundle? = nil) -> UIView? {
         return UINib(

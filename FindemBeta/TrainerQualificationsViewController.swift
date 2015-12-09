@@ -14,7 +14,6 @@ class TrainerQualificationsViewController: UIViewController, UITableViewDelegate
     @IBOutlet var tableView: UITableView!
     @IBOutlet weak var saveBarButtonItem: UIBarButtonItem!
     
-    //TODO: TEMP
     //make qualificationsArray global ?
     let qualificationsArray = ["Diploma excersize science","Level 2 Fitness Australia fitness trainer","Core essential fit ball training ","Bosu Certification  course","Punch fit  trainer course level 1/2","Boxing for fitness certification","Metabolic Nutrition","Level 1/2 rehabilitation certification","Physiotherapy","Diploma of massage therapy"]
     let qualificationsDictionary = [0:"Diploma excersize science",1:"Level 2 Fitness Australia fitness trainer",2:"Core essential fit ball training ",3:"Bosu Certification  course",4:"Punch fit  trainer course level 1/2",5:"Boxing for fitness certification",6:"Metabolic Nutrition",7:"Level 1/2 rehabilitation certification",8:"Physiotherapy",9:"Diploma of massage therapy"]
@@ -53,16 +52,12 @@ class TrainerQualificationsViewController: UIViewController, UITableViewDelegate
         if saveBarButtonItem === sender {
             
             // Set the qualifications to be passed to TrainerProfileViewController after the unwind segue.
-            //TODO: TEMP
             self.tempArray = self.tempDict.values.sort()
             
             //MARK: Save Qualifications to Parse
             let user = PFUser.currentUser()
             user!.setObject(self.tempArray!, forKey: "qualifications")
             user!.saveInBackgroundWithBlock(nil)
-            
-            print("###")
-            print(self.tempArray)
         }
     }
     

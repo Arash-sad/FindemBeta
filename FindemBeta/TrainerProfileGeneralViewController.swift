@@ -16,10 +16,9 @@ class TrainerProfileGeneralViewController: UIViewController, UITextFieldDelegate
     @IBOutlet weak var saveBarButtonItem: UIBarButtonItem!
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     
-    //TODO: TEMP
-    var gName: String?
-    var gPhoto: UIImage?
-    var gGender: String?
+    var name: String?
+    var photo: UIImage?
+    var gender: String?
     
     var photoUploadTask: UIBackgroundTaskIdentifier?
     
@@ -33,12 +32,9 @@ class TrainerProfileGeneralViewController: UIViewController, UITextFieldDelegate
         // Disable the Save button if the text field is empty
         saveBarButtonItem.enabled = !nameTextField.text!.isEmpty
         
-        //TODO: TEMP
-        self.nameTextField.text = gName
-        self.imageView.image = gPhoto
-        print("TEST")
-        print(gGender)
-        if gGender == "male" {
+        self.nameTextField.text = self.name
+        self.imageView.image = photo
+        if gender! == "male" {
             segmentedControl.selectedSegmentIndex = 0
         }
         else {
@@ -58,11 +54,11 @@ class TrainerProfileGeneralViewController: UIViewController, UITextFieldDelegate
     @IBAction func segmentedControlValueChanged(sender: UISegmentedControl) {
         if(segmentedControl.selectedSegmentIndex == 0)
         {
-            self.gGender = "male";
+            self.gender = "male";
         }
         else if(segmentedControl.selectedSegmentIndex == 1)
         {
-            self.gGender = "female";
+            self.gender = "female";
         }
     }
     // MARK: - Navigation
@@ -70,14 +66,13 @@ class TrainerProfileGeneralViewController: UIViewController, UITextFieldDelegate
         if saveBarButtonItem === sender {
             
             // Set the name and photo to be passed to TrainerProfileViewController after the unwind segue.
-            //TODO: TEMP
-            gName = self.nameTextField.text
-            gPhoto = self.imageView.image
+            self.name = self.nameTextField.text
+            self.photo = self.imageView.image
             
-            //MARK: Save Name and Photo to Parse
+            //MARK: Save Name, Photo, and Gender to Parse
             let user = PFUser.currentUser()
             user!.setObject(self.nameTextField.text!, forKey: "firstName")
-            user!.setObject(self.gGender!, forKey: "gender")
+            user!.setObject(self.gender!, forKey: "gender")
             if let image = self.imageView.image {
                 //Convert UIImage to PFFile named profilePic.jpg
                 let imageData = UIImageJPEGRepresentation(image, 0.8)
@@ -94,7 +89,6 @@ class TrainerProfileGeneralViewController: UIViewController, UITextFieldDelegate
                 }
                 
                 user!.setObject(imageFile, forKey: "picture")
-                print("@@@image: \(image)")
             }
             user!.saveInBackgroundWithBlock(nil)
         }

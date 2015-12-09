@@ -37,7 +37,6 @@ class FinderRefineSearchViewController: UIViewController {
 
     @IBAction func searchBarButtonItemPressed(sender: UIBarButtonItem) {
         
-        //protocol
         if let delegate = self.delegate {
             delegate.refineSerch(refineGender)
         }

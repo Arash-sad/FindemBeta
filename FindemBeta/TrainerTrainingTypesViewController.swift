@@ -14,9 +14,7 @@ class TrainerTrainingTypesViewController: UIViewController, UITableViewDelegate,
     @IBOutlet var tableView: UITableView!
     @IBOutlet weak var saveBarButtonItem: UIBarButtonItem!
     
-    //TODO: TEMP 
-    // trainingArray is global -> AppDelegate 
-//    let trainingArray = ["Core Strength","Weight Loss","Functional Training","Small Group Training","Pre and Post Baby","Rehab"]
+    // trainingArray is global -> AppDelegate
     let trainingDictionary = [0:"Core Strength",1:"Weight Loss",2:"Functional Training",3:"Small Group Training",4:"Pre and Post Baby",5:"Rehab"]
     var tempDict:[Int:String] = [:]
     var tempArray:[String]?
@@ -56,7 +54,6 @@ class TrainerTrainingTypesViewController: UIViewController, UITableViewDelegate,
         if saveBarButtonItem === sender {
             
             // Set the trainings to be passed to TrainerProfileViewController after the unwind segue.
-            //TODO: TEMP
             self.tempArray = self.tempDict.values.sort()
             
             //MARK: Save TrainingTypes to Parse

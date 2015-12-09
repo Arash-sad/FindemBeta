@@ -8,7 +8,7 @@
 
 import UIKit
 
-// keep track of the current state of the right side panel
+// Keep track of the current state of the right side panel
 enum SlideOutMenuState {
     case RightPanelExpanded
     case collapsed
@@ -120,7 +120,7 @@ extension FinderContainerViewController: FinderSearchViewControllerDelegate {
 }
 
 extension FinderContainerViewController: UIGestureRecognizerDelegate {
-    // MARK: Gesture recognizer
+    // MARK: - Gesture recognizer
     
     func handlePanGesture(recognizer: UIPanGestureRecognizer) {
         let gestureIsDraggingFromRightToLeft = (recognizer.velocityInView(view).x < 0)

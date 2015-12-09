@@ -22,8 +22,6 @@ class FinderSearchViewController: UIViewController, FinderSlideOutMenuViewContro
     var ImageArray = [UIImage(named: "baby"),UIImage(named: "core"),UIImage(named: "functional"),UIImage(named: "rehab"),UIImage(named: "smallGroup"),UIImage(named: "weightLoss")]
     let trainingTypesArray = ["Pre and Post Baby","Core Strength","Functional Training","Rehab","Small Group Training","Weight Loss"]
     
-    //TEMP
-//    var nameArray: [String] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,11 +45,6 @@ class FinderSearchViewController: UIViewController, FinderSlideOutMenuViewContro
             d.toggleRightPanel?()
         }
     }
-    
-// Search Button
-//    @IBAction func searchButtonPressed(sender: UIButton) {
-//        performSegueWithIdentifier("showSearchResult", sender: nil)
-//    }
 
 }
 

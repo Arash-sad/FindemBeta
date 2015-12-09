@@ -20,8 +20,8 @@ class TrainerRegionViewController: UIViewController {
     @IBOutlet weak var distanceTextField: UITextField!
     
 //    var coords: CLLocationCoordinate2D?
-    var latitudeR:CLLocationDegrees?
-    var longitudeR:CLLocationDegrees?
+    var latitude:CLLocationDegrees?
+    var longitude:CLLocationDegrees?
     var distance:Double?
     
     override func viewDidLoad() {
@@ -32,8 +32,8 @@ class TrainerRegionViewController: UIViewController {
         
         self.distanceTextField.text = String(distance!)
         print("$$$")
-        print(latitudeR)
-        print(longitudeR)
+        print(latitude)
+        print(longitude)
     }
 
     override func didReceiveMemoryWarning() {
@@ -71,12 +71,12 @@ class TrainerRegionViewController: UIViewController {
                         let location = placemark.location
                         let coordinate = location!.coordinate
                         
-                        self.latitudeR = coordinate.latitude
-                        self.longitudeR = coordinate.longitude
+                        self.latitude = coordinate.latitude
+                        self.longitude = coordinate.longitude
                         
                         print("###")
-                        print(self.latitudeR)
-                        print(self.longitudeR)
+                        print(self.latitude)
+                        print(self.longitude)
                         
                     }
             })
@@ -89,7 +89,7 @@ class TrainerRegionViewController: UIViewController {
             self.distance = Double(self.distanceTextField.text!)! 
             
             //MARK: Save Latitude, Longitude and Distance to Parse
-            let point = PFGeoPoint(latitude: self.latitudeR!, longitude: self.longitudeR!)
+            let point = PFGeoPoint(latitude: self.latitude!, longitude: self.longitude!)
             let user = PFUser.currentUser()
             user!.setObject(point, forKey: "location")
             user!.setObject(self.distance!, forKey: "distance")

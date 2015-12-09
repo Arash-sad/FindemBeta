@@ -46,7 +46,6 @@ class TrainerProfileViewController: UIViewController, UITableViewDelegate, UITab
         // Disable the tableView selection highlighting
         tableView.allowsSelection = false
         
-        //TODO: TEMP
         //Fetch Details from Parse
         self.name = currentTrainer()?.name
         currentTrainer()?.getPhoto({
@@ -93,9 +92,9 @@ class TrainerProfileViewController: UIViewController, UITableViewDelegate, UITab
             let navVC = segue.destinationViewController as? UINavigationController
             let generalVC = navVC!.viewControllers[0] as? TrainerProfileGeneralViewController
             //TODO: TEMP
-            generalVC!.gName = self.name
-            generalVC!.gPhoto = self.photo
-            generalVC!.gGender = self.gender
+            generalVC!.name = self.name
+            generalVC!.photo = self.photo
+            generalVC!.gender = self.gender
         }
         else if segue.identifier == "showTypesOfTraining" {
             let navVC = segue.destinationViewController as? UINavigationController
@@ -114,8 +113,8 @@ class TrainerProfileViewController: UIViewController, UITableViewDelegate, UITab
             let navVC = segue.destinationViewController as? UINavigationController
             let regionVC = navVC!.viewControllers[0] as? TrainerRegionViewController
             //TODO: TEMP
-            regionVC?.latitudeR = self.latitude
-            regionVC?.longitudeR = self.longitude
+            regionVC?.latitude = self.latitude
+            regionVC?.longitude = self.longitude
             regionVC?.distance = self.distance
         }
         else if segue.identifier == "showDescription" {
@@ -168,9 +167,11 @@ class TrainerProfileViewController: UIViewController, UITableViewDelegate, UITab
             
             cell.mapView.delegate = self
             
-            //remove map overlays
+            //remove map overlays and annotations
             let overlays = cell.mapView.overlays
             cell.mapView.removeOverlays(overlays)
+            let annotationToRemove = cell.mapView.annotations
+            cell.mapView.removeAnnotations(annotationToRemove)
             
             //Draw a circle of 100m radius around user location
             let newCircle = MKCircle(centerCoordinate: location, radius: (self.distance * 1000) as CLLocationDistance)
@@ -345,9 +346,10 @@ class TrainerProfileViewController: UIViewController, UITableViewDelegate, UITab
     //MARK: - Unwind Segues
     //TODO: TEMP
     @IBAction func unwindFromGeneral(sender: UIStoryboardSegue) {
-        if let sourceViewController = sender.sourceViewController as? TrainerProfileGeneralViewController, gName = sourceViewController.gName, gPhoto = sourceViewController.gPhoto {
-                self.name = gName
-                self.photo = gPhoto
+        if let sourceViewController = sender.sourceViewController as? TrainerProfileGeneralViewController, name = sourceViewController.name, photo = sourceViewController.photo, gender = sourceViewController.gender {
+                self.name = name
+                self.photo = photo
+                self.gender = gender
                 tableView.reloadData()
         }
     }
@@ -369,7 +371,7 @@ class TrainerProfileViewController: UIViewController, UITableViewDelegate, UITab
     }
     
     @IBAction func unwindFromRegion(sender: UIStoryboardSegue) {
-        if let sourceViewController = sender.sourceViewController as? TrainerRegionViewController, latitude = sourceViewController.latitudeR, longitude = sourceViewController.longitudeR, distance = sourceViewController.distance {
+        if let sourceViewController = sender.sourceViewController as? TrainerRegionViewController, latitude = sourceViewController.latitude, longitude = sourceViewController.longitude, distance = sourceViewController.distance {
             self.latitude = latitude
             self.longitude = longitude
             self.distance = distance
@@ -383,8 +385,6 @@ class TrainerProfileViewController: UIViewController, UITableViewDelegate, UITab
     @IBAction func unwindFromDescription(sender: UIStoryboardSegue) {
         if let sourceViewController = sender.sourceViewController as? TrainerDescriptionViewController, desc = sourceViewController.descriptionString {
             self.descriptionString = desc
-            print("@@@")
-            print(self.descriptionString)
             tableView.reloadData()
         }
     }
@@ -394,8 +394,6 @@ class TrainerProfileViewController: UIViewController, UITableViewDelegate, UITab
             self.yearsExperience = years
             self.achievements = achieve
             self.favorite = fav
-            print("@@@")
-            print(self.descriptionString)
             tableView.reloadData()
         }
     }

@@ -16,7 +16,7 @@ class TrainerProfileViewController: UIViewController, UITableViewDelegate, UITab
     @IBOutlet var tableView: UITableView!
     
     var editButtonEnabled = false
-    //TODO: TEMP
+    
     var name: String?
     var photo: UIImage?
     var gender: String?
@@ -91,7 +91,7 @@ class TrainerProfileViewController: UIViewController, UITableViewDelegate, UITab
         if segue.identifier == "showGeneralDetail" {
             let navVC = segue.destinationViewController as? UINavigationController
             let generalVC = navVC!.viewControllers[0] as? TrainerProfileGeneralViewController
-            //TODO: TEMP
+            
             generalVC!.name = self.name
             generalVC!.photo = self.photo
             generalVC!.gender = self.gender
@@ -99,20 +99,20 @@ class TrainerProfileViewController: UIViewController, UITableViewDelegate, UITab
         else if segue.identifier == "showTypesOfTraining" {
             let navVC = segue.destinationViewController as? UINavigationController
             let trainingVC = navVC!.viewControllers[0] as? TrainerTrainingTypesViewController
-            //TODO: TEMP
+            
             trainingVC?.tempArray = self.trainingArray
         }
         else if segue.identifier == "showQualifications" {
             let navVC = segue.destinationViewController as? UINavigationController
             let qualificationsVC = navVC!.viewControllers[0] as? TrainerQualificationsViewController
-            //TODO: TEMP
+            
             qualificationsVC?.tempArray = self.qualificationsArray
             print(qualificationsArray)
         }
         else if segue.identifier == "showRegionDetails" {
             let navVC = segue.destinationViewController as? UINavigationController
             let regionVC = navVC!.viewControllers[0] as? TrainerRegionViewController
-            //TODO: TEMP
+            
             regionVC?.latitude = self.latitude
             regionVC?.longitude = self.longitude
             regionVC?.distance = self.distance
@@ -120,13 +120,13 @@ class TrainerProfileViewController: UIViewController, UITableViewDelegate, UITab
         else if segue.identifier == "showDescription" {
             let navVC = segue.destinationViewController as? UINavigationController
             let descVC = navVC!.viewControllers[0] as? TrainerDescriptionViewController
-            //TODO:TEMP
+            
             descVC?.descriptionString = self.descriptionString
         }
         else if segue.identifier == "showOtherDetails" {
             let navVC = segue.destinationViewController as? UINavigationController
             let otherVC = navVC!.viewControllers[0] as? TrainerOtherViewController
-            //TODO:TEMP
+            
             otherVC?.years = self.yearsExperience
             otherVC?.achievements = self.achievements
             otherVC?.favorite = self.favorite
@@ -146,7 +146,7 @@ class TrainerProfileViewController: UIViewController, UITableViewDelegate, UITab
         
         if indexPath.row == 0 {
             let cell = tableView.dequeueReusableCellWithIdentifier(self.firstCellIdentifier, forIndexPath: indexPath) as! FirstTableViewCell
-            //TODO: TEMP
+            
             cell.nameLabel.text = self.name
             cell.imageView?.layer.masksToBounds = true
             cell.imageView?.contentMode = .ScaleAspectFill
@@ -162,7 +162,7 @@ class TrainerProfileViewController: UIViewController, UITableViewDelegate, UITab
         else if indexPath.row == 1 {
             let cell = tableView.dequeueReusableCellWithIdentifier(self.secondCellIdentifier, forIndexPath: indexPath) as! SecondTableViewCell
             
-            //MAP
+            //MARK: load mapView and add annotation and circle overlay
             let location = CLLocationCoordinate2DMake(latitude!, longitude!)
             
             cell.mapView.delegate = self
@@ -198,9 +198,11 @@ class TrainerProfileViewController: UIViewController, UITableViewDelegate, UITab
             let cell = tableView.dequeueReusableCellWithIdentifier(self.thirdCellIdentifier, forIndexPath: indexPath) as! ThirdTableViewCell
             cell.trainingTypesPickerView.reloadAllComponents()
             if editButtonEnabled {
+                cell.trainingTypesPickerView.userInteractionEnabled = false
                 cell.accessoryType = UITableViewCellAccessoryType.DetailDisclosureButton
             }
             else {
+                cell.trainingTypesPickerView.userInteractionEnabled = true
                 cell.accessoryType = UITableViewCellAccessoryType.None
             }
             return cell
@@ -209,9 +211,11 @@ class TrainerProfileViewController: UIViewController, UITableViewDelegate, UITab
             let cell = tableView.dequeueReusableCellWithIdentifier(self.fourthCellIdentifier, forIndexPath: indexPath) as! FourthTableViewCell
             cell.qualificationsPickerView.reloadAllComponents()
             if editButtonEnabled {
+                cell.qualificationsPickerView.userInteractionEnabled = false
                 cell.accessoryType = UITableViewCellAccessoryType.DetailDisclosureButton
             }
             else {
+                cell.qualificationsPickerView.userInteractionEnabled = true
                 cell.accessoryType = UITableViewCellAccessoryType.None
             }
             return cell
@@ -344,7 +348,6 @@ class TrainerProfileViewController: UIViewController, UITableViewDelegate, UITab
     }
     
     //MARK: - Unwind Segues
-    //TODO: TEMP
     @IBAction func unwindFromGeneral(sender: UIStoryboardSegue) {
         if let sourceViewController = sender.sourceViewController as? TrainerProfileGeneralViewController, name = sourceViewController.name, photo = sourceViewController.photo, gender = sourceViewController.gender {
                 self.name = name

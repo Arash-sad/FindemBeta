@@ -126,7 +126,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ahz-Zq-5Np" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1684" y="1227"/>
+            <point key="canvasLocation" x="938" y="1227"/>
         </scene>
         <!--Finder Search Result View Controller-->
         <scene sceneID="Co2-VP-XBI">
@@ -140,7 +140,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="feJ-QP-H9d">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="200" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="feJ-QP-H9d">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -160,15 +160,18 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="G00-L8-wM5">
+                                                    <rect key="frame" x="8" y="41" width="150" height="150"/>
+                                                </imageView>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="Ypr-Se-GfH" firstAttribute="leading" secondItem="cSh-0l-7CX" secondAttribute="leadingMargin" id="ACy-pP-ibH"/>
                                                 <constraint firstItem="Ypr-Se-GfH" firstAttribute="top" secondItem="cSh-0l-7CX" secondAttribute="topMargin" id="rly-Ae-fVg"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" red="1" green="0.9449576006" blue="0.043137254899999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <connections>
                                             <outlet property="nameLabel" destination="Ypr-Se-GfH" id="1l1-Ai-p2A"/>
+                                            <outlet property="trainerImageView" destination="G00-L8-wM5" id="jbo-6G-McJ"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -196,9 +199,42 @@
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="feJ-QP-H9d" id="faH-ei-m3N"/>
+                        <segue destination="1t0-Gh-PCz" kind="show" identifier="showTrainerProfile" id="RXO-CN-GPn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xHT-bP-JrR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1678" y="1227"/>
+        </scene>
+        <!--Finder Trainer Profile View Controller-->
+        <scene sceneID="jC4-HM-sVx">
+            <objects>
+                <viewController id="1t0-Gh-PCz" customClass="FinderTrainerProfileViewController" customModule="FindemBeta" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Zcn-IQ-wkl"/>
+                        <viewControllerLayoutGuide type="bottom" id="bIp-L7-Uf8"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="gS6-4f-Kxy">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h2b-jX-LmS">
+                                <rect key="frame" x="20" y="72" width="85" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="KdY-0j-I5a">
+                        <barButtonItem key="rightBarButtonItem" systemItem="compose" id="F6n-IU-L9h"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="nameLabel" destination="h2b-jX-LmS" id="F0S-wm-7y5"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="myz-Vg-9VY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2410" y="1227"/>
         </scene>
@@ -256,7 +292,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VqS-iX-p6W" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3222" y="1958"/>
+            <point key="canvasLocation" x="1678" y="2698"/>
         </scene>
         <!--Finder Slide Out Menu View Controller-->
         <scene sceneID="RzH-PI-RlU">
@@ -286,7 +322,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="txh-n7-7DK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1688" y="1958"/>
+            <point key="canvasLocation" x="944" y="1942"/>
         </scene>
         <!--Trainer Home View Controller-->
         <scene sceneID="Sp9-Gv-OI8">
@@ -608,7 +644,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vru-cv-dkX" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="aCQ-Kp-3Uq" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="6441" y="1676"/>
+            <point key="canvasLocation" x="4817" y="1652"/>
         </scene>
         <!--General Info-->
         <scene sceneID="jO8-8g-Cuj">
@@ -1022,7 +1058,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oXp-T6-gRy" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="UPu-9G-Fey" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="5629" y="972"/>
+            <point key="canvasLocation" x="4817" y="940"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Xit-Qb-aF4">
@@ -1058,7 +1094,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vrq-5X-4Vp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4909" y="972"/>
+            <point key="canvasLocation" x="4105" y="940"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="4Sc-Ak-cOZ">
@@ -1076,7 +1112,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LLl-7H-zeL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5729" y="1676"/>
+            <point key="canvasLocation" x="4105" y="1652"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="aB6-9G-Skz">
@@ -1094,7 +1130,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="duo-uO-GRn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="872" y="1227"/>
+            <point key="canvasLocation" x="218" y="1227"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="KWQ-Ze-YHw">
@@ -1112,7 +1148,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5H1-sU-ZXZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2410" y="1958"/>
+            <point key="canvasLocation" x="1678" y="1970"/>
         </scene>
     </scenes>
     <resources>

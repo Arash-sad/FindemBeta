@@ -26,7 +26,7 @@ struct User {
     }
 }
 
-private func pfUserToUser(user: PFUser) -> User {
+func pfUserToUser(user: PFUser) -> User {
     return User(id: user.objectId!, name: user.objectForKey("firstName") as! String, pfUser: user)
 }
 
@@ -37,16 +37,11 @@ func currentUser() -> User? {
     return nil 
 }
 
-//class FacebookDetails {
-//    static let sharedInstance = FacebookDetails()
-//    var image: UIImage?
-//    private init() {
-//        populateImage()
-//}
+func saveConnection(user: PFUser) {
+    let action = PFObject(className: "Action")
+    action.setObject(PFUser.currentUser()!.objectId!, forKey: "byUser")
+    action.setObject(user.objectId!, forKey: "toTrainer")
+    action.setObject("connected", forKey: "type")
+    action.saveInBackgroundWithBlock(nil)
+}
 
-//func saveTrainerGeneralInfo (user:User) {
-//    let cUser = PFUser.currentUser()
-//    cUser?.setObject(user.name, forKey: "firstName")
-//    cUser?.setObject(user.photo, forKey: "photo")
-//
-//}

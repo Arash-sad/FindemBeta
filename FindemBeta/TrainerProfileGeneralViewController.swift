@@ -33,6 +33,8 @@ class TrainerProfileGeneralViewController: UIViewController, UITextFieldDelegate
         saveBarButtonItem.enabled = !nameTextField.text!.isEmpty
         
         self.nameTextField.text = self.name
+        self.imageView.layer.cornerRadius = self.imageView.frame.height / 2
+        self.imageView.layer.masksToBounds = true
         self.imageView.image = photo
         if gender! == "male" {
             segmentedControl.selectedSegmentIndex = 0

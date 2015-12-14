@@ -47,8 +47,12 @@
 		5BE9FFB81C02BF40009A2E28 /* FinderContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE9FFB71C02BF40009A2E28 /* FinderContainerViewController.swift */; };
 		5BEBB6811BF1911500B60CF2 /* TrainerTrainingTypesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BEBB6801BF1911500B60CF2 /* TrainerTrainingTypesViewController.swift */; };
 		5BEBB6831BF1943100B60CF2 /* TrainingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BEBB6821BF1943100B60CF2 /* TrainingTableViewCell.swift */; };
+		5BED7B071C1E7B140015B38D /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BED7B061C1E7B140015B38D /* ChatViewController.swift */; };
 		5BEE24C01BF99EC500BBC10E /* FourthTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BEE24BF1BF99EC500BBC10E /* FourthTableViewCell.swift */; };
 		5BEE24C21BF9A7ED00BBC10E /* TrainerRegionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BEE24C11BF9A7ED00BBC10E /* TrainerRegionViewController.swift */; };
+		5BF007171C1A45E200E3961A /* MessagesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF007161C1A45E200E3961A /* MessagesTableViewCell.swift */; };
+		5BF007191C1A667500E3961A /* Connection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF007181C1A667500E3961A /* Connection.swift */; };
+		5BF0071B1C1A967E00E3961A /* MessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF0071A1C1A967E00E3961A /* MessagesViewController.swift */; };
 		5BF221371C18525C001ADCDE /* FinderTrainerProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF221361C18525C001ADCDE /* FinderTrainerProfileViewController.swift */; };
 		5BF437EC1C0E74CD00828023 /* SearchCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF437EB1C0E74CD00828023 /* SearchCollectionViewCell.swift */; };
 		5BF98CFF1BF04EF2008DA586 /* FirstTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF98CFE1BF04EF2008DA586 /* FirstTableViewCell.swift */; };
@@ -113,8 +117,12 @@
 		5BE9FFB71C02BF40009A2E28 /* FinderContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FinderContainerViewController.swift; sourceTree = "<group>"; };
 		5BEBB6801BF1911500B60CF2 /* TrainerTrainingTypesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainerTrainingTypesViewController.swift; sourceTree = "<group>"; };
 		5BEBB6821BF1943100B60CF2 /* TrainingTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainingTableViewCell.swift; sourceTree = "<group>"; };
+		5BED7B061C1E7B140015B38D /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		5BEE24BF1BF99EC500BBC10E /* FourthTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FourthTableViewCell.swift; sourceTree = "<group>"; };
 		5BEE24C11BF9A7ED00BBC10E /* TrainerRegionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainerRegionViewController.swift; sourceTree = "<group>"; };
+		5BF007161C1A45E200E3961A /* MessagesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesTableViewCell.swift; sourceTree = "<group>"; };
+		5BF007181C1A667500E3961A /* Connection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Connection.swift; sourceTree = "<group>"; };
+		5BF0071A1C1A967E00E3961A /* MessagesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesViewController.swift; sourceTree = "<group>"; };
 		5BF221361C18525C001ADCDE /* FinderTrainerProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FinderTrainerProfileViewController.swift; sourceTree = "<group>"; };
 		5BF437EB1C0E74CD00828023 /* SearchCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchCollectionViewCell.swift; sourceTree = "<group>"; };
 		5BF98CFE1BF04EF2008DA586 /* FirstTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstTableViewCell.swift; sourceTree = "<group>"; };
@@ -244,6 +252,7 @@
 			children = (
 				5BE868D81BE95F3D00A9B256 /* User.swift */,
 				5B41E9291C06D23700FA1474 /* Trainer.swift */,
+				5BF007181C1A667500E3961A /* Connection.swift */,
 			);
 			name = Data;
 			sourceTree = "<group>";
@@ -253,6 +262,8 @@
 			children = (
 				5BACC6691BE6C28E00EB4972 /* StartUpViewController.swift */,
 				5BACC66B1BE6C2F800EB4972 /* LoginViewController.swift */,
+				5BF0071A1C1A967E00E3961A /* MessagesViewController.swift */,
+				5BED7B061C1E7B140015B38D /* ChatViewController.swift */,
 				5BE9F2441C03F52300BDAE1F /* Trainer */,
 				5BE9F2451C03F53F00BDAE1F /* Finder */,
 			);
@@ -272,6 +283,7 @@
 				5BE9625F1BF492EC00E9C2FD /* QualificationsTableViewCell.swift */,
 				5BE879E11C068C0F00D783D0 /* SearchResultTableViewCell.swift */,
 				5BF437EB1C0E74CD00828023 /* SearchCollectionViewCell.swift */,
+				5BF007161C1A45E200E3961A /* MessagesTableViewCell.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -408,17 +420,20 @@
 			files = (
 				5BF98CFF1BF04EF2008DA586 /* FirstTableViewCell.swift in Sources */,
 				5BF98D091BF06FDE008DA586 /* TrainerProfileGeneralViewController.swift in Sources */,
+				5BF007171C1A45E200E3961A /* MessagesTableViewCell.swift in Sources */,
 				5BE0A0D71BFD367B00F5A3D4 /* TrainerOtherViewController.swift in Sources */,
 				5BF98D031BF04F1D008DA586 /* ThirdTableViewCell.swift in Sources */,
 				5BE6E5431BFBED03001BA5F7 /* FifthTableViewCell.swift in Sources */,
 				5B41E92A1C06D23700FA1474 /* Trainer.swift in Sources */,
 				5BE879E01C068AA900D783D0 /* FinderSearchResultViewController.swift in Sources */,
 				5BE879E21C068C0F00D783D0 /* SearchResultTableViewCell.swift in Sources */,
+				5BF0071B1C1A967E00E3961A /* MessagesViewController.swift in Sources */,
 				5BF437EC1C0E74CD00828023 /* SearchCollectionViewCell.swift in Sources */,
 				5BE6E5411BFBDE23001BA5F7 /* TrainerDescriptionViewController.swift in Sources */,
 				5BE9FFB41C02B7BA009A2E28 /* FinderSearchViewController.swift in Sources */,
 				5BE0A0D91BFD37E100F5A3D4 /* SixthTableViewCell.swift in Sources */,
 				5BACC66C1BE6C2F800EB4972 /* LoginViewController.swift in Sources */,
+				5BED7B071C1E7B140015B38D /* ChatViewController.swift in Sources */,
 				5BF98D071BF05FF0008DA586 /* TrainerProfileViewController.swift in Sources */,
 				5BEE24C01BF99EC500BBC10E /* FourthTableViewCell.swift in Sources */,
 				5BDD9DB11C0FC364006CF0BF /* FinderRefineSearchViewController.swift in Sources */,
@@ -431,6 +446,7 @@
 				5BE868D91BE95F3D00A9B256 /* User.swift in Sources */,
 				5BEBB6811BF1911500B60CF2 /* TrainerTrainingTypesViewController.swift in Sources */,
 				5BE9FFB81C02BF40009A2E28 /* FinderContainerViewController.swift in Sources */,
+				5BF007191C1A667500E3961A /* Connection.swift in Sources */,
 				5BEE24C21BF9A7ED00BBC10E /* TrainerRegionViewController.swift in Sources */,
 				5BE962601BF492EC00E9C2FD /* QualificationsTableViewCell.swift in Sources */,
 				5BF98D011BF04F04008DA586 /* SecondTableViewCell.swift in Sources */,
@@ -574,6 +590,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "io.treepi.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 			};
 			name = Debug;
 		};
@@ -591,6 +608,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "io.treepi.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 			};
 			name = Release;
 		};

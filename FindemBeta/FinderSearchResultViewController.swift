@@ -125,6 +125,7 @@ extension FinderSearchResultViewController: UITableViewDataSource, UITableViewDe
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         performSegueWithIdentifier("showTrainerProfile", sender: nil)
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
 }
 

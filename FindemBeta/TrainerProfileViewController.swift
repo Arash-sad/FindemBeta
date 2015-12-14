@@ -51,6 +51,8 @@ class TrainerProfileViewController: UIViewController, UITableViewDelegate, UITab
         currentTrainer()?.getPhoto({
             image in
             self.photo = image
+            //TEMP: right place to call reloadData ?!
+            self.tableView.reloadData()
         })
         self.gender = currentTrainer()?.gender
         self.trainingArray = (currentTrainer()?.trainingTypes)!
@@ -148,9 +150,9 @@ class TrainerProfileViewController: UIViewController, UITableViewDelegate, UITab
             let cell = tableView.dequeueReusableCellWithIdentifier(self.firstCellIdentifier, forIndexPath: indexPath) as! FirstTableViewCell
             
             cell.nameLabel.text = self.name
-            cell.imageView?.layer.masksToBounds = true
-            cell.imageView?.contentMode = .ScaleAspectFill
-            cell.imageView?.image = self.photo
+//            cell.imageView?.layer.masksToBounds = true
+//            cell.imageView?.contentMode = .ScaleAspectFill
+            cell.profileImageView?.image = self.photo
             if editButtonEnabled {
                 cell.accessoryType = UITableViewCellAccessoryType.DetailDisclosureButton
             }
@@ -269,6 +271,7 @@ class TrainerProfileViewController: UIViewController, UITableViewDelegate, UITab
                 performSegueWithIdentifier("showOtherDetails", sender: nil)
             }
         }
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat

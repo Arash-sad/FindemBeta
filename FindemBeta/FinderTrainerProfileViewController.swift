@@ -28,6 +28,22 @@ class FinderTrainerProfileViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func chatBarButtonItemPressed(sender: UIBarButtonItem) {
+        let query = PFQuery(className:"Action")
+        query.whereKey("byUser", equalTo: currentUser()!.id)
+        query.whereKey("toTrainer", equalTo: trainer!.objectId!)
+        query.getFirstObjectInBackgroundWithBlock {
+            (object: PFObject?, error: NSError?) -> Void in
+            if error != nil || object == nil {
+                saveConnection(self.trainer!)
+                print("They haven't connected yet!")
+            } else {
+                // The find succeeded.
+                print("They are already connected!")
+            }
+        }
+        print(trainer!.objectId!)
+    }
 
     /*
     // MARK: - Navigation

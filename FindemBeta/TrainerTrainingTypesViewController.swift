@@ -92,6 +92,7 @@ class TrainerTrainingTypesViewController: UIViewController, UITableViewDelegate,
             cell!.accessoryType = UITableViewCellAccessoryType.Checkmark;
             tempDict[indexPath.row] = trainingDictionary[indexPath.row]
         }
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
 
 }

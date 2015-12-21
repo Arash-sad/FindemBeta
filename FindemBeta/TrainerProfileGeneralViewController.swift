@@ -56,11 +56,11 @@ class TrainerProfileGeneralViewController: UIViewController, UITextFieldDelegate
     @IBAction func segmentedControlValueChanged(sender: UISegmentedControl) {
         if(segmentedControl.selectedSegmentIndex == 0)
         {
-            self.gender = "male";
+            self.gender = "male"
         }
         else if(segmentedControl.selectedSegmentIndex == 1)
         {
-            self.gender = "female";
+            self.gender = "female"
         }
     }
     // MARK: - Navigation

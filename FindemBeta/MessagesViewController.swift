@@ -61,14 +61,18 @@ class MessagesViewController: UIViewController, UITableViewDataSource, UITableVi
         return cell
     }
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let vc = ChatViewController()
+        
+        // Pass connectionID to chatViewController and set its title to user's name
+        let connection = connections[indexPath.row]
+        vc.connectionID = connection.id
+        vc.title = connection.user.name
+        vc.recipient = connection.user
+        
+        navigationController?.pushViewController(vc, animated: true)
+        
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
-    */
 
 }

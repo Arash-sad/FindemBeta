@@ -12,6 +12,7 @@ import Parse
 class FinderTrainerProfileViewController: UIViewController {
 
     @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var profileImageView: UIImageView!
     
     var trainer: PFUser?
     
@@ -19,8 +20,16 @@ class FinderTrainerProfileViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        nameLabel.text = trainer?.objectForKey("firstName") as? String
+        nameLabel.text = self.trainer!.objectForKey("firstName") as? String
         print(trainer)
+        let imageFile = self.trainer!.objectForKey("picture") as? PFFile
+        imageFile!.getDataInBackgroundWithBlock({
+            data, error in
+            if let data = data {
+                self.profileImageView.image = UIImage(data: data)!
+            }
+        })
+        
     }
 
     override func didReceiveMemoryWarning() {

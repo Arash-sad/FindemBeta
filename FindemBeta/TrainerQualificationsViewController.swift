@@ -83,11 +83,11 @@ class TrainerQualificationsViewController: UIViewController, UITableViewDelegate
         let cell = tableView.cellForRowAtIndexPath(indexPath)
         
         if (cell?.accessoryType == UITableViewCellAccessoryType.Checkmark){
-            cell!.accessoryType = UITableViewCellAccessoryType.None;
+            cell!.accessoryType = UITableViewCellAccessoryType.None
             tempDict.removeValueForKey(indexPath.row)
         }
         else {
-            cell!.accessoryType = UITableViewCellAccessoryType.Checkmark;
+            cell!.accessoryType = UITableViewCellAccessoryType.Checkmark
             tempDict[indexPath.row] = qualificationsDictionary[indexPath.row]
         }
         tableView.deselectRowAtIndexPath(indexPath, animated: true)

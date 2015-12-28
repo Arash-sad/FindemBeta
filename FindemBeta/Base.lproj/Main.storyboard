@@ -949,13 +949,6 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qrk-4V-xGP">
-                                <rect key="frame" x="20" y="362" width="93" height="30"/>
-                                <state key="normal" title="Show on Map"/>
-                                <connections>
-                                    <action selector="showOnMapButtonPressed:" destination="dK9-KV-pe7" eventType="touchUpInside" id="0aQ-ON-SAI"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -967,7 +960,7 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="qfg-kG-hac">
                             <connections>
-                                <segue destination="XDW-gv-psv" kind="unwind" unwindAction="unwindFromRegion:" id="ZXZ-Hf-OW1"/>
+                                <action selector="saveBarButtonItemPressed:" destination="dK9-KV-pe7" id="cNJ-Ow-brA"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -975,13 +968,11 @@
                         <outlet property="cityTextField" destination="j72-X7-QaU" id="qkn-un-reH"/>
                         <outlet property="distanceTextField" destination="cnn-VP-mPM" id="KtI-6c-D61"/>
                         <outlet property="postalCodeTextField" destination="oqE-eL-7jf" id="Jc6-Ty-0i6"/>
-                        <outlet property="saveBarButtonItem" destination="qfg-kG-hac" id="9bG-XE-JPp"/>
                         <outlet property="stateTextField" destination="rRL-Aa-kbX" id="T0c-v0-kh1"/>
                         <outlet property="streetTextField" destination="1HW-zb-njM" id="EGJ-1M-Sgx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qcz-sx-f18" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="XDW-gv-psv" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="5529" y="-1169"/>
         </scene>

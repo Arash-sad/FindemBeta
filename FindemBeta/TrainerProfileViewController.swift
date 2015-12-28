@@ -115,6 +115,7 @@ class TrainerProfileViewController: UIViewController, UITableViewDelegate, UITab
             let navVC = segue.destinationViewController as? UINavigationController
             let regionVC = navVC!.viewControllers[0] as? TrainerRegionViewController
             
+            regionVC?.delegate = self
             regionVC?.latitude = self.latitude
             regionVC?.longitude = self.longitude
             regionVC?.distance = self.distance
@@ -376,18 +377,6 @@ class TrainerProfileViewController: UIViewController, UITableViewDelegate, UITab
         }
     }
     
-    @IBAction func unwindFromRegion(sender: UIStoryboardSegue) {
-        if let sourceViewController = sender.sourceViewController as? TrainerRegionViewController, latitude = sourceViewController.latitude, longitude = sourceViewController.longitude, distance = sourceViewController.distance {
-            self.latitude = latitude
-            self.longitude = longitude
-            self.distance = distance
-            print("@@@")
-            print(self.latitude)
-            print(self.longitude)
-            tableView.reloadData()
-        }
-    }
-    
     @IBAction func unwindFromDescription(sender: UIStoryboardSegue) {
         if let sourceViewController = sender.sourceViewController as? TrainerDescriptionViewController, desc = sourceViewController.descriptionString {
             self.descriptionString = desc
@@ -405,3 +394,15 @@ class TrainerProfileViewController: UIViewController, UITableViewDelegate, UITab
     }
 
 }
+
+// MARK: TrainerRegionViewControllerDelegate
+extension TrainerProfileViewController: TrainerRegionViewControllerDelegate {
+    func locationAndDistance(latitude: CLLocationDegrees, longitude: CLLocationDegrees, distance: Double) {
+        self.latitude = latitude
+        self.longitude = longitude
+        self.distance = distance
+        tableView.reloadData()
+    }
+}
+
+

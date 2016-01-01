@@ -932,25 +932,38 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="10.0" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cnn-VP-mPM">
-                                <rect key="frame" x="20" y="310" width="59" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
-                            </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Distance to cover around your location:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ueL-5k-SVg">
                                 <rect key="frame" x="20" y="281" width="275" height="21"/>
                                 <fontDescription key="fontDescription" type="system" weight="thin" pointSize="15"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="KM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B0P-tz-2TE">
-                                <rect key="frame" x="90" y="314" width="26" height="21"/>
-                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="15"/>
+                            <pickerView contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GNG-9L-qXE">
+                                <rect key="frame" x="0.0" y="348" width="600" height="216"/>
+                                <color key="backgroundColor" red="0.90196079015731812" green="0.90196079015731812" blue="0.90196079015731812" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="dK9-KV-pe7" id="Afh-YD-Tnm"/>
+                                    <outlet property="delegate" destination="dK9-KV-pe7" id="FUW-3V-cdF"/>
+                                </connections>
+                            </pickerView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="14B-PY-BxL">
+                                <rect key="frame" x="20" y="312" width="64" height="28"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="KM" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B0P-tz-2TE">
+                                <rect key="frame" x="92" y="312" width="32" height="27"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="GNG-9L-qXE" secondAttribute="trailing" id="ZIw-1s-HPW"/>
+                            <constraint firstItem="GNG-9L-qXE" firstAttribute="leading" secondItem="jUP-eQ-fSC" secondAttribute="leadingMargin" id="zyF-Ng-U53"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="M0c-mk-ilW">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="6cG-fb-kPk">
@@ -966,7 +979,8 @@
                     </navigationItem>
                     <connections>
                         <outlet property="cityTextField" destination="j72-X7-QaU" id="qkn-un-reH"/>
-                        <outlet property="distanceTextField" destination="cnn-VP-mPM" id="KtI-6c-D61"/>
+                        <outlet property="distanceLabel" destination="14B-PY-BxL" id="n24-Ag-zl3"/>
+                        <outlet property="pickerView" destination="GNG-9L-qXE" id="2mK-Lc-F5G"/>
                         <outlet property="postalCodeTextField" destination="oqE-eL-7jf" id="Jc6-Ty-0i6"/>
                         <outlet property="stateTextField" destination="rRL-Aa-kbX" id="T0c-v0-kh1"/>
                         <outlet property="streetTextField" destination="1HW-zb-njM" id="EGJ-1M-Sgx"/>

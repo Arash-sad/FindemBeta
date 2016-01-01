@@ -14,19 +14,20 @@ protocol TrainerRegionViewControllerDelegate {
     func locationAndDistance (latitude: CLLocationDegrees, longitude: CLLocationDegrees, distance: Double)
 }
 
-class TrainerRegionViewController: UIViewController {
+class TrainerRegionViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
 
     @IBOutlet weak var streetTextField: UITextField!
     @IBOutlet weak var cityTextField: UITextField!
     @IBOutlet weak var stateTextField: UITextField!
     @IBOutlet weak var postalCodeTextField: UITextField!
-    @IBOutlet weak var distanceTextField: UITextField!
+    @IBOutlet weak var pickerView: UIPickerView!
+    @IBOutlet weak var distanceLabel: UILabel!
     
 //    var coords: CLLocationCoordinate2D?
     var latitude:CLLocationDegrees?
     var longitude:CLLocationDegrees?
     var distance:Double?
-    
+    var pickerData = [[String]]()
     var delegate: TrainerRegionViewControllerDelegate?
     
     override func viewDidLoad() {
@@ -34,8 +35,18 @@ class TrainerRegionViewController: UIViewController {
 
         // Do any additional setup after loading the view.
 //        self.navigationItem.rightBarButtonItem?.enabled = false
+        pickerData = [["0","1","2","3","4","5"],[".0",".5"]]
         
-        self.distanceTextField.text = String(distance!)
+        self.distanceLabel.text = String(self.distance!)
+        //TODO: available on Swift 2.0
+        // what works for 8.0 ?!!
+        self.pickerView.selectRow(Int(self.distance!), inComponent: 0, animated: false)
+        if (self.distance! % 1) == 0 {
+            self.pickerView.selectRow(0, inComponent: 1, animated: false)
+        }
+        else {
+            self.pickerView.selectRow(1, inComponent: 1, animated: false)
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -51,11 +62,8 @@ class TrainerRegionViewController: UIViewController {
         let geoCoder = CLGeocoder()
         let addressString = "\(streetTextField.text) \(cityTextField.text) \(stateTextField.text) \(postalCodeTextField.text)"
         
-        if (streetTextField.text!.isEmpty || cityTextField.text!.isEmpty || stateTextField.text!.isEmpty || postalCodeTextField.text!.isEmpty || distanceTextField.text!.isEmpty) {
+        if (streetTextField.text!.isEmpty || cityTextField.text!.isEmpty || stateTextField.text!.isEmpty || postalCodeTextField.text!.isEmpty) {
             alert("Missing Details", message: "Please complete all the sections")
-        }
-        else if Double(self.distanceTextField.text!) == nil {
-            alert("Wrong Distance Value", message: "Please enter the correct distance value")
         }
         else {
             //MARK: Convert Address String to Latitude & Longitude
@@ -72,7 +80,7 @@ class TrainerRegionViewController: UIViewController {
                         
                         self.latitude = coordinate.latitude
                         self.longitude = coordinate.longitude
-                        self.distance = Double(self.distanceTextField.text!)!
+                        self.distance = Double(self.distanceLabel.text!)!
                         
                         if let delegate = self.delegate {
                             delegate.locationAndDistance(self.latitude!, longitude: self.longitude!, distance: self.distance!)
@@ -91,6 +99,38 @@ class TrainerRegionViewController: UIViewController {
         
     }
 
+    // MARK: - PickerView
+    
+    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
+        return 2
+    }
+    
+    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        
+        if component == 0 {
+            return pickerData[component].count
+        }
+        else {
+            return pickerData[component].count
+        }
+    }
+    
+    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        if component == 0 {
+            return pickerData[component][row]
+        }
+        else {
+            return pickerData[component][row]
+        }
+    }
+    
+    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int)
+    {
+        let firstComponent = pickerData[0][pickerView.selectedRowInComponent(0)]
+        let secondComponent = pickerData[1][pickerView.selectedRowInComponent(1)]
+        self.distanceLabel.text = firstComponent + secondComponent
+    }
+    
     //MARK: - Alert
     func alert(messageTitle: String, message: String) {
         let alert = UIAlertController(title: messageTitle, message: message, preferredStyle: UIAlertControllerStyle.Alert)

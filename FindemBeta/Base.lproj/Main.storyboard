@@ -109,14 +109,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="OyP-Qv-gZ6">
-                        <barButtonItem key="leftBarButtonItem" title="Home" id="5Aw-On-1Dj">
+                        <barButtonItem key="leftBarButtonItem" title="Menu" id="5Aw-On-1Dj">
                             <connections>
-                                <action selector="backBarButtonItemPressed:" destination="iJi-37-4kt" id="70J-Wa-52D"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="play" id="ULs-oH-GOr">
-                            <connections>
-                                <action selector="MenuBarButtonItemPressed:" destination="iJi-37-4kt" id="UKg-Co-PYw"/>
+                                <action selector="MenuBarButtonItemTapped:" destination="iJi-37-4kt" id="3Gj-hy-JbX"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -301,12 +296,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VqS-iX-p6W" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4826" y="1970"/>
+            <point key="canvasLocation" x="3212" y="2020"/>
         </scene>
-        <!--Finder Slide Out Menu View Controller-->
+        <!--Finder Messages View Controller-->
         <scene sceneID="RzH-PI-RlU">
             <objects>
-                <viewController storyboardIdentifier="SlideOutMenu" id="XYS-bV-jHT" customClass="FinderSlideOutMenuViewController" customModule="FindemBeta" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="XYS-bV-jHT" customClass="FinderMessagesViewController" customModule="FindemBeta" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="yaL-Tp-4tI"/>
                         <viewControllerLayoutGuide type="bottom" id="HaJ-w5-qa4"/>
@@ -320,20 +315,20 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="finderMessageCell" rowHeight="82" id="xOC-SQ-gq5" customClass="FinderMessageTableViewCell" customModule="FindemBeta" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="600" height="82"/>
+                                        <rect key="frame" x="0.0" y="92" width="600" height="82"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xOC-SQ-gq5" id="Hcc-Iv-77i">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="81"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AdP-SB-EY7">
-                                                    <rect key="frame" x="185" y="30" width="407" height="21"/>
+                                                    <rect key="frame" x="91" y="30" width="501" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Y8M-VV-2wj">
-                                                    <rect key="frame" x="102" y="3" width="75" height="75"/>
+                                                    <rect key="frame" x="8" y="3" width="75" height="75"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="75" id="4Tn-0I-8gk"/>
                                                         <constraint firstAttribute="width" constant="75" id="Ys3-lY-mu6"/>
@@ -343,10 +338,16 @@
                                             <constraints>
                                                 <constraint firstItem="Y8M-VV-2wj" firstAttribute="leading" secondItem="Hcc-Iv-77i" secondAttribute="leadingMargin" constant="94" id="BVl-fX-Jef"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="AdP-SB-EY7" secondAttribute="trailing" id="C09-dM-KCT"/>
+                                                <constraint firstAttribute="leadingMargin" secondItem="Y8M-VV-2wj" secondAttribute="leading" id="Jvm-kd-iek"/>
                                                 <constraint firstItem="Y8M-VV-2wj" firstAttribute="top" secondItem="Hcc-Iv-77i" secondAttribute="topMargin" constant="-5" id="ONI-Wo-RYV"/>
                                                 <constraint firstItem="AdP-SB-EY7" firstAttribute="top" secondItem="Hcc-Iv-77i" secondAttribute="topMargin" constant="22" id="gjf-Xg-jx3"/>
                                                 <constraint firstItem="AdP-SB-EY7" firstAttribute="leading" secondItem="Y8M-VV-2wj" secondAttribute="trailing" constant="8" id="lHI-aD-ZY4"/>
                                             </constraints>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="BVl-fX-Jef"/>
+                                                </mask>
+                                            </variation>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="avatarImageView" destination="Y8M-VV-2wj" id="8ZB-tu-HZN"/>
@@ -362,25 +363,31 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="cEK-oC-UGG" firstAttribute="top" secondItem="yaL-Tp-4tI" secondAttribute="bottom" constant="-64" id="9g8-M2-91U"/>
                             <constraint firstAttribute="trailingMargin" secondItem="cEK-oC-UGG" secondAttribute="trailing" constant="-20" id="HkV-WQ-L5i"/>
                             <constraint firstItem="HaJ-w5-qa4" firstAttribute="top" secondItem="cEK-oC-UGG" secondAttribute="bottom" id="Ka2-2i-lPv"/>
-                            <constraint firstItem="cEK-oC-UGG" firstAttribute="top" secondItem="yaL-Tp-4tI" secondAttribute="bottom" constant="-20" id="eXW-rY-b2Q"/>
                             <constraint firstItem="cEK-oC-UGG" firstAttribute="leading" secondItem="vYp-5s-6MM" secondAttribute="leadingMargin" constant="-20" id="nTf-Y8-dsv"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="hNs-or-Xoo"/>
+                    <navigationItem key="navigationItem" id="hNs-or-Xoo">
+                        <barButtonItem key="leftBarButtonItem" title="Menu" id="u37-Hb-AKg">
+                            <connections>
+                                <action selector="menuBarButtonItemTapped:" destination="XYS-bV-jHT" id="M8B-pW-Vcw"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
-                        <outlet property="tableView" destination="cEK-oC-UGG" id="MZn-uB-PXJ"/>
+                        <outlet property="tableView" destination="cEK-oC-UGG" id="I3K-Lj-Kim"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="txh-n7-7DK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="938" y="1940"/>
         </scene>
-        <!--Messages View Controller-->
+        <!--Trainer Messages View Controller-->
         <scene sceneID="2Zy-2R-DtT">
             <objects>
-                <viewController id="6Wu-a8-vcq" customClass="MessagesViewController" customModule="FindemBeta" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="6Wu-a8-vcq" customClass="TrainerMessagesViewController" customModule="FindemBeta" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="oQB-7k-4Np"/>
                         <viewControllerLayoutGuide type="bottom" id="5UD-UH-uZr"/>
@@ -767,7 +774,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vru-cv-dkX" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="aCQ-Kp-3Uq" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="7153" y="1664"/>
+            <point key="canvasLocation" x="7965" y="1664"/>
         </scene>
         <!--General Info-->
         <scene sceneID="jO8-8g-Cuj">
@@ -1240,7 +1247,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LLl-7H-zeL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6441" y="1664"/>
+            <point key="canvasLocation" x="7253" y="1664"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="aB6-9G-Skz">
@@ -1276,7 +1283,25 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5H1-sU-ZXZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4114" y="1970"/>
+            <point key="canvasLocation" x="2490" y="2020"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="w2Q-0x-2qi">
+            <objects>
+                <navigationController storyboardIdentifier="navFinderMessages" automaticallyAdjustsScrollViewInsets="NO" id="GdN-Fd-rIl" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="DZF-YD-jkv">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="XYS-bV-jHT" kind="relationship" relationship="rootViewController" id="PaX-x3-QGV"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yS6-aQ-f1Q" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="218" y="1940"/>
         </scene>
     </scenes>
     <resources>

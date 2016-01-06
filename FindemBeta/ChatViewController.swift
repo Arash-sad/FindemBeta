@@ -15,8 +15,8 @@ class ChatViewController : JSQMessagesViewController {
     var connectionID: String?
     var messageListener = MessageListener?()
     var recipient: User!
-    var senderAvatar: UIImage!
-    var recipientAvatar: UIImage!
+//    var senderAvatar: UIImage!
+//    var recipientAvatar: UIImage!
     
     let outgoingBubble = JSQMessagesBubbleImageFactory().outgoingMessagesBubbleImageWithColor(UIColor.jsq_messageBubbleBlueColor())
     let incomingBubble = JSQMessagesBubbleImageFactory().incomingMessagesBubbleImageWithColor(UIColor.jsq_messageBubbleLightGrayColor())
@@ -26,8 +26,8 @@ class ChatViewController : JSQMessagesViewController {
         // Do any additional setup after loading the view.
         
         // Remove avatars
-//        collectionView!.collectionViewLayout.incomingAvatarViewSize = CGSizeZero
-//        collectionView!.collectionViewLayout.outgoingAvatarViewSize = CGSizeZero
+        collectionView!.collectionViewLayout.incomingAvatarViewSize = CGSizeZero
+        collectionView!.collectionViewLayout.outgoingAvatarViewSize = CGSizeZero
         
         // Disable attachment Button
         self.inputToolbar!.contentView!.leftBarButtonItem = nil
@@ -73,10 +73,10 @@ class ChatViewController : JSQMessagesViewController {
 //    }
 
     //MARK: Helper function to update avatar
-    func updateAvatarImageForIndexPath( indexPath: NSIndexPath, avatarImage: UIImage) {
-        let cell: JSQMessagesCollectionViewCell = self.collectionView!.cellForItemAtIndexPath(indexPath) as! JSQMessagesCollectionViewCell
-        cell.avatarImageView!.image = JSQMessagesAvatarImageFactory.circularAvatarImage( avatarImage, withDiameter: 60 )
-    }
+//    func updateAvatarImageForIndexPath( indexPath: NSIndexPath, avatarImage: UIImage) {
+//        let cell: JSQMessagesCollectionViewCell = self.collectionView!.cellForItemAtIndexPath(indexPath) as! JSQMessagesCollectionViewCell
+//        cell.avatarImageView!.image = JSQMessagesAvatarImageFactory.circularAvatarImage( avatarImage, withDiameter: 60 )
+//    }
     
     // MARK: - Setup Chat CollectionView
     override func collectionView(collectionView: JSQMessagesCollectionView!, messageDataForItemAtIndexPath indexPath: NSIndexPath!) -> JSQMessageData! {
@@ -101,39 +101,39 @@ class ChatViewController : JSQMessagesViewController {
         }
     }
     
-    override func collectionView(collectionView: JSQMessagesCollectionView!, avatarImageDataForItemAtIndexPath indexPath: NSIndexPath!) -> JSQMessageAvatarImageDataSource! {
-        var imgAvatar = JSQMessagesAvatarImage.avatarWithImage( JSQMessagesAvatarImageFactory.circularAvatarImage( UIImage(named: "defaultPhoto"), withDiameter: 60 ) )
-        if (self.messages[indexPath.row].senderId == self.senderId)
-        {
-            if (self.senderAvatar == nil)
-            {
-                currentUser()!.getPhoto({ (image) -> () in
-                    self.senderAvatar = image
-                    self.updateAvatarImageForIndexPath( indexPath, avatarImage: image)
-                })
-                
-            }
-            else
-            {
-                imgAvatar = JSQMessagesAvatarImage.avatarWithImage( JSQMessagesAvatarImageFactory.circularAvatarImage( self.senderAvatar, withDiameter: 60 ) )
-            }
-        }
-        else
-        {
-            if (self.recipientAvatar == nil)
-            {
-                self.recipient.getPhoto({ (image) -> () in
-                    self.updateAvatarImageForIndexPath( indexPath, avatarImage: image)
-                })
-                
-            }
-            else
-            {
-                imgAvatar = JSQMessagesAvatarImage.avatarWithImage( JSQMessagesAvatarImageFactory.circularAvatarImage( self.recipientAvatar, withDiameter: 60 ) )
-            }
-        }
-        return imgAvatar
-    }
+//    override func collectionView(collectionView: JSQMessagesCollectionView!, avatarImageDataForItemAtIndexPath indexPath: NSIndexPath!) -> JSQMessageAvatarImageDataSource! {
+//        var imgAvatar = JSQMessagesAvatarImage.avatarWithImage( JSQMessagesAvatarImageFactory.circularAvatarImage( UIImage(named: "defaultPhoto"), withDiameter: 60 ) )
+//        if (self.messages[indexPath.row].senderId == self.senderId)
+//        {
+//            if (self.senderAvatar == nil)
+//            {
+//                currentUser()!.getPhoto({ (image) -> () in
+//                    self.senderAvatar = image
+//                    self.updateAvatarImageForIndexPath( indexPath, avatarImage: image)
+//                })
+//                
+//            }
+//            else
+//            {
+//                imgAvatar = JSQMessagesAvatarImage.avatarWithImage( JSQMessagesAvatarImageFactory.circularAvatarImage( self.senderAvatar, withDiameter: 60 ) )
+//            }
+//        }
+//        else
+//        {
+//            if (self.recipientAvatar == nil)
+//            {
+//                self.recipient.getPhoto({ (image) -> () in
+//                    self.updateAvatarImageForIndexPath( indexPath, avatarImage: image)
+//                })
+//                
+//            }
+//            else
+//            {
+//                imgAvatar = JSQMessagesAvatarImage.avatarWithImage( JSQMessagesAvatarImageFactory.circularAvatarImage( self.recipientAvatar, withDiameter: 60 ) )
+//            }
+//        }
+//        return imgAvatar
+//    }
     
     override func didPressSendButton(button: UIButton!, withMessageText text: String!, senderId: String!, senderDisplayName: String!, date: NSDate!) {
         let m = JSQMessage(senderId: senderId, senderDisplayName: senderDisplayName, date: date, text: text)

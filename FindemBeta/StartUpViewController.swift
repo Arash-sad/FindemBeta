@@ -35,8 +35,8 @@ class StartUpViewController: UIViewController {
     @IBAction func FindemButtonPressed(sender: UIButton) {
         pageToGo = "Findem"
         if currentUser() != nil {
-            let containerViewController = FinderContainerViewController()
-            self.presentViewController(containerViewController, animated: true, completion: nil)
+            let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("FinderHomeNavController")
+            self.presentViewController(vc, animated: true, completion: nil)
         }
         else {
             performSegueWithIdentifier("LoginSegue", sender: nil)

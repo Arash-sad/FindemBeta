@@ -1,36 +1,36 @@
 //
-//  FinderSlideOutMenuViewController.swift
+//  FinderMessagesViewController.swift
 //  FindemBeta
 //
-//  Created by Arash Sadeghieh E on 23/11/2015.
-//  Copyright © 2015 Arash Sadeghieh Eshtehadi. All rights reserved.
+//  Created by Arash Sadeghieh E on 6/01/2016.
+//  Copyright © 2016 Arash Sadeghieh Eshtehadi. All rights reserved.
 //
 
 import UIKit
 import ParseFacebookUtilsV4
 
-protocol FinderSlideOutMenuViewControllerDelegate {
-    //  e.g. func chartSelected(parameters: Parameters)
-}
-
-class FinderSlideOutMenuViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class FinderMessagesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     @IBOutlet weak var tableView: UITableView!
     
-    var delegate: FinderSlideOutMenuViewControllerDelegate?
     var connections:[Connection] = []
+    var slidingMenu = UIView.loadFromNibNamed("SlidingMenu")
+    var menuVisible = false
+    var menuHeight:CGFloat = 150
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        
+        slidingMenu?.frame.size.width = self.view.frame.size.width
+        slidingMenu?.center = CGPoint(x: self.view.frame.size.width/2, y: -170)
+        view.addSubview(slidingMenu!)
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        fetchConnections({
+        fetchConnectionsForUsers({
             connections in
             self.connections = connections
             self.tableView.reloadData()
@@ -40,15 +40,6 @@ class FinderSlideOutMenuViewController: UIViewController, UITableViewDataSource,
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-    }
-    
-    @IBAction func LogOutBarButtonItemPressed(sender: UIBarButtonItem) {
-        // Log Out from Facebook and go back to startup page
-        PFUser.logOut()
-    
-        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("StartUpVC")
-        self.presentViewController(vc, animated: true, completion: nil)
-        
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -91,4 +82,21 @@ class FinderSlideOutMenuViewController: UIViewController, UITableViewDataSource,
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
 
+    @IBAction func menuBarButtonItemTapped(sender: UIBarButtonItem) {
+        UIView.animateWithDuration(0.7, delay: 0.0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.8, options: UIViewAnimationOptions.TransitionNone, animations: {
+            
+            self.menuVisible = !self.menuVisible
+            var height:CGFloat = self.menuHeight
+            if self.menuVisible == false {
+                height = -self.menuHeight
+            }
+            self.slidingMenu?.center = CGPoint(x: self.view.frame.size.width/2, y: height)
+            
+            }, completion: { finished in
+                
+                
+        })
+    }
+
 }
+

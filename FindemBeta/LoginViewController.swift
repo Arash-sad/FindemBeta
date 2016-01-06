@@ -72,7 +72,7 @@ class LoginViewController: UIViewController {
                 self.presentViewController(vc, animated: true, completion: nil)
             }
             else if pageToGo == "Findem" {
-                let vc = FinderContainerViewController()
+                let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("FinderHomeNavController")
                 self.presentViewController(vc, animated: true, completion: nil)
             }
             

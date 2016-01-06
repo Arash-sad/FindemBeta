@@ -1,5 +1,5 @@
 //
-//  MessagesViewController.swift
+//  TrainerMessagesViewController.swift
 //  FindemBeta
 //
 //  Created by Arash Sadeghieh E on 11/12/2015.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MessagesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class TrainerMessagesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     @IBOutlet weak var tableView: UITableView!
     

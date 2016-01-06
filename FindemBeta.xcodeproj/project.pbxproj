@@ -44,16 +44,17 @@
 		5BE9625E1BF48F3E00E9C2FD /* TrainerQualificationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE9625D1BF48F3E00E9C2FD /* TrainerQualificationsViewController.swift */; };
 		5BE962601BF492EC00E9C2FD /* QualificationsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE9625F1BF492EC00E9C2FD /* QualificationsTableViewCell.swift */; };
 		5BE9FFB41C02B7BA009A2E28 /* FinderSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE9FFB31C02B7BA009A2E28 /* FinderSearchViewController.swift */; };
-		5BE9FFB61C02B919009A2E28 /* FinderSlideOutMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE9FFB51C02B919009A2E28 /* FinderSlideOutMenuViewController.swift */; };
-		5BE9FFB81C02BF40009A2E28 /* FinderContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE9FFB71C02BF40009A2E28 /* FinderContainerViewController.swift */; };
 		5BEBB6811BF1911500B60CF2 /* TrainerTrainingTypesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BEBB6801BF1911500B60CF2 /* TrainerTrainingTypesViewController.swift */; };
 		5BEBB6831BF1943100B60CF2 /* TrainingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BEBB6821BF1943100B60CF2 /* TrainingTableViewCell.swift */; };
 		5BED7B071C1E7B140015B38D /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BED7B061C1E7B140015B38D /* ChatViewController.swift */; };
+		5BEDB38E1C39D442005A80E7 /* SlidingMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5BEDB38D1C39D442005A80E7 /* SlidingMenu.xib */; };
+		5BEDB3901C39D543005A80E7 /* FinderSlidingMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BEDB38F1C39D543005A80E7 /* FinderSlidingMenu.swift */; };
 		5BEE24C01BF99EC500BBC10E /* FourthTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BEE24BF1BF99EC500BBC10E /* FourthTableViewCell.swift */; };
 		5BEE24C21BF9A7ED00BBC10E /* TrainerRegionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BEE24C11BF9A7ED00BBC10E /* TrainerRegionViewController.swift */; };
 		5BF007171C1A45E200E3961A /* MessagesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF007161C1A45E200E3961A /* MessagesTableViewCell.swift */; };
 		5BF007191C1A667500E3961A /* Connection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF007181C1A667500E3961A /* Connection.swift */; };
-		5BF0071B1C1A967E00E3961A /* MessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF0071A1C1A967E00E3961A /* MessagesViewController.swift */; };
+		5BF0071B1C1A967E00E3961A /* TrainerMessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF0071A1C1A967E00E3961A /* TrainerMessagesViewController.swift */; };
+		5BF138281C3C7BC20060E57A /* FinderMessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF138271C3C7BC20060E57A /* FinderMessagesViewController.swift */; };
 		5BF221371C18525C001ADCDE /* FinderTrainerProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF221361C18525C001ADCDE /* FinderTrainerProfileViewController.swift */; };
 		5BF4176F1C20E30D00EC9AB5 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF4176E1C20E30D00EC9AB5 /* Message.swift */; };
 		5BF426FC1C2789B600271569 /* FinderMessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF426FB1C2789B600271569 /* FinderMessageTableViewCell.swift */; };
@@ -117,17 +118,18 @@
 		5BE9625D1BF48F3E00E9C2FD /* TrainerQualificationsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainerQualificationsViewController.swift; sourceTree = "<group>"; };
 		5BE9625F1BF492EC00E9C2FD /* QualificationsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QualificationsTableViewCell.swift; sourceTree = "<group>"; };
 		5BE9FFB31C02B7BA009A2E28 /* FinderSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FinderSearchViewController.swift; sourceTree = "<group>"; };
-		5BE9FFB51C02B919009A2E28 /* FinderSlideOutMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FinderSlideOutMenuViewController.swift; sourceTree = "<group>"; };
-		5BE9FFB71C02BF40009A2E28 /* FinderContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FinderContainerViewController.swift; sourceTree = "<group>"; };
 		5BEBB6801BF1911500B60CF2 /* TrainerTrainingTypesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainerTrainingTypesViewController.swift; sourceTree = "<group>"; };
 		5BEBB6821BF1943100B60CF2 /* TrainingTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainingTableViewCell.swift; sourceTree = "<group>"; };
 		5BED451A1C1FC5470077E80F /* Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
 		5BED7B061C1E7B140015B38D /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		5BEDB38D1C39D442005A80E7 /* SlidingMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SlidingMenu.xib; sourceTree = "<group>"; };
+		5BEDB38F1C39D543005A80E7 /* FinderSlidingMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FinderSlidingMenu.swift; sourceTree = "<group>"; };
 		5BEE24BF1BF99EC500BBC10E /* FourthTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FourthTableViewCell.swift; sourceTree = "<group>"; };
 		5BEE24C11BF9A7ED00BBC10E /* TrainerRegionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainerRegionViewController.swift; sourceTree = "<group>"; };
 		5BF007161C1A45E200E3961A /* MessagesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesTableViewCell.swift; sourceTree = "<group>"; };
 		5BF007181C1A667500E3961A /* Connection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Connection.swift; sourceTree = "<group>"; };
-		5BF0071A1C1A967E00E3961A /* MessagesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesViewController.swift; sourceTree = "<group>"; };
+		5BF0071A1C1A967E00E3961A /* TrainerMessagesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainerMessagesViewController.swift; sourceTree = "<group>"; };
+		5BF138271C3C7BC20060E57A /* FinderMessagesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FinderMessagesViewController.swift; sourceTree = "<group>"; };
 		5BF221361C18525C001ADCDE /* FinderTrainerProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FinderTrainerProfileViewController.swift; sourceTree = "<group>"; };
 		5BF4176E1C20E30D00EC9AB5 /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		5BF426FB1C2789B600271569 /* FinderMessageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FinderMessageTableViewCell.swift; sourceTree = "<group>"; };
@@ -213,6 +215,7 @@
 				5BE7FC311BF2C5A600E1A6B8 /* Views */,
 				5B4FE8901BC4AB5B0057278F /* Main.storyboard */,
 				5B41E92D1C0BF22800FA1474 /* LoadView.xib */,
+				5BEDB38D1C39D442005A80E7 /* SlidingMenu.xib */,
 				5B4FE8931BC4AB5B0057278F /* Images.xcassets */,
 				5B4FE8951BC4AB5B0057278F /* LaunchScreen.xib */,
 				5B4FE8C61BC4AF960057278F /* Frameworks */,
@@ -285,7 +288,6 @@
 			children = (
 				5BACC6691BE6C28E00EB4972 /* StartUpViewController.swift */,
 				5BACC66B1BE6C2F800EB4972 /* LoginViewController.swift */,
-				5BF0071A1C1A967E00E3961A /* MessagesViewController.swift */,
 				5BED7B061C1E7B140015B38D /* ChatViewController.swift */,
 				5BE9F2441C03F52300BDAE1F /* Trainer */,
 				5BE9F2451C03F53F00BDAE1F /* Finder */,
@@ -323,6 +325,7 @@
 				5BEE24C11BF9A7ED00BBC10E /* TrainerRegionViewController.swift */,
 				5BE6E5401BFBDE23001BA5F7 /* TrainerDescriptionViewController.swift */,
 				5BE0A0D61BFD367B00F5A3D4 /* TrainerOtherViewController.swift */,
+				5BF0071A1C1A967E00E3961A /* TrainerMessagesViewController.swift */,
 			);
 			name = Trainer;
 			sourceTree = "<group>";
@@ -331,11 +334,11 @@
 			isa = PBXGroup;
 			children = (
 				5BE9FFB31C02B7BA009A2E28 /* FinderSearchViewController.swift */,
-				5BE9FFB51C02B919009A2E28 /* FinderSlideOutMenuViewController.swift */,
-				5BE9FFB71C02BF40009A2E28 /* FinderContainerViewController.swift */,
+				5BF138271C3C7BC20060E57A /* FinderMessagesViewController.swift */,
 				5BE879DF1C068AA900D783D0 /* FinderSearchResultViewController.swift */,
 				5BF221361C18525C001ADCDE /* FinderTrainerProfileViewController.swift */,
 				5BDD9DB01C0FC364006CF0BF /* FinderRefineSearchViewController.swift */,
+				5BEDB38F1C39D543005A80E7 /* FinderSlidingMenu.swift */,
 			);
 			name = Finder;
 			sourceTree = "<group>";
@@ -434,6 +437,7 @@
 			files = (
 				5B41E92E1C0BF22800FA1474 /* LoadView.xib in Resources */,
 				5B4FE8921BC4AB5B0057278F /* Main.storyboard in Resources */,
+				5BEDB38E1C39D442005A80E7 /* SlidingMenu.xib in Resources */,
 				5B4FE8971BC4AB5B0057278F /* LaunchScreen.xib in Resources */,
 				5B4FE8941BC4AB5B0057278F /* Images.xcassets in Resources */,
 			);
@@ -512,7 +516,7 @@
 				5B41E92A1C06D23700FA1474 /* Trainer.swift in Sources */,
 				5BE879E01C068AA900D783D0 /* FinderSearchResultViewController.swift in Sources */,
 				5BE879E21C068C0F00D783D0 /* SearchResultTableViewCell.swift in Sources */,
-				5BF0071B1C1A967E00E3961A /* MessagesViewController.swift in Sources */,
+				5BF0071B1C1A967E00E3961A /* TrainerMessagesViewController.swift in Sources */,
 				5BF437EC1C0E74CD00828023 /* SearchCollectionViewCell.swift in Sources */,
 				5BE6E5411BFBDE23001BA5F7 /* TrainerDescriptionViewController.swift in Sources */,
 				5BE9FFB41C02B7BA009A2E28 /* FinderSearchViewController.swift in Sources */,
@@ -521,16 +525,16 @@
 				5BED7B071C1E7B140015B38D /* ChatViewController.swift in Sources */,
 				5BF98D071BF05FF0008DA586 /* TrainerProfileViewController.swift in Sources */,
 				5BEE24C01BF99EC500BBC10E /* FourthTableViewCell.swift in Sources */,
+				5BF138281C3C7BC20060E57A /* FinderMessagesViewController.swift in Sources */,
 				5BDD9DB11C0FC364006CF0BF /* FinderRefineSearchViewController.swift in Sources */,
 				5BF221371C18525C001ADCDE /* FinderTrainerProfileViewController.swift in Sources */,
 				5BEBB6831BF1943100B60CF2 /* TrainingTableViewCell.swift in Sources */,
 				5BE9625E1BF48F3E00E9C2FD /* TrainerQualificationsViewController.swift in Sources */,
 				5BACC66A1BE6C28E00EB4972 /* StartUpViewController.swift in Sources */,
-				5BE9FFB61C02B919009A2E28 /* FinderSlideOutMenuViewController.swift in Sources */,
 				5B4FE88D1BC4AB5B0057278F /* AppDelegate.swift in Sources */,
 				5BE868D91BE95F3D00A9B256 /* User.swift in Sources */,
+				5BEDB3901C39D543005A80E7 /* FinderSlidingMenu.swift in Sources */,
 				5BEBB6811BF1911500B60CF2 /* TrainerTrainingTypesViewController.swift in Sources */,
-				5BE9FFB81C02BF40009A2E28 /* FinderContainerViewController.swift in Sources */,
 				5BF007191C1A667500E3961A /* Connection.swift in Sources */,
 				5BEE24C21BF9A7ED00BBC10E /* TrainerRegionViewController.swift in Sources */,
 				5BE962601BF492EC00E9C2FD /* QualificationsTableViewCell.swift in Sources */,

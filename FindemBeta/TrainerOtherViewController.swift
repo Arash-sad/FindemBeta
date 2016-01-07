@@ -12,10 +12,11 @@ import Parse
 class TrainerOtherViewController: UIViewController, UITextViewDelegate {
 
     @IBOutlet weak var saveBarButtonItem: UIBarButtonItem!
-    @IBOutlet weak var yearsTextField: UITextField!
+    @IBOutlet weak var yearsLabel: UILabel!
     @IBOutlet weak var achievementsTextView: UITextView!
     @IBOutlet weak var favoriteTextField: UITextField!
     @IBOutlet weak var charactersLabel: UILabel!
+    @IBOutlet weak var stepper: UIStepper!
     
     var years:Int?
     var achievements:String?
@@ -27,10 +28,21 @@ class TrainerOtherViewController: UIViewController, UITextViewDelegate {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        yearsTextField.text = String(self.years!)
+        if self.years == 0 {
+            yearsLabel.text = "Less than a year"
+        }
+        else if self.years == 1 {
+            yearsLabel.text = "1 year"
+        }
+        else {
+            yearsLabel.text = ("\(self.years!) years")
+        }
         achievementsTextView.delegate = self
         achievementsTextView.text = self.achievements
         favoriteTextField.text = self.favorite
+        stepper.value = Double(self.years!)
+        stepper.minimumValue = 0
+        stepper.maximumValue = 99
     }
 
     override func didReceiveMemoryWarning() {
@@ -44,21 +56,24 @@ class TrainerOtherViewController: UIViewController, UITextViewDelegate {
 
     @IBAction func saveBarButtonItem(sender: UIBarButtonItem) {
         
-        if yearsTextField.text!.isEmpty {
-            yearsExperienceAlert("Missing Details", message: "Please enter the Years Experience value")
+        self.performSegueWithIdentifier("unwindSegueFromOther", sender: saveBarButtonItem)
+    }
+    @IBAction func stepperValueChanged(sender: UIStepper) {
+        if Int(sender.value) == 0 {
+            yearsLabel.text = "Less than a year"
         }
-        else if Int(self.yearsTextField.text!) == nil {
-            yearsExperienceAlert("Wrong Value", message: "Please enter the correct Years Experience value")
+        else if Int(sender.value) == 1 {
+            yearsLabel.text = "1 year"
         }
         else {
-            self.performSegueWithIdentifier("unwindSegueFromOther", sender: saveBarButtonItem)
+            yearsLabel.text = ("\(Int(sender.value).description) years")
         }
+        self.years = Int(sender.value)
     }
  
     // MARK: - Navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if saveBarButtonItem === sender {
-            self.years = Int(yearsTextField.text!)!
             self.achievements = achievementsTextView.text
             self.favorite = favoriteTextField.text
             
@@ -99,13 +114,6 @@ class TrainerOtherViewController: UIViewController, UITextViewDelegate {
         
         return achievementsTextView.text.characters.count + (text.characters.count - range.length)
             <= maxLength
-    }
-    
-    //MARK: - Alert
-    func yearsExperienceAlert(messageTitle: String, message: String) {
-        let alert = UIAlertController(title: messageTitle, message: message, preferredStyle: UIAlertControllerStyle.Alert)
-        alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
-        self.presentViewController(alert, animated: true, completion: nil)
     }
 
 }

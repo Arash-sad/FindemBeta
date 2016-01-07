@@ -236,7 +236,15 @@ class TrainerProfileViewController: UIViewController, UITableViewDelegate, UITab
         }
         else {
             let cell = tableView.dequeueReusableCellWithIdentifier(self.sixthCellIdentifier, forIndexPath: indexPath) as! SixthTableViewCell
-            cell.yearsLabel.text = String(self.yearsExperience)
+            if self.yearsExperience == 0 {
+                cell.yearsLabel.text = "Less than a year"
+            }
+            else if self.yearsExperience == 1 {
+                cell.yearsLabel.text = "1 year"
+            }
+            else {
+                cell.yearsLabel.text = ("\(self.yearsExperience) years")
+            }
             cell.achievementsTextView.text = self.achievements
             cell.favoriteLabel.text = self.favorite
             if editButtonEnabled {

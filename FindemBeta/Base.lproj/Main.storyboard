@@ -18,16 +18,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N9D-Ys-z9w">
-                                <rect key="frame" x="267" y="223" width="67" height="30"/>
-                                <state key="normal" title="PT Profile">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="profileButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="4Fz-9j-CYA"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="59c-md-kTZ">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="59c-md-kTZ">
                                 <rect key="frame" x="277" y="346" width="51" height="30"/>
                                 <state key="normal" title="Findem">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -36,8 +27,23 @@
                                     <action selector="FindemButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ffN-oc-vow"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N9D-Ys-z9w">
+                                <rect key="frame" x="267" y="223" width="67" height="30"/>
+                                <state key="normal" title="PT Profile">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="profileButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="4Fz-9j-CYA"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="59c-md-kTZ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="3d9-Fa-9Ql"/>
+                            <constraint firstItem="N9D-Ys-z9w" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Iid-iY-o1Z"/>
+                            <constraint firstItem="N9D-Ys-z9w" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="203" id="XN5-tR-NTv"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="59c-md-kTZ" secondAttribute="bottom" constant="224" id="u3G-CM-EWG"/>
+                        </constraints>
                     </view>
                     <connections>
                         <segue destination="SBu-Rk-32Y" kind="presentation" identifier="LoginSegue" id="xVh-e1-Sfw"/>
@@ -629,7 +635,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fzg-9v-osl">
-                                            <rect key="frame" x="150" y="0.0" width="52" height="21"/>
+                                            <rect key="frame" x="150" y="0.0" width="167" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
@@ -720,7 +726,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3Pz-Ro-SYG">
-                                <rect key="frame" x="20" y="101" width="54" height="30"/>
+                                <rect key="frame" x="273" y="100" width="54" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                             </textField>
@@ -747,6 +753,18 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j7B-Kv-pnV">
+                                <rect key="frame" x="20" y="104" width="131" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="RCS-ac-SYt">
+                                <rect key="frame" x="171" y="100" width="94" height="29"/>
+                                <connections>
+                                    <action selector="stepperValueChanged:" destination="zco-X1-nvB" eventType="valueChanged" id="6sq-JL-Byi"/>
+                                </connections>
+                            </stepper>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -767,14 +785,15 @@
                         <outlet property="charactersLabel" destination="PBY-Ee-Af4" id="mOX-Bo-EnR"/>
                         <outlet property="favoriteTextField" destination="CMN-iZ-0i1" id="9AA-dW-Adz"/>
                         <outlet property="saveBarButtonItem" destination="yrP-ys-RSc" id="l31-3k-EGK"/>
-                        <outlet property="yearsTextField" destination="3Pz-Ro-SYG" id="PLY-LS-Qbx"/>
+                        <outlet property="stepper" destination="RCS-ac-SYt" id="cKr-Vo-tGQ"/>
+                        <outlet property="yearsLabel" destination="j7B-Kv-pnV" id="etM-1T-cVJ"/>
                         <segue destination="aCQ-Kp-3Uq" kind="unwind" identifier="unwindSegueFromOther" unwindAction="unwindFromOther:" id="2g4-fQ-tET"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vru-cv-dkX" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="aCQ-Kp-3Uq" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="7965" y="1664"/>
+            <point key="canvasLocation" x="5529" y="1672"/>
         </scene>
         <!--General Info-->
         <scene sceneID="jO8-8g-Cuj">
@@ -1247,7 +1266,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LLl-7H-zeL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7253" y="1664"/>
+            <point key="canvasLocation" x="4811" y="1672"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="aB6-9G-Skz">

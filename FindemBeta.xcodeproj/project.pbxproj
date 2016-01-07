@@ -334,10 +334,10 @@
 			isa = PBXGroup;
 			children = (
 				5BE9FFB31C02B7BA009A2E28 /* FinderSearchViewController.swift */,
-				5BF138271C3C7BC20060E57A /* FinderMessagesViewController.swift */,
 				5BE879DF1C068AA900D783D0 /* FinderSearchResultViewController.swift */,
 				5BF221361C18525C001ADCDE /* FinderTrainerProfileViewController.swift */,
 				5BDD9DB01C0FC364006CF0BF /* FinderRefineSearchViewController.swift */,
+				5BF138271C3C7BC20060E57A /* FinderMessagesViewController.swift */,
 				5BEDB38F1C39D543005A80E7 /* FinderSlidingMenu.swift */,
 			);
 			name = Finder;

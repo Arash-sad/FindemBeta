@@ -8,6 +8,7 @@
 
 import UIKit
 import Parse
+import MapKit
 
 class FinderSearchResultViewController: UIViewController {
     
@@ -15,6 +16,7 @@ class FinderSearchResultViewController: UIViewController {
     var refinedtrainerArray:[PFUser] = []
     var trainingType = ""
     var refinedGender = "any"
+    var currentLocation = PFGeoPoint?()
     
     @IBOutlet weak var tableView: UITableView!
 
@@ -29,6 +31,7 @@ class FinderSearchResultViewController: UIViewController {
             
             let query = PFUser.query()
             query!.whereKey("trainingTypes", equalTo:trainingType)
+            query!.whereKey("location", nearGeoPoint: self.currentLocation!, withinKilometers: 50)
             query!.findObjectsInBackgroundWithBlock {
                 (objects: [PFObject]?, error: NSError?) -> () in
                 
@@ -37,22 +40,25 @@ class FinderSearchResultViewController: UIViewController {
                     print("Successfully retrieved \(objects!.count) users.")
                     // Do something with the found objects
                     
-                    self.trainerArray = objects as? [PFUser] ?? []
-                    self.refinedtrainerArray = self.trainerArray
-                    print("***********")
+//                    self.trainerArray = objects as? [PFUser] ?? []
+//                    self.refinedtrainerArray = self.trainerArray
                     
-                    
-                    //                if let objects = objects {
-                    //                    for object in objects {
-                    //                        //TEMP:
-                    //                        if let name = object.objectForKey("firstName") as? String {
-                    //                            print(name)
-                    //                            self.nameArray.append(name)
-                    //                        }
-                    //                        print(object)
-                    //                    }
-                    //                }
-                } else {
+                    if let objects = objects {
+                        for object in objects {
+                            //Check trainers who cover user's current location
+                            let location = object.objectForKey("location") as? PFGeoPoint
+                            let distance = object.objectForKey("distance") as? Double
+                            let distanceBetween = location?.distanceInKilometersTo(self.currentLocation)
+                            if distance >= distanceBetween {
+                                let trainer = object as? PFUser
+                                self.trainerArray.append(trainer!)
+                            }
+                            
+                        }
+                        self.refinedtrainerArray = self.trainerArray
+                    }
+                }
+                else {
                     // Log details of the failure
                     print("Error: \(error!) \(error!.userInfo)")
                 }

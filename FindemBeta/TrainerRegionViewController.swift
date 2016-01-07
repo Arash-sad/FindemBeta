@@ -24,18 +24,23 @@ class TrainerRegionViewController: UIViewController, UIPickerViewDataSource, UIP
     @IBOutlet weak var distanceLabel: UILabel!
     
 //    var coords: CLLocationCoordinate2D?
-    var latitude:CLLocationDegrees?
-    var longitude:CLLocationDegrees?
-    var distance:Double?
+    var latitude: CLLocationDegrees?
+    var longitude: CLLocationDegrees?
+    var distance: Double?
     var pickerData = [[String]]()
+    var distanceArray = [String]()
     var delegate: TrainerRegionViewControllerDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-//        self.navigationItem.rightBarButtonItem?.enabled = false
-        pickerData = [["0","1","2","3","4","5"],[".0",".5"]]
+        
+        //Set PickerView Values (Distance between 0 - 50KM)
+        for dis in 0...50 {
+            distanceArray.append(String(dis))
+        }
+        pickerData = [distanceArray,[".0",".5"]]
         
         self.distanceLabel.text = String(self.distance!)
         //TODO: available on Swift 2.0

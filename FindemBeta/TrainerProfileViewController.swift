@@ -108,8 +108,7 @@ class TrainerProfileViewController: UIViewController, UITableViewDelegate, UITab
             let navVC = segue.destinationViewController as? UINavigationController
             let qualificationsVC = navVC!.viewControllers[0] as? TrainerQualificationsViewController
             
-            qualificationsVC?.tempArray = self.qualificationsArray
-            print(qualificationsArray)
+            qualificationsVC?.qualificationsArray = self.qualificationsArray
         }
         else if segue.identifier == "showRegionDetails" {
             let navVC = segue.destinationViewController as? UINavigationController
@@ -378,9 +377,7 @@ class TrainerProfileViewController: UIViewController, UITableViewDelegate, UITab
     
     @IBAction func unwindFromQualifications(sender: UIStoryboardSegue) {
         if let sourceViewController = sender.sourceViewController as? TrainerQualificationsViewController, tempArray = sourceViewController.tempArray {
-            self.qualificationsArray = tempArray.sort()
-            print("@@@")
-            print(self.qualificationsArray)
+            self.qualificationsArray = tempArray
             tableView.reloadData()
         }
     }
@@ -403,7 +400,7 @@ class TrainerProfileViewController: UIViewController, UITableViewDelegate, UITab
 
 }
 
-// MARK: TrainerRegionViewControllerDelegate
+// MARK: - TrainerRegionViewControllerDelegate
 extension TrainerProfileViewController: TrainerRegionViewControllerDelegate {
     func locationAndDistance(latitude: CLLocationDegrees, longitude: CLLocationDegrees, distance: Double) {
         self.latitude = latitude

@@ -26,7 +26,8 @@ class TrainerProfileViewController: UIViewController, UITableViewDelegate, UITab
     var latitude: CLLocationDegrees?
     var longitude: CLLocationDegrees?
     var distance: Double = 10.0
-    var descriptionString: String = ""
+    var shortDescription: String = ""
+    var longDescription: String = ""
     var yearsExperience: Int = 0
     var achievements: String = ""
     
@@ -59,7 +60,8 @@ class TrainerProfileViewController: UIViewController, UITableViewDelegate, UITab
         self.latitude = (currentTrainer()?.latitude)!
         self.longitude = (currentTrainer()?.longitude)!
         self.distance = (currentTrainer()?.distance)!
-        self.descriptionString = (currentTrainer()?.description)!
+        self.shortDescription = (currentTrainer()?.shortDescription)!
+        self.longDescription = (currentTrainer()?.longDescription)!
         self.yearsExperience = (currentTrainer()?.yearsExperience)!
         self.achievements = (currentTrainer()?.achievements)!
         
@@ -121,7 +123,8 @@ class TrainerProfileViewController: UIViewController, UITableViewDelegate, UITab
             let navVC = segue.destinationViewController as? UINavigationController
             let descVC = navVC!.viewControllers[0] as? TrainerDescriptionViewController
             
-            descVC?.descriptionString = self.descriptionString
+            descVC?.shortDescription = self.shortDescription
+            descVC?.longDescription = self.longDescription
         }
         else if segue.identifier == "showOtherDetails" {
             let navVC = segue.destinationViewController as? UINavigationController
@@ -221,11 +224,16 @@ class TrainerProfileViewController: UIViewController, UITableViewDelegate, UITab
         }
         else if indexPath.row == 4 {
             let cell = tableView.dequeueReusableCellWithIdentifier(self.fifthCellIdentifier, forIndexPath: indexPath) as! FifthTableViewCell
-            cell.descriptionTextView.text = self.descriptionString
+            cell.shortDescriptionTextView.text = self.shortDescription
+            cell.longDescriptionTextView.text = self.longDescription
             if editButtonEnabled {
+                cell.shortDescriptionTextView.userInteractionEnabled = false
+                cell.longDescriptionTextView.userInteractionEnabled = false
                 cell.accessoryType = UITableViewCellAccessoryType.DetailDisclosureButton
             }
             else {
+                cell.shortDescriptionTextView.userInteractionEnabled = true
+                cell.longDescriptionTextView.userInteractionEnabled = true
                 cell.accessoryType = UITableViewCellAccessoryType.None
             }
             return cell
@@ -379,8 +387,9 @@ class TrainerProfileViewController: UIViewController, UITableViewDelegate, UITab
     }
     
     @IBAction func unwindFromDescription(sender: UIStoryboardSegue) {
-        if let sourceViewController = sender.sourceViewController as? TrainerDescriptionViewController, desc = sourceViewController.descriptionString {
-            self.descriptionString = desc
+        if let sourceViewController = sender.sourceViewController as? TrainerDescriptionViewController, shortDesc = sourceViewController.shortDescription, longDesc = sourceViewController.longDescription {
+            self.shortDescription = shortDesc
+            self.longDescription = longDesc
             tableView.reloadData()
         }
     }

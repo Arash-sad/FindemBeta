@@ -18,7 +18,8 @@ struct Trainer {
     let latitude: CLLocationDegrees?
     let longitude: CLLocationDegrees?
     let distance: Double?
-    let description: String?
+    let shortDescription: String?
+    let longDescription: String?
     let yearsExperience: Int?
     let achievements: String?
     private let pfUser: PFUser
@@ -37,7 +38,7 @@ struct Trainer {
 
 private func pfUserToTrainer(user: PFUser) -> Trainer {
     
-    return Trainer(id: user.objectId!, name: user.objectForKey("firstName") as! String, gender: user.objectForKey("gender") as! String, trainingTypes: user.objectForKey("trainingTypes") as? [String] ?? [], qualifications: user.objectForKey("qualifications") as? [String] ?? [], latitude: (user.objectForKey("location") as? PFGeoPoint)?.latitude ?? 51.50007773, longitude: (user.objectForKey("location") as? PFGeoPoint)?.longitude ?? -0.1246402, distance: user.objectForKey("distance") as? Double ?? 10.0, description: user.objectForKey("description") as? String ?? "", yearsExperience: user.objectForKey("yearsExperience") as? Int ?? 0, achievements: user.objectForKey("achievements") as? String ?? "", pfUser: user)
+    return Trainer(id: user.objectId!, name: user.objectForKey("firstName") as! String, gender: user.objectForKey("gender") as! String, trainingTypes: user.objectForKey("trainingTypes") as? [String] ?? [], qualifications: user.objectForKey("qualifications") as? [String] ?? [], latitude: (user.objectForKey("location") as? PFGeoPoint)?.latitude ?? 51.50007773, longitude: (user.objectForKey("location") as? PFGeoPoint)?.longitude ?? -0.1246402, distance: user.objectForKey("distance") as? Double ?? 10.0, shortDescription: user.objectForKey("shortDescription") as? String ?? "", longDescription: user.objectForKey("longDescription") as? String ?? "", yearsExperience: user.objectForKey("yearsExperience") as? Int ?? 0, achievements: user.objectForKey("achievements") as? String ?? "", pfUser: user)
 }
 
 func currentTrainer() -> Trainer? {

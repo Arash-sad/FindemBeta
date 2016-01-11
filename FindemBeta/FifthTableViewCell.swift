@@ -10,7 +10,8 @@ import UIKit
 
 class FifthTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var descriptionTextView: UITextView!
+    @IBOutlet weak var shortDescriptionTextView: UITextView!
+    @IBOutlet weak var longDescriptionTextView: UITextView!
     
     override func awakeFromNib() {
         super.awakeFromNib()

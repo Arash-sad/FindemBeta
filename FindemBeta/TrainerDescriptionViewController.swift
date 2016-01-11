@@ -12,21 +12,31 @@ import Parse
 class TrainerDescriptionViewController: UIViewController, UITextViewDelegate {
 
     @IBOutlet weak var saveBarButtonItem: UIBarButtonItem!
-    @IBOutlet weak var descriptionTextView: UITextView!
-    @IBOutlet weak var charactersLabel: UILabel!
+    @IBOutlet weak var shortDescriptionTextView: UITextView!
+    @IBOutlet weak var shortDescCharCountLabel: UILabel!
+    @IBOutlet weak var longDescriptionTextView: UITextView!
+    @IBOutlet weak var longDescCharCountLabel: UILabel!
+    @IBOutlet weak var bottomMargin: NSLayoutConstraint!
+
     
-    var descriptionString:String?
-    var charCount = 0
-    let maxLength = 150
+    var shortDescription:String?
+    var longDescription:String?
+    var shortDescCharCount = 0
+    let shortDescMaxLength = 150
+    var longDescCharCount = 0
+    let longDescMaxLength = 500
+    var isSecondKeyboardUp = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         
-        descriptionTextView.delegate = self
-        descriptionTextView.becomeFirstResponder()
-        descriptionTextView.text = self.descriptionString
+        
+        shortDescriptionTextView.delegate = self
+        shortDescriptionTextView.text = self.shortDescription
+        longDescriptionTextView.delegate = self
+        longDescriptionTextView.text = self.longDescription
     }
 
     override func didReceiveMemoryWarning() {
@@ -42,44 +52,109 @@ class TrainerDescriptionViewController: UIViewController, UITextViewDelegate {
     // MARK: - Navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if saveBarButtonItem === sender {
-            self.descriptionString = descriptionTextView.text
+            self.shortDescription = shortDescriptionTextView.text
+            self.longDescription = longDescriptionTextView.text
             
             //MARK: Save Description to Parse
             let user = PFUser.currentUser()
-            user!.setObject(self.descriptionString!, forKey: "description")
+            user!.setObject(self.shortDescription!, forKey: "shortDescription")
+            user!.setObject(self.longDescription!, forKey: "longDescription")
             user!.saveInBackgroundWithBlock(nil)
         }
     }
 
+   
+    // MARK: - UITextViewDelegate    
+    func textViewDidBeginEditing(textView: UITextView) {
+        if textView == longDescriptionTextView {
+            isSecondKeyboardUp = true
+            UIView.animateWithDuration(0.4, animations: { () -> Void in
+                self.bottomMargin.constant += 80
+            })
+        }
+        if textView == shortDescriptionTextView {
+            if self.isSecondKeyboardUp == true {
+                UIView.animateWithDuration(0.4, animations: { () -> Void in
+                    self.bottomMargin.constant -= 80
+                    self.isSecondKeyboardUp = false
+                })
+            }
+        }
+        
+    }
     
-    // MARK: - UITextViewDelegate
     func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
         
-        // Live characters counting
-        if text == "" // Check backspace
-        {
-            if textView.text.characters.count == 0
-            {
-                charCount = 0
-                charactersLabel.text = String(format: "%i Character(s) left",maxLength - charCount)
-            }
-            charCount = (textView.text.characters.count - 1)
-            charactersLabel.text = String(format: "%i Character(s) left",maxLength - charCount)
-        }
-        else
-        {
-            charCount = (textView.text.characters.count + 1)
-            charactersLabel.text = String(format: "%i Character(s) left",maxLength - charCount)
-            
-            if charCount >= maxLength + 1
-            {
-                charCount = maxLength
-                charactersLabel.text = String(format: "%i Character(s) left",maxLength - charCount)
-            }
-        }
+        var returnValue = true
         
-        return descriptionTextView.text.characters.count + (text.characters.count - range.length)
-            <= maxLength
+        // Live characters counting for textViews
+        if textView == shortDescriptionTextView {
+            if text == "" // Check backspace
+            {
+                if textView.text.characters.count == 0
+                {
+                    shortDescCharCount = 0
+                    shortDescCharCountLabel.text = String(format: "%i Character(s) left",shortDescMaxLength - shortDescCharCount)
+                }
+                shortDescCharCount = (textView.text.characters.count - 1)
+                shortDescCharCountLabel.text = String(format: "%i Character(s) left",shortDescMaxLength - shortDescCharCount)
+            }
+            else
+            {
+                shortDescCharCount = (textView.text.characters.count + 1)
+                shortDescCharCountLabel.text = String(format: "%i Character(s) left",shortDescMaxLength - shortDescCharCount)
+                
+                if shortDescCharCount >= shortDescMaxLength + 1
+                {
+                    shortDescCharCount = shortDescMaxLength
+                    shortDescCharCountLabel.text = String(format: "%i Character(s) left",shortDescMaxLength - shortDescCharCount)
+                }
+            }
+            
+            returnValue = shortDescriptionTextView.text.characters.count + (text.characters.count - range.length)
+                <= shortDescMaxLength
+        }
+        if textView == longDescriptionTextView {
+//            UIView.animateWithDuration(0.4, animations: { () -> Void in
+//                self.bottomMargin.constant -= 300
+//                })
+            if text == "" // Check backspace
+            {
+                if textView.text.characters.count == 0
+                {
+                    longDescCharCount = 0
+                    longDescCharCountLabel.text = String(format: "%i Character(s) left",longDescMaxLength - longDescCharCount)
+                }
+                longDescCharCount = (textView.text.characters.count - 1)
+                longDescCharCountLabel.text = String(format: "%i Character(s) left",longDescMaxLength - longDescCharCount)
+            }
+            else
+            {
+                longDescCharCount = (textView.text.characters.count + 1)
+                longDescCharCountLabel.text = String(format: "%i Character(s) left",longDescMaxLength - longDescCharCount)
+                
+                if longDescCharCount >= longDescMaxLength + 1
+                {
+                    longDescCharCount = longDescMaxLength
+                    longDescCharCountLabel.text = String(format: "%i Character(s) left",longDescMaxLength - longDescCharCount)
+                }
+            }
+            
+            returnValue = longDescriptionTextView.text.characters.count + (text.characters.count - range.length)
+                <= longDescMaxLength
+        }
+     return returnValue
+    }
+    // MARK: - Tap Gesture
+    @IBAction func tapGesture(sender: UITapGestureRecognizer) {
+        self.shortDescriptionTextView.resignFirstResponder()
+        self.longDescriptionTextView.resignFirstResponder()
+            if self.isSecondKeyboardUp == true {
+                UIView.animateWithDuration(0.4, animations: { () -> Void in
+                    self.bottomMargin.constant -= 80
+                    self.isSecondKeyboardUp = false
+                })
+            }
     }
     
 }

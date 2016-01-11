@@ -21,7 +21,6 @@ struct Trainer {
     let description: String?
     let yearsExperience: Int?
     let achievements: String?
-    let favorite: String?
     private let pfUser: PFUser
     
     //Nested Function-Use callback: (UIImage) because make the call asynchronously
@@ -38,7 +37,7 @@ struct Trainer {
 
 private func pfUserToTrainer(user: PFUser) -> Trainer {
     
-    return Trainer(id: user.objectId!, name: user.objectForKey("firstName") as! String, gender: user.objectForKey("gender") as! String, trainingTypes: user.objectForKey("trainingTypes") as? [String] ?? [], qualifications: user.objectForKey("qualifications") as? [String] ?? [], latitude: (user.objectForKey("location") as? PFGeoPoint)?.latitude ?? 51.50007773, longitude: (user.objectForKey("location") as? PFGeoPoint)?.longitude ?? -0.1246402, distance: user.objectForKey("distance") as? Double ?? 10.0, description: user.objectForKey("description") as? String ?? "", yearsExperience: user.objectForKey("yearsExperience") as? Int ?? 0, achievements: user.objectForKey("achievements") as? String ?? "",favorite: user.objectForKey("favorite") as? String ?? "", pfUser: user)
+    return Trainer(id: user.objectId!, name: user.objectForKey("firstName") as! String, gender: user.objectForKey("gender") as! String, trainingTypes: user.objectForKey("trainingTypes") as? [String] ?? [], qualifications: user.objectForKey("qualifications") as? [String] ?? [], latitude: (user.objectForKey("location") as? PFGeoPoint)?.latitude ?? 51.50007773, longitude: (user.objectForKey("location") as? PFGeoPoint)?.longitude ?? -0.1246402, distance: user.objectForKey("distance") as? Double ?? 10.0, description: user.objectForKey("description") as? String ?? "", yearsExperience: user.objectForKey("yearsExperience") as? Int ?? 0, achievements: user.objectForKey("achievements") as? String ?? "", pfUser: user)
 }
 
 func currentTrainer() -> Trainer? {

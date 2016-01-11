@@ -29,7 +29,6 @@ class TrainerProfileViewController: UIViewController, UITableViewDelegate, UITab
     var descriptionString: String = ""
     var yearsExperience: Int = 0
     var achievements: String = ""
-    var favorite: String = ""
     
     let firstCellIdentifier = "firstProfileCell"
     let secondCellIdentifier = "secondProfileCell"
@@ -63,7 +62,6 @@ class TrainerProfileViewController: UIViewController, UITableViewDelegate, UITab
         self.descriptionString = (currentTrainer()?.description)!
         self.yearsExperience = (currentTrainer()?.yearsExperience)!
         self.achievements = (currentTrainer()?.achievements)!
-        self.favorite = (currentTrainer()?.favorite)!
         
     }
 
@@ -131,7 +129,6 @@ class TrainerProfileViewController: UIViewController, UITableViewDelegate, UITab
             
             otherVC?.years = self.yearsExperience
             otherVC?.achievements = self.achievements
-            otherVC?.favorite = self.favorite
         }
     }
     
@@ -245,7 +242,6 @@ class TrainerProfileViewController: UIViewController, UITableViewDelegate, UITab
                 cell.yearsLabel.text = ("\(self.yearsExperience) years")
             }
             cell.achievementsTextView.text = self.achievements
-            cell.favoriteLabel.text = self.favorite
             if editButtonEnabled {
                 cell.accessoryType = UITableViewCellAccessoryType.DetailDisclosureButton
             }
@@ -390,10 +386,9 @@ class TrainerProfileViewController: UIViewController, UITableViewDelegate, UITab
     }
     
     @IBAction func unwindFromOther(sender: UIStoryboardSegue) {
-        if let sourceViewController = sender.sourceViewController as? TrainerOtherViewController, years = sourceViewController.years, achieve = sourceViewController.achievements, fav = sourceViewController.favorite {
+        if let sourceViewController = sender.sourceViewController as? TrainerOtherViewController, years = sourceViewController.years, achieve = sourceViewController.achievements {
             self.yearsExperience = years
             self.achievements = achieve
-            self.favorite = fav
             tableView.reloadData()
         }
     }

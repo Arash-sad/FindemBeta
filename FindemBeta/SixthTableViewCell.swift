@@ -11,9 +11,7 @@ import UIKit
 class SixthTableViewCell: UITableViewCell {
 
     @IBOutlet weak var yearsLabel: UILabel!
-    @IBOutlet weak var achievementsTextView: UITextView!
-    @IBOutlet weak var favoriteLabel: UILabel!
-    
+    @IBOutlet weak var achievementsTextView: UITextView!    
     
     override func awakeFromNib() {
         super.awakeFromNib()

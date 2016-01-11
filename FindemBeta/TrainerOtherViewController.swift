@@ -14,13 +14,11 @@ class TrainerOtherViewController: UIViewController, UITextViewDelegate {
     @IBOutlet weak var saveBarButtonItem: UIBarButtonItem!
     @IBOutlet weak var yearsLabel: UILabel!
     @IBOutlet weak var achievementsTextView: UITextView!
-    @IBOutlet weak var favoriteTextField: UITextField!
     @IBOutlet weak var charactersLabel: UILabel!
     @IBOutlet weak var stepper: UIStepper!
     
     var years:Int?
     var achievements:String?
-    var favorite:String?
     var charCount = 0
     let maxLength = 100
     
@@ -39,7 +37,6 @@ class TrainerOtherViewController: UIViewController, UITextViewDelegate {
         }
         achievementsTextView.delegate = self
         achievementsTextView.text = self.achievements
-        favoriteTextField.text = self.favorite
         stepper.value = Double(self.years!)
         stepper.minimumValue = 0
         stepper.maximumValue = 99
@@ -75,13 +72,11 @@ class TrainerOtherViewController: UIViewController, UITextViewDelegate {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if saveBarButtonItem === sender {
             self.achievements = achievementsTextView.text
-            self.favorite = favoriteTextField.text
             
             //Save Years Experience, Achievements, and Favorite to Parse
             let user = PFUser.currentUser()
             user!.setObject(self.years!, forKey: "yearsExperience")
             user!.setObject(self.achievements!, forKey: "achievements")
-            user!.setObject(self.favorite!, forKey: "favorite")
             user!.saveInBackgroundWithBlock(nil)
         }
     }

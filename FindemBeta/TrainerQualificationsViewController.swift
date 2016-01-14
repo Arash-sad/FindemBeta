@@ -36,6 +36,8 @@ class TrainerQualificationsViewController: UIViewController, UITableViewDelegate
     @IBAction func addButtonTapped(sender: UIButton) {
         if textField.text?.isEmptyOrWhitespace() == false {
             self.qualificationsArray.append(textField.text!)
+            self.textField.resignFirstResponder()
+            self.textField.text = ""
             self.tableView.reloadData()
         }
     }

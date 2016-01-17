@@ -633,7 +633,7 @@
             <objects>
                 <viewController id="UyG-jc-7LP" customClass="TrainerProfileViewController" customModule="FindemBeta" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="vzH-Sv-oOf">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="1000"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="1200"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
@@ -781,6 +781,72 @@
                                     <outlet property="yearsLabel" destination="fzg-9v-osl" id="W6H-ho-Iaj"/>
                                 </connections>
                             </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="seventhProfileCell" rowHeight="150" id="7Ao-1h-8SR" customClass="SeventhTableViewCell" customModule="FindemBeta" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="992" width="600" height="150"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="7Ao-1h-8SR" id="A6j-md-S7R">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="149"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Session Time:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wxu-jJ-jNQ">
+                                            <rect key="frame" x="0.0" y="0.0" width="140" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Weekends:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OOc-zI-jIF">
+                                            <rect key="frame" x="8" y="80" width="85" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Weekdays:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VgT-uQ-cLx">
+                                            <rect key="frame" x="8" y="37" width="83" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Mornings" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wxQ-MF-PlH">
+                                            <rect key="frame" x="111" y="80" width="80" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Afternoons" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bYA-6t-Qpe">
+                                            <rect key="frame" x="199" y="80" width="89" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Evenings" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OYh-fO-DCR">
+                                            <rect key="frame" x="296" y="80" width="71" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Mornings" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rvv-UX-EB9">
+                                            <rect key="frame" x="111" y="37" width="80" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Afternoons" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a2V-AY-uWW">
+                                            <rect key="frame" x="199" y="37" width="89" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Evenings" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oUW-kh-d3y">
+                                            <rect key="frame" x="296" y="37" width="71" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="afternoonsWD" destination="a2V-AY-uWW" id="fOB-0C-fx6"/>
+                                    <outlet property="afternoonsWE" destination="bYA-6t-Qpe" id="9Jc-fV-czJ"/>
+                                    <outlet property="eveningsWD" destination="oUW-kh-d3y" id="nGB-lz-yMH"/>
+                                    <outlet property="eveningsWE" destination="OYh-fO-DCR" id="Fve-AB-sAR"/>
+                                    <outlet property="morningsWD" destination="Rvv-UX-EB9" id="3GX-2q-fF9"/>
+                                    <outlet property="morningsWE" destination="wxQ-MF-PlH" id="hBg-IJ-h0f"/>
+                                </connections>
+                            </tableViewCell>
                         </prototypes>
                         <connections>
                             <outlet property="dataSource" destination="UyG-jc-7LP" id="xHy-Pl-kwc"/>
@@ -795,7 +861,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="600" height="1000"/>
+                    <size key="freeformSize" width="600" height="1200"/>
                     <connections>
                         <outlet property="tableView" destination="vzH-Sv-oOf" id="6F0-VL-ka8"/>
                         <segue destination="edU-O6-CPc" kind="presentation" identifier="showGeneralDetail" id="ECO-CO-Jxj"/>
@@ -804,6 +870,7 @@
                         <segue destination="4ke-qt-hcR" kind="presentation" identifier="showDescription" id="ncK-yn-MLb"/>
                         <segue destination="lHZ-95-nae" kind="presentation" identifier="showOtherDetails" id="AgP-Z4-eUM"/>
                         <segue destination="5Hm-rd-Hhe" kind="presentation" identifier="showQualifications" id="Nlh-JK-wWy"/>
+                        <segue destination="tnF-JA-X5G" kind="presentation" identifier="showSessionTimes" id="qRR-LR-emo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="90Y-Nq-l4b" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1442,6 +1509,100 @@
             </objects>
             <point key="canvasLocation" x="4811" y="1672"/>
         </scene>
+        <!--Trainer Session Times View Controller-->
+        <scene sceneID="fHv-ZW-E0I">
+            <objects>
+                <viewController id="MI2-1I-Zxm" customClass="TrainerSessionTimesViewController" customModule="FindemBeta" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="VH4-qH-7CW"/>
+                        <viewControllerLayoutGuide type="bottom" id="iY7-rL-6OJ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="aNc-uq-N3m">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cUH-Ji-kcg">
+                                <rect key="frame" x="10" y="123" width="65" height="30"/>
+                                <state key="normal" title="Mornings"/>
+                                <connections>
+                                    <action selector="morningsWDButtonTapped:" destination="MI2-1I-Zxm" eventType="touchUpInside" id="6fG-C6-Wu7"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dFk-UJ-gCd">
+                                <rect key="frame" x="105" y="123" width="76" height="30"/>
+                                <state key="normal" title="Afternoons"/>
+                                <connections>
+                                    <action selector="afternoonsWDButtonTapped:" destination="MI2-1I-Zxm" eventType="touchUpInside" id="7sb-Th-pY0"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w1i-wn-7ls">
+                                <rect key="frame" x="216" y="123" width="62" height="30"/>
+                                <state key="normal" title="Evenings"/>
+                                <connections>
+                                    <action selector="eveningsWDButtonTapped:" destination="MI2-1I-Zxm" eventType="touchUpInside" id="AnQ-E2-4pH"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Weekdays:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ff0-Uz-jnD">
+                                <rect key="frame" x="10" y="81" width="98" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Weekends:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U7r-0r-BjF">
+                                <rect key="frame" x="10" y="197" width="98" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p2D-eI-jDn">
+                                <rect key="frame" x="10" y="239" width="65" height="30"/>
+                                <state key="normal" title="Mornings"/>
+                                <connections>
+                                    <action selector="morningsWEButtonTapped:" destination="MI2-1I-Zxm" eventType="touchUpInside" id="HVr-RG-Qc9"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Btr-iw-Rsb">
+                                <rect key="frame" x="105" y="239" width="76" height="30"/>
+                                <state key="normal" title="Afternoons"/>
+                                <connections>
+                                    <action selector="afternoonsWEButtonTapped:" destination="MI2-1I-Zxm" eventType="touchUpInside" id="6bS-76-Sqh"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xAG-7d-BcS">
+                                <rect key="frame" x="216" y="239" width="62" height="30"/>
+                                <state key="normal" title="Evenings"/>
+                                <connections>
+                                    <action selector="eveningsWEButtonTapped:" destination="MI2-1I-Zxm" eventType="touchUpInside" id="kLe-HO-qTt"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="pUg-Vc-kcT">
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="c2L-GU-839">
+                            <connections>
+                                <action selector="cancelBarButtonItemTapped:" destination="MI2-1I-Zxm" id="ZK9-Fz-stS"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Save" id="Q5k-sS-H0t">
+                            <connections>
+                                <action selector="saveBarButtonItemTapped:" destination="MI2-1I-Zxm" id="dK0-ox-8yp"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="afternoonsWDButton" destination="dFk-UJ-gCd" id="z78-kX-loY"/>
+                        <outlet property="afternoonsWEButton" destination="Btr-iw-Rsb" id="L7I-pP-Q2U"/>
+                        <outlet property="eveningsWDButton" destination="w1i-wn-7ls" id="qJF-V9-O6T"/>
+                        <outlet property="eveningsWEButton" destination="xAG-7d-BcS" id="uen-AB-teq"/>
+                        <outlet property="morningsWDButton" destination="cUH-Ji-kcg" id="lgW-vD-ng7"/>
+                        <outlet property="morningsWEButton" destination="p2D-eI-jDn" id="2cS-gk-bU6"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Qny-XF-uKP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5529" y="2382"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="aB6-9G-Skz">
             <objects>
@@ -1513,6 +1674,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lHT-LW-8GY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4811" y="259"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="2Un-Mb-KPA">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="tnF-JA-X5G" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="BnI-h9-Pwu">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="MI2-1I-Zxm" kind="relationship" relationship="rootViewController" id="eke-dJ-5ei"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jLA-2p-gMR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4811" y="2382"/>
         </scene>
     </scenes>
     <resources>

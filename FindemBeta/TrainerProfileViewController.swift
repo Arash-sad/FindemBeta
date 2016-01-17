@@ -30,6 +30,7 @@ class TrainerProfileViewController: UIViewController, UITableViewDelegate, UITab
     var longDescription: String = ""
     var yearsExperience: Int = 0
     var achievements: String = ""
+    var sessionTimes:String = "ABC"
     
     let firstCellIdentifier = "firstProfileCell"
     let secondCellIdentifier = "secondProfileCell"
@@ -37,6 +38,7 @@ class TrainerProfileViewController: UIViewController, UITableViewDelegate, UITab
     let fourthCellIdentifier = "fourthProfileCell"
     let fifthCellIdentifier = "fifthProfileCell"
     let sixthCellIdentifier = "sixthProfileCell"
+    let sevenththCellIdentifier = "seventhProfileCell"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -64,7 +66,7 @@ class TrainerProfileViewController: UIViewController, UITableViewDelegate, UITab
         self.longDescription = (currentTrainer()?.longDescription)!
         self.yearsExperience = (currentTrainer()?.yearsExperience)!
         self.achievements = (currentTrainer()?.achievements)!
-        
+        self.sessionTimes = (currentTrainer()?.sessionTimes)!
     }
 
     override func didReceiveMemoryWarning() {
@@ -133,6 +135,13 @@ class TrainerProfileViewController: UIViewController, UITableViewDelegate, UITab
             otherVC?.years = self.yearsExperience
             otherVC?.achievements = self.achievements
         }
+        else if segue.identifier == "showSessionTimes" {
+            let navVC = segue.destinationViewController as? UINavigationController
+            let sessionVC = navVC!.viewControllers[0] as? TrainerSessionTimesViewController
+            
+            sessionVC?.delegate = self
+            sessionVC?.sessionTimes = self.sessionTimes
+        }
     }
     
     // MARK: - UITableViewDataSource
@@ -141,7 +150,7 @@ class TrainerProfileViewController: UIViewController, UITableViewDelegate, UITab
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 6
+        return 7
     }
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -238,7 +247,7 @@ class TrainerProfileViewController: UIViewController, UITableViewDelegate, UITab
             }
             return cell
         }
-        else {
+        else if indexPath.row == 5 {
             let cell = tableView.dequeueReusableCellWithIdentifier(self.sixthCellIdentifier, forIndexPath: indexPath) as! SixthTableViewCell
             if self.yearsExperience == 0 {
                 cell.yearsLabel.text = "Less than a year"
@@ -250,6 +259,52 @@ class TrainerProfileViewController: UIViewController, UITableViewDelegate, UITab
                 cell.yearsLabel.text = ("\(self.yearsExperience) years")
             }
             cell.achievementsTextView.text = self.achievements
+            if editButtonEnabled {
+                cell.accessoryType = UITableViewCellAccessoryType.DetailDisclosureButton
+            }
+            else {
+                cell.accessoryType = UITableViewCellAccessoryType.None
+            }
+            return cell
+        }
+        else {
+            let cell = tableView.dequeueReusableCellWithIdentifier(self.sevenththCellIdentifier, forIndexPath: indexPath) as! SeventhTableViewCell
+            if sessionTimes.uppercaseString.characters.contains("A") {
+                cell.morningsWD.textColor = UIColor.blackColor()
+            }
+            else {
+                cell.morningsWD.textColor = UIColor.lightGrayColor()
+            }
+            if sessionTimes.uppercaseString.characters.contains("B") {
+                cell.afternoonsWD.textColor = UIColor.blackColor()
+            }
+            else {
+                cell.afternoonsWD.textColor = UIColor.lightGrayColor()
+            }
+            if sessionTimes.uppercaseString.characters.contains("C") {
+                cell.eveningsWD.textColor = UIColor.blackColor()
+            }
+            else {
+                cell.eveningsWD.textColor = UIColor.lightGrayColor()
+            }
+            if sessionTimes.uppercaseString.characters.contains("X") {
+                cell.morningsWE.textColor = UIColor.blackColor()
+            }
+            else {
+                cell.morningsWE.textColor = UIColor.lightGrayColor()
+            }
+            if sessionTimes.uppercaseString.characters.contains("Y") {
+                cell.afternoonsWE.textColor = UIColor.blackColor()
+            }
+            else {
+                cell.afternoonsWE.textColor = UIColor.lightGrayColor()
+            }
+            if sessionTimes.uppercaseString.characters.contains("Z") {
+                cell.eveningsWE.textColor = UIColor.blackColor()
+            }
+            else {
+                cell.eveningsWE.textColor = UIColor.lightGrayColor()
+            }
             if editButtonEnabled {
                 cell.accessoryType = UITableViewCellAccessoryType.DetailDisclosureButton
             }
@@ -281,6 +336,9 @@ class TrainerProfileViewController: UIViewController, UITableViewDelegate, UITab
             }
             else if indexPath.row == 5 {
                 performSegueWithIdentifier("showOtherDetails", sender: nil)
+            }
+            else if indexPath.row == 6 {
+                performSegueWithIdentifier("showSessionTimes", sender: nil)
             }
         }
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
@@ -410,6 +468,14 @@ extension TrainerProfileViewController: TrainerRegionViewControllerDelegate {
         self.latitude = latitude
         self.longitude = longitude
         self.distance = distance
+        tableView.reloadData()
+    }
+}
+
+// MARK: - TrainerSessionTimesViewControllerDelegate
+extension TrainerProfileViewController: TrainerSessionTimesViewControllerDelegate {
+    func saveSessionTimes(sessions: String) {
+        self.sessionTimes = sessions
         tableView.reloadData()
     }
 }

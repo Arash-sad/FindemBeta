@@ -29,8 +29,6 @@ class TrainerProfileGeneralViewController: UIViewController, UITextFieldDelegate
         
         // Handle the text field’s user input through delegate callbacks.
         nameTextField.delegate = self
-        // Disable the Save button if the text field is empty
-        saveBarButtonItem.enabled = !nameTextField.text!.isEmpty
         
         self.nameTextField.text = self.name
         self.imageView.layer.cornerRadius = self.imageView.frame.height / 2
@@ -107,6 +105,7 @@ class TrainerProfileGeneralViewController: UIViewController, UITextFieldDelegate
     func textFieldDidEndEditing(textField: UITextField) {
         checkValidName()
     }
+    
     func textFieldDidBeginEditing(textField: UITextField) {
         // Disable the Save button while editing.
         saveBarButtonItem.enabled = false
@@ -117,18 +116,32 @@ class TrainerProfileGeneralViewController: UIViewController, UITextFieldDelegate
         let text = nameTextField.text ?? ""
         saveBarButtonItem.enabled = !text.isEmpty
     }
-    
-    //MARK: - TapGestureRecognizer
-    
-    @IBAction func selectImage(sender: UITapGestureRecognizer) {
-        // Hide the keyboard.
-        nameTextField.resignFirstResponder()
-        let imagePickerController = UIImagePickerController()
-        
-        //TODO: Only allow photos to be picked, not taken.
-        imagePickerController.sourceType = .PhotoLibrary
-        imagePickerController.delegate = self
-        presentViewController(imagePickerController, animated: true, completion: nil)
+
+    @IBAction func cameraButtonTapped(sender: UIButton) {
+        self.nameTextField.resignFirstResponder()
+        if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera) {
+            let imagePicker = UIImagePickerController()
+            imagePicker.delegate = self
+            imagePicker.sourceType = UIImagePickerControllerSourceType.Camera
+            imagePicker.allowsEditing = false
+            self.presentViewController(imagePicker, animated: true, completion: nil)
+        }
+        else {
+            alert("Alert", message: "Your device does not support the Camera")
+        }
+    }
+    @IBAction func photoLibraryButtonTapped(sender: UIButton) {
+        self.nameTextField.resignFirstResponder()
+        if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.PhotoLibrary) {
+            let imagePicker = UIImagePickerController()
+            imagePicker.delegate = self
+            imagePicker.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
+            imagePicker.allowsEditing = false
+            self.presentViewController(imagePicker, animated: true, completion: nil)
+        }
+        else {
+            alert("Alert", message: "Your device does not support the Photo Library")
+        }
     }
     
     //MARK: - UIImagePickerControllerDelegate
@@ -139,8 +152,15 @@ class TrainerProfileGeneralViewController: UIViewController, UITextFieldDelegate
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         let selectedImage = info[UIImagePickerControllerOriginalImage] as! UIImage
-        imageView.image = selectedImage
+        self.imageView.image = selectedImage
         dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    //MARK: - Alert
+    func alert(messageTitle: String, message: String) {
+        let alert = UIAlertController(title: messageTitle, message: message, preferredStyle: UIAlertControllerStyle.Alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
+        self.presentViewController(alert, animated: true, completion: nil)
     }
 
 }

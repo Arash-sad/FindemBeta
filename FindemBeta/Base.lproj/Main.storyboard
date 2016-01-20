@@ -969,9 +969,6 @@
                             <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="defaultPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="zbN-pc-B9s">
                                 <rect key="frame" x="20" y="72" width="150" height="150"/>
                                 <gestureRecognizers/>
-                                <connections>
-                                    <outletCollection property="gestureRecognizers" destination="Ow3-2X-dMG" appends="YES" id="Qjn-KE-uoY"/>
-                                </connections>
                             </imageView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9Bd-J0-oCn">
                                 <rect key="frame" x="20" y="251" width="150" height="30"/>
@@ -988,6 +985,20 @@
                                     <action selector="segmentedControlValueChanged:" destination="Unf-Fp-UUw" eventType="valueChanged" id="ZQa-HL-J7f"/>
                                 </connections>
                             </segmentedControl>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Oii-a4-F3x">
+                                <rect key="frame" x="185" y="113" width="96" height="30"/>
+                                <state key="normal" title="Take a photo"/>
+                                <connections>
+                                    <action selector="cameraButtonTapped:" destination="Unf-Fp-UUw" eventType="touchUpInside" id="5Mg-Fc-RyM"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z77-ib-Pal">
+                                <rect key="frame" x="185" y="151" width="185" height="30"/>
+                                <state key="normal" title="Choose from Photo Library"/>
+                                <connections>
+                                    <action selector="photoLibraryButtonTapped:" destination="Unf-Fp-UUw" eventType="touchUpInside" id="T5L-qW-11M"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -1012,11 +1023,6 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kx5-w0-qWD" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="cdk-dH-8oS" userLabel="Exit" sceneMemberID="exit"/>
-                <tapGestureRecognizer id="Ow3-2X-dMG">
-                    <connections>
-                        <action selector="selectImage:" destination="Unf-Fp-UUw" id="mKU-Mr-aap"/>
-                    </connections>
-                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="5529" y="-1888"/>
         </scene>

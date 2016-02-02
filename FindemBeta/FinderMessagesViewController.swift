@@ -53,6 +53,12 @@ class FinderMessagesViewController: UIViewController, UITableViewDataSource, UIT
         return connections.count
     }
     
+    let dateFormat = "dd/MM/yyyy"
+    func dateFormatter() -> NSDateFormatter {
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = dateFormat
+        return dateFormatter
+    }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("finderMessageCell", forIndexPath: indexPath) as! FinderMessageTableViewCell
@@ -64,6 +70,8 @@ class FinderMessagesViewController: UIViewController, UITableViewDataSource, UIT
             image in
             cell.avatarImageView.image = image
         })
+        cell.dateLabel.text = dateFormatter().stringFromDate(connections[indexPath.row].action.lastMessage)
+        
         // Show new message label
         if connections[indexPath.row].action.lastMessage.timeIntervalSince1970 >= connections[indexPath.row].action.userLastSeenAt.timeIntervalSince1970 {
             cell.newMessageLabel.hidden = false

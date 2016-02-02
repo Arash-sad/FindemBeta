@@ -37,10 +37,12 @@ class MessageListener {
 private let ref = Firebase(url: "https://findem.firebaseio.com/messages")
 
 private let dateFormat = "yyyyMMddHHmmss"
+private let timeZone = NSTimeZone(name: "UTC")
 
 private func dateFormatter() -> NSDateFormatter {
     let dateFormatter = NSDateFormatter()
     dateFormatter.dateFormat = dateFormat
+    dateFormatter.timeZone = timeZone
     return dateFormatter
 }
 

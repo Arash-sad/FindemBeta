@@ -19,7 +19,7 @@ class ChatViewController : JSQMessagesViewController {
 //    var recipientAvatar: UIImage!
     
     let outgoingBubble = JSQMessagesBubbleImageFactory().outgoingMessagesBubbleImageWithColor(UIColor.jsq_messageBubbleBlueColor())
-    let incomingBubble = JSQMessagesBubbleImageFactory().incomingMessagesBubbleImageWithColor(UIColor.jsq_messageBubbleLightGrayColor())
+    let incomingBubble = JSQMessagesBubbleImageFactory().incomingMessagesBubbleImageWithColor(UIColor.darkGrayColor())
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -63,6 +63,26 @@ class ChatViewController : JSQMessagesViewController {
     // MARK: Stop realtime updates to messages
     override func viewWillDisappear(animated: Bool) {
         messageListener!.stop()
+        
+        // Save lastMessage time in Parse Action class
+        if let id = connectionID {
+            let query = PFQuery(className: "Action")
+            query.getObjectInBackgroundWithId(id) { (object, err) -> Void in
+                if err != nil || object == nil {
+                    print("Save lastMessage date: The request failed.")
+                }
+                else {
+                    if PFUser.currentUser()?.objectId == object!.objectForKey("byUser") as? String {
+                        object!.setObject(NSDate(), forKey: "userLastSeenAt")
+                        object!.saveInBackgroundWithBlock(nil)
+                    }
+                    else if PFUser.currentUser()?.objectId == object!.objectForKey("toTrainer") as? String {
+                        object!.setObject(NSDate(), forKey: "trainerLastSeenAt")
+                        object!.saveInBackgroundWithBlock(nil)
+                    }
+                }
+            }
+        }
     }
     
 //    func chatSenderDisplayName() -> String! {
@@ -141,8 +161,27 @@ class ChatViewController : JSQMessagesViewController {
         // Save message to Firebase
         if let id = connectionID {
             saveMessage(id, message: Message(message: text, senderID: senderId, date: date))
+            
+            // Save lastMessage time in Parse Action class
+            let query = PFQuery(className: "Action")
+            query.getObjectInBackgroundWithId(id) { (object, err) -> Void in
+                if err != nil || object == nil {
+                    print("Save lastMessage date: The request failed.")
+                }
+                else {
+                    object!.setObject(NSDate(), forKey: "lastMessageAt")
+//                    object!.saveInBackgroundWithBlock(nil)
+                    object!.saveInBackgroundWithBlock {
+                        (success, error) -> Void in
+                        if success == true {
+                            
+                        } else {
+                            print("Error: Couldn't save last message date")
+                        }
+                    }
+                }
+            }
         }
         finishSendingMessage()
-    }
-    
+    }    
 }

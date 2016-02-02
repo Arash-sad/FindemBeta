@@ -68,3 +68,7 @@ func fetchMessages(connectionID: String, callback: ([Message]) ->()) {
         callback(messages)
     })
 }
+
+func removeAllMessages(connectionID: String) {
+    ref.childByAppendingPath(connectionID).removeValue()
+}

@@ -11,17 +11,11 @@ import Parse
 
 class TrainerHomeViewController: UIViewController {
 
-
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         
-    }
-//    Find the way to have below lines under viewDidLoad
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
     }
 
     override func didReceiveMemoryWarning() {

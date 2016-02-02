@@ -41,7 +41,11 @@ func saveConnection(user: PFUser) {
     let action = PFObject(className: "Action")
     action.setObject(PFUser.currentUser()!.objectId!, forKey: "byUser")
     action.setObject(user.objectId!, forKey: "toTrainer")
-    action.setObject("connected", forKey: "type")
+    action.setObject("connected", forKey: "userAction")
+    action.setObject("connected", forKey: "trainerAction")
+    action.setObject(NSDate(), forKey: "userLastSeenAt")
+    action.setObject(NSDate(), forKey: "trainerLastSeenAt")
+    action.setObject(NSDate(), forKey: "lastMessageAt")
     action.saveInBackgroundWithBlock(nil)
 }
 

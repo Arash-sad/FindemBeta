@@ -85,20 +85,21 @@ class FinderTrainerProfileViewController: UIViewController {
                 print("They haven't connected yet!")
             } else {
                 // The find succeeded.
-                print("They are already connected!")
+                if object!.objectForKey("userAction") as? String == "deleted" {
+                    object!.setValue("connected", forKey: "userAction")
+                    object!.setValue(NSDate(), forKey: "lastMessageAt")
+                    object!.saveInBackgroundWithBlock(nil)
+                }
+                else if object!.objectForKey("userAction") as? String == "gameOver" {
+                    object!.setValue("blocked", forKey: "userAction")
+                    object!.setValue(NSDate(), forKey: "lastMessageAt")
+                    object!.saveInBackgroundWithBlock(nil)
+                }
+                else {
+                    print("They are already connected!")
+                }
             }
         }
-        print(trainer!.objectId!)
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

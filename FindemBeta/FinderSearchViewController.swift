@@ -15,7 +15,7 @@ class FinderSearchViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var collectionView: UICollectionView!
     
     var slidingMenu = UIView.loadFromNibNamed("SlidingMenu")
-    var menuVisible = false
+    var menuIsVisible = false
     var menuHeight:CGFloat = 150
     
     let locationManager = CLLocationManager()
@@ -73,9 +73,9 @@ class FinderSearchViewController: UIViewController, CLLocationManagerDelegate {
     @IBAction func MenuBarButtonItemTapped(sender: UIBarButtonItem) {
         UIView.animateWithDuration(0.7, delay: 0.0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.8, options: UIViewAnimationOptions.TransitionNone, animations: {
             
-            self.menuVisible = !self.menuVisible
+            self.menuIsVisible = !self.menuIsVisible
             var height:CGFloat = self.menuHeight
-            if self.menuVisible == false {
+            if self.menuIsVisible == false {
                 height = -self.menuHeight
             }
             self.slidingMenu?.center = CGPoint(x: self.view.frame.size.width/2, y: height)
@@ -115,12 +115,14 @@ extension FinderSearchViewController: UICollectionViewDelegate,UICollectionViewD
     }
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        if (currentLocation.latitude == 0 && currentLocation.longitude == 0){
-            locationAccessAlert()
-        }
-        else {
-            performSegueWithIdentifier("showSearchResult", sender: nil)
-
+        if menuIsVisible == false {
+            if (currentLocation.latitude == 0 && currentLocation.longitude == 0){
+                locationAccessAlert()
+            }
+            else {
+                performSegueWithIdentifier("showSearchResult", sender: nil)
+                
+            }
         }
     }
     

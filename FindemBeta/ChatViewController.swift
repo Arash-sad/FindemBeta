@@ -13,8 +13,11 @@ class ChatViewController : JSQMessagesViewController {
     
     var messages: [JSQMessage] = []
     var connectionID: String?
+    var userAction: String?
+    var trainerAction: String?
+    var userType: String?
     var messageListener = MessageListener?()
-    var recipient: User!
+//    var recipient: User!
 //    var senderAvatar: UIImage!
 //    var recipientAvatar: UIImage!
     
@@ -156,32 +159,48 @@ class ChatViewController : JSQMessagesViewController {
 //    }
     
     override func didPressSendButton(button: UIButton!, withMessageText text: String!, senderId: String!, senderDisplayName: String!, date: NSDate!) {
-        let m = JSQMessage(senderId: senderId, senderDisplayName: senderDisplayName, date: date, text: text)
-        self.messages.append(m)
-        // Save message to Firebase
-        if let id = connectionID {
-            saveMessage(id, message: Message(message: text, senderID: senderId, date: date))
-            
-            // Save lastMessage time in Parse Action class
-            let query = PFQuery(className: "Action")
-            query.getObjectInBackgroundWithId(id) { (object, err) -> Void in
-                if err != nil || object == nil {
-                    print("Save lastMessage date: The request failed.")
-                }
-                else {
-                    object!.setObject(NSDate(), forKey: "lastMessageAt")
-//                    object!.saveInBackgroundWithBlock(nil)
-                    object!.saveInBackgroundWithBlock {
-                        (success, error) -> Void in
-                        if success == true {
-                            
-                        } else {
-                            print("Error: Couldn't save last message date")
+        // Check if user has blocked by trainer or vice versa
+        if (userType == "user" && userAction == "blocked") || (userType == "trainer" && trainerAction == "blocked") {
+            alert("Blocked user", message: "In order to send a message you need to unblock the user.")
+        }
+        else if (userType == "user" && (trainerAction == "blocked" || trainerAction == "gameOver")) || (userType == "trainer" && (userAction == "blocked" || userAction == "gameOver")){
+            alert("Blocked", message: "You are not able to send a message to this user.")
+        }
+        else {
+            let m = JSQMessage(senderId: senderId, senderDisplayName: senderDisplayName, date: date, text: text)
+            self.messages.append(m)
+            // Save message to Firebase
+            if let id = connectionID {
+                saveMessage(id, message: Message(message: text, senderID: senderId, date: date))
+                
+                // Save lastMessage time in Parse Action class
+                let query = PFQuery(className: "Action")
+                query.getObjectInBackgroundWithId(id) { (object, err) -> Void in
+                    if err != nil || object == nil {
+                        print("Save lastMessage date: The request failed.")
+                    }
+                    else {
+                        object!.setObject(NSDate(), forKey: "lastMessageAt")
+                        //                    object!.saveInBackgroundWithBlock(nil)
+                        object!.saveInBackgroundWithBlock {
+                            (success, error) -> Void in
+                            if success == true {
+                                
+                            } else {
+                                print("Error: Couldn't save last message date")
+                            }
                         }
                     }
                 }
             }
+            finishSendingMessage()
         }
-        finishSendingMessage()
-    }    
+    }
+    
+    //MARK: - Alert
+    func alert(messageTitle: String, message: String) {
+        let alert = UIAlertController(title: messageTitle, message: message, preferredStyle: UIAlertControllerStyle.Alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
+        self.presentViewController(alert, animated: true, completion: nil)
+    }
 }

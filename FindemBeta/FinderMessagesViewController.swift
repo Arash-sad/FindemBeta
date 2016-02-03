@@ -53,25 +53,18 @@ class FinderMessagesViewController: UIViewController, UITableViewDataSource, UIT
         return connections.count
     }
     
-    let dateFormat = "dd/MM/yyyy"
-    func dateFormatter() -> NSDateFormatter {
-        let dateFormatter = NSDateFormatter()
-        dateFormatter.dateFormat = dateFormat
-        return dateFormatter
-    }
-    
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("finderMessageCell", forIndexPath: indexPath) as! FinderMessageTableViewCell
         
         // Configure the cell...
         let user = connections[indexPath.row].user
+        
         cell.nameLabel.text = user.name
         user.getPhoto({
             image in
             cell.avatarImageView.image = image
         })
-        cell.dateLabel.text = dateFormatter().stringFromDate(connections[indexPath.row].action.lastMessage)
-        
+        cell.dateLabel.text = lastMessageDateToString(connections[indexPath.row].action.lastMessage)
         // Show new message label
         if connections[indexPath.row].action.lastMessage.timeIntervalSince1970 >= connections[indexPath.row].action.userLastSeenAt.timeIntervalSince1970 {
             cell.newMessageLabel.hidden = false
@@ -88,8 +81,11 @@ class FinderMessagesViewController: UIViewController, UITableViewDataSource, UIT
             // Pass connectionID to chatViewController and set its title to user's name
             let connection = connections[indexPath.row]
             vc.connectionID = connection.action.id
+            vc.userAction = connection.action.userAction
+            vc.trainerAction = connection.action.trainerAction
+            vc.userType = "user"
             vc.title = connection.user.name
-            vc.recipient = connection.user
+//            vc.recipient = connection.user
             navigationController?.pushViewController(vc, animated: true)
         }
         tableView.deselectRowAtIndexPath(indexPath, animated: true)

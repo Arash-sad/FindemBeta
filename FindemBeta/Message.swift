@@ -71,6 +71,39 @@ func fetchMessages(connectionID: String, callback: ([Message]) ->()) {
     })
 }
 
+// Remove all messages exist in a connection
 func removeAllMessages(connectionID: String) {
     ref.childByAppendingPath(connectionID).removeValue()
 }
+
+// Helper function-compare date with today, return String(different formats)
+func lastMessageDateToString(date:NSDate) -> String {
+    let today = NSDate()
+    let lastMessageDate = date
+    let calendar = NSCalendar.currentCalendar()
+    let unit:NSCalendarUnit = .Day
+    let components = calendar.components(unit, fromDate: lastMessageDate, toDate: today, options: [])
+    let firstDateComponents = calendar.component(unit, fromDate: today)
+    let secondDateComponents = calendar.component(unit, fromDate: lastMessageDate)
+    var dateString = ""
+    let dateFormatter = NSDateFormatter()
+    let todaydateFormat = "h:mm a" // time of the day
+    let lastWeekdateForm = "cccc" //day of the week
+    let NormaldateFormat = "dd/MM/yyyy"
+    dateFormatter.timeZone = NSTimeZone()
+    if components.day == 0 && firstDateComponents == secondDateComponents{
+        dateFormatter.dateFormat = todaydateFormat
+    }
+    else if components.day >= 0 && components.day < 7 && firstDateComponents != secondDateComponents {
+        dateFormatter.dateFormat = lastWeekdateForm
+    }
+    else {
+        dateFormatter.dateFormat = NormaldateFormat
+    }
+    
+    dateString = dateFormatter.stringFromDate(date)
+    
+    return dateString
+}
+
+

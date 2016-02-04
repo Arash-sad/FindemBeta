@@ -31,6 +31,7 @@ class TrainerProfileViewController: UIViewController, UITableViewDelegate, UITab
     var yearsExperience: Int = 0
     var achievements: String = ""
     var sessionTimes:String = "ABC"
+    var instagramUserId:String = ""
     
     let firstCellIdentifier = "firstProfileCell"
     let secondCellIdentifier = "secondProfileCell"
@@ -39,11 +40,18 @@ class TrainerProfileViewController: UIViewController, UITableViewDelegate, UITab
     let fifthCellIdentifier = "fifthProfileCell"
     let sixthCellIdentifier = "sixthProfileCell"
     let sevenththCellIdentifier = "seventhProfileCell"
+    let eighthCellIdentifier = "eighthProfileCell"
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        // Add Right barButtonItem (Edit/Done)
+        
+        let rightBarButton = UIBarButtonItem(title: "Edit", style: UIBarButtonItemStyle.Plain, target: self, action: "editAction")
+        
+        self.navigationItem.setRightBarButtonItem(rightBarButton, animated: true)
         
         // Disable the tableView selection highlighting
         tableView.allowsSelection = false
@@ -67,6 +75,7 @@ class TrainerProfileViewController: UIViewController, UITableViewDelegate, UITab
         self.yearsExperience = (currentTrainer()?.yearsExperience)!
         self.achievements = (currentTrainer()?.achievements)!
         self.sessionTimes = (currentTrainer()?.sessionTimes)!
+        self.instagramUserId = (currentTrainer()?.instagramUserId)!
     }
 
     override func didReceiveMemoryWarning() {
@@ -74,22 +83,24 @@ class TrainerProfileViewController: UIViewController, UITableViewDelegate, UITab
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func editBarButtonItem(sender: UIBarButtonItem) {
+    // RightBarButtonItem Action
+    func editAction() {
         if editButtonEnabled {
             editButtonEnabled = !editButtonEnabled
-            self.navigationItem.rightBarButtonItem! = UIBarButtonItem(title: "Edit", style: UIBarButtonItemStyle.Done, target: self, action: "editBarButtonItem:")
+            self.navigationItem.rightBarButtonItem! = UIBarButtonItem(title: "Edit", style: UIBarButtonItemStyle.Done, target: self, action: "editAction")
             // Disable the tableView selection highlighting
             tableView.allowsSelection = false
             self.tableView.reloadData()
         }
         else {
             editButtonEnabled = !editButtonEnabled
-            self.navigationItem.rightBarButtonItem! = UIBarButtonItem(title: "Done", style: UIBarButtonItemStyle.Done, target: self, action: "editBarButtonItem:")
+            self.navigationItem.rightBarButtonItem! = UIBarButtonItem(title: "Done", style: UIBarButtonItemStyle.Done, target: self, action: "editAction")
             // Enable the tableView selection highlighting
             tableView.allowsSelection = true
             self.tableView.reloadData()
         }
     }
+    
     // MARK: - Navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "showGeneralDetail" {
@@ -142,6 +153,13 @@ class TrainerProfileViewController: UIViewController, UITableViewDelegate, UITab
             sessionVC?.delegate = self
             sessionVC?.sessionTimes = self.sessionTimes
         }
+        else if segue.identifier == "showSocialNetworks" {
+            let navVC = segue.destinationViewController as? UINavigationController
+            let socialVC = navVC!.viewControllers[0] as? TrainerSocialNetworkingViewController
+            
+            socialVC?.delegate = self
+            socialVC?.instagramId = self.instagramUserId
+        }
     }
     
     // MARK: - UITableViewDataSource
@@ -150,7 +168,7 @@ class TrainerProfileViewController: UIViewController, UITableViewDelegate, UITab
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 7
+        return 8
     }
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -260,14 +278,16 @@ class TrainerProfileViewController: UIViewController, UITableViewDelegate, UITab
             }
             cell.achievementsTextView.text = self.achievements
             if editButtonEnabled {
+                cell.achievementsTextView.userInteractionEnabled = false
                 cell.accessoryType = UITableViewCellAccessoryType.DetailDisclosureButton
             }
             else {
+                cell.achievementsTextView.userInteractionEnabled = true
                 cell.accessoryType = UITableViewCellAccessoryType.None
             }
             return cell
         }
-        else {
+        else if indexPath.row == 6 {
             let cell = tableView.dequeueReusableCellWithIdentifier(self.sevenththCellIdentifier, forIndexPath: indexPath) as! SeventhTableViewCell
             if sessionTimes.uppercaseString.characters.contains("A") {
                 cell.morningsWD.textColor = UIColor.blackColor()
@@ -313,6 +333,17 @@ class TrainerProfileViewController: UIViewController, UITableViewDelegate, UITab
             }
             return cell
         }
+        else {
+            let cell = tableView.dequeueReusableCellWithIdentifier(self.eighthCellIdentifier, forIndexPath: indexPath) as! EighthTableViewCell
+            cell.instagramIdLabel.text = self.instagramUserId
+            if editButtonEnabled {
+                cell.accessoryType = UITableViewCellAccessoryType.DetailDisclosureButton
+            }
+            else {
+                cell.accessoryType = UITableViewCellAccessoryType.None
+            }
+            return cell
+        }
         
     }
     
@@ -340,6 +371,9 @@ class TrainerProfileViewController: UIViewController, UITableViewDelegate, UITab
             else if indexPath.row == 6 {
                 performSegueWithIdentifier("showSessionTimes", sender: nil)
             }
+            else if indexPath.row == 7 {
+                performSegueWithIdentifier("showSocialNetworks", sender: nil)
+            }
         }
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
@@ -365,21 +399,16 @@ class TrainerProfileViewController: UIViewController, UITableViewDelegate, UITab
 //        else if indexPath.row == 5 {
 //            return 150.0
 //        }
+//        else if indexPath.row == 6 {
+//            return 150.0
+//        }
+//        else if indexPath.row == 7 {
+//            return 150.0
+//        }
 //        else {
 //            return 70.0
 //        }
     }
-    
-//    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-//        if section == 0 {
-//            return "General Info"
-//        }
-//        else if section == 1 {
-//            return "Types of Training"
-//        }
-//        else {
-//            return "Qualifications"
-//    }
     
     // MARK: - PickerView
     
@@ -480,4 +509,11 @@ extension TrainerProfileViewController: TrainerSessionTimesViewControllerDelegat
     }
 }
 
+//MARK: - TrainerSocialNetworkingViewControllerDelegate
+extension TrainerProfileViewController: TrainerSocialNetworkingViewControllerDelegate {
+    func saveInstagramUserId(instagramId: String) {
+        self.instagramUserId = instagramId
+        tableView.reloadData()
+    }
+}
 

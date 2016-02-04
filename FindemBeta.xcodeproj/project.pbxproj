@@ -47,6 +47,8 @@
 		5BEBB6811BF1911500B60CF2 /* TrainerTrainingTypesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BEBB6801BF1911500B60CF2 /* TrainerTrainingTypesViewController.swift */; };
 		5BEBB6831BF1943100B60CF2 /* TrainingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BEBB6821BF1943100B60CF2 /* TrainingTableViewCell.swift */; };
 		5BED7B071C1E7B140015B38D /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BED7B061C1E7B140015B38D /* ChatViewController.swift */; };
+		5BED7D871C62C0FC00CFF9B3 /* EighthTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BED7D861C62C0FC00CFF9B3 /* EighthTableViewCell.swift */; };
+		5BED7D891C62CF0900CFF9B3 /* TrainerSocialNetworkingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BED7D881C62CF0900CFF9B3 /* TrainerSocialNetworkingViewController.swift */; };
 		5BEDB38E1C39D442005A80E7 /* SlidingMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5BEDB38D1C39D442005A80E7 /* SlidingMenu.xib */; };
 		5BEDB3901C39D543005A80E7 /* FinderSlidingMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BEDB38F1C39D543005A80E7 /* FinderSlidingMenu.swift */; };
 		5BEE24C01BF99EC500BBC10E /* FourthTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BEE24BF1BF99EC500BBC10E /* FourthTableViewCell.swift */; };
@@ -124,6 +126,8 @@
 		5BEBB6821BF1943100B60CF2 /* TrainingTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainingTableViewCell.swift; sourceTree = "<group>"; };
 		5BED451A1C1FC5470077E80F /* Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
 		5BED7B061C1E7B140015B38D /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		5BED7D861C62C0FC00CFF9B3 /* EighthTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EighthTableViewCell.swift; sourceTree = "<group>"; };
+		5BED7D881C62CF0900CFF9B3 /* TrainerSocialNetworkingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainerSocialNetworkingViewController.swift; sourceTree = "<group>"; };
 		5BEDB38D1C39D442005A80E7 /* SlidingMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SlidingMenu.xib; sourceTree = "<group>"; };
 		5BEDB38F1C39D543005A80E7 /* FinderSlidingMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FinderSlidingMenu.swift; sourceTree = "<group>"; };
 		5BEE24BF1BF99EC500BBC10E /* FourthTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FourthTableViewCell.swift; sourceTree = "<group>"; };
@@ -309,6 +313,7 @@
 				5BE6E5421BFBED03001BA5F7 /* FifthTableViewCell.swift */,
 				5BE0A0D81BFD37E100F5A3D4 /* SixthTableViewCell.swift */,
 				5BF325471C475ED2002C096A /* SeventhTableViewCell.swift */,
+				5BED7D861C62C0FC00CFF9B3 /* EighthTableViewCell.swift */,
 				5BEBB6821BF1943100B60CF2 /* TrainingTableViewCell.swift */,
 				5BE9625F1BF492EC00E9C2FD /* QualificationsTableViewCell.swift */,
 				5BE879E11C068C0F00D783D0 /* SearchResultTableViewCell.swift */,
@@ -331,6 +336,7 @@
 				5BE6E5401BFBDE23001BA5F7 /* TrainerDescriptionViewController.swift */,
 				5BE0A0D61BFD367B00F5A3D4 /* TrainerOtherViewController.swift */,
 				5BF3254B1C477997002C096A /* TrainerSessionTimesViewController.swift */,
+				5BED7D881C62CF0900CFF9B3 /* TrainerSocialNetworkingViewController.swift */,
 				5BF0071A1C1A967E00E3961A /* TrainerMessagesViewController.swift */,
 			);
 			name = Trainer;
@@ -533,6 +539,7 @@
 				5BED7B071C1E7B140015B38D /* ChatViewController.swift in Sources */,
 				5BF98D071BF05FF0008DA586 /* TrainerProfileViewController.swift in Sources */,
 				5BEE24C01BF99EC500BBC10E /* FourthTableViewCell.swift in Sources */,
+				5BED7D871C62C0FC00CFF9B3 /* EighthTableViewCell.swift in Sources */,
 				5BF138281C3C7BC20060E57A /* FinderMessagesViewController.swift in Sources */,
 				5BDD9DB11C0FC364006CF0BF /* FinderRefineSearchViewController.swift in Sources */,
 				5BF221371C18525C001ADCDE /* FinderTrainerProfileViewController.swift in Sources */,
@@ -544,6 +551,7 @@
 				5BEDB3901C39D543005A80E7 /* FinderSlidingMenu.swift in Sources */,
 				5BEBB6811BF1911500B60CF2 /* TrainerTrainingTypesViewController.swift in Sources */,
 				5BF007191C1A667500E3961A /* Connection.swift in Sources */,
+				5BED7D891C62CF0900CFF9B3 /* TrainerSocialNetworkingViewController.swift in Sources */,
 				5BEE24C21BF9A7ED00BBC10E /* TrainerRegionViewController.swift in Sources */,
 				5BE962601BF492EC00E9C2FD /* QualificationsTableViewCell.swift in Sources */,
 				5BF98D011BF04F04008DA586 /* SecondTableViewCell.swift in Sources */,

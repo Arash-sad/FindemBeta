@@ -32,8 +32,10 @@ class TrainerProfileViewController: UIViewController, UITableViewDelegate, UITab
     var achievements: String = ""
     var sessionTimes:String = "ABC"
     var instagramUserId:String = ""
+    var clubName = ""
     
     let firstCellIdentifier = "firstProfileCell"
+    let clubProfileCell = "clubProfileCell"
     let secondCellIdentifier = "secondProfileCell"
     let thirdCellIdentifier = "thirdProfileCell"
     let fourthCellIdentifier = "fourthProfileCell"
@@ -76,6 +78,7 @@ class TrainerProfileViewController: UIViewController, UITableViewDelegate, UITab
         self.achievements = (currentTrainer()?.achievements)!
         self.sessionTimes = (currentTrainer()?.sessionTimes)!
         self.instagramUserId = (currentTrainer()?.instagramUserId)!
+        self.clubName = (currentTrainer()?.clubName)!
     }
 
     override func didReceiveMemoryWarning() {
@@ -123,6 +126,13 @@ class TrainerProfileViewController: UIViewController, UITableViewDelegate, UITab
             
             qualificationsVC?.qualificationsArray = self.qualificationsArray
         }
+        else if segue.identifier == "showClubDetails"{
+            let navVc = segue.destinationViewController as? UINavigationController
+            let clubVC = navVc!.viewControllers[0] as? TrainerClubViewController
+            
+            clubVC?.delegate = self
+            clubVC?.clubName = self.clubName
+        }
         else if segue.identifier == "showRegionDetails" {
             let navVC = segue.destinationViewController as? UINavigationController
             let regionVC = navVC!.viewControllers[0] as? TrainerRegionViewController
@@ -168,7 +178,7 @@ class TrainerProfileViewController: UIViewController, UITableViewDelegate, UITab
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 8
+        return 9
     }
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -189,6 +199,18 @@ class TrainerProfileViewController: UIViewController, UITableViewDelegate, UITab
             return cell
         }
         else if indexPath.row == 1 {
+            let cell = tableView.dequeueReusableCellWithIdentifier(self.clubProfileCell, forIndexPath: indexPath) as! ClubProfileTableViewCell
+            cell.clubLabel.text = self.clubName
+            if editButtonEnabled {
+                
+                cell.accessoryType = UITableViewCellAccessoryType.DetailDisclosureButton
+            }
+            else {
+                cell.accessoryType = UITableViewCellAccessoryType.None
+            }
+            return cell
+        }
+        else if indexPath.row == 2 {
             let cell = tableView.dequeueReusableCellWithIdentifier(self.secondCellIdentifier, forIndexPath: indexPath) as! SecondTableViewCell
             
             //MARK: load mapView and add annotation and circle overlay
@@ -223,7 +245,7 @@ class TrainerProfileViewController: UIViewController, UITableViewDelegate, UITab
             }
             return cell
         }
-        else if indexPath.row == 2 {
+        else if indexPath.row == 3 {
             let cell = tableView.dequeueReusableCellWithIdentifier(self.thirdCellIdentifier, forIndexPath: indexPath) as! ThirdTableViewCell
             cell.trainingTypesPickerView.reloadAllComponents()
             if editButtonEnabled {
@@ -236,7 +258,7 @@ class TrainerProfileViewController: UIViewController, UITableViewDelegate, UITab
             }
             return cell
         }
-        else if indexPath.row == 3 {
+        else if indexPath.row == 4 {
             let cell = tableView.dequeueReusableCellWithIdentifier(self.fourthCellIdentifier, forIndexPath: indexPath) as! FourthTableViewCell
             cell.qualificationsPickerView.reloadAllComponents()
             if editButtonEnabled {
@@ -249,7 +271,7 @@ class TrainerProfileViewController: UIViewController, UITableViewDelegate, UITab
             }
             return cell
         }
-        else if indexPath.row == 4 {
+        else if indexPath.row == 5 {
             let cell = tableView.dequeueReusableCellWithIdentifier(self.fifthCellIdentifier, forIndexPath: indexPath) as! FifthTableViewCell
             cell.shortDescriptionTextView.text = self.shortDescription
             cell.longDescriptionTextView.text = self.longDescription
@@ -265,7 +287,7 @@ class TrainerProfileViewController: UIViewController, UITableViewDelegate, UITab
             }
             return cell
         }
-        else if indexPath.row == 5 {
+        else if indexPath.row == 6 {
             let cell = tableView.dequeueReusableCellWithIdentifier(self.sixthCellIdentifier, forIndexPath: indexPath) as! SixthTableViewCell
             if self.yearsExperience == 0 {
                 cell.yearsLabel.text = "Less than a year"
@@ -287,7 +309,7 @@ class TrainerProfileViewController: UIViewController, UITableViewDelegate, UITab
             }
             return cell
         }
-        else if indexPath.row == 6 {
+        else if indexPath.row == 7 {
             let cell = tableView.dequeueReusableCellWithIdentifier(self.sevenththCellIdentifier, forIndexPath: indexPath) as! SeventhTableViewCell
             if sessionTimes.uppercaseString.characters.contains("A") {
                 cell.morningsWD.textColor = UIColor.blackColor()
@@ -354,24 +376,27 @@ class TrainerProfileViewController: UIViewController, UITableViewDelegate, UITab
                 performSegueWithIdentifier("showGeneralDetail", sender: nil)
             }
             else if indexPath.row == 1 {
-                performSegueWithIdentifier("showRegionDetails", sender: nil)
+                performSegueWithIdentifier("showClubDetails", sender: nil)
             }
             else if indexPath.row == 2 {
-                performSegueWithIdentifier("showTypesOfTraining", sender: nil)
+                performSegueWithIdentifier("showRegionDetails", sender: nil)
             }
             else if indexPath.row == 3 {
-                performSegueWithIdentifier("showQualifications", sender: nil)
+                performSegueWithIdentifier("showTypesOfTraining", sender: nil)
             }
             else if indexPath.row == 4 {
-                performSegueWithIdentifier("showDescription", sender: nil)
+                performSegueWithIdentifier("showQualifications", sender: nil)
             }
             else if indexPath.row == 5 {
-                performSegueWithIdentifier("showOtherDetails", sender: nil)
+                performSegueWithIdentifier("showDescription", sender: nil)
             }
             else if indexPath.row == 6 {
-                performSegueWithIdentifier("showSessionTimes", sender: nil)
+                performSegueWithIdentifier("showOtherDetails", sender: nil)
             }
             else if indexPath.row == 7 {
+                performSegueWithIdentifier("showSessionTimes", sender: nil)
+            }
+            else if indexPath.row == 8 {
                 performSegueWithIdentifier("showSocialNetworks", sender: nil)
             }
         }
@@ -513,6 +538,14 @@ extension TrainerProfileViewController: TrainerSessionTimesViewControllerDelegat
 extension TrainerProfileViewController: TrainerSocialNetworkingViewControllerDelegate {
     func saveInstagramUserId(instagramId: String) {
         self.instagramUserId = instagramId
+        tableView.reloadData()
+    }
+}
+
+//MARK: - TrainerClubViewControllerDelegate
+extension TrainerProfileViewController: TrainerClubViewControllerDelegate {
+    func updateClubName(name: String) {
+        self.clubName = name
         tableView.reloadData()
     }
 }

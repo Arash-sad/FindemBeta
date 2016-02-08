@@ -34,7 +34,8 @@ class TrainerHomeViewController: UIViewController {
     @IBAction func MessagesButtonPressed(sender: UIButton) {
         performSegueWithIdentifier("showMessagesSegue", sender: nil)
     }
-    @IBAction func settingsButtonPressed(sender: UIButton) {
+    @IBAction func subscriptionButtonPressed(sender: UIButton) {
+        performSegueWithIdentifier("showSubscription", sender: nil)
     }
     
 }

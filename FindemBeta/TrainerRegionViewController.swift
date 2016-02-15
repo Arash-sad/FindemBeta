@@ -35,6 +35,9 @@ class TrainerRegionViewController: UIViewController, UIPickerViewDataSource, UIP
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        // hide keyboard if tap on screen
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: "handleTapGestureRecognizer:")
+        view.addGestureRecognizer(tapGestureRecognizer)
         
         //Set PickerView Values (Distance between 0 - 50KM)
         for dis in 0...50 {
@@ -141,6 +144,14 @@ class TrainerRegionViewController: UIViewController, UIPickerViewDataSource, UIP
         let alert = UIAlertController(title: messageTitle, message: message, preferredStyle: UIAlertControllerStyle.Alert)
         alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
         self.presentViewController(alert, animated: true, completion: nil)
+    }
+    
+    // MARK: Custom Tap method implementation
+    func handleTapGestureRecognizer(tapGestureRecognizer: UITapGestureRecognizer) {
+        streetTextField.resignFirstResponder()
+        cityTextField.resignFirstResponder()
+        stateTextField.resignFirstResponder()
+        postalCodeTextField.resignFirstResponder()
     }
     
 }

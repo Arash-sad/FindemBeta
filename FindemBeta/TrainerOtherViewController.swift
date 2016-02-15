@@ -26,6 +26,12 @@ class TrainerOtherViewController: UIViewController, UITextViewDelegate {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        // hide keyboard if tap on screen
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: "handleTapGestureRecognizer:")
+        view.addGestureRecognizer(tapGestureRecognizer)
+
+        
         if self.years == 0 {
             yearsLabel.text = "Less than a year"
         }
@@ -109,6 +115,11 @@ class TrainerOtherViewController: UIViewController, UITextViewDelegate {
         
         return achievementsTextView.text.characters.count + (text.characters.count - range.length)
             <= maxLength
+    }
+    
+    // MARK: Custom Tap method implementation
+    func handleTapGestureRecognizer(tapGestureRecognizer: UITapGestureRecognizer) {
+        achievementsTextView.resignFirstResponder()
     }
 
 }

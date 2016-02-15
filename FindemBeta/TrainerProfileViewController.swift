@@ -22,7 +22,6 @@ class TrainerProfileViewController: UIViewController, UITableViewDelegate, UITab
     var gender: String?
     var trainingArray: [String] = []
     var qualificationsArray:[String] = []
-//    var coords: PFGeoPoint?
     var latitude: CLLocationDegrees?
     var longitude: CLLocationDegrees?
     var distance: Double = 10.0
@@ -33,6 +32,10 @@ class TrainerProfileViewController: UIViewController, UITableViewDelegate, UITab
     var sessionTimes:String = "ABC"
     var instagramUserId:String = ""
     var clubName = ""
+    var clubLatitude: Double?
+    var clubLongitude: Double?
+    let defaultLatitude = 38.018312
+    let defaultLongitude = 51.412430
     
     let firstCellIdentifier = "firstProfileCell"
     let clubProfileCell = "clubProfileCell"
@@ -48,6 +51,10 @@ class TrainerProfileViewController: UIViewController, UITableViewDelegate, UITab
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        print("VIEWDIDLOAD:")
+        print(self.distance)
+        print(self.clubLatitude)
+        print(self.clubLongitude)
         
         // Add Right barButtonItem (Edit/Done)
         
@@ -79,6 +86,14 @@ class TrainerProfileViewController: UIViewController, UITableViewDelegate, UITab
         self.sessionTimes = (currentTrainer()?.sessionTimes)!
         self.instagramUserId = (currentTrainer()?.instagramUserId)!
         self.clubName = (currentTrainer()?.clubName)!
+        self.clubLatitude = (currentTrainer()?.clubLatitude)!
+        self.clubLongitude = (currentTrainer()?.clubLongitude)!
+
+        print("******")
+        print((currentTrainer()?.clubLatitude)!)
+        print((currentTrainer()?.clubLatitude)!)
+        print(self.clubLatitude)
+        print(self.clubLatitude)
     }
 
     override func didReceiveMemoryWarning() {
@@ -215,6 +230,7 @@ class TrainerProfileViewController: UIViewController, UITableViewDelegate, UITab
             
             //MARK: load mapView and add annotation and circle overlay
             let location = CLLocationCoordinate2DMake(latitude!, longitude!)
+            let clubLocation = CLLocationCoordinate2DMake(self.clubLatitude!, self.clubLongitude!)
             
             cell.mapView.delegate = self
             
@@ -224,19 +240,43 @@ class TrainerProfileViewController: UIViewController, UITableViewDelegate, UITab
             let annotationToRemove = cell.mapView.annotations
             cell.mapView.removeAnnotations(annotationToRemove)
             
-            //Draw a circle of 100m radius around user location
-            let newCircle = MKCircle(centerCoordinate: location, radius: (self.distance * 1000) as CLLocationDistance)
-            
-            let span = MKCoordinateSpanMake(0.02, 0.02)
-            let region = MKCoordinateRegion(center: location, span: span)
-            cell.mapView.setRegion(region, animated: true)
+            if self.latitude != defaultLatitude && self.longitude != defaultLongitude {
+                let span = MKCoordinateSpanMake(0.03, 0.03)
+                let region = MKCoordinateRegion(center: location, span: span)
+                cell.mapView.setRegion(region, animated: true)
+            }
+            else if self.clubLatitude != defaultLatitude && self.clubLongitude != defaultLongitude {
+                let span = MKCoordinateSpanMake(0.03, 0.03)
+                let region = MKCoordinateRegion(center: clubLocation, span: span)
+                cell.mapView.setRegion(region, animated: true)
+            }
+            else {
+                print("Haven't set any address!!")
+            }
             
             let annotation = MKPointAnnotation()
             annotation.coordinate = location
             annotation.title = self.name
             annotation.subtitle = "Mobile PT"
-            cell.mapView.addAnnotation(annotation)
-            cell.mapView.addOverlay(newCircle)
+            
+            let clubAnnotation = MKPointAnnotation()
+            clubAnnotation.coordinate = clubLocation
+            clubAnnotation.title = self.name
+            clubAnnotation.subtitle = self.clubName
+            
+            //Draw a circle around user location
+            let newCircle = MKCircle(centerCoordinate: location, radius: (self.distance * 1000) as CLLocationDistance)
+            
+            if self.latitude != defaultLatitude && self.longitude != defaultLongitude {
+                cell.mapView.addAnnotation(annotation)
+                cell.mapView.addOverlay(newCircle)
+            }
+            
+            if self.clubLatitude != defaultLatitude && self.clubLongitude != defaultLongitude {
+                cell.mapView.addAnnotation(clubAnnotation)
+            }
+//            cell.mapView.showAnnotations([annotation,clubAnnotation], animated: true)
+            
             if editButtonEnabled {
                 cell.accessoryType = UITableViewCellAccessoryType.DetailDisclosureButton
             }
@@ -544,8 +584,10 @@ extension TrainerProfileViewController: TrainerSocialNetworkingViewControllerDel
 
 //MARK: - TrainerClubViewControllerDelegate
 extension TrainerProfileViewController: TrainerClubViewControllerDelegate {
-    func updateClubName(name: String) {
+    func updateNameAndLocation(latitude: Double, longitude: Double, name: String) {
         self.clubName = name
+        self.clubLatitude = latitude
+        self.clubLongitude = longitude
         tableView.reloadData()
     }
 }

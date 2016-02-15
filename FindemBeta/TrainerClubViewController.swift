@@ -10,22 +10,31 @@ import UIKit
 import Parse
 
 protocol TrainerClubViewControllerDelegate {
-    func updateClubName(name: String)
+    func updateNameAndLocation(latitude: Double, longitude: Double, name: String)
 }
 
 class TrainerClubViewController: UIViewController {
 
     @IBOutlet weak var clubNameTextField: UITextField!
+    @IBOutlet weak var streetTextField: UITextField!
+    @IBOutlet weak var cityTextField: UITextField!
+    @IBOutlet weak var stateTextField: UITextField!
+    @IBOutlet weak var postalCodeTextField: UITextField!
     
     var clubName: String?
-//    var latitude: CLLocationDegrees?
-//    var longitude: CLLocationDegrees?
+    var latitude: CLLocationDegrees?
+    var longitude: CLLocationDegrees?
+    
     var delegate: TrainerClubViewControllerDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        // hide keyboard if tap on screen
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: "handleTapGestureRecognizer:")
+        view.addGestureRecognizer(tapGestureRecognizer)
+        
         if let name = clubName {
             self.clubNameTextField.text = name
         }
@@ -44,23 +53,44 @@ class TrainerClubViewController: UIViewController {
         
         self.clubName = self.clubNameTextField.text!
         
-        if self.clubNameTextField.text?.isEmptyOrWhitespace() == false{
-            if let name = clubName {
-                print(name)
-                //MARK: Save Description to Parse
-                let user = PFUser.currentUser()
-                user!.setObject(self.clubName!, forKey: "clubName")
-                user!.saveInBackgroundWithBlock(nil)
-            }
-            
-            if let delegate = self.delegate {
-                delegate.updateClubName(clubName!)
-            }
-            
-            dismissViewControllerAnimated(true, completion: nil)
+        let geoCoder = CLGeocoder()
+        let addressString = "\(streetTextField.text) \(cityTextField.text) \(stateTextField.text) \(postalCodeTextField.text)"
+        
+        if ((streetTextField.text?.isEmptyOrWhitespace() == true) || (cityTextField.text?.isEmptyOrWhitespace() == true) || (stateTextField.text?.isEmptyOrWhitespace() == true) || (postalCodeTextField?.text?.isEmptyOrWhitespace() == true) || (self.clubNameTextField.text?.isEmptyOrWhitespace() == true)) {
+            alert("Missing Details", message: "Please complete all the sections")
         }
         else {
-            alert("Empty Club Name", message: "Please enter the club name.")
+            //MARK: Convert Address String to Latitude & Longitude
+            geoCoder.geocodeAddressString(addressString, completionHandler:
+                {(placemarks: [CLPlacemark]?, error: NSError?) in
+                    
+                    if (error != nil) {
+                        print("Geocode failed with error: \(error!.localizedDescription)")
+                        self.alert("Wrong Address", message: "Please enter the correct address")
+                    } else if placemarks!.count > 0 {
+                        let placemark = placemarks![0]
+                        let location = placemark.location
+                        let coordinate = location!.coordinate
+                        
+                        self.latitude = coordinate.latitude
+                        self.longitude = coordinate.longitude
+                        print(self.latitude)
+                        print(self.longitude)
+                        
+                        if let delegate = self.delegate {
+                            delegate.updateNameAndLocation(self.latitude!, longitude: self.longitude!, name: self.clubName!)
+//                            delegate.updateClubName(self.clubName!)
+                        }
+                        //MARK: Save clubName, latitude, and longitude to Parse
+                        let user = PFUser.currentUser()
+                        user!.setObject(self.clubName!, forKey: "clubName")
+                        user!.setObject(Double(self.latitude!), forKey: "clubLatitude")
+                        user!.setObject(Double(self.longitude!), forKey: "clubLongitude")
+                        user!.saveInBackgroundWithBlock(nil)
+                        
+                        self.dismissViewControllerAnimated(true, completion: nil)
+                    }
+            })
         }
     }
 
@@ -69,6 +99,15 @@ class TrainerClubViewController: UIViewController {
         let alert = UIAlertController(title: messageTitle, message: message, preferredStyle: UIAlertControllerStyle.Alert)
         alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
         self.presentViewController(alert, animated: true, completion: nil)
+    }
+    
+    // MARK: Custom Tap method implementation
+    func handleTapGestureRecognizer(tapGestureRecognizer: UITapGestureRecognizer) {
+        clubNameTextField.resignFirstResponder()
+        streetTextField.resignFirstResponder()
+        cityTextField.resignFirstResponder()
+        stateTextField.resignFirstResponder()
+        postalCodeTextField.resignFirstResponder()
     }
     
 }

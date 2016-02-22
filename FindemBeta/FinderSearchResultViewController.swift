@@ -17,12 +17,15 @@ class FinderSearchResultViewController: UIViewController {
     var trainingType = ""
     var refinedGender = "any"
     var currentLocation = PFGeoPoint?()
+    var trainerType = "club"
+    var clubDistance = 1.5
     
     @IBOutlet weak var tableView: UITableView!
 
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        
+        print(clubDistance)
+        print(trainerType)
         if trainerArray == [] {
             // Activity Indicator
             let loadView = UIView.loadFromNibNamed("LoadView")
@@ -31,43 +34,70 @@ class FinderSearchResultViewController: UIViewController {
             
             let query = PFUser.query()
             query!.whereKey("trainingTypes", equalTo:trainingType)
-            query!.whereKey("location", nearGeoPoint: self.currentLocation!, withinKilometers: 50)
-            query!.findObjectsInBackgroundWithBlock {
-                (objects: [PFObject]?, error: NSError?) -> () in
-                
-                if error == nil {
-                    // The find succeeded.
-                    print("Successfully retrieved \(objects!.count) users.")
-                    // Do something with the found objects
-                    
-//                    self.trainerArray = objects as? [PFUser] ?? []
-//                    self.refinedtrainerArray = self.trainerArray
-                    
-                    if let objects = objects {
-                        for object in objects {
-                            //Check trainers who cover user's current location
-                            let location = object.objectForKey("location") as? PFGeoPoint
-                            let distance = object.objectForKey("distance") as? Double
-                            let distanceBetween = location?.distanceInKilometersTo(self.currentLocation)
-                            if distance >= distanceBetween {
-                                let trainer = object as? PFUser
-                                self.trainerArray.append(trainer!)
+            // Different queries for mobile and club trainers
+            if trainerType == "club" {
+                query!.findObjectsInBackgroundWithBlock {
+                    (objects: [PFObject]?, error: NSError?) -> () in
+                    if error == nil {
+                        // The find succeeded.
+                        print("Successfully retrieved \(objects!.count) users.")
+                        // Do something with the found objects
+                        if let objects = objects {
+                            for object in objects {
+                                //Check trainers who cover user's current location
+                                let lat = object.objectForKey("clubLatitude") as? Double ?? 38.018312
+                                let long =  object.objectForKey("clubLongitude") as? Double ?? 51.412430
+                                let location = PFGeoPoint(latitude: lat, longitude: long)
+                                let distanceBetween = location.distanceInKilometersTo(self.currentLocation)
+                                if self.clubDistance >= distanceBetween {
+                                    let trainer = object as? PFUser
+                                    self.trainerArray.append(trainer!)
+                                }
                             }
-                            
+                            self.refinedtrainerArray = self.trainerArray
                         }
-                        self.refinedtrainerArray = self.trainerArray
                     }
+                    else {
+                        // Log details of the failure
+                        print("Error: \(error!) \(error!.userInfo)")
+                    }
+                    self.tableView.reloadData()
+                    self.animateTable()
+                    loadView!.removeFromSuperview()
                 }
-                else {
-                    // Log details of the failure
-                    print("Error: \(error!) \(error!.userInfo)")
+            }
+            else if trainerType == "mobile" {
+                query!.whereKey("location", nearGeoPoint: self.currentLocation!, withinKilometers: 50)
+                query!.findObjectsInBackgroundWithBlock {
+                    (objects: [PFObject]?, error: NSError?) -> () in
+                    if error == nil {
+                        // The find succeeded.
+                        print("Successfully retrieved \(objects!.count) users.")
+                        // Do something with the found objects
+                        if let objects = objects {
+                            for object in objects {
+                                //Check trainers who cover user's current location
+                                let location = object.objectForKey("location") as? PFGeoPoint
+                                let distance = object.objectForKey("distance") as? Double
+                                let distanceBetween = location?.distanceInKilometersTo(self.currentLocation)
+                                if distance >= distanceBetween {
+                                    let trainer = object as? PFUser
+                                    self.trainerArray.append(trainer!)
+                                }
+                            }
+                            self.refinedtrainerArray = self.trainerArray
+                        }
+                    }
+                    else {
+                        // Log details of the failure
+                        print("Error: \(error!) \(error!.userInfo)")
+                    }
+                    self.tableView.reloadData()
+                    self.animateTable()
+                    loadView!.removeFromSuperview()
                 }
-                self.tableView.reloadData()
-                self.animateTable()
-                loadView!.removeFromSuperview()
             }
         }
-        
     }
     
     override func viewDidLoad() {

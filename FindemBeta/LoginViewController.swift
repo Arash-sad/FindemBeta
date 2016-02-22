@@ -37,6 +37,9 @@ class LoginViewController: UIViewController {
             else if user!.isNew {
                 print("User signed up and logged in through Facebook!")
                 
+                // Set Expiration Date (used in In-App Purchases)
+                user!.setObject(NSDate(), forKey: "expirationDate")
+                
                 let fbRequest = FBSDKGraphRequest(graphPath: "me", parameters: ["fields":"first_name,gender,picture.type(large)"])
                 fbRequest.startWithCompletionHandler({ (FBSDKGraphRequestConnection, result, error) -> Void in
                     

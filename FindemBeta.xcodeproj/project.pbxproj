@@ -55,6 +55,9 @@
 		5BEE24C21BF9A7ED00BBC10E /* TrainerRegionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BEE24C11BF9A7ED00BBC10E /* TrainerRegionViewController.swift */; };
 		5BEE43B01C682A9800AC5D9B /* ClubProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BEE43AF1C682A9800AC5D9B /* ClubProfileTableViewCell.swift */; };
 		5BEE43B21C682F2B00AC5D9B /* TrainerClubViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BEE43B11C682F2B00AC5D9B /* TrainerClubViewController.swift */; };
+		5BEE63911C7176EC003E89A6 /* FinderSelectTrainerTypeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BEE63901C7176EC003E89A6 /* FinderSelectTrainerTypeViewController.swift */; };
+		5BEE63931C73FC54003E89A6 /* TrainerInAppPurchaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BEE63921C73FC54003E89A6 /* TrainerInAppPurchaseViewController.swift */; };
+		5BEE63951C73FD14003E89A6 /* InAppPurchaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BEE63941C73FD14003E89A6 /* InAppPurchaseTableViewCell.swift */; };
 		5BF007171C1A45E200E3961A /* MessagesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF007161C1A45E200E3961A /* MessagesTableViewCell.swift */; };
 		5BF007191C1A667500E3961A /* Connection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF007181C1A667500E3961A /* Connection.swift */; };
 		5BF0071B1C1A967E00E3961A /* TrainerMessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF0071A1C1A967E00E3961A /* TrainerMessagesViewController.swift */; };
@@ -136,6 +139,9 @@
 		5BEE24C11BF9A7ED00BBC10E /* TrainerRegionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainerRegionViewController.swift; sourceTree = "<group>"; };
 		5BEE43AF1C682A9800AC5D9B /* ClubProfileTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClubProfileTableViewCell.swift; sourceTree = "<group>"; };
 		5BEE43B11C682F2B00AC5D9B /* TrainerClubViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainerClubViewController.swift; sourceTree = "<group>"; };
+		5BEE63901C7176EC003E89A6 /* FinderSelectTrainerTypeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FinderSelectTrainerTypeViewController.swift; sourceTree = "<group>"; };
+		5BEE63921C73FC54003E89A6 /* TrainerInAppPurchaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainerInAppPurchaseViewController.swift; sourceTree = "<group>"; };
+		5BEE63941C73FD14003E89A6 /* InAppPurchaseTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InAppPurchaseTableViewCell.swift; sourceTree = "<group>"; };
 		5BF007161C1A45E200E3961A /* MessagesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesTableViewCell.swift; sourceTree = "<group>"; };
 		5BF007181C1A667500E3961A /* Connection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Connection.swift; sourceTree = "<group>"; };
 		5BF0071A1C1A967E00E3961A /* TrainerMessagesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainerMessagesViewController.swift; sourceTree = "<group>"; };
@@ -325,6 +331,7 @@
 				5BF437EB1C0E74CD00828023 /* SearchCollectionViewCell.swift */,
 				5BF007161C1A45E200E3961A /* MessagesTableViewCell.swift */,
 				5BF426FB1C2789B600271569 /* FinderMessageTableViewCell.swift */,
+				5BEE63941C73FD14003E89A6 /* InAppPurchaseTableViewCell.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -344,6 +351,7 @@
 				5BF3254B1C477997002C096A /* TrainerSessionTimesViewController.swift */,
 				5BED7D881C62CF0900CFF9B3 /* TrainerSocialNetworkingViewController.swift */,
 				5BF0071A1C1A967E00E3961A /* TrainerMessagesViewController.swift */,
+				5BEE63921C73FC54003E89A6 /* TrainerInAppPurchaseViewController.swift */,
 			);
 			name = Trainer;
 			sourceTree = "<group>";
@@ -351,6 +359,7 @@
 		5BE9F2451C03F53F00BDAE1F /* Finder */ = {
 			isa = PBXGroup;
 			children = (
+				5BEE63901C7176EC003E89A6 /* FinderSelectTrainerTypeViewController.swift */,
 				5BE9FFB31C02B7BA009A2E28 /* FinderSearchViewController.swift */,
 				5BE879DF1C068AA900D783D0 /* FinderSearchResultViewController.swift */,
 				5BF221361C18525C001ADCDE /* FinderTrainerProfileViewController.swift */,
@@ -529,10 +538,12 @@
 				5BF4176F1C20E30D00EC9AB5 /* Message.swift in Sources */,
 				5BE0A0D71BFD367B00F5A3D4 /* TrainerOtherViewController.swift in Sources */,
 				5BF98D031BF04F1D008DA586 /* ThirdTableViewCell.swift in Sources */,
+				5BEE63951C73FD14003E89A6 /* InAppPurchaseTableViewCell.swift in Sources */,
 				5BF426FC1C2789B600271569 /* FinderMessageTableViewCell.swift in Sources */,
 				5BE6E5431BFBED03001BA5F7 /* FifthTableViewCell.swift in Sources */,
 				5B41E92A1C06D23700FA1474 /* Trainer.swift in Sources */,
 				5BE879E01C068AA900D783D0 /* FinderSearchResultViewController.swift in Sources */,
+				5BEE63911C7176EC003E89A6 /* FinderSelectTrainerTypeViewController.swift in Sources */,
 				5BE879E21C068C0F00D783D0 /* SearchResultTableViewCell.swift in Sources */,
 				5BF0071B1C1A967E00E3961A /* TrainerMessagesViewController.swift in Sources */,
 				5BF437EC1C0E74CD00828023 /* SearchCollectionViewCell.swift in Sources */,
@@ -557,6 +568,7 @@
 				5BE868D91BE95F3D00A9B256 /* User.swift in Sources */,
 				5BEDB3901C39D543005A80E7 /* FinderSlidingMenu.swift in Sources */,
 				5BEBB6811BF1911500B60CF2 /* TrainerTrainingTypesViewController.swift in Sources */,
+				5BEE63931C73FC54003E89A6 /* TrainerInAppPurchaseViewController.swift in Sources */,
 				5BF007191C1A667500E3961A /* Connection.swift in Sources */,
 				5BED7D891C62CF0900CFF9B3 /* TrainerSocialNetworkingViewController.swift in Sources */,
 				5BEE43B01C682A9800AC5D9B /* ClubProfileTableViewCell.swift in Sources */,

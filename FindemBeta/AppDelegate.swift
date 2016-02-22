@@ -35,6 +35,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // [Optional] Track statistics around application opens.
         PFAnalytics.trackAppOpenedWithLaunchOptions(launchOptions)
         
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        var initialViewController:UIViewController
+        let defaults = NSUserDefaults.standardUserDefaults()
+        let appDirection = defaults.stringForKey("appDirection")
+        
+        if currentUser() != nil {
+            if appDirection == "Trainer" {
+                initialViewController = storyboard.instantiateViewControllerWithIdentifier("TrainerHomeNavController")
+                self.window?.rootViewController = initialViewController
+                self.window?.makeKeyAndVisible()
+            }
+            else if appDirection == "User" {
+                initialViewController = storyboard.instantiateViewControllerWithIdentifier("FinderHomeNavController")
+                self.window?.rootViewController = initialViewController
+                self.window?.makeKeyAndVisible()
+            }
+        }
+        
         return FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
     }
     

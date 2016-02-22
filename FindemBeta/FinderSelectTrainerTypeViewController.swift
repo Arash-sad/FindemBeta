@@ -28,6 +28,11 @@ class FinderSelectTrainerTypeViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        // Save preferred App direction(Trainer or User) to NSUserDefaults
+        let defaults = NSUserDefaults.standardUserDefaults()
+        defaults.setObject("User", forKey: "appDirection")
+        
         slidingMenu?.frame.size.width = self.view.frame.size.width
         slidingMenu?.center = CGPoint(x: self.view.frame.size.width/2, y: -menuHeight)
         view.addSubview(slidingMenu!)

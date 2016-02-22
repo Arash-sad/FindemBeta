@@ -20,16 +20,21 @@ class TrainerHomeViewController: UIViewController, TrainerInAppPurchaseViewContr
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        // Save preferred App direction(Trainer or User) to NSUserDefaults
+        let defaults = NSUserDefaults.standardUserDefaults()
+        defaults.setObject("Trainer", forKey: "appDirection")
+        
         expirationDate = PFUser.currentUser()?.objectForKey("expirationDate") as? NSDate ?? NSDate()
         
-        if NSDate().timeIntervalSince1970 >= expirationDate?.timeIntervalSince1970 {
-            self.profileButton.enabled = false
-            self.messageButton.enabled = false
-        }
-        else {
-            self.profileButton.enabled = true
-            self.messageButton.enabled = true
-        }
+//        if NSDate().timeIntervalSince1970 >= expirationDate?.timeIntervalSince1970 {
+//            self.profileButton.enabled = false
+//            self.messageButton.enabled = false
+//        }
+//        else {
+//            self.profileButton.enabled = true
+//            self.messageButton.enabled = true
+//        }
     }
 
     override func didReceiveMemoryWarning() {

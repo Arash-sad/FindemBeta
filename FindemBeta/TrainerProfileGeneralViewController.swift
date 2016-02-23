@@ -30,9 +30,13 @@ class TrainerProfileGeneralViewController: UIViewController, UITextFieldDelegate
         // Handle the text field’s user input through delegate callbacks.
         nameTextField.delegate = self
         
-        self.nameTextField.text = self.name
+        // Setup imageView
+        self.imageView.layer.borderColor = UIColor.whiteColor().CGColor
+        self.imageView.layer.borderWidth = 2.0
         self.imageView.layer.cornerRadius = self.imageView.frame.height / 2
         self.imageView.layer.masksToBounds = true
+        
+        self.nameTextField.text = self.name
         self.imageView.image = photo
         if gender! == "male" {
             segmentedControl.selectedSegmentIndex = 0

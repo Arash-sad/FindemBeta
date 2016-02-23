@@ -201,9 +201,13 @@ class TrainerProfileViewController: UIViewController, UITableViewDelegate, UITab
         if indexPath.row == 0 {
             let cell = tableView.dequeueReusableCellWithIdentifier(self.firstCellIdentifier, forIndexPath: indexPath) as! FirstTableViewCell
             
+            // Setup profileImageView
+            cell.profileImageView.layer.borderColor = UIColor.whiteColor().CGColor
+            cell.profileImageView.layer.borderWidth = 2.0
+            cell.profileImageView.layer.cornerRadius = cell.profileImageView.frame.height / 2
+            cell.profileImageView.layer.masksToBounds = true
+            
             cell.nameLabel.text = self.name
-//            cell.imageView?.layer.masksToBounds = true
-//            cell.imageView?.contentMode = .ScaleAspectFill
             cell.profileImageView?.image = self.photo
             if editButtonEnabled {
                 cell.accessoryType = UITableViewCellAccessoryType.DetailDisclosureButton

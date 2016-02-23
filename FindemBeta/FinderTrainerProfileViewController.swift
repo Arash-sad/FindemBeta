@@ -34,6 +34,14 @@ class FinderTrainerProfileViewController: UIViewController {
         self.scrollView.contentSize = self.containerView.frame.size
         
         // Do any additional setup after loading the view.
+        
+        // Setup profileImageView
+        self.profileImageView.layer.borderColor = UIColor.whiteColor().CGColor
+        self.profileImageView.layer.borderWidth = 2.0
+        self.profileImageView.layer.cornerRadius = self.profileImageView.frame.height / 2
+        self.profileImageView.layer.masksToBounds = true
+        
+        // Display trainer data 
         nameLabel.text = self.trainer!.objectForKey("firstName") as? String
         longDescriptionTextView.text = self.trainer!.objectForKey("longDescription") as? String
         self.trainingTypesArray = self.trainer!.objectForKey("trainingTypes") as? [String] ?? []

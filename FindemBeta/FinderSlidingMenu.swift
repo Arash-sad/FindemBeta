@@ -12,6 +12,12 @@ import Parse
 
 class FinderSlidingMenu: UIView {
     
+    @IBAction func homeButtonTapped(sender: UIButton) {
+        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("StartUpVC")
+        let transition = CATransition()
+        transition.type = kCATransitionFade
+        (UIApplication.sharedApplication().delegate as? AppDelegate)?.window?.setRootViewController(vc,transition: transition)
+    }
     
     @IBAction func searchButtonTapped(sender: UIButton) {
         let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("FinderHomeNavController")

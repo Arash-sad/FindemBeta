@@ -177,6 +177,12 @@ extension FinderSearchResultViewController: UITableViewDataSource, UITableViewDe
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("searchResultCell") as! SearchResultTableViewCell
         
+        // Setup profileImageView
+        cell.trainerImageView.layer.borderColor = UIColor.whiteColor().CGColor
+        cell.trainerImageView.layer.borderWidth = 2.0
+        cell.trainerImageView.layer.cornerRadius = cell.trainerImageView.frame.height / 2
+        cell.trainerImageView.layer.masksToBounds = true
+        
         cell.nameLabel.text = self.refinedtrainerArray[indexPath.row].objectForKey("firstName") as? String
         let imageFile = self.refinedtrainerArray[indexPath.row].objectForKey("picture") as? PFFile
         imageFile!.getDataInBackgroundWithBlock({

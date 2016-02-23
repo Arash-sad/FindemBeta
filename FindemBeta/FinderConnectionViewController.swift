@@ -21,6 +21,13 @@ class FinderConnectionViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        // Setup imageView
+        self.imageView.layer.borderColor = UIColor.whiteColor().CGColor
+        self.imageView.layer.borderWidth = 2.0
+        self.imageView.layer.cornerRadius = self.imageView.frame.height / 2
+        self.imageView.layer.masksToBounds = true
+        
         if let name = self.trainer!.objectForKey("firstName") as? String {
             if self.isConnected == true {
                 self.connectionLabel.text = "You and \(name) are already connected."

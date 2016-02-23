@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="14F1509" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9532" systemVersion="14F1605" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -26,8 +26,8 @@
                                     <action selector="logoutButtonTapped:" destination="iN0-l3-epB" eventType="touchUpInside" id="Yvh-sd-MaM"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7VT-z8-ffI">
-                                <rect key="frame" x="7" y="70" width="48" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7VT-z8-ffI">
+                                <rect key="frame" x="276" y="93" width="48" height="30"/>
                                 <state key="normal" title="Search">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -35,8 +35,17 @@
                                     <action selector="searchButtonTapped:" destination="iN0-l3-epB" eventType="touchUpInside" id="DsP-vQ-2x1"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3xH-T0-1u0">
-                                <rect key="frame" x="7" y="108" width="70" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yci-et-wcu">
+                                <rect key="frame" x="22" y="93" width="50" height="30"/>
+                                <state key="normal" title="Home">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="homeButtonTapped:" destination="iN0-l3-epB" eventType="touchUpInside" id="vhx-cY-Dns"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3xH-T0-1u0">
+                                <rect key="frame" x="510" y="93" width="70" height="30"/>
                                 <state key="normal" title="Messages">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -47,7 +56,13 @@
                         </subviews>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="X7V-Aq-dJB" secondAttribute="trailing" constant="8" id="Rz7-KK-P9k"/>
+                            <constraint firstAttribute="bottom" secondItem="3xH-T0-1u0" secondAttribute="bottom" constant="47" id="ZRy-a1-HMP"/>
+                            <constraint firstAttribute="bottom" secondItem="Yci-et-wcu" secondAttribute="bottom" constant="47" id="fzj-Pv-7V6"/>
+                            <constraint firstAttribute="bottom" secondItem="7VT-z8-ffI" secondAttribute="bottom" constant="47" id="tdw-4i-q8z"/>
+                            <constraint firstItem="7VT-z8-ffI" firstAttribute="centerX" secondItem="kLm-ul-yVC" secondAttribute="centerX" id="u75-q8-iBJ"/>
+                            <constraint firstAttribute="trailing" secondItem="3xH-T0-1u0" secondAttribute="trailing" constant="20" id="w2S-4j-KSz"/>
                             <constraint firstItem="X7V-Aq-dJB" firstAttribute="top" secondItem="kLm-ul-yVC" secondAttribute="top" constant="8" id="wC6-iI-wdj"/>
+                            <constraint firstItem="Yci-et-wcu" firstAttribute="leading" secondItem="kLm-ul-yVC" secondAttribute="leading" constant="22" id="ygU-tg-VRV"/>
                         </constraints>
                     </view>
                     <blurEffect style="dark"/>

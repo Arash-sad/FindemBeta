@@ -58,6 +58,7 @@
 		5BEE63911C7176EC003E89A6 /* FinderSelectTrainerTypeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BEE63901C7176EC003E89A6 /* FinderSelectTrainerTypeViewController.swift */; };
 		5BEE63931C73FC54003E89A6 /* TrainerInAppPurchaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BEE63921C73FC54003E89A6 /* TrainerInAppPurchaseViewController.swift */; };
 		5BEE63951C73FD14003E89A6 /* InAppPurchaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BEE63941C73FD14003E89A6 /* InAppPurchaseTableViewCell.swift */; };
+		5BEE63971C7BCA68003E89A6 /* FinderConnectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BEE63961C7BCA67003E89A6 /* FinderConnectionViewController.swift */; };
 		5BF007171C1A45E200E3961A /* MessagesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF007161C1A45E200E3961A /* MessagesTableViewCell.swift */; };
 		5BF007191C1A667500E3961A /* Connection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF007181C1A667500E3961A /* Connection.swift */; };
 		5BF0071B1C1A967E00E3961A /* TrainerMessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF0071A1C1A967E00E3961A /* TrainerMessagesViewController.swift */; };
@@ -142,6 +143,7 @@
 		5BEE63901C7176EC003E89A6 /* FinderSelectTrainerTypeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FinderSelectTrainerTypeViewController.swift; sourceTree = "<group>"; };
 		5BEE63921C73FC54003E89A6 /* TrainerInAppPurchaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainerInAppPurchaseViewController.swift; sourceTree = "<group>"; };
 		5BEE63941C73FD14003E89A6 /* InAppPurchaseTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InAppPurchaseTableViewCell.swift; sourceTree = "<group>"; };
+		5BEE63961C7BCA67003E89A6 /* FinderConnectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FinderConnectionViewController.swift; sourceTree = "<group>"; };
 		5BF007161C1A45E200E3961A /* MessagesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesTableViewCell.swift; sourceTree = "<group>"; };
 		5BF007181C1A667500E3961A /* Connection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Connection.swift; sourceTree = "<group>"; };
 		5BF0071A1C1A967E00E3961A /* TrainerMessagesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainerMessagesViewController.swift; sourceTree = "<group>"; };
@@ -365,6 +367,7 @@
 				5BF221361C18525C001ADCDE /* FinderTrainerProfileViewController.swift */,
 				5BDD9DB01C0FC364006CF0BF /* FinderRefineSearchViewController.swift */,
 				5BF138271C3C7BC20060E57A /* FinderMessagesViewController.swift */,
+				5BEE63961C7BCA67003E89A6 /* FinderConnectionViewController.swift */,
 				5BEDB38F1C39D543005A80E7 /* FinderSlidingMenu.swift */,
 			);
 			name = Finder;
@@ -540,6 +543,7 @@
 				5BF98D031BF04F1D008DA586 /* ThirdTableViewCell.swift in Sources */,
 				5BEE63951C73FD14003E89A6 /* InAppPurchaseTableViewCell.swift in Sources */,
 				5BF426FC1C2789B600271569 /* FinderMessageTableViewCell.swift in Sources */,
+				5BEE63971C7BCA68003E89A6 /* FinderConnectionViewController.swift in Sources */,
 				5BE6E5431BFBED03001BA5F7 /* FifthTableViewCell.swift in Sources */,
 				5B41E92A1C06D23700FA1474 /* Trainer.swift in Sources */,
 				5BE879E01C068AA900D783D0 /* FinderSearchResultViewController.swift in Sources */,

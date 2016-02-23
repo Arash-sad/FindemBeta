@@ -27,14 +27,14 @@ class TrainerHomeViewController: UIViewController, TrainerInAppPurchaseViewContr
         
         expirationDate = PFUser.currentUser()?.objectForKey("expirationDate") as? NSDate ?? NSDate()
         
-//        if NSDate().timeIntervalSince1970 >= expirationDate?.timeIntervalSince1970 {
-//            self.profileButton.enabled = false
-//            self.messageButton.enabled = false
-//        }
-//        else {
-//            self.profileButton.enabled = true
-//            self.messageButton.enabled = true
-//        }
+        if NSDate().timeIntervalSince1970 >= expirationDate?.timeIntervalSince1970 {
+            self.profileButton.enabled = false
+            self.messageButton.enabled = false
+        }
+        else {
+            self.profileButton.enabled = true
+            self.messageButton.enabled = true
+        }
     }
 
     override func didReceiveMemoryWarning() {

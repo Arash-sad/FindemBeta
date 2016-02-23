@@ -26,6 +26,7 @@ class FinderTrainerProfileViewController: UIViewController {
     var qualificationsArray: [String]?
     var trainingTypes = ""
     var qualifications = ""
+    var isConnected = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -74,32 +75,53 @@ class FinderTrainerProfileViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func chatBarButtonItemPressed(sender: UIBarButtonItem) {
+    // MARK: - Navigation
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "showConnection" {
+            let connectionVC = segue.destinationViewController as? FinderConnectionViewController
+            connectionVC?.trainer = self.trainer
+            connectionVC?.isConnected = self.isConnected
+        }
+    }
+    
+    @IBAction func connectBarButtonItemPressed(sender: UIBarButtonItem) {
         let query = PFQuery(className:"Action")
         query.whereKey("byUser", equalTo: currentUser()!.id)
         query.whereKey("toTrainer", equalTo: trainer!.objectId!)
-        query.getFirstObjectInBackgroundWithBlock {
-            (object: PFObject?, error: NSError?) -> Void in
-            if error != nil || object == nil {
-                saveConnection(self.trainer!)
-                print("They haven't connected yet!")
-            } else {
-                // The find succeeded.
-                if object!.objectForKey("userAction") as? String == "deleted" {
-                    object!.setValue("connected", forKey: "userAction")
-                    object!.setValue(NSDate(), forKey: "lastMessageAt")
-                    object!.saveInBackgroundWithBlock(nil)
+        query.findObjectsInBackgroundWithBlock({
+            (objects: [PFObject]?, error: NSError?) -> () in
+            if error == nil {
+                if objects?.count == 0 {
+                    saveConnection(self.trainer!)
+                    print("They haven't connected yet!")
+                    self.performSegueWithIdentifier("showConnection", sender: nil)
                 }
-                else if object!.objectForKey("userAction") as? String == "gameOver" {
-                    object!.setValue("blocked", forKey: "userAction")
-                    object!.setValue(NSDate(), forKey: "lastMessageAt")
-                    object!.saveInBackgroundWithBlock(nil)
-                }
-                else {
-                    print("They are already connected!")
+                else if objects?.count == 1 {
+                    for object in objects! {
+                        // The find succeeded.
+                        if object.objectForKey("userAction") as? String == "deleted" {
+                            object.setValue("connected", forKey: "userAction")
+                            object.setValue(NSDate(), forKey: "lastMessageAt")
+                            object.saveInBackgroundWithBlock(nil)
+                        }
+                        else if object.objectForKey("userAction") as? String == "gameOver" {
+                            object.setValue("blocked", forKey: "userAction")
+                            object.setValue(NSDate(), forKey: "lastMessageAt")
+                            object.saveInBackgroundWithBlock(nil)
+                        }
+                        else {
+                            print("They are already connected!")
+                            self.isConnected = true
+                        }
+                        self.performSegueWithIdentifier("showConnection", sender: nil)
+                    }
                 }
             }
-        }
+            else {
+                // Log details of the failure
+                print("Error-FetchConnections: \(error!) \(error!.userInfo)")
+            }
+        })
     }
 
 }

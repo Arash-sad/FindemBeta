@@ -11,6 +11,7 @@ import UIKit
 class ClubProfileTableViewCell: UITableViewCell {
 
     @IBOutlet weak var clubLabel: UILabel!
+    @IBOutlet weak var addressLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

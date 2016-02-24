@@ -36,6 +36,10 @@ class TrainerInAppPurchaseViewController: UIViewController, UITableViewDelegate,
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        // Disable tableView row selection
+        tableView.allowsSelection = false
+        
         // Retrive Trainer Expiration Date from Parse
         self.expirationDate = PFUser.currentUser()?.objectForKey("expirationDate") as? NSDate ?? NSDate()
         print(self.expirationDate!)

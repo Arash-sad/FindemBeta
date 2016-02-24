@@ -207,7 +207,7 @@ class TrainerProfileViewController: UIViewController, UITableViewDelegate, UITab
             cell.nameLabel.text = self.name
             cell.profileImageView?.image = self.photo
             if editButtonEnabled {
-                cell.accessoryType = UITableViewCellAccessoryType.DetailDisclosureButton
+                cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
             }
             else {
                 cell.accessoryType = UITableViewCellAccessoryType.None
@@ -217,9 +217,12 @@ class TrainerProfileViewController: UIViewController, UITableViewDelegate, UITab
         else if indexPath.row == 1 {
             let cell = tableView.dequeueReusableCellWithIdentifier(self.clubProfileCell, forIndexPath: indexPath) as! ClubProfileTableViewCell
             cell.clubLabel.text = self.clubName
+            if clubAddress.count == 4 {
+                cell.addressLabel.text = "\(clubAddress[0])\n\(clubAddress[1]) \(clubAddress[2]) \(clubAddress[3])"
+            }
             if editButtonEnabled {
                 
-                cell.accessoryType = UITableViewCellAccessoryType.DetailDisclosureButton
+                cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
             }
             else {
                 cell.accessoryType = UITableViewCellAccessoryType.None
@@ -229,9 +232,12 @@ class TrainerProfileViewController: UIViewController, UITableViewDelegate, UITab
         else if indexPath.row == 2 {
             let cell = tableView.dequeueReusableCellWithIdentifier(self.mobileProfileCell, forIndexPath: indexPath) as! MobileProfileTableViewCell
             cell.distanceLabel.text = String(self.distance)
+            if clubAddress.count == 4 {
+                cell.addressLabel.text = "\(mobileAddress[0])\n\(mobileAddress[1]) \(mobileAddress[2]) \(mobileAddress[3])"
+            }
             if editButtonEnabled {
                 
-                cell.accessoryType = UITableViewCellAccessoryType.DetailDisclosureButton
+                cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
             }
             else {
                 cell.accessoryType = UITableViewCellAccessoryType.None
@@ -297,7 +303,7 @@ class TrainerProfileViewController: UIViewController, UITableViewDelegate, UITab
             cell.trainingTypesPickerView.reloadAllComponents()
             if editButtonEnabled {
                 cell.trainingTypesPickerView.userInteractionEnabled = false
-                cell.accessoryType = UITableViewCellAccessoryType.DetailDisclosureButton
+                cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
             }
             else {
                 cell.trainingTypesPickerView.userInteractionEnabled = true
@@ -310,7 +316,7 @@ class TrainerProfileViewController: UIViewController, UITableViewDelegate, UITab
             cell.qualificationsPickerView.reloadAllComponents()
             if editButtonEnabled {
                 cell.qualificationsPickerView.userInteractionEnabled = false
-                cell.accessoryType = UITableViewCellAccessoryType.DetailDisclosureButton
+                cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
             }
             else {
                 cell.qualificationsPickerView.userInteractionEnabled = true
@@ -325,7 +331,7 @@ class TrainerProfileViewController: UIViewController, UITableViewDelegate, UITab
             if editButtonEnabled {
                 cell.shortDescriptionTextView.userInteractionEnabled = false
                 cell.longDescriptionTextView.userInteractionEnabled = false
-                cell.accessoryType = UITableViewCellAccessoryType.DetailDisclosureButton
+                cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
             }
             else {
                 cell.shortDescriptionTextView.userInteractionEnabled = true
@@ -348,7 +354,7 @@ class TrainerProfileViewController: UIViewController, UITableViewDelegate, UITab
             cell.achievementsTextView.text = self.achievements
             if editButtonEnabled {
                 cell.achievementsTextView.userInteractionEnabled = false
-                cell.accessoryType = UITableViewCellAccessoryType.DetailDisclosureButton
+                cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
             }
             else {
                 cell.achievementsTextView.userInteractionEnabled = true
@@ -395,7 +401,7 @@ class TrainerProfileViewController: UIViewController, UITableViewDelegate, UITab
                 cell.eveningsWE.textColor = UIColor.lightGrayColor()
             }
             if editButtonEnabled {
-                cell.accessoryType = UITableViewCellAccessoryType.DetailDisclosureButton
+                cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
             }
             else {
                 cell.accessoryType = UITableViewCellAccessoryType.None
@@ -406,7 +412,7 @@ class TrainerProfileViewController: UIViewController, UITableViewDelegate, UITab
             let cell = tableView.dequeueReusableCellWithIdentifier(self.eighthCellIdentifier, forIndexPath: indexPath) as! EighthTableViewCell
             cell.instagramIdLabel.text = self.instagramUserId
             if editButtonEnabled {
-                cell.accessoryType = UITableViewCellAccessoryType.DetailDisclosureButton
+                cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
             }
             else {
                 cell.accessoryType = UITableViewCellAccessoryType.None

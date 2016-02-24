@@ -11,7 +11,7 @@ import Parse
 import MapKit
 
 protocol TrainerRegionViewControllerDelegate {
-    func locationAndDistance (latitude: CLLocationDegrees, longitude: CLLocationDegrees, distance: Double)
+    func locationAndDistance (latitude: CLLocationDegrees, longitude: CLLocationDegrees, distance: Double, address: [String])
 }
 
 class TrainerRegionViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
@@ -30,6 +30,7 @@ class TrainerRegionViewController: UIViewController, UIPickerViewDataSource, UIP
     var pickerData = [[String]]()
     var distanceArray = [String]()
     var delegate: TrainerRegionViewControllerDelegate?
+    var mobileAddress: [String] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,6 +39,14 @@ class TrainerRegionViewController: UIViewController, UIPickerViewDataSource, UIP
         // hide keyboard if tap on screen
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: "handleTapGestureRecognizer:")
         view.addGestureRecognizer(tapGestureRecognizer)
+        
+        //fill address in textFelds
+        if self.mobileAddress.count == 4 {
+            self.streetTextField.text = self.mobileAddress[0]
+            self.cityTextField.text = self.mobileAddress[1]
+            self.stateTextField.text = self.mobileAddress[2]
+            self.postalCodeTextField.text = self.mobileAddress[3]
+        }
         
         //Set PickerView Values (Distance between 0 - 50KM)
         for dis in 0...50 {
@@ -74,6 +83,10 @@ class TrainerRegionViewController: UIViewController, UIPickerViewDataSource, UIP
             alert("Missing Details", message: "Please complete all the sections")
         }
         else {
+            
+            // Save Address String
+            self.mobileAddress = [self.streetTextField.text!,self.cityTextField.text!,self.stateTextField.text!,self.postalCodeTextField.text!]
+            
             //MARK: Convert Address String to Latitude & Longitude
             geoCoder.geocodeAddressString(addressString, completionHandler:
                 {(placemarks: [CLPlacemark]?, error: NSError?) in
@@ -91,13 +104,14 @@ class TrainerRegionViewController: UIViewController, UIPickerViewDataSource, UIP
                         self.distance = Double(self.distanceLabel.text!)!
                         
                         if let delegate = self.delegate {
-                            delegate.locationAndDistance(self.latitude!, longitude: self.longitude!, distance: self.distance!)
+                            delegate.locationAndDistance(self.latitude!, longitude: self.longitude!, distance: self.distance!, address: self.mobileAddress)
                         }
-                        //MARK: Save Latitude, Longitude and Distance to Parse
+                        //MARK: Save Latitude, Longitude, Distance, and address string to Parse
                         let point = PFGeoPoint(latitude: self.latitude!, longitude: self.longitude!)
                         let user = PFUser.currentUser()
                         user!.setObject(point, forKey: "location")
                         user!.setObject(self.distance!, forKey: "distance")
+                        user!.setObject(self.mobileAddress, forKey: "mobileAddress")
                         user!.saveInBackgroundWithBlock(nil)
                         
                         self.dismissViewControllerAnimated(true, completion: nil)

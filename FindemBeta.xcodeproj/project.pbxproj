@@ -29,6 +29,7 @@
 		5B4FE8C51BC4AE2C0057278F /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B4FE8C41BC4AE2C0057278F /* libsqlite3.dylib */; };
 		5B4FE8C91BC4B9D10057278F /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B4FE8C71BC4B9D10057278F /* FBSDKCoreKit.framework */; };
 		5B4FE8CA1BC4B9D10057278F /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B4FE8C81BC4B9D10057278F /* FBSDKLoginKit.framework */; };
+		5B5982BF1C7D2D4B0080D592 /* MobileProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5982BE1C7D2D4B0080D592 /* MobileProfileTableViewCell.swift */; };
 		5BACC66A1BE6C28E00EB4972 /* StartUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BACC6691BE6C28E00EB4972 /* StartUpViewController.swift */; };
 		5BACC66C1BE6C2F800EB4972 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BACC66B1BE6C2F800EB4972 /* LoginViewController.swift */; };
 		5BACC6711BE6EB2F00EB4972 /* ParseFacebookUtilsV4.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BACC6701BE6EB2F00EB4972 /* ParseFacebookUtilsV4.framework */; };
@@ -113,6 +114,7 @@
 		5B4FE8C41BC4AE2C0057278F /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		5B4FE8C71BC4B9D10057278F /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		5B4FE8C81BC4B9D10057278F /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
+		5B5982BE1C7D2D4B0080D592 /* MobileProfileTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MobileProfileTableViewCell.swift; sourceTree = "<group>"; };
 		5BACC6691BE6C28E00EB4972 /* StartUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartUpViewController.swift; sourceTree = "<group>"; };
 		5BACC66B1BE6C2F800EB4972 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		5BACC6701BE6EB2F00EB4972 /* ParseFacebookUtilsV4.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseFacebookUtilsV4.framework; sourceTree = "<group>"; };
@@ -320,6 +322,7 @@
 			children = (
 				5BF98CFE1BF04EF2008DA586 /* FirstTableViewCell.swift */,
 				5BEE43AF1C682A9800AC5D9B /* ClubProfileTableViewCell.swift */,
+				5B5982BE1C7D2D4B0080D592 /* MobileProfileTableViewCell.swift */,
 				5BF98D001BF04F04008DA586 /* SecondTableViewCell.swift */,
 				5BF98D021BF04F1D008DA586 /* ThirdTableViewCell.swift */,
 				5BEE24BF1BF99EC500BBC10E /* FourthTableViewCell.swift */,
@@ -565,6 +568,7 @@
 				5BF138281C3C7BC20060E57A /* FinderMessagesViewController.swift in Sources */,
 				5BDD9DB11C0FC364006CF0BF /* FinderRefineSearchViewController.swift in Sources */,
 				5BF221371C18525C001ADCDE /* FinderTrainerProfileViewController.swift in Sources */,
+				5B5982BF1C7D2D4B0080D592 /* MobileProfileTableViewCell.swift in Sources */,
 				5BEBB6831BF1943100B60CF2 /* TrainingTableViewCell.swift in Sources */,
 				5BE9625E1BF48F3E00E9C2FD /* TrainerQualificationsViewController.swift in Sources */,
 				5BACC66A1BE6C28E00EB4972 /* StartUpViewController.swift in Sources */,

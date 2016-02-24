@@ -39,7 +39,7 @@ class TrainerClubViewController: UIViewController {
         if let name = clubName {
             self.clubNameTextField.text = name
         }
-        
+        // fill address in textFelds
         if self.clubAddress.count == 4 {
             self.streetTextField.text = self.clubAddress[0]
             self.cityTextField.text = self.clubAddress[1]
@@ -91,7 +91,7 @@ class TrainerClubViewController: UIViewController {
                         if let delegate = self.delegate {
                             delegate.updateNameAndLocation(self.latitude!, longitude: self.longitude!, name: self.clubName!, address: self.clubAddress)
                         }
-                        // MARK: Save clubName, latitude, and longitude to Parse
+                        // MARK: Save clubName, latitude, longitude, and address string to Parse
                         let user = PFUser.currentUser()
                         user!.setObject(self.clubName!, forKey: "clubName")
                         user!.setObject(self.clubAddress, forKey: "clubAddress")

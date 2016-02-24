@@ -37,9 +37,11 @@ class TrainerProfileViewController: UIViewController, UITableViewDelegate, UITab
     let defaultLatitude = 38.018312
     let defaultLongitude = 51.412430
     var clubAddress: [String] = []
+    var mobileAddress: [String] = []
     
     let firstCellIdentifier = "firstProfileCell"
     let clubProfileCell = "clubProfileCell"
+    let mobileProfileCell = "mobileProfileCell"
     let secondCellIdentifier = "secondProfileCell"
     let thirdCellIdentifier = "thirdProfileCell"
     let fourthCellIdentifier = "fourthProfileCell"
@@ -85,6 +87,7 @@ class TrainerProfileViewController: UIViewController, UITableViewDelegate, UITab
         self.clubLatitude = (currentTrainer()?.clubLatitude)!
         self.clubLongitude = (currentTrainer()?.clubLongitude)!
         self.clubAddress = (currentTrainer()?.clubAddress)!
+        self.mobileAddress = (currentTrainer()?.mobileAddress)!
 
     }
 
@@ -141,7 +144,7 @@ class TrainerProfileViewController: UIViewController, UITableViewDelegate, UITab
             clubVC?.clubName = self.clubName
             clubVC?.clubAddress = self.clubAddress
         }
-        else if segue.identifier == "showRegionDetails" {
+        else if segue.identifier == "showMobileDetails" {
             let navVC = segue.destinationViewController as? UINavigationController
             let regionVC = navVC!.viewControllers[0] as? TrainerRegionViewController
             
@@ -149,6 +152,7 @@ class TrainerProfileViewController: UIViewController, UITableViewDelegate, UITab
             regionVC?.latitude = self.latitude
             regionVC?.longitude = self.longitude
             regionVC?.distance = self.distance
+            regionVC?.mobileAddress = self.mobileAddress
         }
         else if segue.identifier == "showDescription" {
             let navVC = segue.destinationViewController as? UINavigationController
@@ -186,7 +190,7 @@ class TrainerProfileViewController: UIViewController, UITableViewDelegate, UITab
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 9
+        return 10
     }
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -223,6 +227,18 @@ class TrainerProfileViewController: UIViewController, UITableViewDelegate, UITab
             return cell
         }
         else if indexPath.row == 2 {
+            let cell = tableView.dequeueReusableCellWithIdentifier(self.mobileProfileCell, forIndexPath: indexPath) as! MobileProfileTableViewCell
+            cell.distanceLabel.text = String(self.distance)
+            if editButtonEnabled {
+                
+                cell.accessoryType = UITableViewCellAccessoryType.DetailDisclosureButton
+            }
+            else {
+                cell.accessoryType = UITableViewCellAccessoryType.None
+            }
+            return cell
+        }
+        else if indexPath.row == 3 {
             let cell = tableView.dequeueReusableCellWithIdentifier(self.secondCellIdentifier, forIndexPath: indexPath) as! SecondTableViewCell
             
             //MARK: load mapView and add annotation and circle overlay
@@ -274,15 +290,9 @@ class TrainerProfileViewController: UIViewController, UITableViewDelegate, UITab
             }
 //            cell.mapView.showAnnotations([annotation,clubAnnotation], animated: true)
             
-            if editButtonEnabled {
-                cell.accessoryType = UITableViewCellAccessoryType.DetailDisclosureButton
-            }
-            else {
-                cell.accessoryType = UITableViewCellAccessoryType.None
-            }
             return cell
         }
-        else if indexPath.row == 3 {
+        else if indexPath.row == 4 {
             let cell = tableView.dequeueReusableCellWithIdentifier(self.thirdCellIdentifier, forIndexPath: indexPath) as! ThirdTableViewCell
             cell.trainingTypesPickerView.reloadAllComponents()
             if editButtonEnabled {
@@ -295,7 +305,7 @@ class TrainerProfileViewController: UIViewController, UITableViewDelegate, UITab
             }
             return cell
         }
-        else if indexPath.row == 4 {
+        else if indexPath.row == 5 {
             let cell = tableView.dequeueReusableCellWithIdentifier(self.fourthCellIdentifier, forIndexPath: indexPath) as! FourthTableViewCell
             cell.qualificationsPickerView.reloadAllComponents()
             if editButtonEnabled {
@@ -308,7 +318,7 @@ class TrainerProfileViewController: UIViewController, UITableViewDelegate, UITab
             }
             return cell
         }
-        else if indexPath.row == 5 {
+        else if indexPath.row == 6 {
             let cell = tableView.dequeueReusableCellWithIdentifier(self.fifthCellIdentifier, forIndexPath: indexPath) as! FifthTableViewCell
             cell.shortDescriptionTextView.text = self.shortDescription
             cell.longDescriptionTextView.text = self.longDescription
@@ -324,7 +334,7 @@ class TrainerProfileViewController: UIViewController, UITableViewDelegate, UITab
             }
             return cell
         }
-        else if indexPath.row == 6 {
+        else if indexPath.row == 7 {
             let cell = tableView.dequeueReusableCellWithIdentifier(self.sixthCellIdentifier, forIndexPath: indexPath) as! SixthTableViewCell
             if self.yearsExperience == 0 {
                 cell.yearsLabel.text = "Less than a year"
@@ -346,7 +356,7 @@ class TrainerProfileViewController: UIViewController, UITableViewDelegate, UITab
             }
             return cell
         }
-        else if indexPath.row == 7 {
+        else if indexPath.row == 8 {
             let cell = tableView.dequeueReusableCellWithIdentifier(self.sevenththCellIdentifier, forIndexPath: indexPath) as! SeventhTableViewCell
             if sessionTimes.uppercaseString.characters.contains("A") {
                 cell.morningsWD.textColor = UIColor.blackColor()
@@ -416,24 +426,27 @@ class TrainerProfileViewController: UIViewController, UITableViewDelegate, UITab
                 performSegueWithIdentifier("showClubDetails", sender: nil)
             }
             else if indexPath.row == 2 {
-                performSegueWithIdentifier("showRegionDetails", sender: nil)
+                performSegueWithIdentifier("showMobileDetails", sender: nil)
             }
             else if indexPath.row == 3 {
-                performSegueWithIdentifier("showTypesOfTraining", sender: nil)
+//                performSegueWithIdentifier("", sender: nil)
             }
             else if indexPath.row == 4 {
-                performSegueWithIdentifier("showQualifications", sender: nil)
+                performSegueWithIdentifier("showTypesOfTraining", sender: nil)
             }
             else if indexPath.row == 5 {
-                performSegueWithIdentifier("showDescription", sender: nil)
+                performSegueWithIdentifier("showQualifications", sender: nil)
             }
             else if indexPath.row == 6 {
-                performSegueWithIdentifier("showOtherDetails", sender: nil)
+                performSegueWithIdentifier("showDescription", sender: nil)
             }
             else if indexPath.row == 7 {
-                performSegueWithIdentifier("showSessionTimes", sender: nil)
+                performSegueWithIdentifier("showOtherDetails", sender: nil)
             }
             else if indexPath.row == 8 {
+                performSegueWithIdentifier("showSessionTimes", sender: nil)
+            }
+            else if indexPath.row == 9 {
                 performSegueWithIdentifier("showSocialNetworks", sender: nil)
             }
         }
@@ -555,10 +568,11 @@ class TrainerProfileViewController: UIViewController, UITableViewDelegate, UITab
 
 // MARK: - TrainerRegionViewControllerDelegate
 extension TrainerProfileViewController: TrainerRegionViewControllerDelegate {
-    func locationAndDistance(latitude: CLLocationDegrees, longitude: CLLocationDegrees, distance: Double) {
+    func locationAndDistance(latitude: CLLocationDegrees, longitude: CLLocationDegrees, distance: Double, address: [String]) {
         self.latitude = latitude
         self.longitude = longitude
         self.distance = distance
+        self.mobileAddress = address
         tableView.reloadData()
     }
 }

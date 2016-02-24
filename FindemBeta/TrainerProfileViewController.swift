@@ -21,7 +21,7 @@ class TrainerProfileViewController: UIViewController, UITableViewDelegate, UITab
     var photo: UIImage?
     var gender: String?
     var trainingArray: [String] = []
-    var qualificationsArray:[String] = []
+    var qualificationsArray: [String] = []
     var latitude: CLLocationDegrees?
     var longitude: CLLocationDegrees?
     var distance: Double = 10.0
@@ -29,13 +29,14 @@ class TrainerProfileViewController: UIViewController, UITableViewDelegate, UITab
     var longDescription: String = ""
     var yearsExperience: Int = 0
     var achievements: String = ""
-    var sessionTimes:String = "ABC"
-    var instagramUserId:String = ""
+    var sessionTimes: String = "ABC"
+    var instagramUserId: String = ""
     var clubName = ""
     var clubLatitude: Double?
     var clubLongitude: Double?
     let defaultLatitude = 38.018312
     let defaultLongitude = 51.412430
+    var clubAddress: [String] = []
     
     let firstCellIdentifier = "firstProfileCell"
     let clubProfileCell = "clubProfileCell"
@@ -51,13 +52,8 @@ class TrainerProfileViewController: UIViewController, UITableViewDelegate, UITab
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        print("VIEWDIDLOAD:")
-        print(self.distance)
-        print(self.clubLatitude)
-        print(self.clubLongitude)
         
         // Add Right barButtonItem (Edit/Done)
-        
         let rightBarButton = UIBarButtonItem(title: "Edit", style: UIBarButtonItemStyle.Plain, target: self, action: "editAction")
         
         self.navigationItem.setRightBarButtonItem(rightBarButton, animated: true)
@@ -88,12 +84,8 @@ class TrainerProfileViewController: UIViewController, UITableViewDelegate, UITab
         self.clubName = (currentTrainer()?.clubName)!
         self.clubLatitude = (currentTrainer()?.clubLatitude)!
         self.clubLongitude = (currentTrainer()?.clubLongitude)!
+        self.clubAddress = (currentTrainer()?.clubAddress)!
 
-        print("******")
-        print((currentTrainer()?.clubLatitude)!)
-        print((currentTrainer()?.clubLatitude)!)
-        print(self.clubLatitude)
-        print(self.clubLatitude)
     }
 
     override func didReceiveMemoryWarning() {
@@ -147,6 +139,7 @@ class TrainerProfileViewController: UIViewController, UITableViewDelegate, UITab
             
             clubVC?.delegate = self
             clubVC?.clubName = self.clubName
+            clubVC?.clubAddress = self.clubAddress
         }
         else if segue.identifier == "showRegionDetails" {
             let navVC = segue.destinationViewController as? UINavigationController
@@ -588,10 +581,11 @@ extension TrainerProfileViewController: TrainerSocialNetworkingViewControllerDel
 
 //MARK: - TrainerClubViewControllerDelegate
 extension TrainerProfileViewController: TrainerClubViewControllerDelegate {
-    func updateNameAndLocation(latitude: Double, longitude: Double, name: String) {
+    func updateNameAndLocation(latitude: Double, longitude: Double, name: String, address: [String]) {
         self.clubName = name
         self.clubLatitude = latitude
         self.clubLongitude = longitude
+        self.clubAddress = address
         tableView.reloadData()
     }
 }

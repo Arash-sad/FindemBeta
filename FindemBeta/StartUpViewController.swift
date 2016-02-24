@@ -11,10 +11,27 @@ import Parse
 
 class StartUpViewController: UIViewController {
 
+    @IBOutlet weak var profileButton: UIButton!
+    @IBOutlet weak var findTrainerButton: UIButton!
+    @IBOutlet weak var profileDescriptionLabel: UILabel!
+    @IBOutlet weak var findTrainerDescriptionLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        // First animation
+        UIView.animateWithDuration(2.0, delay: 0.3, options: UIViewAnimationOptions.CurveEaseOut, animations: {
+            self.profileButton.alpha = 1.0
+            self.findTrainerButton.alpha = 1.0
+            }){ (finish:Bool) -> Void in
+                UIView.animateWithDuration(2.0, animations: { () -> Void in
+                    // Second animation
+                    self.profileDescriptionLabel.alpha = 1.0
+                    self.findTrainerDescriptionLabel.alpha = 1.0
+                })
+        }
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -32,7 +49,7 @@ class StartUpViewController: UIViewController {
         }
     }
 
-    @IBAction func FindemButtonPressed(sender: UIButton) {
+    @IBAction func findTrainerButtonPressed(sender: UIButton) {
         pageToGo = "Findem"
         if currentUser() != nil {
             let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("FinderHomeNavController")

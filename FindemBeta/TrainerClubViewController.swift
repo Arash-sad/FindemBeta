@@ -10,7 +10,7 @@ import UIKit
 import Parse
 
 protocol TrainerClubViewControllerDelegate {
-    func updateNameAndLocation(latitude: Double, longitude: Double, name: String)
+    func updateNameAndLocation(latitude: Double, longitude: Double, name: String, address: [String])
 }
 
 class TrainerClubViewController: UIViewController {
@@ -24,6 +24,7 @@ class TrainerClubViewController: UIViewController {
     var clubName: String?
     var latitude: CLLocationDegrees?
     var longitude: CLLocationDegrees?
+    var clubAddress: [String] = []
     
     var delegate: TrainerClubViewControllerDelegate?
     
@@ -37,6 +38,13 @@ class TrainerClubViewController: UIViewController {
         
         if let name = clubName {
             self.clubNameTextField.text = name
+        }
+        
+        if self.clubAddress.count == 4 {
+            self.streetTextField.text = self.clubAddress[0]
+            self.cityTextField.text = self.clubAddress[1]
+            self.stateTextField.text = self.clubAddress[2]
+            self.postalCodeTextField.text = self.clubAddress[3]
         }
     }
 
@@ -60,7 +68,10 @@ class TrainerClubViewController: UIViewController {
             alert("Missing Details", message: "Please complete all the sections")
         }
         else {
-            //MARK: Convert Address String to Latitude & Longitude
+            // Save Address String
+            self.clubAddress = [self.streetTextField.text!,self.cityTextField.text!,self.stateTextField.text!,self.postalCodeTextField.text!]
+            
+            // MARK: Convert Address String to Latitude & Longitude
             geoCoder.geocodeAddressString(addressString, completionHandler:
                 {(placemarks: [CLPlacemark]?, error: NSError?) in
                     
@@ -78,12 +89,12 @@ class TrainerClubViewController: UIViewController {
                         print(self.longitude)
                         
                         if let delegate = self.delegate {
-                            delegate.updateNameAndLocation(self.latitude!, longitude: self.longitude!, name: self.clubName!)
-//                            delegate.updateClubName(self.clubName!)
+                            delegate.updateNameAndLocation(self.latitude!, longitude: self.longitude!, name: self.clubName!, address: self.clubAddress)
                         }
-                        //MARK: Save clubName, latitude, and longitude to Parse
+                        // MARK: Save clubName, latitude, and longitude to Parse
                         let user = PFUser.currentUser()
                         user!.setObject(self.clubName!, forKey: "clubName")
+                        user!.setObject(self.clubAddress, forKey: "clubAddress")
                         user!.setObject(Double(self.latitude!), forKey: "clubLatitude")
                         user!.setObject(Double(self.longitude!), forKey: "clubLongitude")
                         user!.saveInBackgroundWithBlock(nil)

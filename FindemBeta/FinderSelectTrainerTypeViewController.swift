@@ -78,17 +78,24 @@ class FinderSelectTrainerTypeViewController: UIViewController {
         if(trainerTypeSegmentControl.selectedSegmentIndex == 0)
         {
             self.trainerType = "club"
-            self.distanceLabel.hidden = false
-            self.pickerView.hidden = false
-            self.descriptionLabel.text = "You will find all the personal trainers who are working at the sports club around you with the radius of:"
+            UIView.animateWithDuration(0.3, delay: 0, options: UIViewAnimationOptions.CurveEaseOut, animations: {
+                self.distanceLabel.alpha = 1.0
+                self.kmLabel.alpha = 1.0
+                self.pickerView.alpha = 1.0
+                self.descriptionLabel.text = "You will find all the personal trainers who are working at the sports club around you with the radius of:"
+                }, completion: nil)
+            
         }
         else if(trainerTypeSegmentControl.selectedSegmentIndex == 1)
         {
+            
             self.trainerType = "mobile"
-            self.distanceLabel.hidden = true
-            self.kmLabel.hidden = true
-            self.pickerView.hidden = true
-            self.descriptionLabel.text = "You will find all the mobile personal trainers who cover your current location."
+            UIView.animateWithDuration(0.3, delay: 0, options: UIViewAnimationOptions.CurveEaseOut, animations: {
+                self.distanceLabel.alpha = 0.0
+                self.kmLabel.alpha = 0.0
+                self.pickerView.alpha = 0.0
+                self.descriptionLabel.text = "You will find all the mobile personal trainers who cover your current location."
+                }, completion: nil)
         }
     }
 

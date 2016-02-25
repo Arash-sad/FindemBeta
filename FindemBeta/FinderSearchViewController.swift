@@ -68,7 +68,6 @@ class FinderSearchViewController: UIViewController, CLLocationManagerDelegate {
     func locationAccessAlert() {
         let alert = UIAlertController(title: "Allow Location Access", message: "Location access is restricted. In order to use Findem, please allow location access in the Settigs app under Privacy, Location Services.", preferredStyle: UIAlertControllerStyle.Alert)
         alert.addAction(UIAlertAction(title: "Settings", style: UIAlertActionStyle.Default, handler: { (alert: UIAlertAction!) in
-            print("")
             UIApplication.sharedApplication().openURL(NSURL(string:UIApplicationOpenSettingsURLString)!)
         }))
         alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Default, handler: nil))

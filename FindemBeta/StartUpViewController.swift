@@ -11,6 +11,7 @@ import Parse
 
 class StartUpViewController: UIViewController {
 
+    @IBOutlet weak var backgroundImageView: UIImageView!
     @IBOutlet weak var profileButton: UIButton!
     @IBOutlet weak var findTrainerButton: UIButton!
     @IBOutlet weak var profileDescriptionLabel: UILabel!
@@ -18,20 +19,51 @@ class StartUpViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-        // First animation
-        UIView.animateWithDuration(2.0, delay: 0.3, options: UIViewAnimationOptions.CurveEaseOut, animations: {
-            self.profileButton.alpha = 1.0
-            self.findTrainerButton.alpha = 1.0
-            }){ (finish:Bool) -> Void in
-                UIView.animateWithDuration(2.0, animations: { () -> Void in
-                    // Second animation
-                    self.profileDescriptionLabel.alpha = 1.0
-                    self.findTrainerDescriptionLabel.alpha = 1.0
-                })
-        }
         
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        // Setup Profil and FindTrainer Buttons
+        self.profileButton.layer.cornerRadius = self.profileButton.frame.height / 3
+        self.findTrainerButton.layer.cornerRadius = self.profileButton.frame.height / 3
+        self.profileButton.layer.borderColor = UIColor(white: 1.0, alpha: 1.0).CGColor
+        self.profileButton.layer.borderWidth = 1.0
+        self.findTrainerButton.layer.borderColor = UIColor(white: 1.0, alpha: 1.0).CGColor
+        self.findTrainerButton.layer.borderWidth = 1.0
+        
+        // Add Blur Visual Effect on top of backgroundImageView
+        let blur:UIBlurEffect = UIBlurEffect(style: UIBlurEffectStyle.Dark)
+        let effectView:UIVisualEffectView = UIVisualEffectView (effect: blur)
+        effectView.frame = self.view.frame
+        effectView.alpha = 0
+        self.backgroundImageView.addSubview(effectView)
+        
+        // First animation
+        UIView.animateWithDuration(2.5, delay: 0.0, options: UIViewAnimationOptions.CurveLinear, animations: {
+            
+            effectView.alpha = 0.8
+            
+            }){ (finish:Bool) -> Void in
+                UIView.animateWithDuration(2.0, animations: {
+                    // Second animation
+                    let drawLineView = DrawSeperationLineView()
+                    drawLineView.frame = self.view.frame
+                    drawLineView.backgroundColor = UIColor.clearColor()
+                    self.view.addSubview(drawLineView)
+                    
+                    self.view.bringSubviewToFront(self.profileButton)
+                    self.view.bringSubviewToFront(self.findTrainerButton)
+                    self.profileButton.alpha = 1.0
+                    self.findTrainerButton.alpha = 1.0
+                    
+                    }){ (finish:Bool) -> Void in
+                        UIView.animateWithDuration(2.0, animations: { () -> Void in
+                            // Third animation
+                            self.profileDescriptionLabel.alpha = 1.0
+                            self.findTrainerDescriptionLabel.alpha = 1.0
+                        })
+                }
+        }
     }
 
     override func didReceiveMemoryWarning() {

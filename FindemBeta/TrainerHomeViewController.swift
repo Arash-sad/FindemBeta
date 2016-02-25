@@ -44,7 +44,12 @@ class TrainerHomeViewController: UIViewController, TrainerInAppPurchaseViewContr
     
     @IBAction func backBarButtonItem(sender: UIBarButtonItem) {
         let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("StartUpVC")
-        self.presentViewController(vc, animated: true, completion: nil)
+        let transition = CATransition()
+        transition.type = kCATransitionFade
+        (UIApplication.sharedApplication().delegate as? AppDelegate)?.window?.setRootViewController(vc,transition: transition)
+    }
+    @IBAction func logOutBarButtonItem(sender: UIBarButtonItem) {
+        logOutAlert("Log Out",message: "Are you sure?")
     }
     
     @IBAction func profileButtonTapped(sender: UIButton) {
@@ -72,6 +77,22 @@ class TrainerHomeViewController: UIViewController, TrainerInAppPurchaseViewContr
     func enableProfileAndMessages() {
         self.profileButton.enabled = true
         self.messageButton.enabled = true
+    }
+    
+    //MARK: - Log Out Alert
+    func logOutAlert(messageTitle: String, message: String) {
+        let alert = UIAlertController(title: messageTitle, message: message, preferredStyle: UIAlertControllerStyle.Alert)
+        alert.addAction(UIAlertAction(title: "Log Out", style: UIAlertActionStyle.Default, handler: { (alert: UIAlertAction!) in
+            // Go To StartUp ViewController
+            let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("StartUpVC")
+            let transition = CATransition()
+            transition.type = kCATransitionFade
+            (UIApplication.sharedApplication().delegate as? AppDelegate)?.window?.setRootViewController(vc,transition: transition)
+            // Log Out from Facebook and go back to startup page
+            PFUser.logOut()
+        }))
+        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Default, handler: nil))
+        self.presentViewController(alert, animated: true, completion: nil)
     }
     
 }

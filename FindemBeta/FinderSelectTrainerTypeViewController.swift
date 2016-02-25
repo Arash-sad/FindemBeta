@@ -100,7 +100,9 @@ class FinderSelectTrainerTypeViewController: UIViewController {
     }
 
     @IBAction func nextButtonTapped(sender: UIButton) {
-        performSegueWithIdentifier("showSearchTrainingTypes", sender: nil)
+        if menuIsVisible == false {
+            performSegueWithIdentifier("showSearchTrainingTypes", sender: nil)
+        }
     }
     
     

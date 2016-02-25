@@ -10,6 +10,7 @@
 		379F6110931CDA2A36CA02D8 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FFC3B2D92A9ECE47B3FC57E6 /* libPods.a */; };
 		5B41E92A1C06D23700FA1474 /* Trainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B41E9291C06D23700FA1474 /* Trainer.swift */; };
 		5B41E92E1C0BF22800FA1474 /* LoadView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B41E92D1C0BF22800FA1474 /* LoadView.xib */; };
+		5B4E82B11C7EA56000E97000 /* DrawSeperationLineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4E82B01C7EA56000E97000 /* DrawSeperationLineView.swift */; };
 		5B4FE88D1BC4AB5B0057278F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4FE88C1BC4AB5B0057278F /* AppDelegate.swift */; };
 		5B4FE8921BC4AB5B0057278F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B4FE8901BC4AB5B0057278F /* Main.storyboard */; };
 		5B4FE8941BC4AB5B0057278F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5B4FE8931BC4AB5B0057278F /* Images.xcassets */; };
@@ -91,6 +92,7 @@
 		52046C08898C9B064E4AF239 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		5B41E9291C06D23700FA1474 /* Trainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Trainer.swift; sourceTree = "<group>"; };
 		5B41E92D1C0BF22800FA1474 /* LoadView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoadView.xib; sourceTree = "<group>"; };
+		5B4E82B01C7EA56000E97000 /* DrawSeperationLineView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawSeperationLineView.swift; sourceTree = "<group>"; };
 		5B4FE8871BC4AB5B0057278F /* FindemBeta.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FindemBeta.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B4FE88B1BC4AB5B0057278F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5B4FE88C1BC4AB5B0057278F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -301,6 +303,7 @@
 				5B41E9291C06D23700FA1474 /* Trainer.swift */,
 				5BF007181C1A667500E3961A /* Connection.swift */,
 				5BF4176E1C20E30D00EC9AB5 /* Message.swift */,
+				5B4E82B01C7EA56000E97000 /* DrawSeperationLineView.swift */,
 			);
 			name = Data;
 			sourceTree = "<group>";
@@ -540,6 +543,7 @@
 			files = (
 				5BF98CFF1BF04EF2008DA586 /* FirstTableViewCell.swift in Sources */,
 				5BF98D091BF06FDE008DA586 /* TrainerProfileGeneralViewController.swift in Sources */,
+				5B4E82B11C7EA56000E97000 /* DrawSeperationLineView.swift in Sources */,
 				5BF007171C1A45E200E3961A /* MessagesTableViewCell.swift in Sources */,
 				5BF4176F1C20E30D00EC9AB5 /* Message.swift in Sources */,
 				5BE0A0D71BFD367B00F5A3D4 /* TrainerOtherViewController.swift in Sources */,

@@ -136,17 +136,5 @@ class TrainerSessionTimesViewController: UIViewController {
             self.tempSessionTimes.append(char!)
         }
     }
-    
-//    // MARK: - Navigation
-//    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-//        if saveBarButtonItem === sender {
-//            self.sessionTimes = self.tempSessionTimes
-//            
-//            //MARK: Save Description to Parse
-//            let user = PFUser.currentUser()
-//            user!.setObject(self.sessionTimes!, forKey: "sessionTimes")
-//            user!.saveInBackgroundWithBlock(nil)
-//        }
-//    }
 
 }

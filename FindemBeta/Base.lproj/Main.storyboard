@@ -18,54 +18,62 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" alpha="0.0" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="59c-md-kTZ">
-                                <rect key="frame" x="250" y="381" width="100" height="30"/>
-                                <color key="backgroundColor" red="0.40000000596046448" green="0.40000000596046448" blue="0.40000000596046448" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="Find Trainers">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="findTrainerButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="CW5-Yc-YyH"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" alpha="0.0" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N9D-Ys-z9w">
-                                <rect key="frame" x="250" y="188" width="100" height="30"/>
-                                <color key="backgroundColor" red="0.40000000596046448" green="0.40000000596046448" blue="0.40000000596046448" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="Create Profile">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="profileButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="4Fz-9j-CYA"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="If you wanna find customers click here" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="76y-w2-e2S">
-                                <rect key="frame" x="125" y="145" width="350" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pt" translatesAutoresizingMaskIntoConstraints="NO" id="d77-wf-BFT">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="If you are looking for personal trainers around you" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9qg-e0-J3z">
                                 <rect key="frame" x="125" y="434" width="350" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" alpha="0.0" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="69e-fa-slq">
+                                <rect key="frame" x="240" y="210" width="120" height="30"/>
+                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="20"/>
+                                <state key="normal" title="Create Profile">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="profileButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="CfL-4a-Yn1"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" alpha="0.0" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eo9-A9-2xj">
+                                <rect key="frame" x="240" y="359" width="120" height="30"/>
+                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="20"/>
+                                <state key="normal" title="Find Trainer">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="findTrainerButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Hkc-X8-cpm"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="If you wanna find customers click here" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="76y-w2-e2S">
+                                <rect key="frame" x="125" y="144" width="350" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="59c-md-kTZ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="3d9-Fa-9Ql"/>
+                            <constraint firstAttribute="trailing" secondItem="d77-wf-BFT" secondAttribute="trailing" id="4Dt-Vs-1uO"/>
+                            <constraint firstItem="eo9-A9-2xj" firstAttribute="top" secondItem="69e-fa-slq" secondAttribute="bottom" constant="119" id="BZt-oU-4Tr"/>
                             <constraint firstItem="76y-w2-e2S" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="DkF-wP-XkR"/>
-                            <constraint firstItem="N9D-Ys-z9w" firstAttribute="top" secondItem="76y-w2-e2S" secondAttribute="bottom" constant="22" id="HYr-lx-Mgy"/>
-                            <constraint firstItem="N9D-Ys-z9w" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Iid-iY-o1Z"/>
                             <constraint firstItem="9qg-e0-J3z" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Mss-xj-Sas"/>
-                            <constraint firstItem="9qg-e0-J3z" firstAttribute="top" secondItem="59c-md-kTZ" secondAttribute="bottom" constant="23" id="hOB-BW-Okb"/>
-                            <constraint firstItem="59c-md-kTZ" firstAttribute="top" secondItem="N9D-Ys-z9w" secondAttribute="bottom" constant="163" id="puR-5H-LSn"/>
+                            <constraint firstItem="d77-wf-BFT" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="YQl-Xe-5r5"/>
+                            <constraint firstItem="eo9-A9-2xj" firstAttribute="centerX" secondItem="d77-wf-BFT" secondAttribute="centerX" id="ZfL-cg-cYv"/>
+                            <constraint firstItem="9qg-e0-J3z" firstAttribute="top" secondItem="eo9-A9-2xj" secondAttribute="bottom" constant="45" id="cXC-VK-pNe"/>
+                            <constraint firstItem="d77-wf-BFT" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="eBT-Me-NON"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="d77-wf-BFT" secondAttribute="bottom" id="se2-7M-FsK"/>
+                            <constraint firstItem="69e-fa-slq" firstAttribute="top" secondItem="76y-w2-e2S" secondAttribute="bottom" constant="45" id="zFw-qJ-uj2"/>
+                            <constraint firstItem="69e-fa-slq" firstAttribute="centerX" secondItem="d77-wf-BFT" secondAttribute="centerX" id="zmr-mj-9M0"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="findTrainerButton" destination="59c-md-kTZ" id="n13-cI-9Nv"/>
+                        <outlet property="backgroundImageView" destination="d77-wf-BFT" id="y5R-4m-cAv"/>
+                        <outlet property="findTrainerButton" destination="eo9-A9-2xj" id="kPQ-49-HCq"/>
                         <outlet property="findTrainerDescriptionLabel" destination="9qg-e0-J3z" id="2c4-W4-XDR"/>
-                        <outlet property="profileButton" destination="N9D-Ys-z9w" id="ihQ-YW-bRd"/>
+                        <outlet property="profileButton" destination="69e-fa-slq" id="6J3-GS-0Lq"/>
                         <outlet property="profileDescriptionLabel" destination="76y-w2-e2S" id="lcU-0q-lEx"/>
                         <segue destination="SBu-Rk-32Y" kind="presentation" identifier="LoginSegue" id="xVh-e1-Sfw"/>
                         <segue destination="pxK-7F-578" kind="presentation" identifier="TrainerHomeSegue" id="g9M-Ws-v8p"/>
@@ -1244,6 +1252,11 @@
                                 <action selector="backBarButtonItem:" destination="iD9-eB-mjm" id="gVC-eK-3VH"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Log Out" id="TUN-4c-ian">
+                            <connections>
+                                <action selector="logOutBarButtonItem:" destination="iD9-eB-mjm" id="8pq-mg-QVU"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="messageButton" destination="4rS-cA-JjQ" id="f6M-RP-PJX"/>
@@ -1257,7 +1270,7 @@
             </objects>
             <point key="canvasLocation" x="3431" y="259"/>
         </scene>
-        <!--Trainer Other View Controller-->
+        <!--Experience-->
         <scene sceneID="Del-Op-pps">
             <objects>
                 <viewController id="zco-X1-nvB" customClass="TrainerOtherViewController" customModule="FindemBeta" customModuleProvider="target" sceneMemberID="viewController">
@@ -1308,7 +1321,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="naQ-aX-czW">
+                    <navigationItem key="navigationItem" title="Experience" id="naQ-aX-czW">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="gKU-uf-uFd">
                             <connections>
                                 <action selector="cancelBarButtonItem:" destination="zco-X1-nvB" id="C9x-zo-1ae"/>
@@ -1346,17 +1359,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="defaultPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="zbN-pc-B9s">
-                                <rect key="frame" x="20" y="72" width="150" height="150"/>
+                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zbN-pc-B9s">
+                                <rect key="frame" x="20" y="113" width="150" height="150"/>
                                 <gestureRecognizers/>
                             </imageView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9Bd-J0-oCn">
-                                <rect key="frame" x="20" y="251" width="150" height="30"/>
+                                <rect key="frame" x="20" y="330" width="150" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="tFV-IQ-9vG">
-                                <rect key="frame" x="35" y="310" width="121" height="29"/>
+                                <rect key="frame" x="20" y="433" width="121" height="29"/>
                                 <segments>
                                     <segment title="Male"/>
                                     <segment title="Female"/>
@@ -1366,19 +1379,37 @@
                                 </connections>
                             </segmentedControl>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Oii-a4-F3x">
-                                <rect key="frame" x="185" y="113" width="96" height="30"/>
+                                <rect key="frame" x="185" y="145" width="96" height="30"/>
                                 <state key="normal" title="Take a photo"/>
                                 <connections>
                                     <action selector="cameraButtonTapped:" destination="Unf-Fp-UUw" eventType="touchUpInside" id="5Mg-Fc-RyM"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z77-ib-Pal">
-                                <rect key="frame" x="185" y="151" width="185" height="30"/>
+                                <rect key="frame" x="185" y="207" width="185" height="30"/>
                                 <state key="normal" title="Choose from Photo Library"/>
                                 <connections>
                                     <action selector="photoLibraryButtonTapped:" destination="Unf-Fp-UUw" eventType="touchUpInside" id="T5L-qW-11M"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Profile Picture" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mWt-wc-EaT">
+                                <rect key="frame" x="20" y="80" width="108" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZDa-tQ-5i0">
+                                <rect key="frame" x="20" y="296" width="45" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Gender" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Dq-Kw-Ol8">
+                                <rect key="frame" x="20" y="399" width="57" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -1471,7 +1502,7 @@
             </objects>
             <point key="canvasLocation" x="5631" y="-2600"/>
         </scene>
-        <!--Trainer Region View Controller-->
+        <!--Mobile Trainer-->
         <scene sceneID="WDE-vG-Oc0">
             <objects>
                 <viewController id="dK9-KV-pe7" customClass="TrainerRegionViewController" customModule="FindemBeta" customModuleProvider="target" sceneMemberID="viewController">
@@ -1484,33 +1515,33 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Street Address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1HW-zb-njM">
-                                <rect key="frame" x="20" y="72" width="216" height="30"/>
+                                <rect key="frame" x="20" y="106" width="216" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="City" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="j72-X7-QaU">
-                                <rect key="frame" x="20" y="124" width="216" height="30"/>
+                                <rect key="frame" x="20" y="149" width="216" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="State" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rRL-Aa-kbX">
-                                <rect key="frame" x="20" y="176" width="216" height="30"/>
+                                <rect key="frame" x="20" y="193" width="216" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Zip/Postal Code" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oqE-eL-7jf">
-                                <rect key="frame" x="20" y="229" width="216" height="30"/>
+                                <rect key="frame" x="20" y="237" width="216" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Distance to cover around your location:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ueL-5k-SVg">
-                                <rect key="frame" x="20" y="281" width="275" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Radius to cover around your location:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ueL-5k-SVg">
+                                <rect key="frame" x="20" y="321" width="275" height="21"/>
                                 <fontDescription key="fontDescription" type="system" weight="thin" pointSize="15"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <pickerView contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GNG-9L-qXE">
-                                <rect key="frame" x="0.0" y="348" width="600" height="216"/>
+                                <rect key="frame" x="0.0" y="395" width="600" height="191"/>
                                 <color key="backgroundColor" red="0.90196079015731812" green="0.90196079015731812" blue="0.90196079015731812" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <outlet property="dataSource" destination="dK9-KV-pe7" id="Afh-YD-Tnm"/>
@@ -1518,14 +1549,26 @@
                                 </connections>
                             </pickerView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="14B-PY-BxL">
-                                <rect key="frame" x="20" y="312" width="64" height="28"/>
+                                <rect key="frame" x="20" y="350" width="64" height="28"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="KM" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B0P-tz-2TE">
-                                <rect key="frame" x="92" y="312" width="32" height="27"/>
+                                <rect key="frame" x="92" y="350" width="32" height="27"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GYz-yR-1hU">
+                                <rect key="frame" x="20" y="72" width="63" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Distance" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bSG-r9-tSh">
+                                <rect key="frame" x="20" y="292" width="67" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -1536,7 +1579,7 @@
                             <constraint firstItem="GNG-9L-qXE" firstAttribute="leading" secondItem="jUP-eQ-fSC" secondAttribute="leadingMargin" id="zyF-Ng-U53"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="M0c-mk-ilW">
+                    <navigationItem key="navigationItem" title="Mobile Trainer" id="M0c-mk-ilW">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="6cG-fb-kPk">
                             <connections>
                                 <action selector="cancelBarButtonItemPressed:" destination="dK9-KV-pe7" id="89T-a8-u0V"/>
@@ -1561,7 +1604,7 @@
             </objects>
             <point key="canvasLocation" x="6429" y="-1169"/>
         </scene>
-        <!--Trainer Training Types View Controller-->
+        <!--Training Types-->
         <scene sceneID="prZ-QW-PdL">
             <objects>
                 <viewController id="vdX-eo-APU" customClass="TrainerTrainingTypesViewController" customModule="FindemBeta" customModuleProvider="target" sceneMemberID="viewController">
@@ -1595,7 +1638,7 @@
                             <outlet property="delegate" destination="vdX-eo-APU" id="PNN-IU-zmr"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="Gak-Wm-q4d">
+                    <navigationItem key="navigationItem" title="Training Types" id="Gak-Wm-q4d">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="j6A-0S-Sdh">
                             <connections>
                                 <action selector="cancelBarButtonItemPressed:" destination="vdX-eo-APU" id="Vu7-uC-Xd5"/>
@@ -1617,7 +1660,7 @@
             </objects>
             <point key="canvasLocation" x="6429" y="-462"/>
         </scene>
-        <!--Trainer Qualifications View Controller-->
+        <!--Qualifications-->
         <scene sceneID="VQf-Ob-6oG">
             <objects>
                 <viewController automaticallyAdjustsScrollViewInsets="NO" id="a4D-rn-AOK" customClass="TrainerQualificationsViewController" customModule="FindemBeta" customModuleProvider="target" sceneMemberID="viewController">
@@ -1688,7 +1731,7 @@
                             <constraint firstItem="704-yl-vJZ" firstAttribute="top" secondItem="Yhz-ZX-qIW" secondAttribute="bottom" id="vhW-G9-ch1"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="8Ah-es-i5n">
+                    <navigationItem key="navigationItem" title="Qualifications" id="8Ah-es-i5n">
                         <barButtonItem key="leftBarButtonItem" title="Cancel" id="crl-Km-akm">
                             <connections>
                                 <action selector="cancelBarButtonItemTapped:" destination="a4D-rn-AOK" id="0pk-5M-ofH"/>
@@ -1709,7 +1752,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nUs-bF-u8X" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="bt1-uC-GTg" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="7241" y="275"/>
+            <point key="canvasLocation" x="6429" y="275"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="JPP-kK-y43">
@@ -1729,7 +1772,7 @@
             </objects>
             <point key="canvasLocation" x="5623" y="-462"/>
         </scene>
-        <!--Trainer Description View Controller-->
+        <!--Descriptions-->
         <scene sceneID="4Tg-pR-uqR">
             <objects>
                 <viewController id="AKr-yr-IZW" customClass="TrainerDescriptionViewController" customModule="FindemBeta" customModuleProvider="target" sceneMemberID="viewController">
@@ -1810,7 +1853,7 @@
                             <constraint firstItem="8GT-YI-xLi" firstAttribute="height" secondItem="Ovk-18-ihu" secondAttribute="height" id="Uqt-EX-ubB"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="ulG-Mx-9Xl">
+                    <navigationItem key="navigationItem" title="Descriptions" id="ulG-Mx-9Xl">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="OBd-EB-Wb4">
                             <connections>
                                 <action selector="cancelBarButtonItem:" destination="AKr-yr-IZW" id="E43-xk-gQX"/>
@@ -1839,9 +1882,9 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="7241" y="992"/>
+            <point key="canvasLocation" x="6429" y="992"/>
         </scene>
-        <!--Trainer Club View Controller-->
+        <!--Club Trainer-->
         <scene sceneID="JCV-Dh-NZW">
             <objects>
                 <viewController id="U0w-yu-y6t" customClass="TrainerClubViewController" customModule="FindemBeta" customModuleProvider="target" sceneMemberID="viewController">
@@ -1893,7 +1936,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="bxQ-aM-Vnu">
+                    <navigationItem key="navigationItem" title="Club Trainer" id="bxQ-aM-Vnu">
                         <barButtonItem key="leftBarButtonItem" title="Cancel" id="Erc-Yg-8gp">
                             <connections>
                                 <action selector="cancelBarButtonTapped:" destination="U0w-yu-y6t" id="24d-qg-hjc"/>
@@ -1951,7 +1994,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vrq-5X-4Vp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6435" y="992"/>
+            <point key="canvasLocation" x="5623" y="992"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="4Sc-Ak-cOZ">
@@ -1971,7 +2014,7 @@
             </objects>
             <point key="canvasLocation" x="5623" y="1712"/>
         </scene>
-        <!--Trainer Session Times View Controller-->
+        <!--Session Times-->
         <scene sceneID="fHv-ZW-E0I">
             <objects>
                 <viewController id="MI2-1I-Zxm" customClass="TrainerSessionTimesViewController" customModule="FindemBeta" customModuleProvider="target" sceneMemberID="viewController">
@@ -2040,7 +2083,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="pUg-Vc-kcT">
+                    <navigationItem key="navigationItem" title="Session Times" id="pUg-Vc-kcT">
                         <barButtonItem key="leftBarButtonItem" title="Cancel" id="c2L-GU-839">
                             <connections>
                                 <action selector="cancelBarButtonItemTapped:" destination="MI2-1I-Zxm" id="ZK9-Fz-stS"/>
@@ -2068,7 +2111,7 @@
         <!--Finder Select Trainer Type View Controller-->
         <scene sceneID="DLL-CW-NQ7">
             <objects>
-                <viewController id="fu2-qy-5IX" customClass="FinderSelectTrainerTypeViewController" customModule="FindemBeta" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="FinderHomeVC" id="fu2-qy-5IX" customClass="FinderSelectTrainerTypeViewController" customModule="FindemBeta" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="PB0-Gs-8xs"/>
                         <viewControllerLayoutGuide type="bottom" id="EXd-WK-xIE"/>
@@ -2222,9 +2265,9 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lHT-LW-8GY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6435" y="275"/>
+            <point key="canvasLocation" x="5623" y="275"/>
         </scene>
-        <!--Trainer Social Networking View Controller-->
+        <!--Instagram Id-->
         <scene sceneID="nar-cZ-K5k">
             <objects>
                 <viewController id="JWX-9e-0fz" customClass="TrainerSocialNetworkingViewController" customModule="FindemBeta" customModuleProvider="target" sceneMemberID="viewController">
@@ -2266,7 +2309,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="uOM-QR-H3s">
+                    <navigationItem key="navigationItem" title="Instagram Id" id="uOM-QR-H3s">
                         <barButtonItem key="leftBarButtonItem" title="Cancel" id="CTi-Cv-1GB">
                             <connections>
                                 <action selector="cancelBarButtonItemTapped:" destination="JWX-9e-0fz" id="UVK-uC-khB"/>
@@ -2360,6 +2403,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="defaultPhoto" width="540" height="540"/>
+        <image name="pt" width="381" height="533"/>
     </resources>
 </document>

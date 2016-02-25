@@ -114,10 +114,12 @@
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Qx6-OH-e1G">
                                                     <rect key="frame" x="0.0" y="0.0" width="250" height="250"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 </imageView>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstItem="Qx6-OH-e1G" firstAttribute="top" secondItem="PJ9-bn-mJZ" secondAttribute="top" id="a2e-dB-L9v"/>
                                             <constraint firstItem="Qx6-OH-e1G" firstAttribute="leading" secondItem="PJ9-bn-mJZ" secondAttribute="leading" id="de5-ll-0yW"/>
@@ -135,7 +137,6 @@
                                 </connections>
                             </collectionView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="kXe-gc-BK9" firstAttribute="leading" secondItem="zhR-sL-PGF" secondAttribute="leading" id="Pfu-a6-qgf"/>
                             <constraint firstItem="kXe-gc-BK9" firstAttribute="bottom" secondItem="gzu-J1-XbH" secondAttribute="top" id="RES-QG-y8z"/>
@@ -950,10 +951,16 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="149"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="D0l-dj-ZxC">
-                                                    <rect key="frame" x="8" y="13" width="369" height="128"/>
+                                                <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="D0l-dj-ZxC">
+                                                    <rect key="frame" x="0.0" y="0.0" width="600" height="149"/>
                                                 </mapView>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="D0l-dj-ZxC" firstAttribute="top" secondItem="PfZ-Ge-s8v" secondAttribute="top" id="gVB-pL-01I"/>
+                                                <constraint firstItem="D0l-dj-ZxC" firstAttribute="leading" secondItem="PfZ-Ge-s8v" secondAttribute="leading" id="jQ5-20-Di5"/>
+                                                <constraint firstAttribute="bottom" secondItem="D0l-dj-ZxC" secondAttribute="bottom" id="rhc-Cc-RHm"/>
+                                                <constraint firstAttribute="trailing" secondItem="D0l-dj-ZxC" secondAttribute="trailing" id="vkC-64-oOh"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="mapView" destination="D0l-dj-ZxC" id="Dh8-Dk-ZnD"/>
@@ -1014,7 +1021,7 @@
                                                 </textView>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="qLG-cd-eHp">
                                                     <rect key="frame" x="8" y="78" width="584" height="62"/>
-                                                    <color key="backgroundColor" red="0.80000001192092896" green="0.80000001192092896" blue="0.80000001192092896" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="backgroundColor" red="0.90196079015731812" green="0.90196079015731812" blue="0.90196079015731812" alpha="1" colorSpace="calibratedRGB"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                 </textView>

@@ -85,6 +85,9 @@ extension FinderSearchViewController: UICollectionViewDelegate,UICollectionViewD
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("searchCell", forIndexPath: indexPath) as! SearchCollectionViewCell
+        cell.imageView.layer.cornerRadius = cell.imageView.frame.height / 3
+        cell.imageView.layer.borderWidth = 2.0
+        cell.imageView.layer.borderColor = UIColor.whiteColor().CGColor
         cell.imageView.image = self.ImageArray[indexPath.row]
         
         return cell

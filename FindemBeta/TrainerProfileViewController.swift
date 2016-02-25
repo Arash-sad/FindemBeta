@@ -186,16 +186,18 @@ class TrainerProfileViewController: UIViewController, UITableViewDelegate, UITab
     
     // MARK: - UITableViewDataSource
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 1
+//        return 1
+        return 10
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+//        return 10
+        return 1
     }
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        if indexPath.row == 0 {
+        if indexPath.section == 0 {
             let cell = tableView.dequeueReusableCellWithIdentifier(self.firstCellIdentifier, forIndexPath: indexPath) as! FirstTableViewCell
             
             // Setup profileImageView
@@ -214,7 +216,7 @@ class TrainerProfileViewController: UIViewController, UITableViewDelegate, UITab
             }
             return cell
         }
-        else if indexPath.row == 1 {
+        else if indexPath.section == 1 {
             let cell = tableView.dequeueReusableCellWithIdentifier(self.clubProfileCell, forIndexPath: indexPath) as! ClubProfileTableViewCell
             cell.clubLabel.text = self.clubName
             if clubAddress.count == 4 {
@@ -229,7 +231,7 @@ class TrainerProfileViewController: UIViewController, UITableViewDelegate, UITab
             }
             return cell
         }
-        else if indexPath.row == 2 {
+        else if indexPath.section == 2 {
             let cell = tableView.dequeueReusableCellWithIdentifier(self.mobileProfileCell, forIndexPath: indexPath) as! MobileProfileTableViewCell
             cell.distanceLabel.text = String(self.distance)
             if clubAddress.count == 4 {
@@ -244,7 +246,7 @@ class TrainerProfileViewController: UIViewController, UITableViewDelegate, UITab
             }
             return cell
         }
-        else if indexPath.row == 3 {
+        else if indexPath.section == 3 {
             let cell = tableView.dequeueReusableCellWithIdentifier(self.secondCellIdentifier, forIndexPath: indexPath) as! SecondTableViewCell
             
             //MARK: load mapView and add annotation and circle overlay
@@ -252,6 +254,8 @@ class TrainerProfileViewController: UIViewController, UITableViewDelegate, UITab
             let clubLocation = CLLocationCoordinate2DMake(self.clubLatitude!, self.clubLongitude!)
             
             cell.mapView.delegate = self
+            cell.mapView.layer.borderColor = UIColor.blackColor().CGColor
+            cell.mapView.layer.borderWidth = 2.0
             
             //remove map overlays and annotations
             let overlays = cell.mapView.overlays
@@ -298,7 +302,7 @@ class TrainerProfileViewController: UIViewController, UITableViewDelegate, UITab
             
             return cell
         }
-        else if indexPath.row == 4 {
+        else if indexPath.section == 4 {
             let cell = tableView.dequeueReusableCellWithIdentifier(self.thirdCellIdentifier, forIndexPath: indexPath) as! ThirdTableViewCell
             cell.trainingTypesPickerView.reloadAllComponents()
             if editButtonEnabled {
@@ -311,7 +315,7 @@ class TrainerProfileViewController: UIViewController, UITableViewDelegate, UITab
             }
             return cell
         }
-        else if indexPath.row == 5 {
+        else if indexPath.section == 5 {
             let cell = tableView.dequeueReusableCellWithIdentifier(self.fourthCellIdentifier, forIndexPath: indexPath) as! FourthTableViewCell
             cell.qualificationsPickerView.reloadAllComponents()
             if editButtonEnabled {
@@ -324,7 +328,7 @@ class TrainerProfileViewController: UIViewController, UITableViewDelegate, UITab
             }
             return cell
         }
-        else if indexPath.row == 6 {
+        else if indexPath.section == 6 {
             let cell = tableView.dequeueReusableCellWithIdentifier(self.fifthCellIdentifier, forIndexPath: indexPath) as! FifthTableViewCell
             cell.shortDescriptionTextView.text = self.shortDescription
             cell.longDescriptionTextView.text = self.longDescription
@@ -340,7 +344,7 @@ class TrainerProfileViewController: UIViewController, UITableViewDelegate, UITab
             }
             return cell
         }
-        else if indexPath.row == 7 {
+        else if indexPath.section == 7 {
             let cell = tableView.dequeueReusableCellWithIdentifier(self.sixthCellIdentifier, forIndexPath: indexPath) as! SixthTableViewCell
             if self.yearsExperience == 0 {
                 cell.yearsLabel.text = "Less than a year"
@@ -362,7 +366,7 @@ class TrainerProfileViewController: UIViewController, UITableViewDelegate, UITab
             }
             return cell
         }
-        else if indexPath.row == 8 {
+        else if indexPath.section == 8 {
             let cell = tableView.dequeueReusableCellWithIdentifier(self.sevenththCellIdentifier, forIndexPath: indexPath) as! SeventhTableViewCell
             if sessionTimes.uppercaseString.characters.contains("A") {
                 cell.morningsWD.textColor = UIColor.blackColor()
@@ -422,37 +426,70 @@ class TrainerProfileViewController: UIViewController, UITableViewDelegate, UITab
         
     }
     
+    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if section == 0 {
+            return "General Info"
+        }
+        else if section == 1 {
+            return "Club Trainer"
+        }
+        else if section == 2 {
+            return "Mobile Trainer"
+        }
+        else if section == 3 {
+            return "Map"
+        }
+        else if section == 4 {
+            return "Training Types"
+        }
+        else if section == 5 {
+            return "Qualifications"
+        }
+        else if section == 6 {
+            return "Descriptions"
+        }
+        else if section == 7 {
+            return "Experience"
+        }
+        else if section == 8 {
+            return "Sessions Times"
+        }
+        else {
+            return "Instagram Id"
+        }
+    }
+    
     // MARK: - UITableViewDelegate
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         if editButtonEnabled {
-            if indexPath.row == 0 {
+            if indexPath.section == 0 {
                 performSegueWithIdentifier("showGeneralDetail", sender: nil)
             }
-            else if indexPath.row == 1 {
+            else if indexPath.section == 1 {
                 performSegueWithIdentifier("showClubDetails", sender: nil)
             }
-            else if indexPath.row == 2 {
+            else if indexPath.section == 2 {
                 performSegueWithIdentifier("showMobileDetails", sender: nil)
             }
-            else if indexPath.row == 3 {
+            else if indexPath.section == 3 {
 //                performSegueWithIdentifier("", sender: nil)
             }
-            else if indexPath.row == 4 {
+            else if indexPath.section == 4 {
                 performSegueWithIdentifier("showTypesOfTraining", sender: nil)
             }
-            else if indexPath.row == 5 {
+            else if indexPath.section == 5 {
                 performSegueWithIdentifier("showQualifications", sender: nil)
             }
-            else if indexPath.row == 6 {
+            else if indexPath.section == 6 {
                 performSegueWithIdentifier("showDescription", sender: nil)
             }
-            else if indexPath.row == 7 {
+            else if indexPath.section == 7 {
                 performSegueWithIdentifier("showOtherDetails", sender: nil)
             }
-            else if indexPath.row == 8 {
+            else if indexPath.section == 8 {
                 performSegueWithIdentifier("showSessionTimes", sender: nil)
             }
-            else if indexPath.row == 9 {
+            else if indexPath.section == 9 {
                 performSegueWithIdentifier("showSocialNetworks", sender: nil)
             }
         }
@@ -462,33 +499,51 @@ class TrainerProfileViewController: UIViewController, UITableViewDelegate, UITab
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat
     {
         return 150.0
-//        if indexPath.row == 0 {
+//        if indexPath.section == 0 {
 //            return 150.0
 //        }
-//        else if indexPath.row == 1 {
+//        else if indexPath.section == 1 {
 //            return 150.0
 //        }
-//        else if indexPath.row == 2 {
+//        else if indexPath.section == 2 {
 //            return 150.0
 //        }
-//        else if indexPath.row == 3 {
+//        else if indexPath.section == 3 {
 //            return 150.0
 //        }
-//        else if indexPath.row == 4 {
+//        else if indexPath.section == 4 {
 //            return 150.0
 //        }
-//        else if indexPath.row == 5 {
+//        else if indexPath.section == 5 {
 //            return 150.0
 //        }
-//        else if indexPath.row == 6 {
+//        else if indexPath.section == 6 {
 //            return 150.0
 //        }
-//        else if indexPath.row == 7 {
+//        else if indexPath.section == 7 {
 //            return 150.0
 //        }
 //        else {
 //            return 70.0
 //        }
+    }
+    
+    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 40
+    }
+    
+    func tableView(tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        let header:UITableViewHeaderFooterView = view as! UITableViewHeaderFooterView
+        header.contentView.backgroundColor = UIColor(red: 220, green: 220, blue: 220, alpha: 0.2)
+        header.textLabel!.textColor = UIColor.blackColor()
+        //It is only available on iOS 8.2 or newer
+        if #available(iOS 8.2, *) {
+            header.textLabel!.font = UIFont.systemFontOfSize(18, weight: UIFontWeightBold)
+        } else {
+            // Fallback on earlier versions
+        }
+        header.textLabel!.frame = header.frame
+        header.textLabel!.textAlignment = NSTextAlignment.Left
     }
     
     // MARK: - PickerView

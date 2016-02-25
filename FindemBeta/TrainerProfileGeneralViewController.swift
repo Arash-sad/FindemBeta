@@ -101,7 +101,7 @@ class TrainerProfileGeneralViewController: UIViewController, UITextFieldDelegate
     // MARK: - UITextFieldDelegate
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
-        // Hide the keyboard.
+        // Hide the keyboard
         textField.resignFirstResponder()
         return true
     }
@@ -111,13 +111,13 @@ class TrainerProfileGeneralViewController: UIViewController, UITextFieldDelegate
     }
     
     func textFieldDidBeginEditing(textField: UITextField) {
-        // Disable the Save button while editing.
+        // Disable the Save button while editing
         saveBarButtonItem.enabled = false
     }
     
     func checkValidName() {
-        // Disable the Save button if the text field is empty.
-        let text = nameTextField.text ?? ""
+        // Disable the Save button if the textField is empty / just white spaces
+        let text = nameTextField.text!.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet()) ?? ""
         saveBarButtonItem.enabled = !text.isEmpty
     }
 

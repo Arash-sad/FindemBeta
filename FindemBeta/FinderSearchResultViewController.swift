@@ -184,6 +184,7 @@ extension FinderSearchResultViewController: UITableViewDataSource, UITableViewDe
         cell.trainerImageView.layer.masksToBounds = true
         
         cell.nameLabel.text = self.refinedtrainerArray[indexPath.row].objectForKey("firstName") as? String
+        cell.shortDescriptionLabel.text = self.refinedtrainerArray[indexPath.row].objectForKey("shortDescription") as? String
         let imageFile = self.refinedtrainerArray[indexPath.row].objectForKey("picture") as? PFFile
         imageFile!.getDataInBackgroundWithBlock({
             data, error in

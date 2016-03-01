@@ -208,6 +208,7 @@ class TrainerProfileViewController: UIViewController, UITableViewDelegate, UITab
             
             cell.nameLabel.text = self.name
             cell.profileImageView?.image = self.photo
+            cell.genderLabel.text = self.gender
             if editButtonEnabled {
                 cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
             }
@@ -220,7 +221,8 @@ class TrainerProfileViewController: UIViewController, UITableViewDelegate, UITab
             let cell = tableView.dequeueReusableCellWithIdentifier(self.clubProfileCell, forIndexPath: indexPath) as! ClubProfileTableViewCell
             cell.clubLabel.text = self.clubName
             if clubAddress.count == 4 {
-                cell.addressLabel.text = "\(clubAddress[0])\n\(clubAddress[1]) \(clubAddress[2]) \(clubAddress[3])"
+                cell.firstAddressLabel.text = "\(clubAddress[0])"
+                cell.secondAddressLabel.text = "\(clubAddress[1]) \(clubAddress[2]) \(clubAddress[3])"
             }
             if editButtonEnabled {
                 
@@ -235,7 +237,8 @@ class TrainerProfileViewController: UIViewController, UITableViewDelegate, UITab
             let cell = tableView.dequeueReusableCellWithIdentifier(self.mobileProfileCell, forIndexPath: indexPath) as! MobileProfileTableViewCell
             cell.distanceLabel.text = String(self.distance)
             if clubAddress.count == 4 {
-                cell.addressLabel.text = "\(mobileAddress[0])\n\(mobileAddress[1]) \(mobileAddress[2]) \(mobileAddress[3])"
+                cell.firstAddressLabel.text = "\(mobileAddress[0])"
+                cell.secondAddressLabel.text = "\(mobileAddress[1]) \(mobileAddress[2]) \(mobileAddress[3])"
             }
             if editButtonEnabled {
                 
@@ -254,7 +257,7 @@ class TrainerProfileViewController: UIViewController, UITableViewDelegate, UITab
             let clubLocation = CLLocationCoordinate2DMake(self.clubLatitude!, self.clubLongitude!)
             
             cell.mapView.delegate = self
-            cell.mapView.layer.borderColor = UIColor.blackColor().CGColor
+            cell.mapView.layer.borderColor = UIColor.lightGrayColor().CGColor
             cell.mapView.layer.borderWidth = 2.0
             
             //remove map overlays and annotations
@@ -498,34 +501,36 @@ class TrainerProfileViewController: UIViewController, UITableViewDelegate, UITab
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat
     {
-        return 150.0
-//        if indexPath.section == 0 {
-//            return 150.0
-//        }
-//        else if indexPath.section == 1 {
-//            return 150.0
-//        }
-//        else if indexPath.section == 2 {
-//            return 150.0
-//        }
-//        else if indexPath.section == 3 {
-//            return 150.0
-//        }
-//        else if indexPath.section == 4 {
-//            return 150.0
-//        }
-//        else if indexPath.section == 5 {
-//            return 150.0
-//        }
-//        else if indexPath.section == 6 {
-//            return 150.0
-//        }
-//        else if indexPath.section == 7 {
-//            return 150.0
-//        }
-//        else {
-//            return 70.0
-//        }
+        if indexPath.section == 0 {
+            return 210.0
+        }
+        else if indexPath.section == 1 {
+            return 150.0
+        }
+        else if indexPath.section == 2 {
+            return 150.0
+        }
+        else if indexPath.section == 3 {
+            return 190.0
+        }
+        else if indexPath.section == 4 {
+            return 150.0
+        }
+        else if indexPath.section == 5 {
+            return 150.0
+        }
+        else if indexPath.section == 6 {
+            return 240.0
+        }
+        else if indexPath.section == 7 {
+            return 170.0
+        }
+        else if indexPath.section == 8 {
+            return 130.0
+        }
+        else {
+            return 50.0
+        }
     }
     
     func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -537,11 +542,11 @@ class TrainerProfileViewController: UIViewController, UITableViewDelegate, UITab
         header.contentView.backgroundColor = UIColor(red: 220, green: 220, blue: 220, alpha: 0.2)
         header.textLabel!.textColor = UIColor.blackColor()
         //It is only available on iOS 8.2 or newer
-        if #available(iOS 8.2, *) {
+//        if #available(iOS 8.2, *) {
             header.textLabel!.font = UIFont.systemFontOfSize(18, weight: UIFontWeightBold)
-        } else {
-            // Fallback on earlier versions
-        }
+//        } else {
+//            // Fallback on earlier versions
+//        }
         header.textLabel!.frame = header.frame
         header.textLabel!.textAlignment = NSTextAlignment.Left
     }

@@ -20,6 +20,8 @@ class FinderTrainerProfileViewController: UIViewController {
     @IBOutlet weak var qualificationTextView: UITextView!
     @IBOutlet weak var yearsExperienceLabel: UILabel!
     @IBOutlet weak var achievementsTextView: UITextView!
+    @IBOutlet weak var instagramButton: UIButton!
+    @IBOutlet weak var connectBarButtonItem: UIBarButtonItem!
     
     var trainer: PFUser?
     var trainingTypesArray: [String]?
@@ -32,7 +34,6 @@ class FinderTrainerProfileViewController: UIViewController {
         super.viewDidLoad()
 
         self.scrollView.contentSize = self.containerView.frame.size
-        
         // Do any additional setup after loading the view.
         
         // Setup profileImageView
@@ -43,18 +44,21 @@ class FinderTrainerProfileViewController: UIViewController {
         
         // Display trainer data 
         nameLabel.text = self.trainer!.objectForKey("firstName") as? String
-        longDescriptionTextView.text = self.trainer!.objectForKey("longDescription") as? String
+        self.longDescriptionTextView.layer.cornerRadius = 5
+        self.longDescriptionTextView.text = self.trainer!.objectForKey("longDescription") as? String
         self.trainingTypesArray = self.trainer!.objectForKey("trainingTypes") as? [String] ?? []
         for trainingType in self.trainingTypesArray! {
             self.trainingTypes += trainingType
             self.trainingTypes += "\n"
         }
+        self.trainingTypesTextView.layer.cornerRadius = 5
         self.trainingTypesTextView.text = self.trainingTypes
         self.qualificationsArray = self.trainer!.objectForKey("qualifications") as? [String] ?? []
         for qualification in self.qualificationsArray! {
             self.qualifications += qualification
             self.qualifications += "\n"
         }
+        self.qualificationTextView.layer.cornerRadius = 5
         self.qualificationTextView.text = self.qualifications
         if let yearsExperience = self.trainer!.objectForKey("yearsExperience") as? Int {
             if yearsExperience == 0 {
@@ -67,6 +71,7 @@ class FinderTrainerProfileViewController: UIViewController {
                 self.yearsExperienceLabel.text = ("\(yearsExperience) years")
             }
         }
+        self.achievementsTextView.layer.cornerRadius = 5
         self.achievementsTextView.text = self.trainer!.objectForKey("achievements") as? String
         let imageFile = self.trainer!.objectForKey("picture") as? PFFile
         imageFile!.getDataInBackgroundWithBlock({
@@ -75,6 +80,10 @@ class FinderTrainerProfileViewController: UIViewController {
                 self.profileImageView.image = UIImage(data: data)!
             }
         })
+        
+        if PFUser.currentUser()?.objectId == trainer!.objectId! {
+            self.connectBarButtonItem.enabled = false
+        }
         
     }
 
@@ -89,6 +98,28 @@ class FinderTrainerProfileViewController: UIViewController {
             let connectionVC = segue.destinationViewController as? FinderConnectionViewController
             connectionVC?.trainer = self.trainer
             connectionVC?.isConnected = self.isConnected
+        }
+    }
+    
+    
+    @IBAction func instagramButtonTapped(sender: UIButton) {
+        let instagramUserId = self.trainer!.objectForKey("instagramUserId") as? String
+        print(instagramUserId)
+        if instagramUserId == "" {
+            self.instagramButton.enabled = false
+        }
+        else {
+            let instagramHooks = "instagram://user?username=\(instagramUserId)"
+            let instagramUrl = NSURL(string: instagramHooks)
+            if UIApplication.sharedApplication().canOpenURL(instagramUrl!)
+            {
+                UIApplication.sharedApplication().openURL(instagramUrl!)
+                
+            } else {
+                //redirect to safari because the user doesn't have Instagram
+                UIApplication.sharedApplication().openURL(NSURL(string: "http://instagram.com/\(instagramUserId)")!)
+            }
+            
         }
     }
     

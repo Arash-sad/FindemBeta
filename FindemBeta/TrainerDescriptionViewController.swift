@@ -69,13 +69,13 @@ class TrainerDescriptionViewController: UIViewController, UITextViewDelegate {
         if textView == longDescriptionTextView {
             isSecondKeyboardUp = true
             UIView.animateWithDuration(0.4, animations: { () -> Void in
-                self.bottomMargin.constant += 80
+                self.bottomMargin.constant += 150
             })
         }
         if textView == shortDescriptionTextView {
             if self.isSecondKeyboardUp == true {
                 UIView.animateWithDuration(0.4, animations: { () -> Void in
-                    self.bottomMargin.constant -= 80
+                    self.bottomMargin.constant -= 150
                     self.isSecondKeyboardUp = false
                 })
             }
@@ -151,7 +151,7 @@ class TrainerDescriptionViewController: UIViewController, UITextViewDelegate {
         self.longDescriptionTextView.resignFirstResponder()
             if self.isSecondKeyboardUp == true {
                 UIView.animateWithDuration(0.4, animations: { () -> Void in
-                    self.bottomMargin.constant -= 80
+                    self.bottomMargin.constant -= 150
                     self.isSecondKeyboardUp = false
                 })
             }

@@ -39,6 +39,8 @@ class LoginViewController: UIViewController {
                 
                 // Set Expiration Date (used in In-App Purchases)
                 user!.setObject(NSDate(), forKey: "expirationDate")
+                // Set Session times (weekdays only)
+                user!.setObject("ABC", forKey: "sessionTimes")
                 
                 let fbRequest = FBSDKGraphRequest(graphPath: "me", parameters: ["fields":"first_name,gender,picture.type(large)"])
                 fbRequest.startWithCompletionHandler({ (FBSDKGraphRequestConnection, result, error) -> Void in
@@ -53,14 +55,17 @@ class LoginViewController: UIViewController {
                         
                         let pictureURL = ((facebookData["picture"] as! NSDictionary)["data"] as! NSDictionary) ["url"] as! String
                         let url = NSURL(string: pictureURL)
+                        let session = NSURLSession.sharedSession()
                         let request = NSURLRequest(URL: url!)
-                        NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue(), completionHandler: {
-                            response, data, error in
-                            
-                            let imageFile = PFFile(name: "avatar.jpg", data: data!)
-                            user!.setObject(imageFile, forKey: "picture")
-                            user!.saveInBackgroundWithBlock(nil)
+                        //NSURLConnection.sendAsynchronousRequest deprecated in iOS9
+                        let task = session.dataTaskWithRequest(request, completionHandler: {
+                            (data, response, error) -> Void in
+                                let imageFile = PFFile(name: "avatar.jpg", data: data!)
+                                user!.setObject(imageFile, forKey: "picture")
+                                user!.saveInBackgroundWithBlock(nil)
                         })
+                        
+                        task.resume()
                     }
                     })
             }

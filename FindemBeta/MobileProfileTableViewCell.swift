@@ -11,7 +11,9 @@ import UIKit
 class MobileProfileTableViewCell: UITableViewCell {
 
     @IBOutlet weak var distanceLabel: UILabel!
-    @IBOutlet weak var addressLabel: UILabel!
+    @IBOutlet weak var firstAddressLabel: UILabel!
+    @IBOutlet weak var secondAddressLabel: UILabel!
+
     
     override func awakeFromNib() {
         super.awakeFromNib()

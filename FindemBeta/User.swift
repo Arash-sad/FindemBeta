@@ -46,6 +46,7 @@ func saveConnection(user: PFUser) {
     action.setObject(NSDate(), forKey: "userLastSeenAt")
     action.setObject(NSDate(), forKey: "trainerLastSeenAt")
     action.setObject(NSDate(), forKey: "lastMessageAt")
+    action.setObject("", forKey: "lastMessageString")
     action.saveInBackgroundWithBlock(nil)
 }
 

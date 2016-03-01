@@ -14,6 +14,7 @@ class FinderMessageTableViewCell: UITableViewCell {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var newMessageLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var lastMessageLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

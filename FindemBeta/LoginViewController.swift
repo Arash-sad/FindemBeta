@@ -11,10 +11,16 @@ import ParseFacebookUtilsV4
 
 class LoginViewController: UIViewController {
 
+    @IBOutlet weak var fbLoginButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        // Setup the button
+        self.fbLoginButton.layer.cornerRadius = self.fbLoginButton.frame.height / 3
+        self.fbLoginButton.layer.borderColor = UIColor(white: 1.0, alpha: 1.0).CGColor
+        self.fbLoginButton.layer.borderWidth = 1.0
     }
 
     override func didReceiveMemoryWarning() {

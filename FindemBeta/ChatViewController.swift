@@ -173,7 +173,7 @@ class ChatViewController : JSQMessagesViewController {
             if let id = connectionID {
                 saveMessage(id, message: Message(message: text, senderID: senderId, date: date))
                 
-                // Save lastMessage time in Parse Action class
+                // Save lastMessage and its time in Parse Action class
                 let query = PFQuery(className: "Action")
                 query.getObjectInBackgroundWithId(id) { (object, err) -> Void in
                     if err != nil || object == nil {
@@ -181,6 +181,7 @@ class ChatViewController : JSQMessagesViewController {
                     }
                     else {
                         object!.setObject(NSDate(), forKey: "lastMessageAt")
+                        object!.setObject(text, forKey: "lastMessageString")
                         //                    object!.saveInBackgroundWithBlock(nil)
                         object!.saveInBackgroundWithBlock {
                             (success, error) -> Void in

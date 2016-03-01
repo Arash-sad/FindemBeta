@@ -16,6 +16,7 @@ struct Action {
     var lastMessage: NSDate
     var userLastSeenAt: NSDate
     var trainerLastSeenAt: NSDate
+    var lastMessageString: String
 }
 
 struct Connection {
@@ -33,7 +34,7 @@ func fetchConnectionsForTrainers (callBack: ([Connection]) -> ()) {
                 if let connections = objects {
                     let connectedUsers = connections.map({
                         (object)->(action: Action, userID: String) in
-                        (Action(id: object.objectId!, userAction: object.objectForKey("userAction") as! String, trainerAction: object.objectForKey("trainerAction") as! String, lastMessage: object.objectForKey("lastMessageAt") as! NSDate, userLastSeenAt: object.objectForKey("userLastSeenAt") as! NSDate, trainerLastSeenAt: object.objectForKey("trainerLastSeenAt") as! NSDate), object.objectForKey("byUser") as! String)
+                        (Action(id: object.objectId!, userAction: object.objectForKey("userAction") as! String, trainerAction: object.objectForKey("trainerAction") as! String, lastMessage: object.objectForKey("lastMessageAt") as! NSDate, userLastSeenAt: object.objectForKey("userLastSeenAt") as! NSDate, trainerLastSeenAt: object.objectForKey("trainerLastSeenAt") as! NSDate, lastMessageString: object.objectForKey("lastMessageString") as! String), object.objectForKey("byUser") as! String)
                     })
                     let userIDs = connectedUsers.map({$0.userID})
                     
@@ -52,7 +53,7 @@ func fetchConnectionsForTrainers (callBack: ([Connection]) -> ()) {
                                 // Warning: enumerate is not a global function anymore in Swift 2.0
                                 // Below used users.enumerate() instead of enumerate(users)
                                 for (_, user) in users.enumerate() {
-                                    var action: Action = Action(id: "", userAction: "", trainerAction: "", lastMessage: NSDate(),userLastSeenAt: NSDate(),trainerLastSeenAt: NSDate())
+                                    var action: Action = Action(id: "", userAction: "", trainerAction: "", lastMessage: NSDate(), userLastSeenAt: NSDate(), trainerLastSeenAt: NSDate(), lastMessageString: "")
                                     for connectedUser in connectedUsers {
                                         if connectedUser.userID == user.objectId {
                                             action = connectedUser.action
@@ -85,7 +86,7 @@ func fetchConnectionsForUsers (callBack: ([Connection]) -> ()) {
                 if let connections = objects {
                     let connectedUsers = connections.map({
                         (object)->(action: Action, userID: String) in
-                        (Action(id: object.objectId!, userAction: object.objectForKey("userAction") as! String, trainerAction: object.objectForKey("trainerAction") as! String, lastMessage: object.objectForKey("lastMessageAt") as! NSDate, userLastSeenAt: object.objectForKey("userLastSeenAt") as! NSDate, trainerLastSeenAt: object.objectForKey("trainerLastSeenAt") as! NSDate), object.objectForKey("toTrainer") as! String)
+                        (Action(id: object.objectId!, userAction: object.objectForKey("userAction") as! String, trainerAction: object.objectForKey("trainerAction") as! String, lastMessage: object.objectForKey("lastMessageAt") as! NSDate, userLastSeenAt: object.objectForKey("userLastSeenAt") as! NSDate, trainerLastSeenAt: object.objectForKey("trainerLastSeenAt") as! NSDate, lastMessageString: object.objectForKey("lastMessageString") as! String), object.objectForKey("toTrainer") as! String)
                     })
                     let userIDs = connectedUsers.map({$0.userID})
                     
@@ -104,7 +105,7 @@ func fetchConnectionsForUsers (callBack: ([Connection]) -> ()) {
                                 // Warning: enumerate is not a global function anymore in Swift 2.0
                                 // Below used users.enumerate() instead of enumerate(users)
                                 for (_, user) in users.enumerate() {
-                                    var action: Action = Action(id: "", userAction: "", trainerAction: "", lastMessage: NSDate(),userLastSeenAt: NSDate(),trainerLastSeenAt: NSDate())
+                                    var action: Action = Action(id: "", userAction: "", trainerAction: "", lastMessage: NSDate(), userLastSeenAt: NSDate(), trainerLastSeenAt: NSDate(), lastMessageString: "")
                                     for connectedUser in connectedUsers {
                                         if connectedUser.userID == user.objectId {
                                             action = connectedUser.action

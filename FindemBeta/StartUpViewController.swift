@@ -16,6 +16,7 @@ class StartUpViewController: UIViewController {
     @IBOutlet weak var findTrainerButton: UIButton!
     @IBOutlet weak var profileDescriptionLabel: UILabel!
     @IBOutlet weak var findTrainerDescriptionLabel: UILabel!
+    @IBOutlet weak var buttonsStackView: UIStackView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,9 +51,8 @@ class StartUpViewController: UIViewController {
                     drawLineView.frame = self.view.frame
                     drawLineView.backgroundColor = UIColor.clearColor()
                     self.view.addSubview(drawLineView)
-                    
-                    self.view.bringSubviewToFront(self.profileButton)
-                    self.view.bringSubviewToFront(self.findTrainerButton)
+                    // Bring stackView to front (tap on buttons work fine)
+                    self.view.bringSubviewToFront(self.buttonsStackView)
                     self.profileButton.alpha = 1.0
                     self.findTrainerButton.alpha = 1.0
                     

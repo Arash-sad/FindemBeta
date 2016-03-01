@@ -541,12 +541,7 @@ class TrainerProfileViewController: UIViewController, UITableViewDelegate, UITab
         let header:UITableViewHeaderFooterView = view as! UITableViewHeaderFooterView
         header.contentView.backgroundColor = UIColor(red: 220, green: 220, blue: 220, alpha: 0.2)
         header.textLabel!.textColor = UIColor.blackColor()
-        //It is only available on iOS 8.2 or newer
-//        if #available(iOS 8.2, *) {
-            header.textLabel!.font = UIFont.systemFontOfSize(18, weight: UIFontWeightBold)
-//        } else {
-//            // Fallback on earlier versions
-//        }
+        header.textLabel!.font = UIFont.systemFontOfSize(18, weight: UIFontWeightBold)
         header.textLabel!.frame = header.frame
         header.textLabel!.textAlignment = NSTextAlignment.Left
     }

@@ -8,20 +8,12 @@
 
 import UIKit
 import Parse
+import MapKit
 
-class FinderTrainerProfileViewController: UIViewController {
+class FinderTrainerProfileViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, MKMapViewDelegate, CLLocationManagerDelegate {
 
-    @IBOutlet weak var scrollView: UIScrollView!
-    @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var profileImageView: UIImageView!
-    @IBOutlet weak var longDescriptionTextView: UITextView!
-    @IBOutlet weak var containerView: UIView!
-    @IBOutlet weak var trainingTypesTextView: UITextView!
-    @IBOutlet weak var qualificationTextView: UITextView!
-    @IBOutlet weak var yearsExperienceLabel: UILabel!
-    @IBOutlet weak var achievementsTextView: UITextView!
-    @IBOutlet weak var instagramButton: UIButton!
     @IBOutlet weak var connectBarButtonItem: UIBarButtonItem!
+    @IBOutlet weak var tableView: UITableView!
     
     var trainer: PFUser?
     var trainingTypesArray: [String]?
@@ -29,60 +21,61 @@ class FinderTrainerProfileViewController: UIViewController {
     var trainingTypes = ""
     var qualifications = ""
     var isConnected = false
+    var trainerType = "club"
+    var weekdaysSessionTimes = ""
+    var weekendSessionTimes = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.scrollView.contentSize = self.containerView.frame.size
         // Do any additional setup after loading the view.
         
-        // Setup profileImageView
-        self.profileImageView.layer.borderColor = UIColor.whiteColor().CGColor
-        self.profileImageView.layer.borderWidth = 2.0
-        self.profileImageView.layer.cornerRadius = self.profileImageView.frame.height / 2
-        self.profileImageView.layer.masksToBounds = true
+        // Disable tableView row selection
+        tableView.allowsSelection = false
         
-        // Display trainer data 
-        nameLabel.text = self.trainer!.objectForKey("firstName") as? String
-        self.longDescriptionTextView.layer.cornerRadius = 5
-        self.longDescriptionTextView.text = self.trainer!.objectForKey("longDescription") as? String
         self.trainingTypesArray = self.trainer!.objectForKey("trainingTypes") as? [String] ?? []
         for trainingType in self.trainingTypesArray! {
             self.trainingTypes += trainingType
             self.trainingTypes += "\n"
         }
-        self.trainingTypesTextView.layer.cornerRadius = 5
-        self.trainingTypesTextView.text = self.trainingTypes
+        
         self.qualificationsArray = self.trainer!.objectForKey("qualifications") as? [String] ?? []
         for qualification in self.qualificationsArray! {
             self.qualifications += qualification
             self.qualifications += "\n"
         }
-        self.qualificationTextView.layer.cornerRadius = 5
-        self.qualificationTextView.text = self.qualifications
-        if let yearsExperience = self.trainer!.objectForKey("yearsExperience") as? Int {
-            if yearsExperience == 0 {
-                self.yearsExperienceLabel.text = "Less than a year"
-            }
-            else if yearsExperience == 1 {
-                self.yearsExperienceLabel.text = "1 year"
-            }
-            else {
-                self.yearsExperienceLabel.text = ("\(yearsExperience) years")
-            }
-        }
-        self.achievementsTextView.layer.cornerRadius = 5
-        self.achievementsTextView.text = self.trainer!.objectForKey("achievements") as? String
-        let imageFile = self.trainer!.objectForKey("picture") as? PFFile
-        imageFile!.getDataInBackgroundWithBlock({
-            data, error in
-            if let data = data {
-                self.profileImageView.image = UIImage(data: data)!
-            }
-        })
         
+        // Disable connectBarButtonItem if user and trainer are the same person
         if PFUser.currentUser()?.objectId == trainer!.objectId! {
             self.connectBarButtonItem.enabled = false
+        }
+        
+        // Get Session Times
+        if let sessionTimes = self.trainer!.objectForKey("sessionTimes") as? String {
+            if sessionTimes.uppercaseString.characters.contains("A") {
+                self.weekdaysSessionTimes += " Mornings,"
+            }
+            if sessionTimes.uppercaseString.characters.contains("B") {
+                self.weekdaysSessionTimes += " Afternoons,"
+            }
+            if sessionTimes.uppercaseString.characters.contains("C") {
+                self.weekdaysSessionTimes += " Evenings"
+            }
+            if sessionTimes.uppercaseString.characters.contains("X") {
+                self.weekendSessionTimes += " Mornings,"
+            }
+            if sessionTimes.uppercaseString.characters.contains("Y") {
+                self.weekendSessionTimes += " Afternoons,"
+            }
+            if sessionTimes.uppercaseString.characters.contains("Z") {
+                self.weekendSessionTimes += " Evenings"
+            }
+            if self.weekdaysSessionTimes.characters.last == "," {
+                self.weekdaysSessionTimes = String(self.weekdaysSessionTimes.characters.dropLast(1))
+            }
+            if self.weekendSessionTimes.characters.last == "," {
+                self.weekendSessionTimes = String(self.weekendSessionTimes.characters.dropLast(1))
+            }
         }
         
     }
@@ -101,14 +94,130 @@ class FinderTrainerProfileViewController: UIViewController {
         }
     }
     
+    // MARK: - UITableViewDataSource
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 1
+    }
     
-    @IBAction func instagramButtonTapped(sender: UIButton) {
-        let instagramUserId = self.trainer!.objectForKey("instagramUserId") as? String
-        print(instagramUserId)
-        if instagramUserId == "" {
-            self.instagramButton.enabled = false
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if trainerType == "club" {
+            return 2
         }
         else {
+            return 1
+        }
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        if indexPath.row == 0 {
+                    let cellIdentifier = "firstTrainerProfile"
+                    let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! FirstTrainerProfileTableViewCell
+            
+            // Setup profileImageView
+            cell.profilePictureImageView.layer.borderColor = UIColor.whiteColor().CGColor
+            cell.profilePictureImageView.layer.borderWidth = 2.0
+            cell.profilePictureImageView.layer.cornerRadius = cell.profilePictureImageView.frame.height / 2
+            cell.profilePictureImageView.layer.masksToBounds = true
+            
+            // Add target for instagram button
+            cell.instagramButton.addTarget(self, action: "openInstagram:", forControlEvents: .TouchUpInside)
+            
+            if let _ = self.trainer!.objectForKey("instagramUserId") as? String {
+                
+            }
+            else {
+                cell.instagramButton.enabled = false
+            }
+            
+            // Display trainer data
+            let imageFile = self.trainer!.objectForKey("picture") as? PFFile
+            imageFile!.getDataInBackgroundWithBlock({
+                data, error in
+                if let data = data {
+                    cell.profilePictureImageView.image = UIImage(data: data)!
+                    cell.backgroundImageView.image = UIImage(data: data)!
+                }
+            })
+            cell.nameLabel.text = self.trainer!.objectForKey("firstName") as? String
+            cell.descriptionTextView.layer.cornerRadius = 5
+            cell.descriptionTextView.text = self.trainer!.objectForKey("longDescription") as? String
+            cell.trainingTypesTextView.layer.cornerRadius = 5
+            cell.trainingTypesTextView.text = self.trainingTypes
+            cell.qualificationsTextView.layer.cornerRadius = 5
+            cell.qualificationsTextView.text = self.qualifications
+            if let yearsExperience = self.trainer!.objectForKey("yearsExperience") as? Int {
+                if yearsExperience == 0 {
+                    cell.experienceLabel.text = "Less than a year"
+                }
+                else if yearsExperience == 1 {
+                    cell.experienceLabel.text = "1 year"
+                }
+                else {
+                    cell.experienceLabel.text = ("\(yearsExperience) years")
+                }
+            }
+            cell.achievementsTextView.layer.cornerRadius = 5
+            cell.achievementsTextView.text = self.trainer!.objectForKey("achievements") as? String
+            cell.weekdaysLabel.text = self.weekdaysSessionTimes
+            cell.weekendsLabel.text = self.weekendSessionTimes
+            
+            return cell
+        }
+        else {
+                    let cellIdentifier = "secondTrainerProfile"
+                    let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! SecondTrainerProfileTableViewCell
+            
+            cell.clubNameLabel.text = self.trainer!.objectForKey("clubName") as? String
+            if let clubAddress = trainer!.objectForKey("clubAddress") as? [String] {
+                if clubAddress.count == 4 {
+                    cell.clubAddressLabel.text = "\(clubAddress[0])\n\(clubAddress[1]) \(clubAddress[2]) \(clubAddress[3])"
+                }
+            }
+            // Setup mapView
+            cell.mapView.delegate = self
+            cell.mapView.layer.borderColor = UIColor.lightGrayColor().CGColor
+            cell.mapView.layer.borderWidth = 2.0
+            //remove map overlays and annotations
+            let annotationToRemove = cell.mapView.annotations
+            cell.mapView.removeAnnotations(annotationToRemove)
+            
+            let latitude = trainer!.objectForKey("clubLatitude") as? Double
+            let longitude = trainer!.objectForKey("clubLongitude") as? Double
+            let location = CLLocationCoordinate2DMake(latitude!, longitude!)
+            
+            let span = MKCoordinateSpanMake(0.03, 0.03)
+            let region = MKCoordinateRegion(center: location, span: span)
+            cell.mapView.setRegion(region, animated: true)
+            
+            let annotation = MKPointAnnotation()
+            annotation.coordinate = location
+            annotation.title = self.trainer!.objectForKey("firstName") as? String
+            annotation.subtitle = self.trainer!.objectForKey("clubName") as? String
+            cell.mapView.addAnnotation(annotation)
+            
+            return cell
+        }
+    }
+    
+    // MARK: - UITableViewDelegate
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+        
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    }
+    
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat
+    {
+        if indexPath.row == 0 {
+            return 950.0
+        }
+        else {
+            return 400.0
+        }
+    }
+    
+    func openInstagram(sender: UIButton){
+        if let instagramUserId = self.trainer!.objectForKey("instagramUserId") as? String {
             let instagramHooks = "instagram://user?username=\(instagramUserId)"
             let instagramUrl = NSURL(string: instagramHooks)
             if UIApplication.sharedApplication().canOpenURL(instagramUrl!)
@@ -119,11 +228,10 @@ class FinderTrainerProfileViewController: UIViewController {
                 //redirect to safari because the user doesn't have Instagram
                 UIApplication.sharedApplication().openURL(NSURL(string: "http://instagram.com/\(instagramUserId)")!)
             }
-            
         }
     }
     
-    @IBAction func connectBarButtonItemPressed(sender: UIBarButtonItem) {
+    @IBAction func connectBarButtonItemTapped(sender: UIBarButtonItem) {
         let query = PFQuery(className:"Action")
         query.whereKey("byUser", equalTo: currentUser()!.id)
         query.whereKey("toTrainer", equalTo: trainer!.objectId!)

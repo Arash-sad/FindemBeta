@@ -13,6 +13,8 @@ class FinderConnectionViewController: UIViewController {
 
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var connectionLabel: UILabel!
+    @IBOutlet weak var messageButton: UIButton!
+    @IBOutlet weak var goBackButton: UIButton!
     
     var trainer: PFUser?
     var isConnected = false
@@ -27,6 +29,13 @@ class FinderConnectionViewController: UIViewController {
         self.imageView.layer.borderWidth = 2.0
         self.imageView.layer.cornerRadius = self.imageView.frame.height / 2
         self.imageView.layer.masksToBounds = true
+        //Setup Buttons
+        self.messageButton.layer.cornerRadius = self.messageButton.frame.height / 3
+        self.messageButton.layer.borderColor = UIColor(white: 1.0, alpha: 1.0).CGColor
+        self.messageButton.layer.borderWidth = 1.0
+        self.goBackButton.layer.cornerRadius = self.goBackButton.frame.height / 3
+        self.goBackButton.layer.borderColor = UIColor(white: 1.0, alpha: 1.0).CGColor
+        self.goBackButton.layer.borderWidth = 1.0
         
         if let name = self.trainer!.objectForKey("firstName") as? String {
             if self.isConnected == true {

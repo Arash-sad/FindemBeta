@@ -19,13 +19,13 @@ class FinderSearchResultViewController: UIViewController {
     var currentLocation = PFGeoPoint?()
     var trainerType = "club"
     var clubDistance = 1.5
+    var specialties = ""
     
     @IBOutlet weak var tableView: UITableView!
 
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        print(clubDistance)
-        print(trainerType)
+
         if trainerArray == [] {
             // Activity Indicator
             let loadView = UIView.loadFromNibNamed("LoadView")
@@ -156,6 +156,7 @@ class FinderSearchResultViewController: UIViewController {
                 let indexPath = self.tableView.indexPathForSelectedRow
                 let thisTrainer = self.refinedtrainerArray[indexPath!.row]
                 vc.trainer = thisTrainer
+                vc.trainerType = self.trainerType
             }
         }
     }
@@ -177,19 +178,34 @@ extension FinderSearchResultViewController: UITableViewDataSource, UITableViewDe
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("searchResultCell") as! SearchResultTableViewCell
         
-        // Setup profileImageView
+        // Make String from trainingTypes array
+        if let trainingTypes = self.refinedtrainerArray[indexPath.row].objectForKey("trainingTypes") as? [String] {
+            for t in trainingTypes {
+                self.specialties += "\(t), "
+            }
+            self.specialties = String(self.specialties.characters.dropLast(2))
+        }
+        
+        // Setup profileImageView $ backgroundImage
         cell.trainerImageView.layer.borderColor = UIColor.whiteColor().CGColor
         cell.trainerImageView.layer.borderWidth = 2.0
         cell.trainerImageView.layer.cornerRadius = cell.trainerImageView.frame.height / 2
+        cell.backgroundImage.layer.borderColor = UIColor.whiteColor().CGColor
+        cell.backgroundImage.layer.borderWidth = 2.0
+        cell.backgroundImage.layer.cornerRadius = cell.backgroundImage.frame.height / 4
+        
         cell.trainerImageView.layer.masksToBounds = true
+        cell.backgroundImage.layer.masksToBounds = true
         
         cell.nameLabel.text = self.refinedtrainerArray[indexPath.row].objectForKey("firstName") as? String
+        cell.trainingTypesLabel.text = self.specialties
         cell.shortDescriptionLabel.text = self.refinedtrainerArray[indexPath.row].objectForKey("shortDescription") as? String
         let imageFile = self.refinedtrainerArray[indexPath.row].objectForKey("picture") as? PFFile
         imageFile!.getDataInBackgroundWithBlock({
             data, error in
             if let data = data {
                 cell.trainerImageView.image = UIImage(data: data)!
+                cell.backgroundImage.image = UIImage(data: data)!
             }
         })
         return cell

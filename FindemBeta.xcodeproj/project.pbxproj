@@ -40,6 +40,8 @@
 		5BE0A0D91BFD37E100F5A3D4 /* SixthTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE0A0D81BFD37E100F5A3D4 /* SixthTableViewCell.swift */; };
 		5BE6E5411BFBDE23001BA5F7 /* TrainerDescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE6E5401BFBDE23001BA5F7 /* TrainerDescriptionViewController.swift */; };
 		5BE6E5431BFBED03001BA5F7 /* FifthTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE6E5421BFBED03001BA5F7 /* FifthTableViewCell.swift */; };
+		5BE7D1481C869B040030A0B1 /* FirstTrainerProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE7D1471C869B040030A0B1 /* FirstTrainerProfileTableViewCell.swift */; };
+		5BE7D14A1C869B190030A0B1 /* SecondTrainerProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE7D1491C869B190030A0B1 /* SecondTrainerProfileTableViewCell.swift */; };
 		5BE868D91BE95F3D00A9B256 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE868D81BE95F3D00A9B256 /* User.swift */; };
 		5BE879E01C068AA900D783D0 /* FinderSearchResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE879DF1C068AA900D783D0 /* FinderSearchResultViewController.swift */; };
 		5BE879E21C068C0F00D783D0 /* SearchResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE879E11C068C0F00D783D0 /* SearchResultTableViewCell.swift */; };
@@ -126,6 +128,8 @@
 		5BE0A0D81BFD37E100F5A3D4 /* SixthTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SixthTableViewCell.swift; sourceTree = "<group>"; };
 		5BE6E5401BFBDE23001BA5F7 /* TrainerDescriptionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainerDescriptionViewController.swift; sourceTree = "<group>"; };
 		5BE6E5421BFBED03001BA5F7 /* FifthTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FifthTableViewCell.swift; sourceTree = "<group>"; };
+		5BE7D1471C869B040030A0B1 /* FirstTrainerProfileTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstTrainerProfileTableViewCell.swift; sourceTree = "<group>"; };
+		5BE7D1491C869B190030A0B1 /* SecondTrainerProfileTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondTrainerProfileTableViewCell.swift; sourceTree = "<group>"; };
 		5BE868D81BE95F3D00A9B256 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		5BE879DF1C068AA900D783D0 /* FinderSearchResultViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FinderSearchResultViewController.swift; sourceTree = "<group>"; };
 		5BE879E11C068C0F00D783D0 /* SearchResultTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultTableViewCell.swift; sourceTree = "<group>"; };
@@ -340,6 +344,8 @@
 				5BF007161C1A45E200E3961A /* MessagesTableViewCell.swift */,
 				5BF426FB1C2789B600271569 /* FinderMessageTableViewCell.swift */,
 				5BEE63941C73FD14003E89A6 /* InAppPurchaseTableViewCell.swift */,
+				5BE7D1471C869B040030A0B1 /* FirstTrainerProfileTableViewCell.swift */,
+				5BE7D1491C869B190030A0B1 /* SecondTrainerProfileTableViewCell.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -544,6 +550,7 @@
 			files = (
 				5BF98CFF1BF04EF2008DA586 /* FirstTableViewCell.swift in Sources */,
 				5BF98D091BF06FDE008DA586 /* TrainerProfileGeneralViewController.swift in Sources */,
+				5BE7D1481C869B040030A0B1 /* FirstTrainerProfileTableViewCell.swift in Sources */,
 				5B4E82B11C7EA56000E97000 /* DrawSeperationLineView.swift in Sources */,
 				5BF007171C1A45E200E3961A /* MessagesTableViewCell.swift in Sources */,
 				5BF4176F1C20E30D00EC9AB5 /* Message.swift in Sources */,
@@ -586,6 +593,7 @@
 				5BED7D891C62CF0900CFF9B3 /* TrainerSocialNetworkingViewController.swift in Sources */,
 				5BEE43B01C682A9800AC5D9B /* ClubProfileTableViewCell.swift in Sources */,
 				5BEE24C21BF9A7ED00BBC10E /* TrainerRegionViewController.swift in Sources */,
+				5BE7D14A1C869B190030A0B1 /* SecondTrainerProfileTableViewCell.swift in Sources */,
 				5BE962601BF492EC00E9C2FD /* QualificationsTableViewCell.swift in Sources */,
 				5BF98D011BF04F04008DA586 /* SecondTableViewCell.swift in Sources */,
 				5BACC6731BE7149500EB4972 /* TrainerHomeViewController.swift in Sources */,

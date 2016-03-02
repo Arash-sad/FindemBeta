@@ -15,6 +15,7 @@ class FinderSelectTrainerTypeViewController: UIViewController {
     @IBOutlet weak var distanceLabel: UILabel!
     @IBOutlet weak var pickerView: UIPickerView!
     @IBOutlet weak var kmLabel: UILabel!
+    @IBOutlet weak var nextButton: UIButton!
     
     var slidingMenu = UIView.loadFromNibNamed("SlidingMenu")
     var menuIsVisible = false
@@ -28,6 +29,11 @@ class FinderSelectTrainerTypeViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        //Setup Next Button
+        self.nextButton.layer.cornerRadius = self.nextButton.frame.height / 3
+        self.nextButton.layer.borderColor = UIColor(white: 1.0, alpha: 1.0).CGColor
+        self.nextButton.layer.borderWidth = 1.0
         
         // Save preferred App direction(Trainer or User) to NSUserDefaults
         let defaults = NSUserDefaults.standardUserDefaults()

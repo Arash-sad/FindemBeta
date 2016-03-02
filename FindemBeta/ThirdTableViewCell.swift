@@ -11,7 +11,6 @@ import UIKit
 class ThirdTableViewCell: UITableViewCell {
 
     @IBOutlet weak var trainingTypesPickerView: UIPickerView!
-//    @IBOutlet weak var qualificationsPickerView: UIPickerView!
     
     override func awakeFromNib() {
         super.awakeFromNib()

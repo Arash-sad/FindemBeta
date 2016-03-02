@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9532" systemVersion="14F1605" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
     </dependencies>
     <objects>
@@ -17,53 +16,82 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="170"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="fnN-vL-2Pf">
+                                <rect key="frame" x="120" y="85" width="360" height="40"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yci-et-wcu">
+                                        <rect key="frame" x="0.0" y="0.0" width="110" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="110" id="Zfn-bP-BTQ"/>
+                                            <constraint firstAttribute="height" constant="40" id="jZ1-tq-Gjq"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" weight="thin" pointSize="22"/>
+                                        <state key="normal" title="Home">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="homeButtonTapped:" destination="iN0-l3-epB" eventType="touchUpInside" id="vhx-cY-Dns"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7VT-z8-ffI">
+                                        <rect key="frame" x="125" y="0.0" width="110" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="QUh-8c-vkf"/>
+                                            <constraint firstAttribute="width" constant="110" id="b6R-XT-NFH"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" weight="thin" pointSize="22"/>
+                                        <state key="normal" title="Search">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="searchButtonTapped:" destination="iN0-l3-epB" eventType="touchUpInside" id="DsP-vQ-2x1"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3xH-T0-1u0">
+                                        <rect key="frame" x="250" y="0.0" width="110" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="110" id="xbg-WE-lG1"/>
+                                            <constraint firstAttribute="height" constant="40" id="xj5-cM-zIr"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" weight="thin" pointSize="22"/>
+                                        <state key="normal" title="Messages">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="messagesButtonTapped:" destination="iN0-l3-epB" eventType="touchUpInside" id="QUd-TA-htq"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X7V-Aq-dJB">
-                                <rect key="frame" x="537" y="8" width="55" height="30"/>
+                                <rect key="frame" x="522" y="8" width="70" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="70" id="ZYB-bf-j2w"/>
+                                    <constraint firstAttribute="height" constant="30" id="d23-o2-f6u"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="15"/>
                                 <state key="normal" title="Log Out">
-                                    <color key="titleColor" red="1" green="0.0" blue="0.009645426093462639" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="logoutButtonTapped:" destination="iN0-l3-epB" eventType="touchUpInside" id="Yvh-sd-MaM"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7VT-z8-ffI">
-                                <rect key="frame" x="276" y="93" width="48" height="30"/>
-                                <state key="normal" title="Search">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="searchButtonTapped:" destination="iN0-l3-epB" eventType="touchUpInside" id="DsP-vQ-2x1"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yci-et-wcu">
-                                <rect key="frame" x="22" y="93" width="50" height="30"/>
-                                <state key="normal" title="Home">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="homeButtonTapped:" destination="iN0-l3-epB" eventType="touchUpInside" id="vhx-cY-Dns"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3xH-T0-1u0">
-                                <rect key="frame" x="510" y="93" width="70" height="30"/>
-                                <state key="normal" title="Messages">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="messagesButtonTapped:" destination="iN0-l3-epB" eventType="touchUpInside" id="QUd-TA-htq"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <constraints>
+                            <constraint firstItem="X7V-Aq-dJB" firstAttribute="top" secondItem="kLm-ul-yVC" secondAttribute="top" constant="8" id="Fj0-s2-ih4"/>
+                            <constraint firstItem="fnN-vL-2Pf" firstAttribute="top" secondItem="kLm-ul-yVC" secondAttribute="top" constant="85" id="KWU-gG-YDX"/>
                             <constraint firstAttribute="trailing" secondItem="X7V-Aq-dJB" secondAttribute="trailing" constant="8" id="Rz7-KK-P9k"/>
-                            <constraint firstAttribute="bottom" secondItem="3xH-T0-1u0" secondAttribute="bottom" constant="47" id="ZRy-a1-HMP"/>
-                            <constraint firstAttribute="bottom" secondItem="Yci-et-wcu" secondAttribute="bottom" constant="47" id="fzj-Pv-7V6"/>
-                            <constraint firstAttribute="bottom" secondItem="7VT-z8-ffI" secondAttribute="bottom" constant="47" id="tdw-4i-q8z"/>
-                            <constraint firstItem="7VT-z8-ffI" firstAttribute="centerX" secondItem="kLm-ul-yVC" secondAttribute="centerX" id="u75-q8-iBJ"/>
-                            <constraint firstAttribute="trailing" secondItem="3xH-T0-1u0" secondAttribute="trailing" constant="20" id="w2S-4j-KSz"/>
+                            <constraint firstItem="fnN-vL-2Pf" firstAttribute="centerX" secondItem="kLm-ul-yVC" secondAttribute="centerX" id="jdw-xC-RdS"/>
                             <constraint firstItem="X7V-Aq-dJB" firstAttribute="top" secondItem="kLm-ul-yVC" secondAttribute="top" constant="8" id="wC6-iI-wdj"/>
-                            <constraint firstItem="Yci-et-wcu" firstAttribute="leading" secondItem="kLm-ul-yVC" secondAttribute="leading" constant="22" id="ygU-tg-VRV"/>
+                            <constraint firstAttribute="trailing" secondItem="X7V-Aq-dJB" secondAttribute="trailing" constant="8" id="wrc-c4-Zqi"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="Rz7-KK-P9k"/>
+                                <exclude reference="wC6-iI-wdj"/>
+                            </mask>
+                        </variation>
                     </view>
                     <blurEffect style="dark"/>
                 </visualEffectView>
@@ -76,6 +104,11 @@
                 <constraint firstAttribute="trailing" secondItem="kqd-xO-1pd" secondAttribute="trailing" id="mBt-cl-nbX"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="homeButton" destination="Yci-et-wcu" id="05A-5C-PZi"/>
+                <outlet property="messageButton" destination="3xH-T0-1u0" id="eUU-4w-Npy"/>
+                <outlet property="searchButton" destination="7VT-z8-ffI" id="Pkl-Ge-5nG"/>
+            </connections>
         </view>
     </objects>
 </document>

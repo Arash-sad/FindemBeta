@@ -12,6 +12,25 @@ import Parse
 
 class FinderSlidingMenu: UIView {
     
+    @IBOutlet weak var homeButton: UIButton!
+    @IBOutlet weak var searchButton: UIButton!
+    @IBOutlet weak var messageButton: UIButton!
+    
+    override func awakeFromNib() {
+        // Setup buttons
+        self.homeButton.layer.cornerRadius = self.homeButton.frame.height / 3
+        self.homeButton.layer.borderColor = UIColor(white: 1.0, alpha: 1.0).CGColor
+        self.homeButton.layer.borderWidth = 1.0
+        
+        self.searchButton.layer.cornerRadius = self.searchButton.frame.height / 3
+        self.searchButton.layer.borderColor = UIColor(white: 1.0, alpha: 1.0).CGColor
+        self.searchButton.layer.borderWidth = 1.0
+        
+        self.messageButton.layer.cornerRadius = self.messageButton.frame.height / 3
+        self.messageButton.layer.borderColor = UIColor(white: 1.0, alpha: 1.0).CGColor
+        self.messageButton.layer.borderWidth = 1.0
+    }
+    
     @IBAction func homeButtonTapped(sender: UIButton) {
         let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("StartUpVC")
         let transition = CATransition()

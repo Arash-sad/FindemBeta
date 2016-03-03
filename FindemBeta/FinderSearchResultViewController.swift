@@ -219,21 +219,33 @@ extension FinderSearchResultViewController: UITableViewDataSource, UITableViewDe
 
 // MARK: - FinderRefineSearchViewControllerDelegate
 extension FinderSearchResultViewController: FinderRefineSearchViewControllerDelegate {
-    func refineSerch(gender: String) {
+    func refinedSerch(gender: String, experience: Int) {
         self.refinedGender = gender
         
-        //TEMP: Refine Search Result
+        // Filter Search Result based on Gender
         if refinedGender != "any" {
-            self.refinedtrainerArray = []
+            var tempRefinedArray = [PFUser]()
             for trainer in self.trainerArray {
                 if trainer.objectForKey("gender") as? String == self.refinedGender {
-                    self.refinedtrainerArray.append(trainer)
+                    tempRefinedArray.append(trainer)
                 }
             }
+            self.refinedtrainerArray = tempRefinedArray
         }
         else {
             self.refinedtrainerArray = self.trainerArray
         }
+        // Filter Search Result based on Years Experience
+        if experience != 0 {
+            var tempRefinedArray = [PFUser]()
+            for trainer in self.refinedtrainerArray {
+                if trainer.objectForKey("yearsExperience") as? Int > experience {
+                    tempRefinedArray.append(trainer)
+                }
+            }
+            self.refinedtrainerArray = tempRefinedArray
+        }
+        
         self.tableView.reloadData()
     }
 }

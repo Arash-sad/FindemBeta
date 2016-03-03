@@ -9,14 +9,17 @@
 import UIKit
 
 protocol FinderRefineSearchViewControllerDelegate {
-    func refineSerch(gender: String)
+    func refinedSerch(gender: String, experience: Int)
 }
 
-class FinderRefineSearchViewController: UIViewController {
+class FinderRefineSearchViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
 
     @IBOutlet weak var genderSegmentedControl: UISegmentedControl!
+    @IBOutlet weak var pickerView: UIPickerView!
     
-    var refineGender = "any"
+    var refinedGender = "any"
+    var pickerData = ["Few Month","2 Years","5 Years","10 Years"]
+    var refinedExperience = 0
     
     var delegate: FinderRefineSearchViewControllerDelegate?
     
@@ -24,6 +27,7 @@ class FinderRefineSearchViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -38,7 +42,7 @@ class FinderRefineSearchViewController: UIViewController {
     @IBAction func searchBarButtonItemPressed(sender: UIBarButtonItem) {
         
         if let delegate = self.delegate {
-            delegate.refineSerch(refineGender)
+            delegate.refinedSerch(self.refinedGender, experience: self.refinedExperience)
         }
         
         self.dismissViewControllerAnimated(true, completion: nil)
@@ -47,16 +51,49 @@ class FinderRefineSearchViewController: UIViewController {
     @IBAction func genderSegmentedControlValueChanged(sender: UISegmentedControl) {
         if(genderSegmentedControl.selectedSegmentIndex == 0)
         {
-            self.refineGender = "any";
+            self.refinedGender = "any";
         }
         else if(genderSegmentedControl.selectedSegmentIndex == 1)
         {
-            self.refineGender = "male";
+            self.refinedGender = "male";
         }
         else if(genderSegmentedControl.selectedSegmentIndex == 2)
         {
-            self.refineGender = "female";
+            self.refinedGender = "female";
         }
+    }
+        // MARK: - PickerView
+        
+        func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
+            return 1
+        }
+        
+        func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+                return pickerData.count
+        }
+        
+    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+            return pickerData[row]
+    }
+    
+    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int)
+    {
+        switch pickerData[row] {
+            case "2 Years":
+            refinedExperience = 2
+            case "5 Years":
+            refinedExperience = 5
+            case "10 Years":
+            refinedExperience = 10
+            default:
+            refinedExperience = 0
+        }
+    }
+    
+    func pickerView(pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
+        let titleData = pickerData[row]
+        let myTitle = NSAttributedString(string: titleData, attributes: [NSFontAttributeName:UIFont.systemFontOfSize(20, weight: UIFontWeightThin),NSForegroundColorAttributeName:UIColor.whiteColor()])
+        return myTitle
     }
 
 }

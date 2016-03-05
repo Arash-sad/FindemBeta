@@ -15,7 +15,7 @@ class FinderTrainerProfileViewController: UIViewController, UITableViewDelegate,
     @IBOutlet weak var connectBarButtonItem: UIBarButtonItem!
     @IBOutlet weak var tableView: UITableView!
     
-    var trainer: PFUser?
+    var trainer: Trainer?
     var trainingTypesArray: [String]?
     var qualificationsArray: [String]?
     var trainingTypes = ""
@@ -24,6 +24,7 @@ class FinderTrainerProfileViewController: UIViewController, UITableViewDelegate,
     var trainerType = "club"
     var weekdaysSessionTimes = ""
     var weekendSessionTimes = ""
+    var hideConnectBarButtonItem = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,25 +34,30 @@ class FinderTrainerProfileViewController: UIViewController, UITableViewDelegate,
         // Disable tableView row selection
         tableView.allowsSelection = false
         
-        self.trainingTypesArray = self.trainer!.objectForKey("trainingTypes") as? [String] ?? []
+        self.trainingTypesArray = self.trainer!.trainingTypes ?? []
         for trainingType in self.trainingTypesArray! {
             self.trainingTypes += trainingType
             self.trainingTypes += "\n"
         }
         
-        self.qualificationsArray = self.trainer!.objectForKey("qualifications") as? [String] ?? []
+        self.qualificationsArray = self.trainer!.qualifications ?? []
         for qualification in self.qualificationsArray! {
             self.qualifications += qualification
             self.qualifications += "\n"
         }
         
         // Disable connectBarButtonItem if user and trainer are the same person
-        if PFUser.currentUser()?.objectId == trainer!.objectId! {
+        if PFUser.currentUser()?.objectId == trainer!.id {
             self.connectBarButtonItem.enabled = false
         }
         
+        // Hide connectBarButtonItem if segue is "showTrainerProfileFromMessages"
+        if self.hideConnectBarButtonItem == true {
+            self.navigationItem.rightBarButtonItem = nil
+        }
+        
         // Get Session Times
-        if let sessionTimes = self.trainer!.objectForKey("sessionTimes") as? String {
+        if let sessionTimes = self.trainer!.sessionTimes {
             if sessionTimes.uppercaseString.characters.contains("A") {
                 self.weekdaysSessionTimes += " Mornings,"
             }
@@ -122,30 +128,29 @@ class FinderTrainerProfileViewController: UIViewController, UITableViewDelegate,
             // Add target for instagram button
             cell.instagramButton.addTarget(self, action: "openInstagram:", forControlEvents: .TouchUpInside)
             
-            if let _ = self.trainer!.objectForKey("instagramUserId") as? String {
-                
+            if let instaId = self.trainer!.instagramUserId {
+                if instaId == "" {
+                    cell.instagramButton.enabled = false
+                }
             }
             else {
                 cell.instagramButton.enabled = false
             }
             
             // Display trainer data
-            let imageFile = self.trainer!.objectForKey("picture") as? PFFile
-            imageFile!.getDataInBackgroundWithBlock({
-                data, error in
-                if let data = data {
-                    cell.profilePictureImageView.image = UIImage(data: data)!
-                    cell.backgroundImageView.image = UIImage(data: data)!
-                }
+            self.trainer!.getPhoto({
+                image in
+                cell.profilePictureImageView.image = image
+                cell.backgroundImageView.image = image
             })
-            cell.nameLabel.text = self.trainer!.objectForKey("firstName") as? String
+            cell.nameLabel.text = self.trainer!.name
             cell.descriptionTextView.layer.cornerRadius = 5
-            cell.descriptionTextView.text = self.trainer!.objectForKey("longDescription") as? String
+            cell.descriptionTextView.text = self.trainer!.longDescription
             cell.trainingTypesTextView.layer.cornerRadius = 5
             cell.trainingTypesTextView.text = self.trainingTypes
             cell.qualificationsTextView.layer.cornerRadius = 5
             cell.qualificationsTextView.text = self.qualifications
-            if let yearsExperience = self.trainer!.objectForKey("yearsExperience") as? Int {
+            if let yearsExperience = self.trainer!.yearsExperience {
                 if yearsExperience == 0 {
                     cell.experienceLabel.text = "Less than a year"
                 }
@@ -157,7 +162,7 @@ class FinderTrainerProfileViewController: UIViewController, UITableViewDelegate,
                 }
             }
             cell.achievementsTextView.layer.cornerRadius = 5
-            cell.achievementsTextView.text = self.trainer!.objectForKey("achievements") as? String
+            cell.achievementsTextView.text = self.trainer!.achievements
             cell.weekdaysLabel.text = self.weekdaysSessionTimes
             cell.weekendsLabel.text = self.weekendSessionTimes
             
@@ -167,8 +172,8 @@ class FinderTrainerProfileViewController: UIViewController, UITableViewDelegate,
                     let cellIdentifier = "secondTrainerProfile"
                     let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! SecondTrainerProfileTableViewCell
             
-            cell.clubNameLabel.text = self.trainer!.objectForKey("clubName") as? String
-            if let clubAddress = trainer!.objectForKey("clubAddress") as? [String] {
+            cell.clubNameLabel.text = self.trainer!.clubName
+            if let clubAddress = trainer!.clubAddress {
                 if clubAddress.count == 4 {
                     cell.clubAddressLabel.text = "\(clubAddress[0])\n\(clubAddress[1]) \(clubAddress[2]) \(clubAddress[3])"
                 }
@@ -181,8 +186,8 @@ class FinderTrainerProfileViewController: UIViewController, UITableViewDelegate,
             let annotationToRemove = cell.mapView.annotations
             cell.mapView.removeAnnotations(annotationToRemove)
             
-            let latitude = trainer!.objectForKey("clubLatitude") as? Double
-            let longitude = trainer!.objectForKey("clubLongitude") as? Double
+            let latitude = trainer!.clubLatitude
+            let longitude = trainer!.clubLongitude
             let location = CLLocationCoordinate2DMake(latitude!, longitude!)
             
             let span = MKCoordinateSpanMake(0.03, 0.03)
@@ -191,8 +196,8 @@ class FinderTrainerProfileViewController: UIViewController, UITableViewDelegate,
             
             let annotation = MKPointAnnotation()
             annotation.coordinate = location
-            annotation.title = self.trainer!.objectForKey("firstName") as? String
-            annotation.subtitle = self.trainer!.objectForKey("clubName") as? String
+            annotation.title = self.trainer!.name
+            annotation.subtitle = self.trainer!.clubName
             cell.mapView.addAnnotation(annotation)
             
             return cell
@@ -217,7 +222,7 @@ class FinderTrainerProfileViewController: UIViewController, UITableViewDelegate,
     }
     
     func openInstagram(sender: UIButton){
-        if let instagramUserId = self.trainer!.objectForKey("instagramUserId") as? String {
+        if let instagramUserId = self.trainer!.instagramUserId {
             let instagramHooks = "instagram://user?username=\(instagramUserId)"
             let instagramUrl = NSURL(string: instagramHooks)
             if UIApplication.sharedApplication().canOpenURL(instagramUrl!)
@@ -234,7 +239,7 @@ class FinderTrainerProfileViewController: UIViewController, UITableViewDelegate,
     @IBAction func connectBarButtonItemTapped(sender: UIBarButtonItem) {
         let query = PFQuery(className:"Action")
         query.whereKey("byUser", equalTo: currentUser()!.id)
-        query.whereKey("toTrainer", equalTo: trainer!.objectId!)
+        query.whereKey("toTrainer", equalTo: trainer!.id)
         query.findObjectsInBackgroundWithBlock({
             (objects: [PFObject]?, error: NSError?) -> () in
             if error == nil {

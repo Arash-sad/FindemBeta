@@ -12,8 +12,9 @@ import ParseFacebookUtilsV4
 class FinderMessagesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var segmentedControl: UISegmentedControl!
     
-    var connections:[Connection] = []
+    var connections:[ConnectionForUser] = []
     var slidingMenu = UIView.loadFromNibNamed("SlidingMenu")
     var menuIsVisible = false
     var menuHeight:CGFloat = 150
@@ -56,11 +57,11 @@ class FinderMessagesViewController: UIViewController, UITableViewDataSource, UIT
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("finderMessageCell", forIndexPath: indexPath) as! FinderMessageTableViewCell
         
-        // Configure the cell...
-        let user = connections[indexPath.row].user
-        
-        cell.nameLabel.text = user.name
-        user.getPhoto({
+        // Configure the cell
+        let trainer = connections[indexPath.row].trainer
+        cell.nameLabel.text = trainer.name
+        cell.profileNameLabel.text = trainer.name
+        trainer.getPhoto({
             image in
             cell.avatarImageView.image = image
         })
@@ -74,21 +75,44 @@ class FinderMessagesViewController: UIViewController, UITableViewDataSource, UIT
             cell.newMessageLabel.hidden = true
         }
         cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
-        return cell
+        // Messages or Profiles
+        if segmentedControl.selectedSegmentIndex == 0 {
+            cell.nameLabel.hidden = false
+            cell.dateLabel.hidden = false
+            cell.lastMessageLabel.hidden = false
+            cell.newMessageLabel.alpha = 1
+            cell.profileNameLabel.hidden = true
+            return cell
+        }
+        else {
+            cell.nameLabel.hidden = true
+            cell.dateLabel.hidden = true
+            cell.lastMessageLabel.hidden = true
+            cell.newMessageLabel.alpha = 0
+            cell.profileNameLabel.hidden = false
+
+            return cell
+        }
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         if menuIsVisible == false {
-            let vc = ChatViewController()
-            // Pass connectionID to chatViewController and set its title to user's name
-            let connection = connections[indexPath.row]
-            vc.connectionID = connection.action.id
-            vc.userAction = connection.action.userAction
-            vc.trainerAction = connection.action.trainerAction
-            vc.userType = "user"
-            vc.title = connection.user.name
-//            vc.recipient = connection.user
-            navigationController?.pushViewController(vc, animated: true)
+            // Either go to chatView or profile based on selected segmenedControl
+            if segmentedControl.selectedSegmentIndex == 0 {
+                let vc = ChatViewController()
+                // Pass connectionID to chatViewController and set its title to user's name
+                let connection = connections[indexPath.row]
+                vc.connectionID = connection.action.id
+                vc.userAction = connection.action.userAction
+                vc.trainerAction = connection.action.trainerAction
+                vc.userType = "user"
+                vc.title = connection.trainer.name
+                //            vc.recipient = connection.user
+                navigationController?.pushViewController(vc, animated: true)
+            }
+            else {
+                performSegueWithIdentifier("showTrainerProfileFromMessages", sender: nil)
+            }
         }
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
@@ -216,7 +240,25 @@ class FinderMessagesViewController: UIViewController, UITableViewDataSource, UIT
             NSTimer.scheduledTimerWithTimeInterval(2, target: self, selector: Selector("reload"), userInfo: nil, repeats: false)
         }
     }
+    
+    // MARK: - Navigation
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "showTrainerProfileFromMessages" {
+            let profileVC = segue.destinationViewController as? FinderTrainerProfileViewController
+            
+            if let vc = profileVC {
+                let indexPath = self.tableView.indexPathForSelectedRow
+                let thisTrainer = connections[indexPath!.row].trainer
+                vc.trainer = thisTrainer
+                vc.hideConnectBarButtonItem = true
+//                vc.trainerType = self.trainerType
+            }
+        }
+    }
 
+    @IBAction func segmentedControlValueChanged(sender: UISegmentedControl) {
+        tableView.reloadData()
+    }
     @IBAction func menuBarButtonItemTapped(sender: UIBarButtonItem) {
         UIView.animateWithDuration(0.7, delay: 0.0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.8, options: UIViewAnimationOptions.TransitionNone, animations: {
             

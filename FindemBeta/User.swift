@@ -37,10 +37,10 @@ func currentUser() -> User? {
     return nil 
 }
 
-func saveConnection(user: PFUser) {
+func saveConnection(trainer: Trainer) {
     let action = PFObject(className: "Action")
     action.setObject(PFUser.currentUser()!.objectId!, forKey: "byUser")
-    action.setObject(user.objectId!, forKey: "toTrainer")
+    action.setObject(trainer.id, forKey: "toTrainer")
     action.setObject("connected", forKey: "userAction")
     action.setObject("connected", forKey: "trainerAction")
     action.setObject(NSDate(), forKey: "userLastSeenAt")

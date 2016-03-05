@@ -27,7 +27,7 @@ class FinderSearchResultViewController: UIViewController {
         super.viewDidAppear(animated)
 
         if trainerArray == [] {
-            // Activity Indicator
+            // Display Activity Indicator
             let loadView = UIView.loadFromNibNamed("LoadView")
             loadView?.center = view.center
             view.addSubview(loadView!)
@@ -63,6 +63,7 @@ class FinderSearchResultViewController: UIViewController {
                     }
                     self.tableView.reloadData()
                     self.animateTable()
+                    // Remove Activity Indicator
                     loadView!.removeFromSuperview()
                 }
             }
@@ -154,7 +155,7 @@ class FinderSearchResultViewController: UIViewController {
             
             if let vc = profileVC {
                 let indexPath = self.tableView.indexPathForSelectedRow
-                let thisTrainer = self.refinedtrainerArray[indexPath!.row]
+                let thisTrainer = pfUserToTrainer(self.refinedtrainerArray[indexPath!.row])
                 vc.trainer = thisTrainer
                 vc.trainerType = self.trainerType
             }

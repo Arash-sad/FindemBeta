@@ -24,6 +24,11 @@ struct Connection {
     let user: User
 }
 
+struct ConnectionForUser {
+    var action: Action
+    let trainer: Trainer
+}
+
 func fetchConnectionsForTrainers (callBack: ([Connection]) -> ()) {
     PFQuery(className: "Action")
         .whereKey("toTrainer", equalTo: PFUser.currentUser()!.objectId!)
@@ -76,7 +81,7 @@ func fetchConnectionsForTrainers (callBack: ([Connection]) -> ()) {
         })
 }
 
-func fetchConnectionsForUsers (callBack: ([Connection]) -> ()) {
+func fetchConnectionsForUsers (callBack: ([ConnectionForUser]) -> ()) {
     PFQuery(className: "Action")
         .whereKey("byUser", equalTo: PFUser.currentUser()!.objectId!)
         .whereKey("userAction", notContainedIn: ["deleted","gameOver"])
@@ -84,36 +89,35 @@ func fetchConnectionsForUsers (callBack: ([Connection]) -> ()) {
             (objects: [PFObject]?, error: NSError?) -> () in
             if error == nil {
                 if let connections = objects {
-                    let connectedUsers = connections.map({
-                        (object)->(action: Action, userID: String) in
+                    let connectedTrainers = connections.map({
+                        (object)->(action: Action, trainerID: String) in
                         (Action(id: object.objectId!, userAction: object.objectForKey("userAction") as! String, trainerAction: object.objectForKey("trainerAction") as! String, lastMessage: object.objectForKey("lastMessageAt") as! NSDate, userLastSeenAt: object.objectForKey("userLastSeenAt") as! NSDate, trainerLastSeenAt: object.objectForKey("trainerLastSeenAt") as! NSDate, lastMessageString: object.objectForKey("lastMessageString") as! String), object.objectForKey("toTrainer") as! String)
                     })
-                    let userIDs = connectedUsers.map({$0.userID})
+                    let trainerIDs = connectedTrainers.map({$0.trainerID})
                     
                     PFUser.query()!
-                        .whereKey("objectId", containedIn: userIDs)
+                        .whereKey("objectId", containedIn: trainerIDs)
                         .findObjectsInBackgroundWithBlock({
                             (objects: [PFObject]?, error: NSError?) -> () in
                             
-                            if let users = objects as? [PFUser] {
+                            if let trainers = objects as? [PFUser] {
                                 // Warning: reverse is not available in Swift 2.0
                                 // used users.reverse() instead of reverse(users)
                                 // Attention: deleted reverse() from below
                                 //let users = users.reverse()
-                                let users = users
-                                var m = Array<Connection>()
+                                let trainers = trainers
+                                var m = Array<ConnectionForUser>()
                                 // Warning: enumerate is not a global function anymore in Swift 2.0
                                 // Below used users.enumerate() instead of enumerate(users)
-                                for (_, user) in users.enumerate() {
+                                for (_, trainer) in trainers.enumerate() {
                                     var action: Action = Action(id: "", userAction: "", trainerAction: "", lastMessage: NSDate(), userLastSeenAt: NSDate(), trainerLastSeenAt: NSDate(), lastMessageString: "")
-                                    for connectedUser in connectedUsers {
-                                        if connectedUser.userID == user.objectId {
-                                            action = connectedUser.action
+                                    for connectedTrainer in connectedTrainers {
+                                        if connectedTrainer.trainerID == trainer.objectId {
+                                            action = connectedTrainer.action
                                             break
                                         }
                                     }
-                                    m.append(Connection(action: action, user: pfUserToUser(user)))
-                                    //                                    m.append(Connection(id: connectedUsers[index].connectionID, user: pfUserToUser(user)))
+                                    m.append(ConnectionForUser(action: action, trainer: pfUserToTrainer(trainer)))
                                 }
                                 callBack(m)
                             }

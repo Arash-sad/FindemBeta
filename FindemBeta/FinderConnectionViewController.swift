@@ -16,7 +16,7 @@ class FinderConnectionViewController: UIViewController {
     @IBOutlet weak var messageButton: UIButton!
     @IBOutlet weak var goBackButton: UIButton!
     
-    var trainer: PFUser?
+    var trainer: Trainer?
     var isConnected = false
     
     override func viewDidLoad() {
@@ -37,20 +37,15 @@ class FinderConnectionViewController: UIViewController {
         self.goBackButton.layer.borderColor = UIColor(white: 1.0, alpha: 1.0).CGColor
         self.goBackButton.layer.borderWidth = 1.0
         
-        if let name = self.trainer!.objectForKey("firstName") as? String {
             if self.isConnected == true {
-                self.connectionLabel.text = "You and \(name) are already connected."
+                self.connectionLabel.text = "You and \(trainer!.name) are already connected."
             }
             else {
-                self.connectionLabel.text = "You and \(name) are now connected."
+                self.connectionLabel.text = "You and \(trainer!.name) are now connected."
             }
-        }
-        let imageFile = self.trainer!.objectForKey("picture") as? PFFile
-        imageFile!.getDataInBackgroundWithBlock({
-            data, error in
-            if let data = data {
-                self.imageView.image = UIImage(data: data)!
-            }
+        self.trainer!.getPhoto({
+            image in
+            self.imageView.image = image
         })
     }
 

@@ -38,6 +38,11 @@ class ChatViewController : JSQMessagesViewController {
         self.senderId = currentUser()!.id
         self.senderDisplayName = currentUser()!.name
         
+        // Display Activity Indicator
+        let loadView = UIView.loadFromNibNamed("LoadView")
+        loadView?.center = view.center
+        view.addSubview(loadView!)
+        
         //Fetch messages from Firebase
         if let id = connectionID {
             fetchMessages(id, callback: {
@@ -46,6 +51,8 @@ class ChatViewController : JSQMessagesViewController {
                     self.messages.append(JSQMessage(senderId: m.senderID, senderDisplayName: m.senderID, date: m.date, text: m.message))
                 }
                 self.finishReceivingMessage()
+                // Remove Activity Indicator
+                loadView!.removeFromSuperview()
             })
         }
     }

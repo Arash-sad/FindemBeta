@@ -12,8 +12,8 @@ import MapKit
 
 class FinderSearchResultViewController: UIViewController {
     
-    var trainerArray:[PFUser] = []
-    var refinedtrainerArray:[PFUser] = []
+    var trainerArray = [(trainer: Trainer,distanceBetween: Double)]()
+    var refinedtrainerArray = [(trainer: Trainer,distanceBetween: Double)]()
     var trainingType = ""
     var refinedGender = "any"
     var currentLocation = PFGeoPoint?()
@@ -26,7 +26,7 @@ class FinderSearchResultViewController: UIViewController {
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
 
-        if trainerArray == [] {
+        if trainerArray.count == 0 {
             // Display Activity Indicator
             let loadView = UIView.loadFromNibNamed("LoadView")
             loadView?.center = view.center
@@ -50,10 +50,12 @@ class FinderSearchResultViewController: UIViewController {
                                 let location = PFGeoPoint(latitude: lat, longitude: long)
                                 let distanceBetween = location.distanceInKilometersTo(self.currentLocation)
                                 if self.clubDistance >= distanceBetween {
-                                    let trainer = object as? PFUser
-                                    self.trainerArray.append(trainer!)
+                                    let trainer = pfUserToTrainer((object as? PFUser)!)
+                                    self.trainerArray.append(trainer: trainer,distanceBetween: distanceBetween)
                                 }
                             }
+                            // Sort trainers array based on distance between trainers and user
+                            self.trainerArray.sortInPlace {$0.1 < $1.1}
                             self.refinedtrainerArray = self.trainerArray
                         }
                     }
@@ -82,10 +84,12 @@ class FinderSearchResultViewController: UIViewController {
                                 let distance = object.objectForKey("distance") as? Double
                                 let distanceBetween = location?.distanceInKilometersTo(self.currentLocation)
                                 if distance >= distanceBetween {
-                                    let trainer = object as? PFUser
-                                    self.trainerArray.append(trainer!)
+                                    let trainer = pfUserToTrainer((object as? PFUser)!)
+                                    self.trainerArray.append(trainer: trainer,distanceBetween: distanceBetween!)
                                 }
                             }
+                            // Sort trainers array based on distance between trainers and user
+                            self.trainerArray.sortInPlace {$0.1 < $1.1}
                             self.refinedtrainerArray = self.trainerArray
                         }
                     }
@@ -155,8 +159,8 @@ class FinderSearchResultViewController: UIViewController {
             
             if let vc = profileVC {
                 let indexPath = self.tableView.indexPathForSelectedRow
-                let thisTrainer = pfUserToTrainer(self.refinedtrainerArray[indexPath!.row])
-                vc.trainer = thisTrainer
+                let thisTrainer = self.refinedtrainerArray[indexPath!.row]
+                vc.trainer = thisTrainer.trainer
                 vc.trainerType = self.trainerType
             }
         }
@@ -180,7 +184,7 @@ extension FinderSearchResultViewController: UITableViewDataSource, UITableViewDe
         let cell = tableView.dequeueReusableCellWithIdentifier("searchResultCell") as! SearchResultTableViewCell
         
         // Make String from trainingTypes array
-        if let trainingTypes = self.refinedtrainerArray[indexPath.row].objectForKey("trainingTypes") as? [String] {
+        if let trainingTypes = self.refinedtrainerArray[indexPath.row].trainer.trainingTypes {
             for t in trainingTypes {
                 self.specialties += "\(t), "
             }
@@ -198,17 +202,20 @@ extension FinderSearchResultViewController: UITableViewDataSource, UITableViewDe
         cell.trainerImageView.layer.masksToBounds = true
         cell.backgroundImage.layer.masksToBounds = true
         
-        cell.nameLabel.text = self.refinedtrainerArray[indexPath.row].objectForKey("firstName") as? String
+        cell.nameLabel.text = self.refinedtrainerArray[indexPath.row].trainer.name
         cell.trainingTypesLabel.text = self.specialties
-        cell.shortDescriptionLabel.text = self.refinedtrainerArray[indexPath.row].objectForKey("shortDescription") as? String
-        let imageFile = self.refinedtrainerArray[indexPath.row].objectForKey("picture") as? PFFile
-        imageFile!.getDataInBackgroundWithBlock({
-            data, error in
-            if let data = data {
-                cell.trainerImageView.image = UIImage(data: data)!
-                cell.backgroundImage.image = UIImage(data: data)!
-            }
+        cell.shortDescriptionLabel.text = self.refinedtrainerArray[indexPath.row].trainer.shortDescription
+        // Show distance if user searching for club trainers
+        if trainerType == "club" {
+            cell.distanceLabel.text  = "About \(round(self.refinedtrainerArray[indexPath.row].distanceBetween * 100)/100) km from you"
+        }
+        // Get Photo
+        self.refinedtrainerArray[indexPath.row].trainer.getPhoto({
+            image in
+            cell.trainerImageView.image = image
+            cell.backgroundImage.image = image
         })
+
         return cell
     }
     
@@ -225,9 +232,9 @@ extension FinderSearchResultViewController: FinderRefineSearchViewControllerDele
         
         // Filter Search Result based on Gender
         if refinedGender != "any" {
-            var tempRefinedArray = [PFUser]()
+            var tempRefinedArray = [(trainer: Trainer,distanceBetween: Double)]()
             for trainer in self.trainerArray {
-                if trainer.objectForKey("gender") as? String == self.refinedGender {
+                if trainer.trainer.gender == self.refinedGender {
                     tempRefinedArray.append(trainer)
                 }
             }
@@ -238,9 +245,9 @@ extension FinderSearchResultViewController: FinderRefineSearchViewControllerDele
         }
         // Filter Search Result based on Years Experience
         if experience != 0 {
-            var tempRefinedArray = [PFUser]()
+            var tempRefinedArray = [(trainer: Trainer,distanceBetween: Double)]()
             for trainer in self.refinedtrainerArray {
-                if trainer.objectForKey("yearsExperience") as? Int > experience {
+                if trainer.trainer.yearsExperience > experience {
                     tempRefinedArray.append(trainer)
                 }
             }

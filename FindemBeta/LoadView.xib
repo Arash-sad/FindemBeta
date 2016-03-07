@@ -21,6 +21,12 @@
                         <constraint firstAttribute="height" constant="100" id="eRx-OS-5wi"/>
                     </constraints>
                     <blurEffect style="dark"/>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="LEG-9o-c5j"/>
+                            <exclude reference="eRx-OS-5wi"/>
+                        </mask>
+                    </variation>
                 </visualEffectView>
                 <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="Vid-9r-5Rn">
                     <rect key="frame" x="32" y="31" width="37" height="37"/>
@@ -29,11 +35,15 @@
             <color key="backgroundColor" red="0.40000000596046448" green="0.40000000596046448" blue="0.40000000596046448" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
                 <constraint firstItem="Vid-9r-5Rn" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="0sz-Yw-t5k"/>
+                <constraint firstItem="66a-OD-V4T" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="7S8-dA-7qP"/>
+                <constraint firstAttribute="trailing" secondItem="66a-OD-V4T" secondAttribute="trailing" id="7zr-cb-1Hi"/>
                 <constraint firstItem="Vid-9r-5Rn" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="APg-65-s8c"/>
+                <constraint firstAttribute="bottom" secondItem="66a-OD-V4T" secondAttribute="bottom" id="MTb-Oz-esA"/>
                 <constraint firstItem="66a-OD-V4T" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="YKG-XJ-J5N"/>
                 <constraint firstAttribute="bottom" secondItem="66a-OD-V4T" secondAttribute="bottom" id="Zyl-yO-4bd"/>
                 <constraint firstItem="66a-OD-V4T" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="cHN-nZ-Yg7"/>
                 <constraint firstAttribute="trailing" secondItem="66a-OD-V4T" secondAttribute="trailing" id="l4L-PF-dWw"/>
+                <constraint firstItem="66a-OD-V4T" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="mYe-qz-PEh"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <userDefinedRuntimeAttributes>
@@ -41,6 +51,14 @@
                     <integer key="value" value="10"/>
                 </userDefinedRuntimeAttribute>
             </userDefinedRuntimeAttributes>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="YKG-XJ-J5N"/>
+                    <exclude reference="Zyl-yO-4bd"/>
+                    <exclude reference="cHN-nZ-Yg7"/>
+                    <exclude reference="l4L-PF-dWw"/>
+                </mask>
+            </variation>
         </view>
     </objects>
 </document>

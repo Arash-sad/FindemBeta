@@ -15,6 +15,7 @@ class SearchResultTableViewCell: UITableViewCell {
     @IBOutlet weak var shortDescriptionLabel: UILabel!
     @IBOutlet weak var backgroundImage: UIImageView!
     @IBOutlet weak var trainingTypesLabel: UILabel!
+    @IBOutlet weak var distanceLabel: UILabel!
 
     
     override func awakeFromNib() {

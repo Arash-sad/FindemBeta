@@ -106,7 +106,8 @@ class FinderTrainerProfileViewController: UIViewController, UITableViewDelegate,
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if trainerType == "club" {
+        // Check to make sure there are valid lat and long for club trainer
+        if trainerType == "club" && (trainer?.clubLatitude != 38.018312 && trainer?.clubLongitude != 51.412430) {
             return 2
         }
         else {

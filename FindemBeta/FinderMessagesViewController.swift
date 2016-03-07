@@ -251,7 +251,6 @@ class FinderMessagesViewController: UIViewController, UITableViewDataSource, UIT
                 let thisTrainer = connections[indexPath!.row].trainer
                 vc.trainer = thisTrainer
                 vc.hideConnectBarButtonItem = true
-//                vc.trainerType = self.trainerType
             }
         }
     }

@@ -32,7 +32,8 @@ class TrainerDescriptionViewController: UIViewController, UITextViewDelegate {
 
         // Do any additional setup after loading the view.
         
-        
+        self.shortDescriptionTextView.layer.cornerRadius = 6
+        self.longDescriptionTextView.layer.cornerRadius = 6
         shortDescriptionTextView.delegate = self
         shortDescriptionTextView.text = self.shortDescription
         longDescriptionTextView.delegate = self

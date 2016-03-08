@@ -33,19 +33,21 @@ class TrainerOtherViewController: UIViewController, UITextViewDelegate {
 
         
         if self.years == 0 {
-            yearsLabel.text = "Less than a year"
+            self.yearsLabel.text = "Less than a year"
         }
         else if self.years == 1 {
-            yearsLabel.text = "1 year"
+            self.yearsLabel.text = "1 year"
         }
         else {
-            yearsLabel.text = ("\(self.years!) years")
+            self.yearsLabel.text = ("\(self.years!) years")
         }
-        achievementsTextView.delegate = self
-        achievementsTextView.text = self.achievements
-        stepper.value = Double(self.years!)
-        stepper.minimumValue = 0
-        stepper.maximumValue = 99
+        
+        self.achievementsTextView.layer.cornerRadius = 6
+        self.achievementsTextView.delegate = self
+        self.achievementsTextView.text = self.achievements
+        self.stepper.value = Double(self.years!)
+        self.stepper.minimumValue = 0
+        self.stepper.maximumValue = 99
     }
 
     override func didReceiveMemoryWarning() {

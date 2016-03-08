@@ -75,6 +75,8 @@ class TrainerTrainingTypesViewController: UIViewController, UITableViewDelegate,
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cellIdentifier = "trainingCell"
         let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! TrainingTableViewCell
+        
+        cell.tintColor = UIColor(red: 245/255, green: 7/255, blue: 55/255, alpha: 1.0)
         cell.trainingLabel.text = trainingArray[indexPath.row]
 
         return cell

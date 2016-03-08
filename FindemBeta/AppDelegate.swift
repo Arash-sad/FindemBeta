@@ -25,8 +25,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         // Setup Navigation Bar
-        UINavigationBar.appearance().barTintColor = UIColor.darkGrayColor()
-        UINavigationBar.appearance().tintColor = UIColor.whiteColor()
+        UINavigationBar.appearance().barTintColor = UIColor(red: 220/255, green: 220/255, blue: 220/255, alpha: 1.0)
+        UINavigationBar.appearance().tintColor = UIColor(red: 245/255, green: 7/255, blue: 55/255, alpha: 1.0)
         
         Parse.enableLocalDatastore()
         

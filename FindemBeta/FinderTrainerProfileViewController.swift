@@ -25,6 +25,7 @@ class FinderTrainerProfileViewController: UIViewController, UITableViewDelegate,
     var weekdaysSessionTimes = ""
     var weekendSessionTimes = ""
     var hideConnectBarButtonItem = false
+    var userImage: UIImage?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -84,6 +85,11 @@ class FinderTrainerProfileViewController: UIViewController, UITableViewDelegate,
             }
         }
         
+        currentUser()!.getPhoto({
+            image in
+            self.userImage = image
+        })
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -97,6 +103,7 @@ class FinderTrainerProfileViewController: UIViewController, UITableViewDelegate,
             let connectionVC = segue.destinationViewController as? FinderConnectionViewController
             connectionVC?.trainer = self.trainer
             connectionVC?.isConnected = self.isConnected
+            connectionVC?.userImage = self.userImage
         }
     }
     

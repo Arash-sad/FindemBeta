@@ -205,8 +205,16 @@ class TrainerMessagesViewController: UIViewController, UITableViewDataSource, UI
     
     // reload tableView when data fetched
     func reload() {
+        // Display Activity Indicator
+        let loadView = UIView.loadFromNibNamed("LoadView")
+        loadView?.center = view.center
+        view.addSubview(loadView!)
+        
         if self.connections.count > 0 {
             self.tableView.reloadData()
+            
+            // Remove Activity Indicator
+            loadView!.removeFromSuperview()
         }
         else {
             NSTimer.scheduledTimerWithTimeInterval(2, target: self, selector: Selector("reload"), userInfo: nil, repeats: false)

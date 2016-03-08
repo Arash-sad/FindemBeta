@@ -68,7 +68,7 @@ class TrainerInAppPurchaseViewController: UIViewController, UITableViewDelegate,
         let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! InAppPurchaseTableViewCell
         //Setup subscribe button
         cell.buyButton.layer.cornerRadius = cell.buyButton.frame.height / 3
-        cell.buyButton.layer.borderColor = UIColor(white: 1.0, alpha: 1.0).CGColor
+        cell.buyButton.layer.borderColor = UIColor(red: 55/255, green: 55/255, blue: 55/255, alpha: 1.0).CGColor
         cell.buyButton.layer.borderWidth = 1.0
         
         cell.displayNameLabel.text = self.productsArray[indexPath.row].localizedTitle

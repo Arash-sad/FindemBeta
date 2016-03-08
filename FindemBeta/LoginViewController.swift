@@ -19,7 +19,7 @@ class LoginViewController: UIViewController {
         // Do any additional setup after loading the view.
         // Setup the button
         self.fbLoginButton.layer.cornerRadius = self.fbLoginButton.frame.height / 3
-        self.fbLoginButton.layer.borderColor = UIColor(white: 1.0, alpha: 1.0).CGColor
+        self.fbLoginButton.layer.borderColor = UIColor(red: 55/255, green: 55/255, blue: 55/255, alpha: 1.0).CGColor
         self.fbLoginButton.layer.borderWidth = 1.0
     }
 

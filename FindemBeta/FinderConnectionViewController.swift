@@ -15,20 +15,27 @@ class FinderConnectionViewController: UIViewController {
     @IBOutlet weak var connectionLabel: UILabel!
     @IBOutlet weak var messageButton: UIButton!
     @IBOutlet weak var goBackButton: UIButton!
+    @IBOutlet weak var userImageView: UIImageView!
     
     var trainer: Trainer?
     var isConnected = false
+    var userImage: UIImage?
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         
-        // Setup imageView
+        // Setup imageView and userImageView
         self.imageView.layer.borderColor = UIColor.whiteColor().CGColor
         self.imageView.layer.borderWidth = 2.0
         self.imageView.layer.cornerRadius = self.imageView.frame.height / 2
         self.imageView.layer.masksToBounds = true
+        self.userImageView.layer.borderColor = UIColor.whiteColor().CGColor
+        self.userImageView.layer.borderWidth = 2.0
+        self.userImageView.layer.cornerRadius = self.userImageView.frame.height / 2
+        self.userImageView.layer.masksToBounds = true
+        
         //Setup Buttons
         self.messageButton.layer.cornerRadius = self.messageButton.frame.height / 3
         self.messageButton.layer.borderColor = UIColor(white: 1.0, alpha: 1.0).CGColor
@@ -47,6 +54,9 @@ class FinderConnectionViewController: UIViewController {
             image in
             self.imageView.image = image
         })
+        
+        self.userImageView.image = userImage
+        
     }
 
     override func didReceiveMemoryWarning() {

@@ -153,6 +153,22 @@ class TrainerRegionViewController: UIViewController, UIPickerViewDataSource, UIP
         self.distanceLabel.text = firstComponent + secondComponent
     }
     
+    func pickerView(pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusingView view: UIView?) -> UIView {
+        let pickerLabel = UILabel()
+        pickerLabel.textAlignment = .Center
+        pickerLabel.backgroundColor = UIColor(red: 225/255, green: 225/255, blue: 225/255, alpha: 1.0)
+        let titleData = pickerData[component][row]
+        let myTitle = NSAttributedString(string: titleData, attributes: [NSFontAttributeName:UIFont.systemFontOfSize(22, weight: UIFontWeightMedium),NSForegroundColorAttributeName:UIColor(red: 55/255, green: 55/255, blue: 55/255, alpha: 1.0)])
+        pickerLabel.attributedText = myTitle
+        
+        return pickerLabel
+    }
+    
+    func pickerView(pickerView: UIPickerView, widthForComponent component: Int) -> CGFloat
+    {
+        return CGFloat(100)
+    }
+    
     //MARK: - Alert
     func alert(messageTitle: String, message: String) {
         let alert = UIAlertController(title: messageTitle, message: message, preferredStyle: UIAlertControllerStyle.Alert)

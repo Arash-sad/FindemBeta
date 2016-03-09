@@ -31,7 +31,7 @@ class TrainerProfileGeneralViewController: UIViewController, UITextFieldDelegate
         nameTextField.delegate = self
         
         // Setup imageView
-        self.imageView.layer.borderColor = UIColor.whiteColor().CGColor
+        self.imageView.layer.borderColor = UIColor.lightGrayColor().CGColor
         self.imageView.layer.borderWidth = 2.0
         self.imageView.layer.cornerRadius = self.imageView.frame.height / 2
         self.imageView.layer.masksToBounds = true
@@ -40,9 +40,11 @@ class TrainerProfileGeneralViewController: UIViewController, UITextFieldDelegate
         self.imageView.image = photo
         if gender! == "male" {
             segmentedControl.selectedSegmentIndex = 0
+            self.gender = "Male"
         }
         else {
             segmentedControl.selectedSegmentIndex = 1
+            self.gender = "Female"
         }
     }
 
@@ -58,11 +60,11 @@ class TrainerProfileGeneralViewController: UIViewController, UITextFieldDelegate
     @IBAction func segmentedControlValueChanged(sender: UISegmentedControl) {
         if(segmentedControl.selectedSegmentIndex == 0)
         {
-            self.gender = "male"
+            self.gender = "Male"
         }
         else if(segmentedControl.selectedSegmentIndex == 1)
         {
-            self.gender = "female"
+            self.gender = "Female"
         }
     }
     // MARK: - Navigation

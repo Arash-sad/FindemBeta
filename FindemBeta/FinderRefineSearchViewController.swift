@@ -90,10 +90,15 @@ class FinderRefineSearchViewController: UIViewController, UIPickerViewDataSource
         }
     }
     
-    func pickerView(pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
-        let titleData = pickerData[row]
-        let myTitle = NSAttributedString(string: titleData, attributes: [NSFontAttributeName:UIFont.systemFontOfSize(20, weight: UIFontWeightThin),NSForegroundColorAttributeName:UIColor.whiteColor()])
-        return myTitle
+    func pickerView(pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusingView view: UIView?) -> UIView {
+            let pickerLabel = UILabel()
+            pickerLabel.textAlignment = .Center
+            pickerLabel.backgroundColor = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 0.1)
+            let titleData = pickerData[row]
+            let myTitle = NSAttributedString(string: titleData, attributes: [NSFontAttributeName:UIFont.systemFontOfSize(20, weight: UIFontWeightThin),NSForegroundColorAttributeName:UIColor.whiteColor()])
+            pickerLabel.attributedText = myTitle
+        
+            return pickerLabel
     }
 
 }

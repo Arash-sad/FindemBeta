@@ -46,6 +46,19 @@ class FinderSearchViewController: UIViewController, CLLocationManagerDelegate {
         // Dispose of any resources that can be recreated.
     }
     
+    // MARK: - Navigation
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "showSearchResult" {
+            let indexPaths = self.collectionView.indexPathsForSelectedItems()
+            let indexPath = indexPaths![0] as NSIndexPath
+            let resultVC = segue.destinationViewController as! FinderSearchResultViewController
+            resultVC.trainingType = self.trainingTypesArray[indexPath.row]
+            resultVC.currentLocation = self.currentLocation
+            resultVC.trainerType = self.trainerType
+            resultVC.clubDistance = self.clubDistance
+        }
+    }
+    
     //MARK: - CLLocationManagerDelegate
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation])
     {
@@ -87,7 +100,7 @@ extension FinderSearchViewController: UICollectionViewDelegate,UICollectionViewD
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("searchCell", forIndexPath: indexPath) as! SearchCollectionViewCell
         cell.imageView.layer.cornerRadius = cell.imageView.frame.height / 3
         cell.imageView.layer.borderWidth = 2.0
-        cell.imageView.layer.borderColor = UIColor.whiteColor().CGColor
+        cell.imageView.layer.borderColor = UIColor.darkGrayColor().CGColor
         cell.imageView.image = self.ImageArray[indexPath.row]
         
         return cell
@@ -105,18 +118,10 @@ extension FinderSearchViewController: UICollectionViewDelegate,UICollectionViewD
 //        }
     }
     
-    // MARK: - Navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "showSearchResult" {
-            let indexPaths = self.collectionView.indexPathsForSelectedItems()
-            let indexPath = indexPaths![0] as NSIndexPath
-            let resultVC = segue.destinationViewController as! FinderSearchResultViewController
-            resultVC.trainingType = self.trainingTypesArray[indexPath.row]
-            resultVC.currentLocation = self.currentLocation
-            resultVC.trainerType = self.trainerType
-            resultVC.clubDistance = self.clubDistance
-        }
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+            return CGSizeMake(self.view.frame.width/2 - 20, self.view.frame.width/2 - 20)
     }
+    
 }
 
 

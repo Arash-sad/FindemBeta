@@ -25,7 +25,7 @@ class FinderSearchResultViewController: UIViewController {
 
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-
+        
         if trainerArray.count == 0 {
             // Display Activity Indicator
             let loadView = UIView.loadFromNibNamed("LoadView")

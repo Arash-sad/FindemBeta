@@ -201,7 +201,7 @@ class TrainerProfileViewController: UIViewController, UITableViewDelegate, UITab
             let cell = tableView.dequeueReusableCellWithIdentifier(self.firstCellIdentifier, forIndexPath: indexPath) as! FirstTableViewCell
             
             // Setup profileImageView
-            cell.profileImageView.layer.borderColor = UIColor.whiteColor().CGColor
+            cell.profileImageView.layer.borderColor = UIColor.lightGrayColor().CGColor
             cell.profileImageView.layer.borderWidth = 2.0
             cell.profileImageView.layer.cornerRadius = cell.profileImageView.frame.height / 2
             cell.profileImageView.layer.masksToBounds = true
@@ -529,7 +529,7 @@ class TrainerProfileViewController: UIViewController, UITableViewDelegate, UITab
             return 130.0
         }
         else {
-            return 50.0
+            return 60.0
         }
     }
     
@@ -539,9 +539,9 @@ class TrainerProfileViewController: UIViewController, UITableViewDelegate, UITab
     
     func tableView(tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         let header:UITableViewHeaderFooterView = view as! UITableViewHeaderFooterView
-        header.contentView.backgroundColor = UIColor(red: 220, green: 220, blue: 220, alpha: 0.2)
-        header.textLabel!.textColor = UIColor.blackColor()
-        header.textLabel!.font = UIFont.systemFontOfSize(18, weight: UIFontWeightBold)
+        header.contentView.backgroundColor = UIColor(red: 220/255, green: 220/255, blue: 220/255, alpha: 0.5)
+        header.textLabel!.textColor = UIColor(red: 55/255, green: 55/255, blue: 55/255, alpha: 1.0)
+        header.textLabel!.font = UIFont.systemFontOfSize(17, weight: UIFontWeightMedium)
         header.textLabel!.frame = header.frame
         header.textLabel!.textAlignment = NSTextAlignment.Left
     }
@@ -555,7 +555,8 @@ class TrainerProfileViewController: UIViewController, UITableViewDelegate, UITab
     func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         if (pickerView.tag == 1) {
             return trainingArray.count
-        } else {
+        }
+        else {
             return qualificationsArray.count
         }
     }
@@ -566,6 +567,27 @@ class TrainerProfileViewController: UIViewController, UITableViewDelegate, UITab
         }
         else {
             return qualificationsArray[row]
+        }
+    }
+    
+    func pickerView(pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusingView view: UIView?) -> UIView {
+        if (pickerView.tag == 1) {
+            let pickerLabel = UILabel()
+            pickerLabel.textAlignment = .Center
+            pickerLabel.backgroundColor = UIColor(red: 225/255, green: 225/255, blue: 225/255, alpha: 1.0)
+            let titleData = trainingArray[row]
+            let myTitle = NSAttributedString(string: titleData, attributes: [NSFontAttributeName:UIFont.systemFontOfSize(17, weight: UIFontWeightThin),NSForegroundColorAttributeName:UIColor(red: 55/255, green: 55/255, blue: 55/255, alpha: 1.0)])
+            pickerLabel.attributedText = myTitle
+            return pickerLabel
+        }
+        else {
+            let pickerLabel = UILabel()
+            pickerLabel.textAlignment = .Center
+            pickerLabel.backgroundColor = UIColor(red: 225/255, green: 225/255, blue: 225/255, alpha: 1.0)
+            let titleData = qualificationsArray[row]
+            let myTitle = NSAttributedString(string: titleData, attributes: [NSFontAttributeName:UIFont.systemFontOfSize(17, weight: UIFontWeightThin),NSForegroundColorAttributeName:UIColor(red: 55/255, green: 55/255, blue: 55/255, alpha: 1.0)])
+            pickerLabel.attributedText = myTitle
+            return pickerLabel
         }
     }
     

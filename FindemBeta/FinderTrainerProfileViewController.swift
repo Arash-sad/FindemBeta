@@ -127,6 +127,37 @@ class FinderTrainerProfileViewController: UIViewController, UITableViewDelegate,
                     let cellIdentifier = "firstTrainerProfile"
                     let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! FirstTrainerProfileTableViewCell
             
+            // Temp: Setup heading labels
+            cell.expLabel.layer.borderColor = UIColor(red: 155/255, green: 155/255, blue: 155/255, alpha: 1.0).CGColor
+            cell.expLabel.layer.borderWidth = 1.3
+            cell.expLabel.layer.cornerRadius = 5
+            cell.expLabel.layer.backgroundColor = UIColor(red: 230/255, green: 230/255, blue: 230/255, alpha: 1.0).CGColor
+            
+            cell.specLabel.layer.borderColor = UIColor(red: 155/255, green: 155/255, blue: 155/255, alpha: 1.0).CGColor
+            cell.specLabel.layer.borderWidth = 1.3
+            cell.specLabel.layer.cornerRadius = 5
+            cell.specLabel.layer.backgroundColor = UIColor(red: 230/255, green: 230/255, blue: 230/255, alpha: 1.0).CGColor
+            
+            cell.quaLabel.layer.borderColor = UIColor(red: 155/255, green: 155/255, blue: 155/255, alpha: 1.0).CGColor
+            cell.quaLabel.layer.borderWidth = 1.3
+            cell.quaLabel.layer.cornerRadius = 5
+            cell.quaLabel.layer.backgroundColor = UIColor(red: 230/255, green: 230/255, blue: 230/255, alpha: 1.0).CGColor
+            
+            cell.descLabel.layer.borderColor = UIColor(red: 155/255, green: 155/255, blue: 155/255, alpha: 1.0).CGColor
+            cell.descLabel.layer.borderWidth = 1.3
+            cell.descLabel.layer.cornerRadius = 5
+            cell.descLabel.layer.backgroundColor = UIColor(red: 230/255, green: 230/255, blue: 230/255, alpha: 1.0).CGColor
+            
+            cell.achLabel.layer.borderColor = UIColor(red: 155/255, green: 155/255, blue: 155/255, alpha: 1.0).CGColor
+            cell.achLabel.layer.borderWidth = 1.3
+            cell.achLabel.layer.cornerRadius = 5
+            cell.achLabel.layer.backgroundColor = UIColor(red: 230/255, green: 230/255, blue: 230/255, alpha: 1.0).CGColor
+            
+            cell.sesLabel.layer.borderColor = UIColor(red: 155/255, green: 155/255, blue: 155/255, alpha: 1.0).CGColor
+            cell.sesLabel.layer.borderWidth = 1.3
+            cell.sesLabel.layer.cornerRadius = 5
+            cell.sesLabel.layer.backgroundColor = UIColor(red: 230/255, green: 230/255, blue: 230/255, alpha: 1.0).CGColor
+            
             // Setup profileImageView
             cell.profilePictureImageView.layer.borderColor = UIColor.whiteColor().CGColor
             cell.profilePictureImageView.layer.borderWidth = 2.0
@@ -154,10 +185,13 @@ class FinderTrainerProfileViewController: UIViewController, UITableViewDelegate,
             cell.nameLabel.text = self.trainer!.name
             cell.descriptionTextView.layer.cornerRadius = 5
             cell.descriptionTextView.text = self.trainer!.longDescription
+            cell.descriptionTextView.setContentOffset(CGPointZero, animated: false)
             cell.trainingTypesTextView.layer.cornerRadius = 5
             cell.trainingTypesTextView.text = self.trainingTypes
+            cell.trainingTypesTextView.setContentOffset(CGPointZero, animated: false)
             cell.qualificationsTextView.layer.cornerRadius = 5
             cell.qualificationsTextView.text = self.qualifications
+            cell.qualificationsTextView.setContentOffset(CGPointZero, animated: false)
             if let yearsExperience = self.trainer!.yearsExperience {
                 if yearsExperience == 0 {
                     cell.experienceLabel.text = "Less than a year"
@@ -170,6 +204,7 @@ class FinderTrainerProfileViewController: UIViewController, UITableViewDelegate,
                 }
             }
             cell.achievementsTextView.layer.cornerRadius = 5
+            cell.achievementsTextView.setContentOffset(CGPointZero, animated: false)
             cell.achievementsTextView.text = self.trainer!.achievements
             cell.weekdaysLabel.text = self.weekdaysSessionTimes
             cell.weekendsLabel.text = self.weekendSessionTimes
@@ -179,6 +214,12 @@ class FinderTrainerProfileViewController: UIViewController, UITableViewDelegate,
         else {
                     let cellIdentifier = "secondTrainerProfile"
                     let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! SecondTrainerProfileTableViewCell
+            
+            // Temp: Setup heading labels
+            cell.clubDetailLabel.layer.borderColor = UIColor(red: 155/255, green: 155/255, blue: 155/255, alpha: 1.0).CGColor
+            cell.clubDetailLabel.layer.borderWidth = 1.3
+            cell.clubDetailLabel.layer.cornerRadius = 5
+            cell.clubDetailLabel.layer.backgroundColor = UIColor(red: 230/255, green: 230/255, blue: 230/255, alpha: 1.0).CGColor
             
             cell.clubNameLabel.text = self.trainer!.clubName
             if let clubAddress = trainer!.clubAddress {
@@ -222,7 +263,7 @@ class FinderTrainerProfileViewController: UIViewController, UITableViewDelegate,
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat
     {
         if indexPath.row == 0 {
-            return 950.0
+            return 975.0
         }
         else {
             return 400.0

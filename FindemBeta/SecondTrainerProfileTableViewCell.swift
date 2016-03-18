@@ -13,6 +13,7 @@ class SecondTrainerProfileTableViewCell: UITableViewCell {
     @IBOutlet weak var clubNameLabel: UILabel!
     @IBOutlet weak var clubAddressLabel: UILabel!
     @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var clubDetailLabel: UILabel!
         
     override func awakeFromNib() {
         super.awakeFromNib()

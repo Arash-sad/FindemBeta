@@ -21,6 +21,12 @@ class FirstTrainerProfileTableViewCell: UITableViewCell {
     @IBOutlet weak var instagramButton: UIButton!
     @IBOutlet weak var weekdaysLabel: UILabel!
     @IBOutlet weak var weekendsLabel: UILabel!
+    @IBOutlet weak var expLabel: UILabel!
+    @IBOutlet weak var specLabel: UILabel!
+    @IBOutlet weak var quaLabel: UILabel!
+    @IBOutlet weak var descLabel: UILabel!
+    @IBOutlet weak var achLabel: UILabel!
+    @IBOutlet weak var sesLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

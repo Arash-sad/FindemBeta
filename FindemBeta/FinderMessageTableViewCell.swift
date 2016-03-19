@@ -12,10 +12,10 @@ class FinderMessageTableViewCell: UITableViewCell {
 
     @IBOutlet weak var avatarImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var newMessageLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var lastMessageLabel: UILabel!
     @IBOutlet weak var profileNameLabel: UILabel!
+    @IBOutlet weak var circleImageView: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()

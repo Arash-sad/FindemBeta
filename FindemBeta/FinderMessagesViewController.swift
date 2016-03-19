@@ -70,10 +70,10 @@ class FinderMessagesViewController: UIViewController, UITableViewDataSource, UIT
         cell.lastMessageLabel.text = connections[indexPath.row].action.lastMessageString
         // Show new message label
         if connections[indexPath.row].action.lastMessage.timeIntervalSince1970 >= connections[indexPath.row].action.userLastSeenAt.timeIntervalSince1970 {
-            cell.newMessageLabel.hidden = false
+            cell.circleImageView.hidden = false
         }
         else {
-            cell.newMessageLabel.hidden = true
+            cell.circleImageView.hidden = true
         }
         cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
         // Messages or Profiles
@@ -81,7 +81,7 @@ class FinderMessagesViewController: UIViewController, UITableViewDataSource, UIT
             cell.nameLabel.hidden = false
             cell.dateLabel.hidden = false
             cell.lastMessageLabel.hidden = false
-            cell.newMessageLabel.alpha = 1
+            cell.circleImageView.alpha = 1
             cell.profileNameLabel.hidden = true
             return cell
         }
@@ -89,7 +89,7 @@ class FinderMessagesViewController: UIViewController, UITableViewDataSource, UIT
             cell.nameLabel.hidden = true
             cell.dateLabel.hidden = true
             cell.lastMessageLabel.hidden = true
-            cell.newMessageLabel.alpha = 0
+            cell.circleImageView.alpha = 0
             cell.profileNameLabel.hidden = false
 
             return cell

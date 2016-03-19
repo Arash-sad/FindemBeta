@@ -63,10 +63,10 @@ class TrainerMessagesViewController: UIViewController, UITableViewDataSource, UI
         cell.lastMessageLabel.text = connections[indexPath.row].action.lastMessageString ?? ""
         // Show new message label
         if connections[indexPath.row].action.lastMessage.timeIntervalSince1970 >= connections[indexPath.row].action.trainerLastSeenAt.timeIntervalSince1970 {
-            cell.newMessageLabel.hidden = false
+            cell.circleImageView.hidden = false
         }
         else {
-            cell.newMessageLabel.hidden = true
+            cell.circleImageView.hidden = true
         }
         cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
         return cell

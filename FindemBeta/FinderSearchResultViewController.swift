@@ -28,9 +28,7 @@ class FinderSearchResultViewController: UIViewController {
         
         if trainerArray.count == 0 {
             // Display Activity Indicator
-            let loadView = UIView.loadFromNibNamed("LoadView")
-            loadView?.center = view.center
-            view.addSubview(loadView!)
+            LoadingView.addTo(view)
             
             let query = PFUser.query()
             query!.whereKey("trainingTypes", equalTo:trainingType)
@@ -66,7 +64,7 @@ class FinderSearchResultViewController: UIViewController {
                     self.tableView.reloadData()
                     self.animateTable()
                     // Remove Activity Indicator
-                    loadView!.removeFromSuperview()
+                    LoadingView.removeFrom(self.view)
                 }
             }
             else if trainerType == "mobile" {
@@ -99,7 +97,7 @@ class FinderSearchResultViewController: UIViewController {
                     }
                     self.tableView.reloadData()
                     self.animateTable()
-                    loadView!.removeFromSuperview()
+                    LoadingView.removeFrom(self.view)
                 }
             }
         }

@@ -29,7 +29,7 @@ class FinderSelectTrainerTypeViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        
+        LoadingView.addTo(view)
         //Setup Next Button
         self.nextButton.layer.cornerRadius = self.nextButton.frame.height / 3
         self.nextButton.layer.borderColor = UIColor(white: 1.0, alpha: 1.0).CGColor

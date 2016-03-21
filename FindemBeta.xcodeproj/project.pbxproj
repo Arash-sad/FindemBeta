@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		379F6110931CDA2A36CA02D8 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FFC3B2D92A9ECE47B3FC57E6 /* libPods.a */; };
 		5B41E92A1C06D23700FA1474 /* Trainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B41E9291C06D23700FA1474 /* Trainer.swift */; };
-		5B41E92E1C0BF22800FA1474 /* LoadView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B41E92D1C0BF22800FA1474 /* LoadView.xib */; };
 		5B4E82B11C7EA56000E97000 /* DrawSeperationLineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4E82B01C7EA56000E97000 /* DrawSeperationLineView.swift */; };
 		5B4FE88D1BC4AB5B0057278F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4FE88C1BC4AB5B0057278F /* AppDelegate.swift */; };
 		5B4FE8921BC4AB5B0057278F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B4FE8901BC4AB5B0057278F /* Main.storyboard */; };
@@ -70,6 +69,7 @@
 		5BF221371C18525C001ADCDE /* FinderTrainerProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF221361C18525C001ADCDE /* FinderTrainerProfileViewController.swift */; };
 		5BF325481C475ED2002C096A /* SeventhTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF325471C475ED2002C096A /* SeventhTableViewCell.swift */; };
 		5BF3254C1C477997002C096A /* TrainerSessionTimesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF3254B1C477997002C096A /* TrainerSessionTimesViewController.swift */; };
+		5BF37E2C1C9FAB7900CF2363 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF37E2B1C9FAB7900CF2363 /* LoadingView.swift */; };
 		5BF4176F1C20E30D00EC9AB5 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF4176E1C20E30D00EC9AB5 /* Message.swift */; };
 		5BF426FC1C2789B600271569 /* FinderMessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF426FB1C2789B600271569 /* FinderMessageTableViewCell.swift */; };
 		5BF437EC1C0E74CD00828023 /* SearchCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF437EB1C0E74CD00828023 /* SearchCollectionViewCell.swift */; };
@@ -93,7 +93,6 @@
 /* Begin PBXFileReference section */
 		52046C08898C9B064E4AF239 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		5B41E9291C06D23700FA1474 /* Trainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Trainer.swift; sourceTree = "<group>"; };
-		5B41E92D1C0BF22800FA1474 /* LoadView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoadView.xib; sourceTree = "<group>"; };
 		5B4E82B01C7EA56000E97000 /* DrawSeperationLineView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawSeperationLineView.swift; sourceTree = "<group>"; };
 		5B4FE8871BC4AB5B0057278F /* FindemBeta.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FindemBeta.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B4FE88B1BC4AB5B0057278F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -159,6 +158,7 @@
 		5BF221361C18525C001ADCDE /* FinderTrainerProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FinderTrainerProfileViewController.swift; sourceTree = "<group>"; };
 		5BF325471C475ED2002C096A /* SeventhTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeventhTableViewCell.swift; sourceTree = "<group>"; };
 		5BF3254B1C477997002C096A /* TrainerSessionTimesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainerSessionTimesViewController.swift; sourceTree = "<group>"; };
+		5BF37E2B1C9FAB7900CF2363 /* LoadingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		5BF4176E1C20E30D00EC9AB5 /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		5BF426FB1C2789B600271569 /* FinderMessageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FinderMessageTableViewCell.swift; sourceTree = "<group>"; };
 		5BF437EB1C0E74CD00828023 /* SearchCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -242,7 +242,6 @@
 				5BE7FC301BF2C59500E1A6B8 /* ViewControllers */,
 				5BE7FC311BF2C5A600E1A6B8 /* Views */,
 				5B4FE8901BC4AB5B0057278F /* Main.storyboard */,
-				5B41E92D1C0BF22800FA1474 /* LoadView.xib */,
 				5BEDB38D1C39D442005A80E7 /* SlidingMenu.xib */,
 				5B4FE8931BC4AB5B0057278F /* Images.xcassets */,
 				5B4FE8951BC4AB5B0057278F /* LaunchScreen.xib */,
@@ -308,6 +307,7 @@
 				5BF007181C1A667500E3961A /* Connection.swift */,
 				5BF4176E1C20E30D00EC9AB5 /* Message.swift */,
 				5B4E82B01C7EA56000E97000 /* DrawSeperationLineView.swift */,
+				5BF37E2B1C9FAB7900CF2363 /* LoadingView.swift */,
 			);
 			name = Data;
 			sourceTree = "<group>";
@@ -478,7 +478,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5B41E92E1C0BF22800FA1474 /* LoadView.xib in Resources */,
 				5B4FE8921BC4AB5B0057278F /* Main.storyboard in Resources */,
 				5BEDB38E1C39D442005A80E7 /* SlidingMenu.xib in Resources */,
 				5B4FE8971BC4AB5B0057278F /* LaunchScreen.xib in Resources */,
@@ -591,6 +590,7 @@
 				5BEE63931C73FC54003E89A6 /* TrainerInAppPurchaseViewController.swift in Sources */,
 				5BF007191C1A667500E3961A /* Connection.swift in Sources */,
 				5BED7D891C62CF0900CFF9B3 /* TrainerSocialNetworkingViewController.swift in Sources */,
+				5BF37E2C1C9FAB7900CF2363 /* LoadingView.swift in Sources */,
 				5BEE43B01C682A9800AC5D9B /* ClubProfileTableViewCell.swift in Sources */,
 				5BEE24C21BF9A7ED00BBC10E /* TrainerRegionViewController.swift in Sources */,
 				5BE7D14A1C869B190030A0B1 /* SecondTrainerProfileTableViewCell.swift in Sources */,

@@ -3679,7 +3679,7 @@
                         </variation>
                     </view>
                     <navigationItem key="navigationItem" id="QOm-ha-c53">
-                        <barButtonItem key="leftBarButtonItem" title="Menu" id="Hrd-Qb-CbI">
+                        <barButtonItem key="leftBarButtonItem" image="menu" id="Hrd-Qb-CbI">
                             <connections>
                                 <action selector="MenuBarButtonItemTapped:" destination="fu2-qy-5IX" id="rYg-ls-usl"/>
                             </connections>
@@ -3947,6 +3947,7 @@
         <image name="filter" width="22" height="22"/>
         <image name="instagram" width="42" height="42"/>
         <image name="instagram-pink" width="42" height="42"/>
+        <image name="menu" width="22" height="22"/>
         <image name="pic_mountains_album" width="42" height="42"/>
         <image name="plus-pink" width="42" height="42"/>
     </resources>

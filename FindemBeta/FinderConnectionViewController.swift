@@ -36,12 +36,23 @@ class FinderConnectionViewController: UIViewController {
         self.userImageView.layer.masksToBounds = true
         
         //Setup Buttons
-        self.messageButton.layer.cornerRadius = self.messageButton.frame.height / 3
-        self.messageButton.layer.borderColor = UIColor(white: 1.0, alpha: 1.0).CGColor
-        self.messageButton.layer.borderWidth = 1.0
-        self.goBackButton.layer.cornerRadius = self.goBackButton.frame.height / 3
-        self.goBackButton.layer.borderColor = UIColor(white: 1.0, alpha: 1.0).CGColor
-        self.goBackButton.layer.borderWidth = 1.0
+        
+        let connectionsImage = UIImage(named: "connections")
+        messageButton.setImage(connectionsImage, forState: UIControlState.Normal)
+        messageButton.imageEdgeInsets = UIEdgeInsets(top: 10, left: 15, bottom: 20, right: 15)
+        
+        messageButton.setTitle("Connections", forState: UIControlState.Normal)
+        messageButton.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
+        messageButton.titleEdgeInsets = UIEdgeInsets(top: 80, left: -connectionsImage!.size.width, bottom: 0, right: 0.0)
+        
+        let backImage = UIImage(named: "back")
+        goBackButton.setImage(backImage, forState: UIControlState.Normal)
+        goBackButton.imageEdgeInsets = UIEdgeInsets(top: 10, left: 15, bottom: 20, right: 15)
+        
+        goBackButton.setTitle("Go Back", forState: UIControlState.Normal)
+        goBackButton.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
+        goBackButton.titleEdgeInsets = UIEdgeInsets(top: 80, left: -backImage!.size.width, bottom: 0, right: 0.0)
+
         
             if self.isConnected == true {
                 self.connectionLabel.text = "You and \(trainer!.name) are already connected."

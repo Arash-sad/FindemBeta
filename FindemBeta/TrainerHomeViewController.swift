@@ -46,16 +46,6 @@ class TrainerHomeViewController: UIViewController, TrainerInAppPurchaseViewContr
         subscriptionButton.setTitleColor(UIColor(red: 55/255, green: 55/255, blue: 55/255, alpha: 1.0), forState: UIControlState.Normal)
         subscriptionButton.titleEdgeInsets = UIEdgeInsets(top: 90, left: -subscriptionImage!.size.width, bottom: 0, right: 0.0)
         
-//        self.profileButton.layer.cornerRadius = self.profileButton.frame.height / 3
-//        self.profileButton.layer.borderColor = UIColor(red: 55/255, green: 55/255, blue: 55/255, alpha: 1.0).CGColor
-//        self.profileButton.layer.borderWidth = 1.0
-//        self.messageButton.layer.cornerRadius = self.messageButton.frame.height / 3
-//        self.messageButton.layer.borderColor = UIColor(red: 55/255, green: 55/255, blue: 55/255, alpha: 1.0).CGColor
-//        self.messageButton.layer.borderWidth = 1.0
-//        self.subscriptionButton.layer.cornerRadius = self.subscriptionButton.frame.height / 3
-//        self.subscriptionButton.layer.borderColor = UIColor(red: 55/255, green: 55/255, blue: 55/255, alpha: 1.0).CGColor
-//        self.subscriptionButton.layer.borderWidth = 1.0
-        
         // Save preferred App direction(Trainer or User) to NSUserDefaults
         let defaults = NSUserDefaults.standardUserDefaults()
         defaults.setObject("Trainer", forKey: "appDirection")

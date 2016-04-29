@@ -14,16 +14,14 @@ class TrainerTrainingTypesViewController: UIViewController, UITableViewDelegate,
     @IBOutlet var tableView: UITableView!
     @IBOutlet weak var saveBarButtonItem: UIBarButtonItem!
     
-    // trainingArray is global -> AppDelegate
-    let trainingDictionary = [0:"Core Strength",1:"Weight Loss",2:"Functional Training",3:"Small Group Training",4:"Pre and Post Baby",5:"Rehab"]
+    let trainingArray = ["Bootcamp", "Core Strength", "Diet & Nutrition", "Functional Training", "Group Exercise", "Lifestyle Coach", "Massage Therapy", "Physiotherapist", "Pre & Post Baby", "Rehab", "Sport Specific", "Strength & Conditioning", "Weight Loss"]
+    let trainingDictionary = [0:"Bootcamp",1:"Core Strength",2:"Diet & Nutrition",3:"Functional Training",4:"Group Exercise",5:"Lifestyle Coach",6:"Massage Therapy",7:"Physiotherapist",8:"Pre & Post Baby",9:"Rehab",10:"Sport Specific",11:"Strength & Conditioning",12:"Weight Loss"]
     var tempDict:[Int:String] = [:]
     var tempArray:[String]?
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
      
     }
 
@@ -36,7 +34,7 @@ class TrainerTrainingTypesViewController: UIViewController, UITableViewDelegate,
     override func viewDidAppear(animated: Bool) {
         for (index,cell) in tableView.visibleCells.enumerate() {
             for item in tempArray! {
-                if trainingArray[index] == item {
+                if self.trainingArray[index] == item {
                     cell.accessoryType = UITableViewCellAccessoryType.Checkmark
                     tempDict[index] = trainingDictionary[index]
                 }
@@ -69,7 +67,7 @@ class TrainerTrainingTypesViewController: UIViewController, UITableViewDelegate,
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 6
+        return 13
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -77,7 +75,7 @@ class TrainerTrainingTypesViewController: UIViewController, UITableViewDelegate,
         let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! TrainingTableViewCell
         
         cell.tintColor = UIColor(red: 245/255, green: 7/255, blue: 55/255, alpha: 1.0)
-        cell.trainingLabel.text = trainingArray[indexPath.row]
+        cell.trainingLabel.text = self.trainingArray[indexPath.row]
 
         return cell
     }

@@ -19,14 +19,10 @@ class FinderSearchViewController: UIViewController, CLLocationManagerDelegate {
     var trainerType = "club"
     var clubDistance = 1.5
     
-    var ImageArray = [UIImage(named: "baby"),UIImage(named: "core"),UIImage(named: "functional"),UIImage(named: "rehab"),UIImage(named: "smallGroup"),UIImage(named: "weightLoss")]
-    let trainingTypesArray = ["Pre and Post Baby","Core Strength","Functional Training","Rehab","Small Group Training","Weight Loss"]
-    
+    let trainingTypesArray = ["Bootcamp", "Core Strength", "Diet & Nutrition", "Functional Training", "Group Exercise", "Lifestyle Coach", "Massage Therapy", "Physiotherapist", "Pre & Post Baby", "Rehab", "Sport Specific", "Strength & Conditioning", "Weight Loss"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
         
         // Location Access - For use in foreground
         self.locationManager.requestWhenInUseAuthorization()
@@ -80,6 +76,7 @@ class FinderSearchViewController: UIViewController, CLLocationManagerDelegate {
     //MARK: - Location Access Alert
     func locationAccessAlert() {
         let alert = UIAlertController(title: "Allow Location Access", message: "Location access is restricted. In order to use Findem, please allow location access in the Settigs app under Privacy, Location Services.", preferredStyle: UIAlertControllerStyle.Alert)
+        alert.view.tintColor = UIColor(red: 245/255, green: 7/255, blue: 55/255, alpha: 1.0)
         alert.addAction(UIAlertAction(title: "Settings", style: UIAlertActionStyle.Default, handler: { (alert: UIAlertAction!) in
             UIApplication.sharedApplication().openURL(NSURL(string:UIApplicationOpenSettingsURLString)!)
         }))
@@ -93,15 +90,13 @@ class FinderSearchViewController: UIViewController, CLLocationManagerDelegate {
 extension FinderSearchViewController: UICollectionViewDelegate,UICollectionViewDataSource {
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return ImageArray.count
+        return trainingTypesArray.count
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("searchCell", forIndexPath: indexPath) as! SearchCollectionViewCell
-        cell.imageView.layer.cornerRadius = cell.imageView.frame.height / 3
-        cell.imageView.layer.borderWidth = 2.0
-        cell.imageView.layer.borderColor = UIColor.darkGrayColor().CGColor
-        cell.imageView.image = self.ImageArray[indexPath.row]
+        cell.imageView.image = UIImage(named: self.trainingTypesArray[indexPath.row])
+        cell.trainingTypeLabel.text = self.trainingTypesArray[indexPath.row]
         
         return cell
     }

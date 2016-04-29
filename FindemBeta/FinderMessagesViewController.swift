@@ -21,8 +21,7 @@ class FinderMessagesViewController: UIViewController, UITableViewDataSource, UIT
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Do any additional setup after loading the view.
+
         slidingMenu?.frame.size.width = self.view.frame.size.width
         slidingMenu?.center = CGPoint(x: self.view.frame.size.width/2, y: -170)
         view.addSubview(slidingMenu!)
@@ -129,6 +128,7 @@ class FinderMessagesViewController: UIViewController, UITableViewDataSource, UIT
             (action:UITableViewRowAction!, indexPath:NSIndexPath!) -> Void in
             // Alert : Delete confirmation
             let alert = UIAlertController(title: "Alert", message: "Are you sure ?!", preferredStyle: UIAlertControllerStyle.Alert)
+            alert.view.tintColor = UIColor(red: 245/255, green: 7/255, blue: 55/255, alpha: 1.0)
             alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Default, handler: nil))
             alert.addAction(UIAlertAction(title: "Delete", style: UIAlertActionStyle.Default, handler: {
                 (action: UIAlertAction!) in
@@ -174,6 +174,7 @@ class FinderMessagesViewController: UIViewController, UITableViewDataSource, UIT
             (action:UITableViewRowAction!, indexPath:NSIndexPath!) -> Void in
             // Alert: Block confirmation
             let alert = UIAlertController(title: "Alert", message: "Are you sure ?!", preferredStyle: UIAlertControllerStyle.Alert)
+            alert.view.tintColor = UIColor(red: 245/255, green: 7/255, blue: 55/255, alpha: 1.0)
             alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Default, handler: nil))
             alert.addAction(UIAlertAction(title: "Block", style: UIAlertActionStyle.Default, handler: {
                 (action: UIAlertAction!) in
@@ -201,6 +202,7 @@ class FinderMessagesViewController: UIViewController, UITableViewDataSource, UIT
             (action:UITableViewRowAction!, indexPath:NSIndexPath!) -> Void in
             // Alert: Block confirmation
             let alert = UIAlertController(title: "Alert", message: "Are you sure ?!", preferredStyle: UIAlertControllerStyle.Alert)
+            alert.view.tintColor = UIColor(red: 245/255, green: 7/255, blue: 55/255, alpha: 1.0)
             alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Default, handler: nil))
             alert.addAction(UIAlertAction(title: "Unblock", style: UIAlertActionStyle.Default, handler: {
                 (action: UIAlertAction!) in

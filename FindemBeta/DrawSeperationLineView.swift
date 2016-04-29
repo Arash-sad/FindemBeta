@@ -19,7 +19,7 @@ class DrawSeperationLineView: UIView {
         let firstPathLayer: CAShapeLayer = CAShapeLayer()
         firstPathLayer.frame = self.bounds
         firstPathLayer.path = firstPath.CGPath
-        firstPathLayer.strokeColor = UIColor.whiteColor().CGColor
+        firstPathLayer.strokeColor = UIColor(red: 245/255, green: 7/255, blue: 55/255, alpha: 1.0).CGColor
         firstPathLayer.fillColor = nil
         firstPathLayer.lineWidth = 4.0
         firstPathLayer.lineJoin = kCALineJoinBevel
@@ -40,19 +40,19 @@ class DrawSeperationLineView: UIView {
         let secondPath: UIBezierPath = UIBezierPath()
         secondPath.moveToPoint(CGPointMake(self.frame.width/2, self.frame.height/2))
         secondPath.addLineToPoint(CGPointMake(self.frame.width, self.frame.height/2))
-        // Create first CAShape Layer
+        // Create second CAShape Layer
         let secondPathLayer: CAShapeLayer = CAShapeLayer()
         secondPathLayer.frame = self.bounds
         secondPathLayer.path = secondPath.CGPath
-        secondPathLayer.strokeColor = UIColor.whiteColor().CGColor
+        secondPathLayer.strokeColor = UIColor(red: 245/255, green: 7/255, blue: 55/255, alpha: 1.0).CGColor
         secondPathLayer.fillColor = nil
         secondPathLayer.lineWidth = 4.0
         secondPathLayer.lineJoin = kCALineJoinBevel
         
-        // Add first layer to views layer
+        // Add second layer to views layer
         self.layer.addSublayer(secondPathLayer)
         
-        // First Basic Animation
+        // Second Basic Animation
         let secondPathAnimation: CABasicAnimation = CABasicAnimation(keyPath: "strokeEnd")
         secondPathAnimation.duration = 2.0
         secondPathAnimation.fromValue = NSNumber(float: 0.0)

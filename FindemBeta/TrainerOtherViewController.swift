@@ -24,8 +24,6 @@ class TrainerOtherViewController: UIViewController, UITextViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
         
         // hide keyboard if tap on screen
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: "handleTapGestureRecognizer:")

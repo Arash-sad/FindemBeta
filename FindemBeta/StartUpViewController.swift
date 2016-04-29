@@ -27,13 +27,13 @@ class StartUpViewController: UIViewController {
         // Setup Profil and FindTrainer Buttons
         self.profileButton.layer.cornerRadius = self.profileButton.frame.height / 3
         self.findTrainerButton.layer.cornerRadius = self.profileButton.frame.height / 3
-        self.profileButton.layer.borderColor = UIColor(white: 1.0, alpha: 1.0).CGColor
+        self.profileButton.layer.borderColor = UIColor(red: 55/255, green: 55/255, blue: 55/255, alpha: 1.0).CGColor
         self.profileButton.layer.borderWidth = 1.0
-        self.findTrainerButton.layer.borderColor = UIColor(white: 1.0, alpha: 1.0).CGColor
+        self.findTrainerButton.layer.borderColor = UIColor(red: 55/255, green: 55/255, blue: 55/255, alpha: 1.0).CGColor
         self.findTrainerButton.layer.borderWidth = 1.0
         
         // Add Blur Visual Effect on top of backgroundImageView
-        let blur:UIBlurEffect = UIBlurEffect(style: UIBlurEffectStyle.Dark)
+        let blur:UIBlurEffect = UIBlurEffect(style: UIBlurEffectStyle.Light)
         let effectView:UIVisualEffectView = UIVisualEffectView (effect: blur)
         effectView.frame = self.view.frame
         effectView.alpha = 0

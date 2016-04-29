@@ -29,8 +29,6 @@ class FinderTrainerProfileViewController: UIViewController, UITableViewDelegate,
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
         
         // Disable tableView row selection
         tableView.allowsSelection = false

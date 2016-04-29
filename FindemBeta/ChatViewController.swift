@@ -26,7 +26,7 @@ class ChatViewController : JSQMessagesViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
         self.collectionView?.backgroundColor = UIColor(red: 240/255, green: 240/255, blue: 240/255, alpha: 1.0)
         // Remove avatars
         collectionView!.collectionViewLayout.incomingAvatarViewSize = CGSizeZero
@@ -206,6 +206,7 @@ class ChatViewController : JSQMessagesViewController {
     //MARK: - Alert
     func alert(messageTitle: String, message: String) {
         let alert = UIAlertController(title: messageTitle, message: message, preferredStyle: UIAlertControllerStyle.Alert)
+        alert.view.tintColor = UIColor(red: 245/255, green: 7/255, blue: 55/255, alpha: 1.0)
         alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
         self.presentViewController(alert, animated: true, completion: nil)
     }

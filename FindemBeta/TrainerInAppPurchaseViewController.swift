@@ -34,8 +34,6 @@ class TrainerInAppPurchaseViewController: UIViewController, UITableViewDelegate,
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
         
         // Disable tableView row selection
         tableView.allowsSelection = false
@@ -124,6 +122,7 @@ class TrainerInAppPurchaseViewController: UIViewController, UITableViewDelegate,
             request.start()
         } else {
             let alert = UIAlertController(title: "In-App Purchases Not Enabled", message: "Please enable In App Purchase in Settings", preferredStyle: UIAlertControllerStyle.Alert)
+            alert.view.tintColor = UIColor(red: 245/255, green: 7/255, blue: 55/255, alpha: 1.0)
             alert.addAction(UIAlertAction(title: "Settings", style: UIAlertActionStyle.Default, handler: { alertAction in
                 alert.dismissViewControllerAnimated(true, completion: nil)
                 

@@ -29,8 +29,6 @@ class TrainerDescriptionViewController: UIViewController, UITextViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
         
         self.shortDescriptionTextView.layer.cornerRadius = 6
         self.longDescriptionTextView.layer.cornerRadius = 6

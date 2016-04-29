@@ -18,17 +18,29 @@ class FinderSlidingMenu: UIView {
     
     override func awakeFromNib() {
         // Setup buttons
-        self.homeButton.layer.cornerRadius = self.homeButton.frame.height / 3
-        self.homeButton.layer.borderColor = UIColor(white: 1.0, alpha: 1.0).CGColor
-        self.homeButton.layer.borderWidth = 1.0
+        let homeImage = UIImage(named: "reset")
+        homeButton.setImage(homeImage, forState: UIControlState.Normal)
+        homeButton.imageEdgeInsets = UIEdgeInsets(top: 15, left: 15, bottom: 20, right: 15)
         
-        self.searchButton.layer.cornerRadius = self.searchButton.frame.height / 3
-        self.searchButton.layer.borderColor = UIColor(white: 1.0, alpha: 1.0).CGColor
-        self.searchButton.layer.borderWidth = 1.0
+        homeButton.setTitle("Home", forState: UIControlState.Normal)
+        homeButton.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
+        homeButton.titleEdgeInsets = UIEdgeInsets(top: 60, left: -homeImage!.size.width, bottom: 0, right: 0.0)
         
-        self.messageButton.layer.cornerRadius = self.messageButton.frame.height / 3
-        self.messageButton.layer.borderColor = UIColor(white: 1.0, alpha: 1.0).CGColor
-        self.messageButton.layer.borderWidth = 1.0
+        let searchImage = UIImage(named: "search")
+        searchButton.setImage(searchImage, forState: UIControlState.Normal)
+        searchButton.imageEdgeInsets = UIEdgeInsets(top: 15, left: 15, bottom: 20, right: 15)
+        
+        searchButton.setTitle("Search", forState: UIControlState.Normal)
+        searchButton.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
+        searchButton.titleEdgeInsets = UIEdgeInsets(top: 60, left: -searchImage!.size.width, bottom: 0, right: 0.0)
+        
+        let connectionsImage = UIImage(named: "connections")
+        messageButton.setImage(connectionsImage, forState: UIControlState.Normal)
+        messageButton.imageEdgeInsets = UIEdgeInsets(top: 15, left: 15, bottom: 20, right: 15)
+        
+        messageButton.setTitle("Connections", forState: UIControlState.Normal)
+        messageButton.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
+        messageButton.titleEdgeInsets = UIEdgeInsets(top: 60, left: -connectionsImage!.size.width, bottom: 0, right: 0.0)
     }
     
     @IBAction func homeButtonTapped(sender: UIButton) {
@@ -53,12 +65,25 @@ class FinderSlidingMenu: UIView {
     }
     
     @IBAction func logoutButtonTapped(sender: UIButton) {
-        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("StartUpVC")
-        let transition = CATransition()
-        transition.type = kCATransitionFade
-        (UIApplication.sharedApplication().delegate as? AppDelegate)?.window?.setRootViewController(vc,transition: transition)
-        // Log Out from Facebook and go back to startup page
-        PFUser.logOut()
+        logOutAlert("Log Out",message: "Are you sure?")
+    }
+    
+    //MARK: - Log Out Alert
+    func logOutAlert(messageTitle: String, message: String) {
+        let alert = UIAlertController(title: messageTitle, message: message, preferredStyle: UIAlertControllerStyle.Alert)
+        alert.view.tintColor = UIColor(red: 245/255, green: 7/255, blue: 55/255, alpha: 1.0)
+        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Default, handler: nil))
+        alert.addAction(UIAlertAction(title: "Log Out", style: UIAlertActionStyle.Default, handler: { (alert: UIAlertAction!) in
+            // Go To StartUp ViewController
+            let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("StartUpVC")
+            let transition = CATransition()
+            transition.type = kCATransitionFade
+            (UIApplication.sharedApplication().delegate as? AppDelegate)?.window?.setRootViewController(vc,transition: transition)
+            // Log Out from Facebook and go back to startup page
+            PFUser.logOut()
+        }))
+        let parentViewController: UIViewController = UIApplication.sharedApplication().windows[1].rootViewController!
+        parentViewController.presentViewController(alert, animated: true, completion: nil)
     }
 
 }

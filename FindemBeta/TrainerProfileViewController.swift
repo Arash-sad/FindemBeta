@@ -50,13 +50,15 @@ class TrainerProfileViewController: UIViewController, UITableViewDelegate, UITab
     let sevenththCellIdentifier = "seventhProfileCell"
     let eighthCellIdentifier = "eighthProfileCell"
     
+    let editImage = UIImage(named: "edit")
+    let tickImage = UIImage(named: "tick")
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
         
         // Add Right barButtonItem (Edit/Done)
-        let rightBarButton = UIBarButtonItem(title: "Edit", style: UIBarButtonItemStyle.Plain, target: self, action: "editAction")
+        
+        let rightBarButton = UIBarButtonItem(image: editImage, style: UIBarButtonItemStyle.Plain, target: self, action: "editAction")
         
         self.navigationItem.setRightBarButtonItem(rightBarButton, animated: true)
         
@@ -100,14 +102,14 @@ class TrainerProfileViewController: UIViewController, UITableViewDelegate, UITab
     func editAction() {
         if editButtonEnabled {
             editButtonEnabled = !editButtonEnabled
-            self.navigationItem.rightBarButtonItem! = UIBarButtonItem(title: "Edit", style: UIBarButtonItemStyle.Done, target: self, action: "editAction")
+            self.navigationItem.rightBarButtonItem! = UIBarButtonItem(image: editImage, style: UIBarButtonItemStyle.Done, target: self, action: "editAction")
             // Disable the tableView selection highlighting
             tableView.allowsSelection = false
             self.tableView.reloadData()
         }
         else {
             editButtonEnabled = !editButtonEnabled
-            self.navigationItem.rightBarButtonItem! = UIBarButtonItem(title: "Done", style: UIBarButtonItemStyle.Done, target: self, action: "editAction")
+            self.navigationItem.rightBarButtonItem! = UIBarButtonItem(image: tickImage, style: UIBarButtonItemStyle.Done, target: self, action: "editAction")
             // Enable the tableView selection highlighting
             tableView.allowsSelection = true
             self.tableView.reloadData()
@@ -417,7 +419,7 @@ class TrainerProfileViewController: UIViewController, UITableViewDelegate, UITab
         }
         else {
             let cell = tableView.dequeueReusableCellWithIdentifier(self.eighthCellIdentifier, forIndexPath: indexPath) as! EighthTableViewCell
-            cell.instagramIdLabel.text = self.instagramUserId
+            cell.instagramIdLabel.text = "@\(self.instagramUserId)"
             if editButtonEnabled {
                 cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
             }
@@ -554,19 +556,19 @@ class TrainerProfileViewController: UIViewController, UITableViewDelegate, UITab
     
     func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         if (pickerView.tag == 1) {
-            return trainingArray.count
+            return self.trainingArray.count
         }
         else {
-            return qualificationsArray.count
+            return self.qualificationsArray.count
         }
     }
     
     func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         if (pickerView.tag == 1) {
-            return trainingArray[row]
+            return self.trainingArray[row]
         }
         else {
-            return qualificationsArray[row]
+            return self.qualificationsArray[row]
         }
     }
     
@@ -575,7 +577,7 @@ class TrainerProfileViewController: UIViewController, UITableViewDelegate, UITab
             let pickerLabel = UILabel()
             pickerLabel.textAlignment = .Center
             pickerLabel.backgroundColor = UIColor(red: 225/255, green: 225/255, blue: 225/255, alpha: 1.0)
-            let titleData = trainingArray[row]
+            let titleData = self.trainingArray[row]
             let myTitle = NSAttributedString(string: titleData, attributes: [NSFontAttributeName:UIFont.systemFontOfSize(17, weight: UIFontWeightThin),NSForegroundColorAttributeName:UIColor(red: 55/255, green: 55/255, blue: 55/255, alpha: 1.0)])
             pickerLabel.attributedText = myTitle
             return pickerLabel

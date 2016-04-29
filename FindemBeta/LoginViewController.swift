@@ -16,11 +16,16 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
         // Setup the button
         self.fbLoginButton.layer.cornerRadius = self.fbLoginButton.frame.height / 3
         self.fbLoginButton.layer.borderColor = UIColor(red: 55/255, green: 55/255, blue: 55/255, alpha: 1.0).CGColor
         self.fbLoginButton.layer.borderWidth = 1.0
+        fbLoginButton?.setTitle("Facebook Login", forState: UIControlState.Normal)
+        let buttonImage = UIImage(named: "facebook")
+        fbLoginButton?.setImage(buttonImage, forState: UIControlState.Normal)
+        fbLoginButton?.imageEdgeInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 20)
+        fbLoginButton?.titleLabel?.font = UIFont.systemFontOfSize(22, weight: UIFontWeightThin)
+        
     }
 
     override func didReceiveMemoryWarning() {

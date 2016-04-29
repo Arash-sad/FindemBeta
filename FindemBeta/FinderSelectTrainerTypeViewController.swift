@@ -27,8 +27,6 @@ class FinderSelectTrainerTypeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
         
         //Setup Next Button
         self.nextButton.layer.cornerRadius = self.nextButton.frame.height / 3
@@ -45,7 +43,7 @@ class FinderSelectTrainerTypeViewController: UIViewController {
         
         trainerTypeSegmentControl.selectedSegmentIndex = 0
         
-        self.descriptionLabel.text = "You will find all the personal trainers who are working at the sports club around you with the radius of:"
+        self.descriptionLabel.text = "Find all the personal trainers at the sports club around you within the radius of:"
         
         //Set PickerView Values (Distance between 0 - 50KM)
         for dis in 0...20 {
@@ -87,7 +85,7 @@ class FinderSelectTrainerTypeViewController: UIViewController {
             UIView.animateWithDuration(0.3, delay: 0, options: UIViewAnimationOptions.CurveEaseOut, animations: {
                 self.distanceLabel.alpha = 1.0
                 self.pickerView.alpha = 1.0
-                self.descriptionLabel.text = "You will find all the personal trainers who are working at the sports club around you with the radius of:"
+                self.descriptionLabel.text = "Find all the personal trainers at the sports club around you within the radius of:"
                 }, completion: nil)
             
         }
@@ -98,7 +96,7 @@ class FinderSelectTrainerTypeViewController: UIViewController {
             UIView.animateWithDuration(0.3, delay: 0, options: UIViewAnimationOptions.CurveEaseOut, animations: {
                 self.distanceLabel.alpha = 0.0
                 self.pickerView.alpha = 0.0
-                self.descriptionLabel.text = "You will find all the mobile personal trainers who cover your current location."
+                self.descriptionLabel.text = "Find all the mobile personal trainers who cover your current location."
                 }, completion: nil)
         }
     }

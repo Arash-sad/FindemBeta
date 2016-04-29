@@ -16,6 +16,7 @@ class FinderConnectionViewController: UIViewController {
     @IBOutlet weak var messageButton: UIButton!
     @IBOutlet weak var goBackButton: UIButton!
     @IBOutlet weak var userImageView: UIImageView!
+    @IBOutlet weak var newConnectionLabel: UILabel!
     
     var trainer: Trainer?
     var isConnected = false
@@ -23,8 +24,6 @@ class FinderConnectionViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
         
         // Setup imageView and userImageView
         self.imageView.layer.borderColor = UIColor.whiteColor().CGColor
@@ -48,6 +47,7 @@ class FinderConnectionViewController: UIViewController {
                 self.connectionLabel.text = "You and \(trainer!.name) are already connected."
             }
             else {
+                self.newConnectionLabel.hidden = false
                 self.connectionLabel.text = "You and \(trainer!.name) are now connected."
             }
         self.trainer!.getPhoto({

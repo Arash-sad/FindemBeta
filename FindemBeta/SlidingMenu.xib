@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9532" systemVersion="14F1605" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -16,46 +16,49 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="170"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="fnN-vL-2Pf">
-                                <rect key="frame" x="120" y="85" width="360" height="40"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="fnN-vL-2Pf">
+                                <rect key="frame" x="145" y="40" width="310" height="90"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yci-et-wcu">
-                                        <rect key="frame" x="0.0" y="0.0" width="110" height="40"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="90" height="90"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="110" id="Zfn-bP-BTQ"/>
-                                            <constraint firstAttribute="height" constant="40" id="jZ1-tq-Gjq"/>
+                                            <constraint firstAttribute="width" constant="90" id="Zfn-bP-BTQ"/>
+                                            <constraint firstAttribute="height" constant="90" id="jZ1-tq-Gjq"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" weight="thin" pointSize="19"/>
+                                        <fontDescription key="fontDescription" type="system" weight="thin" pointSize="15"/>
+                                        <color key="tintColor" red="0.94117647059999998" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
                                         <state key="normal" title="Home">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleColor" red="0.94117647059999998" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <connections>
                                             <action selector="homeButtonTapped:" destination="iN0-l3-epB" eventType="touchUpInside" id="vhx-cY-Dns"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7VT-z8-ffI">
-                                        <rect key="frame" x="125" y="0.0" width="110" height="40"/>
+                                        <rect key="frame" x="110" y="0.0" width="90" height="90"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="40" id="QUh-8c-vkf"/>
-                                            <constraint firstAttribute="width" constant="110" id="b6R-XT-NFH"/>
+                                            <constraint firstAttribute="height" constant="90" id="QUh-8c-vkf"/>
+                                            <constraint firstAttribute="width" constant="90" id="b6R-XT-NFH"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" weight="thin" pointSize="19"/>
+                                        <fontDescription key="fontDescription" type="system" weight="thin" pointSize="15"/>
+                                        <color key="tintColor" red="0.94117647059999998" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
                                         <state key="normal" title="Search">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleColor" red="0.94117647059999998" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <connections>
                                             <action selector="searchButtonTapped:" destination="iN0-l3-epB" eventType="touchUpInside" id="DsP-vQ-2x1"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3xH-T0-1u0">
-                                        <rect key="frame" x="250" y="0.0" width="110" height="40"/>
+                                        <rect key="frame" x="220" y="0.0" width="90" height="90"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="110" id="xbg-WE-lG1"/>
-                                            <constraint firstAttribute="height" constant="40" id="xj5-cM-zIr"/>
+                                            <constraint firstAttribute="width" constant="90" id="xbg-WE-lG1"/>
+                                            <constraint firstAttribute="height" constant="90" id="xj5-cM-zIr"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" weight="thin" pointSize="19"/>
+                                        <fontDescription key="fontDescription" type="system" weight="thin" pointSize="15"/>
+                                        <color key="tintColor" red="0.94117647059999998" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
                                         <state key="normal" title="Connections">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleColor" red="0.94117647059999998" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <connections>
                                             <action selector="messagesButtonTapped:" destination="iN0-l3-epB" eventType="touchUpInside" id="QUd-TA-htq"/>
@@ -63,15 +66,14 @@
                                     </button>
                                 </subviews>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X7V-Aq-dJB">
-                                <rect key="frame" x="522" y="8" width="70" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X7V-Aq-dJB">
+                                <rect key="frame" x="557" y="8" width="35" height="35"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="70" id="ZYB-bf-j2w"/>
-                                    <constraint firstAttribute="height" constant="30" id="d23-o2-f6u"/>
+                                    <constraint firstAttribute="width" constant="35" id="ZYB-bf-j2w"/>
+                                    <constraint firstAttribute="height" constant="35" id="d23-o2-f6u"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="15"/>
-                                <state key="normal" title="Log Out">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" image="log_out_menu">
+                                    <color key="titleColor" red="0.94117647059999998" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="logoutButtonTapped:" destination="iN0-l3-epB" eventType="touchUpInside" id="Yvh-sd-MaM"/>
@@ -85,9 +87,11 @@
                             <constraint firstItem="fnN-vL-2Pf" firstAttribute="centerX" secondItem="kLm-ul-yVC" secondAttribute="centerX" id="jdw-xC-RdS"/>
                             <constraint firstItem="X7V-Aq-dJB" firstAttribute="top" secondItem="kLm-ul-yVC" secondAttribute="top" constant="8" id="wC6-iI-wdj"/>
                             <constraint firstAttribute="trailing" secondItem="X7V-Aq-dJB" secondAttribute="trailing" constant="8" id="wrc-c4-Zqi"/>
+                            <constraint firstItem="fnN-vL-2Pf" firstAttribute="centerY" secondItem="kLm-ul-yVC" secondAttribute="centerY" id="zjL-so-yHS"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
+                                <exclude reference="KWU-gG-YDX"/>
                                 <exclude reference="Rz7-KK-P9k"/>
                                 <exclude reference="wC6-iI-wdj"/>
                             </mask>
@@ -111,4 +115,7 @@
             </connections>
         </view>
     </objects>
+    <resources>
+        <image name="log_out_menu" width="42" height="42"/>
+    </resources>
 </document>

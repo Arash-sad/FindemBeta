@@ -19,19 +19,42 @@ class TrainerHomeViewController: UIViewController, TrainerInAppPurchaseViewContr
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
         
         // Setup buttons
-        self.profileButton.layer.cornerRadius = self.profileButton.frame.height / 3
-        self.profileButton.layer.borderColor = UIColor(red: 55/255, green: 55/255, blue: 55/255, alpha: 1.0).CGColor
-        self.profileButton.layer.borderWidth = 1.0
-        self.messageButton.layer.cornerRadius = self.messageButton.frame.height / 3
-        self.messageButton.layer.borderColor = UIColor(red: 55/255, green: 55/255, blue: 55/255, alpha: 1.0).CGColor
-        self.messageButton.layer.borderWidth = 1.0
-        self.subscriptionButton.layer.cornerRadius = self.subscriptionButton.frame.height / 3
-        self.subscriptionButton.layer.borderColor = UIColor(red: 55/255, green: 55/255, blue: 55/255, alpha: 1.0).CGColor
-        self.subscriptionButton.layer.borderWidth = 1.0
+        
+        let profileImage = UIImage(named: "profile")
+        profileButton.setImage(profileImage, forState: UIControlState.Normal)
+        profileButton.imageEdgeInsets = UIEdgeInsets(top: 10, left: 15, bottom: 30, right: 15)
+        
+        profileButton.setTitle("Profile", forState: UIControlState.Normal)
+        profileButton.setTitleColor(UIColor(red: 55/255, green: 55/255, blue: 55/255, alpha: 1.0), forState: UIControlState.Normal)
+        profileButton.titleEdgeInsets = UIEdgeInsets(top: 90, left: -profileImage!.size.width, bottom: 0, right: 0.0)
+        
+        let messagesImage = UIImage(named: "messages")
+        messageButton.setImage(messagesImage, forState: UIControlState.Normal)
+        messageButton.imageEdgeInsets = UIEdgeInsets(top: 10, left: 15, bottom: 30, right: 15)
+        
+        messageButton.setTitle("Messages", forState: UIControlState.Normal)
+        messageButton.setTitleColor(UIColor(red: 55/255, green: 55/255, blue: 55/255, alpha: 1.0), forState: UIControlState.Normal)
+        messageButton.titleEdgeInsets = UIEdgeInsets(top: 90, left: -messagesImage!.size.width, bottom: 0, right: 0.0)
+        
+        let subscriptionImage = UIImage(named: "subscription")
+        subscriptionButton.setImage(subscriptionImage, forState: UIControlState.Normal)
+        subscriptionButton.imageEdgeInsets = UIEdgeInsets(top: 10, left: 15, bottom: 30, right: 15)
+        
+        subscriptionButton.setTitle("Subscription", forState: UIControlState.Normal)
+        subscriptionButton.setTitleColor(UIColor(red: 55/255, green: 55/255, blue: 55/255, alpha: 1.0), forState: UIControlState.Normal)
+        subscriptionButton.titleEdgeInsets = UIEdgeInsets(top: 90, left: -subscriptionImage!.size.width, bottom: 0, right: 0.0)
+        
+//        self.profileButton.layer.cornerRadius = self.profileButton.frame.height / 3
+//        self.profileButton.layer.borderColor = UIColor(red: 55/255, green: 55/255, blue: 55/255, alpha: 1.0).CGColor
+//        self.profileButton.layer.borderWidth = 1.0
+//        self.messageButton.layer.cornerRadius = self.messageButton.frame.height / 3
+//        self.messageButton.layer.borderColor = UIColor(red: 55/255, green: 55/255, blue: 55/255, alpha: 1.0).CGColor
+//        self.messageButton.layer.borderWidth = 1.0
+//        self.subscriptionButton.layer.cornerRadius = self.subscriptionButton.frame.height / 3
+//        self.subscriptionButton.layer.borderColor = UIColor(red: 55/255, green: 55/255, blue: 55/255, alpha: 1.0).CGColor
+//        self.subscriptionButton.layer.borderWidth = 1.0
         
         // Save preferred App direction(Trainer or User) to NSUserDefaults
         let defaults = NSUserDefaults.standardUserDefaults()
@@ -94,6 +117,8 @@ class TrainerHomeViewController: UIViewController, TrainerInAppPurchaseViewContr
     //MARK: - Log Out Alert
     func logOutAlert(messageTitle: String, message: String) {
         let alert = UIAlertController(title: messageTitle, message: message, preferredStyle: UIAlertControllerStyle.Alert)
+        alert.view.tintColor = UIColor(red: 245/255, green: 7/255, blue: 55/255, alpha: 1.0)
+        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Default, handler: nil))
         alert.addAction(UIAlertAction(title: "Log Out", style: UIAlertActionStyle.Default, handler: { (alert: UIAlertAction!) in
             // Go To StartUp ViewController
             let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("StartUpVC")
@@ -103,7 +128,6 @@ class TrainerHomeViewController: UIViewController, TrainerInAppPurchaseViewContr
             // Log Out from Facebook and go back to startup page
             PFUser.logOut()
         }))
-        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Default, handler: nil))
         self.presentViewController(alert, animated: true, completion: nil)
     }
     

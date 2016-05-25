@@ -19,9 +19,9 @@ class DrawSeperationLineView: UIView {
         let firstPathLayer: CAShapeLayer = CAShapeLayer()
         firstPathLayer.frame = self.bounds
         firstPathLayer.path = firstPath.CGPath
-        firstPathLayer.strokeColor = UIColor(red: 245/255, green: 7/255, blue: 55/255, alpha: 1.0).CGColor
+        firstPathLayer.strokeColor = UIColor.whiteColor().CGColor
         firstPathLayer.fillColor = nil
-        firstPathLayer.lineWidth = 4.0
+        firstPathLayer.lineWidth = 5.0
         firstPathLayer.lineJoin = kCALineJoinBevel
         
         // Add first layer to views layer
@@ -44,9 +44,9 @@ class DrawSeperationLineView: UIView {
         let secondPathLayer: CAShapeLayer = CAShapeLayer()
         secondPathLayer.frame = self.bounds
         secondPathLayer.path = secondPath.CGPath
-        secondPathLayer.strokeColor = UIColor(red: 245/255, green: 7/255, blue: 55/255, alpha: 1.0).CGColor
+        secondPathLayer.strokeColor = UIColor.whiteColor().CGColor
         secondPathLayer.fillColor = nil
-        secondPathLayer.lineWidth = 4.0
+        secondPathLayer.lineWidth = 5.0
         secondPathLayer.lineJoin = kCALineJoinBevel
         
         // Add second layer to views layer

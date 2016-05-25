@@ -43,7 +43,7 @@ class FinderSelectTrainerTypeViewController: UIViewController {
         
         trainerTypeSegmentControl.selectedSegmentIndex = 0
         
-        self.descriptionLabel.text = "Find all the personal trainers at the sports club around you within the radius of:"
+        self.descriptionLabel.text = "Find all the personal trainers at your local gym within the radius of:"
         
         //Set PickerView Values (Distance between 0 - 50KM)
         for dis in 0...20 {
@@ -85,7 +85,7 @@ class FinderSelectTrainerTypeViewController: UIViewController {
             UIView.animateWithDuration(0.3, delay: 0, options: UIViewAnimationOptions.CurveEaseOut, animations: {
                 self.distanceLabel.alpha = 1.0
                 self.pickerView.alpha = 1.0
-                self.descriptionLabel.text = "Find all the personal trainers at the sports club around you within the radius of:"
+                self.descriptionLabel.text = "Find all the personal trainers at your local gym within the radius of:"
                 }, completion: nil)
             
         }

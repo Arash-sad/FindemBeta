@@ -18,7 +18,7 @@ class TrainerInAppPurchaseViewController: UIViewController, UITableViewDelegate,
 
     @IBOutlet weak var tableView: UITableView!
     
-    let productIdentifiers = Set(["io.treepi.FindemBeta.yearly1","io.treepi.FindemBeta.monthly1","io.treepi.FindemBeta.threeMonth"])
+    let productIdentifiers = Set(["io.treepi.FindemBeta.yearly","io.treepi.FindemBeta.monthly","io.treepi.FindemBeta.3Month"])
     var product: SKProduct?
     var productsArray = Array<SKProduct>()
     var expirationDate: NSDate?
@@ -121,7 +121,7 @@ class TrainerInAppPurchaseViewController: UIViewController, UITableViewDelegate,
             request.delegate = self
             request.start()
         } else {
-            let alert = UIAlertController(title: "In-App Purchases Not Enabled", message: "Please enable In App Purchase in Settings", preferredStyle: UIAlertControllerStyle.Alert)
+            let alert = UIAlertController(title: "In-App Purchases Disabled", message: "Please enable In-App Purchase in Settings", preferredStyle: UIAlertControllerStyle.Alert)
             alert.view.tintColor = UIColor(red: 245/255, green: 7/255, blue: 55/255, alpha: 1.0)
             alert.addAction(UIAlertAction(title: "Settings", style: UIAlertActionStyle.Default, handler: { alertAction in
                 alert.dismissViewControllerAnimated(true, completion: nil)
@@ -198,17 +198,17 @@ class TrainerInAppPurchaseViewController: UIViewController, UITableViewDelegate,
     
     func deliverProduct(transaction:SKPaymentTransaction) {
         
-        if transaction.payment.productIdentifier == "io.treepi.FindemBeta.yearly1" {
+        if transaction.payment.productIdentifier == "io.treepi.FindemBeta.yearly" {
             print("1 Year Product Purchased")
             updateExpirationDate(12)
             // Unlock Feature
         }
-        else if transaction.payment.productIdentifier == "io.treepi.FindemBeta.threeMonth" {
+        else if transaction.payment.productIdentifier == "io.treepi.FindemBeta.3Month" {
             print("3 Month Product Purchased")
             updateExpirationDate(3)
             // Unlock Feature
         }
-        else if transaction.payment.productIdentifier == "io.treepi.FindemBeta.monthly1" {
+        else if transaction.payment.productIdentifier == "io.treepi.FindemBeta.monthly" {
             print("1 Month Product Purchased")
             updateExpirationDate(1)
             // Unlock Feature

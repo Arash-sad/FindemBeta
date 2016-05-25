@@ -127,7 +127,7 @@ class FinderMessagesViewController: UIViewController, UITableViewDataSource, UIT
         let deleteAction = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "Delete", handler: {
             (action:UITableViewRowAction!, indexPath:NSIndexPath!) -> Void in
             // Alert : Delete confirmation
-            let alert = UIAlertController(title: "Alert", message: "Are you sure ?!", preferredStyle: UIAlertControllerStyle.Alert)
+            let alert = UIAlertController(title: "Delete", message: "Are you sure ?", preferredStyle: UIAlertControllerStyle.Alert)
             alert.view.tintColor = UIColor(red: 245/255, green: 7/255, blue: 55/255, alpha: 1.0)
             alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Default, handler: nil))
             alert.addAction(UIAlertAction(title: "Delete", style: UIAlertActionStyle.Default, handler: {
@@ -173,7 +173,7 @@ class FinderMessagesViewController: UIViewController, UITableViewDataSource, UIT
         let blockAction = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "Block", handler: {
             (action:UITableViewRowAction!, indexPath:NSIndexPath!) -> Void in
             // Alert: Block confirmation
-            let alert = UIAlertController(title: "Alert", message: "Are you sure ?!", preferredStyle: UIAlertControllerStyle.Alert)
+            let alert = UIAlertController(title: "Block", message: "Are you sure ?", preferredStyle: UIAlertControllerStyle.Alert)
             alert.view.tintColor = UIColor(red: 245/255, green: 7/255, blue: 55/255, alpha: 1.0)
             alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Default, handler: nil))
             alert.addAction(UIAlertAction(title: "Block", style: UIAlertActionStyle.Default, handler: {
@@ -201,7 +201,7 @@ class FinderMessagesViewController: UIViewController, UITableViewDataSource, UIT
         let unBlockAction = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "Unblock", handler: {
             (action:UITableViewRowAction!, indexPath:NSIndexPath!) -> Void in
             // Alert: Block confirmation
-            let alert = UIAlertController(title: "Alert", message: "Are you sure ?!", preferredStyle: UIAlertControllerStyle.Alert)
+            let alert = UIAlertController(title: "Unblock", message: "Are you sure ?", preferredStyle: UIAlertControllerStyle.Alert)
             alert.view.tintColor = UIColor(red: 245/255, green: 7/255, blue: 55/255, alpha: 1.0)
             alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Default, handler: nil))
             alert.addAction(UIAlertAction(title: "Unblock", style: UIAlertActionStyle.Default, handler: {
@@ -236,6 +236,8 @@ class FinderMessagesViewController: UIViewController, UITableViewDataSource, UIT
     
     // reload tableView when data fetched
     func reload() {
+        // Remove last Activity Indicator
+        LoadingView.removeFrom(self.view)
         // Display Activity Indicator
         LoadingView.addTo(view)
         
@@ -246,7 +248,7 @@ class FinderMessagesViewController: UIViewController, UITableViewDataSource, UIT
             LoadingView.removeFrom(self.view)
         }
         else {
-            NSTimer.scheduledTimerWithTimeInterval(2, target: self, selector: Selector("reload"), userInfo: nil, repeats: false)
+            NSTimer.scheduledTimerWithTimeInterval(15, target: self, selector: Selector("reload"), userInfo: nil, repeats: false)
         }
     }
     

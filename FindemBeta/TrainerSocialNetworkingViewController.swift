@@ -40,7 +40,7 @@ class TrainerSocialNetworkingViewController: UIViewController {
     }
     @IBAction func saveBarButtonItemTapped(sender: UIBarButtonItem) {
         if instagramIdTextField.text == "" {
-            alert("Empty", message: "Please enter the User ID first, and then save.")
+            alert("", message: "Please enter the User ID first.")
         }
         else {
             // remove all leading and trailing white spaces
@@ -61,7 +61,7 @@ class TrainerSocialNetworkingViewController: UIViewController {
         // remove all leading and trailing white spaces
         tempInstagramId = instagramIdTextField.text!.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
         if tempInstagramId == "" {
-            alert("Empty", message: "Please enter the User ID first, and then tap this button.")
+            alert("", message: "Please enter the User ID first.")
         }
         else {
                 let instagramHooks = "instagram://user?username=\(tempInstagramId)"

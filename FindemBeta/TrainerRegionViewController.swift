@@ -79,7 +79,7 @@ class TrainerRegionViewController: UIViewController, UIPickerViewDataSource, UIP
         let addressString = "\(streetTextField.text) \(cityTextField.text) \(stateTextField.text) \(postalCodeTextField.text)"
         
         if (streetTextField.text!.isEmpty || cityTextField.text!.isEmpty || stateTextField.text!.isEmpty || postalCodeTextField.text!.isEmpty) {
-            alert("Missing Details", message: "Please complete all the sections")
+            alert("Missing Details", message: "Please complete all the sections.")
         }
         else {
             

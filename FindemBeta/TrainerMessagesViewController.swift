@@ -96,7 +96,7 @@ class TrainerMessagesViewController: UIViewController, UITableViewDataSource, UI
         let deleteAction = UITableViewRowAction(style: UITableViewRowActionStyle.Destructive, title: "Delete", handler: {
             (action:UITableViewRowAction!, indexPath:NSIndexPath!) -> Void in
             // Alert : Delete confirmation
-            let alert = UIAlertController(title: "Alert", message: "Are you sure ?!", preferredStyle: UIAlertControllerStyle.Alert)
+            let alert = UIAlertController(title: "Delete", message: "Are you sure ?!", preferredStyle: UIAlertControllerStyle.Alert)
             alert.view.tintColor = UIColor(red: 245/255, green: 7/255, blue: 55/255, alpha: 1.0)
             alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Default, handler: nil))
             alert.addAction(UIAlertAction(title: "Delete", style: UIAlertActionStyle.Default, handler: {
@@ -172,7 +172,7 @@ class TrainerMessagesViewController: UIViewController, UITableViewDataSource, UI
         let unBlockAction = UITableViewRowAction(style: UITableViewRowActionStyle.Destructive, title: "Unblock", handler: {
             (action:UITableViewRowAction!, indexPath:NSIndexPath!) -> Void in
             // Alert: Block confirmation
-            let alert = UIAlertController(title: "Alert", message: "Are you sure ?!", preferredStyle: UIAlertControllerStyle.Alert)
+            let alert = UIAlertController(title: "Unblock", message: "Are you sure ?!", preferredStyle: UIAlertControllerStyle.Alert)
             alert.view.tintColor = UIColor(red: 245/255, green: 7/255, blue: 55/255, alpha: 1.0)
             alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Default, handler: nil))
             alert.addAction(UIAlertAction(title: "Unblock", style: UIAlertActionStyle.Default, handler: {

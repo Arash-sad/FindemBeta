@@ -55,11 +55,11 @@ class FinderConnectionViewController: UIViewController {
 
         
             if self.isConnected == true {
-                self.connectionLabel.text = "You and \(trainer!.name) are already connected."
+                self.connectionLabel.text = "You and \(trainer!.name)\n are already connected."
             }
             else {
                 self.newConnectionLabel.hidden = false
-                self.connectionLabel.text = "You and \(trainer!.name) are now connected."
+                self.connectionLabel.text = "You and \(trainer!.name)\n are now connected."
             }
         self.trainer!.getPhoto({
             image in

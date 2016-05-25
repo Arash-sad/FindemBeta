@@ -166,7 +166,7 @@ class ChatViewController : JSQMessagesViewController {
     override func didPressSendButton(button: UIButton!, withMessageText text: String!, senderId: String!, senderDisplayName: String!, date: NSDate!) {
         // Check if user has blocked by trainer or vice versa
         if (userType == "user" && userAction == "blocked") || (userType == "trainer" && trainerAction == "blocked") {
-            alert("Blocked user", message: "In order to send a message you need to unblock the user.")
+            alert("Blocked", message: "In order to send a message you need to unblock the user first.")
         }
         else if (userType == "user" && (trainerAction == "blocked" || trainerAction == "gameOver")) || (userType == "trainer" && (userAction == "blocked" || userAction == "gameOver")){
             alert("Blocked", message: "You are not able to send a message to this user.")

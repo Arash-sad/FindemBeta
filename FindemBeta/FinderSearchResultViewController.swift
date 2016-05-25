@@ -181,6 +181,7 @@ extension FinderSearchResultViewController: UITableViewDataSource, UITableViewDe
         let cell = tableView.dequeueReusableCellWithIdentifier("searchResultCell") as! SearchResultTableViewCell
         
         // Make String from trainingTypes array
+        self.specialties = ""
         if let trainingTypes = self.refinedtrainerArray[indexPath.row].trainer.trainingTypes {
             for t in trainingTypes {
                 self.specialties += "\(t), "

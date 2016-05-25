@@ -131,7 +131,7 @@ class TrainerProfileGeneralViewController: UIViewController, UITextFieldDelegate
             self.presentViewController(imagePicker, animated: true, completion: nil)
         }
         else {
-            alert("Alert", message: "Your device does not support the Camera")
+            alert("", message: "Your device does not support the Camera")
         }
     }
     @IBAction func photoLibraryButtonTapped(sender: UIButton) {
@@ -144,7 +144,7 @@ class TrainerProfileGeneralViewController: UIViewController, UITextFieldDelegate
             self.presentViewController(imagePicker, animated: true, completion: nil)
         }
         else {
-            alert("Alert", message: "Your device does not support the Photo Library")
+            alert("", message: "Your device does not support the Photo Library")
         }
     }
     
